@@ -1,0 +1,38 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        in_memory:
+            memory: ~
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            pattern: ^/
+            oauth:
+                resource_owners:
+                    github: "/login/check-github"
+                login_path: /
+                failure_path: /login
+
+                oauth_user_provider:
+                    # This is a custom user provider, created from FOSUBUserProvider - will manage the
+                    # automatic user registration on your site, with data from the provider (facebook. google, etc.)
+                    service: ironforge.user_bundle.security.user_provider
+            logout: true
+            anonymous: true
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }

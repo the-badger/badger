@@ -1,0 +1,3 @@
+achievement:
+    resource: "@AchievementBundle/Controller/"
+    type:     annotation

@@ -1,0 +1,17 @@
+Ironforge\UserBundle\Entity\User:
+    type:  entity
+    table: fos_user
+    fields:
+        id:
+            id: true
+            type: guid
+            generator:
+                strategy: UUID
+        github_id:
+            type: string
+            length: 255
+            nullable: true
+        github_access_token:
+            type: string
+            length: 255
+            nullable: true
