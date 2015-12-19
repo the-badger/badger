@@ -1,0 +1,11 @@
+Ironforge\AchievementBundle\Entity\Achievement:
+    type: entity
+    table: null
+    repositoryClass: Ironforge\AchievementBundle\Repository\AchievementRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    lifecycleCallbacks: {  }
