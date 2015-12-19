@@ -48,6 +48,11 @@ class FOSUBUserProvider extends BaseClass
         $username = $response->getUsername();
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
 
+        $email = '';
+        if (null !== $response->getEmail()){
+            $email = $response->getEmail();
+        }
+
         //when the user is registrating
         if (null === $user) {
             $service = $response->getResourceOwner()->getName();
@@ -63,7 +68,7 @@ class FOSUBUserProvider extends BaseClass
             //I have set all requested data with the user's username
             //modify here with relevant data
             $user->setUsername($response->getNickname());
-            $user->setEmail($response->getEmail());
+            $user->setEmail($email);
             $user->setPassword($username); // TODO: change
             $user->setEnabled(true);
             $this->userManager->updateUser($user);
