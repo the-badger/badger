@@ -1,5 +1,5 @@
-{% extends 'base.html.twig' %}
+{% extends '@Gate/base.html.twig' %}
 
 {% block body %}
-    <div><a href="{{ path('github_connect') }}">Login with GitHub</a></div>
+    Hi {{ user.username }}.
 {% endblock %}
