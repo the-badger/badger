@@ -75,7 +75,7 @@ fos_user:
 
 hwi_oauth:
     # list of names of the firewalls in which this bundle is active, this setting MUST be set
-    firewall_name: main
+    firewall_names: ["main"]
 
     resource_owners:
         github:

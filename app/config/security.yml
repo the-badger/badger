@@ -23,7 +23,7 @@ security:
             oauth:
                 resource_owners:
                     github: "/login/check-github"
-                login_path: /
+                login_path: /login
                 failure_path: /login
 
                 oauth_user_provider:
@@ -35,4 +35,5 @@ security:
 
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/, role: ROLE_USER }
+        - { path: ^/admin, role: ROLE_ADMIN }

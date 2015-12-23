@@ -1,0 +1,18 @@
+{% extends 'HWIOAuthBundle::layout.html.twig' %}
+
+{% block hwi_oauth_content %}
+
+    {# Display oauth errors (here using Bootstrap) #}
+    {% if error is defined and error %}
+        <div class="row">
+            <div class="col-md-12 alert alert-danger text-center">
+                <span class="error">{{ error }}</span>
+            </div>
+        </div>
+    {% endif %}
+
+    {# HWIOAuthBundle integration #}
+
+    <a class="#" href="{{ hwi_oauth_login_url('github') }}">Login with GitHub</a>
+
+{% endblock hwi_oauth_content %}
