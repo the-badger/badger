@@ -7,3 +7,7 @@ Ironforge\UserBundle\Entity\Group:
             type: guid
             generator:
                 strategy: UUID
+        name:
+            type: string
+            length: 255
+            nullable: false

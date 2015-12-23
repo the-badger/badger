@@ -1,0 +1,5 @@
+Ironforge\AchievementBundle\Entity\Achievement:
+    properties:
+        file:
+            - File:
+                maxSize: 6000000

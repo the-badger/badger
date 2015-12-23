@@ -1,0 +1,43 @@
+{% extends 'GateBundle::base.html.twig' %}
+
+{% block body %}
+    <h1>Achievement list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for achievement in achievements %}
+            <tr>
+                <td><a href="{{ path('admin_achievement_show', { 'id': achievement.id }) }}">{{ achievement.id }}</a></td>
+                <td>{{ achievement.title }}</td>
+                <td>{{ achievement.description }}</td>
+                <td><img src="{{ asset(achievement.getImageWebPath) }}" alt=""/></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_achievement_show', { 'id': achievement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_achievement_edit', { 'id': achievement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_achievement_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

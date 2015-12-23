@@ -1,0 +1,40 @@
+{% extends 'GateBundle::base.html.twig' %}
+
+{% block body %}
+    <h1>Achievement</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ achievement.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ achievement.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ achievement.description }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ achievement.imagePath }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_achievement_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_achievement_edit', { 'id': achievement.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

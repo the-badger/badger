@@ -16,7 +16,7 @@ Ironforge\AchievementBundle\Entity\Achievement:
             type: string
             length: 1024
             nullable: false
-        image:
+        imagePath:
             type: string
             length: 1024
             nullable: true
