@@ -7,7 +7,7 @@ namespace Ironforge\AchievementBundle\Entity;
  */
 class Achievement
 {
-    /** @var int */
+    /** @var string */
     protected $id;
 
     /** @var string */
@@ -20,7 +20,7 @@ class Achievement
     protected $image;
 
     /**
-     * @return int
+     * @return string
      */
     public function getId()
     {

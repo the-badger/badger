@@ -1,11 +1,22 @@
 Ironforge\AchievementBundle\Entity\Achievement:
     type: entity
-    table: null
+    table: achievements
     repositoryClass: Ironforge\AchievementBundle\Repository\AchievementRepository
-    id:
+    fields:
         id:
-            type: integer
+            type: guid
             id: true
             generator:
-                strategy: AUTO
-    lifecycleCallbacks: {  }
+                strategy: UUID
+        title:
+            type: string
+            length: 255
+            nullable: false
+        description:
+            type: string
+            length: 1024
+            nullable: false
+        image:
+            type: string
+            length: 1024
+            nullable: true
