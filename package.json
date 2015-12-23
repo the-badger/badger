@@ -17,11 +17,14 @@
   },
   "homepage": "https://github.com/akeneo/ironforge",
   "dependencies": {
-    "bootstrap": "^3.3.6",
+    "font-awesome": "^4.5.0",
     "jquery": "^2.1.4",
-    "requirejs": "^2.1.22"
+    "requirejs": "^2.1.22",
+    "semantic-ui-css": "^2.1.7"
   },
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-less": "^3.0.5"
   }
 }

@@ -14,5 +14,5 @@ A Symfony project created on December 16, 2015, 10:58 pm.
 ```
 composer install
 npm install
-gulp install
+gulp install && gulp less
 ```

@@ -6,15 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="stylesheet" href="{{ asset('vendor/dist/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/semantic-ui-css/semantic.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/dist/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/all.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
-<body>
-{% block body %}{% endblock %}
+<body class="{% block bodyclass %}{% endblock %}">
+
+{% block body %}
+{% endblock %}
 
 <script src="{{ asset('vendor/dist/jquery.js') }}"></script>
-<script src="{{ asset('vendor/dist/bootstrap.min.js') }}"></script>
-{% block javascripts %}{% endblock %}
+<script src="{{ asset('vendor/semantic-ui-css/semantic.min.js') }}"></script>
+
+{% block javascripts %}
+{% endblock %}
 </body>
 </html>

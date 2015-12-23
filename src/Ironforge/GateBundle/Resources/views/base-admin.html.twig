@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('vendor/dist/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/all.css') }}">
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="#">Achievements</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Analytics</a></li>
+                <li><a href="#">Export</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main admin">
+        {% block body %}
+        {% endblock %}
+    </div>
+</div>
+
+<script src="{{ asset('vendor/dist/jquery.js') }}"></script>
+<script src="{{ asset('vendor/dist/bootstrap.min.js') }}"></script>
+
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>
