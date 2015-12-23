@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('vendor/dist/bootstrap.min.css') }}">
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 <body>
 {% block body %}{% endblock %}
+
+<script src="{{ asset('vendor/dist/jquery.js') }}"></script>
+<script src="{{ asset('vendor/dist/bootstrap.min.js') }}"></script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

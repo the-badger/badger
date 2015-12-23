@@ -1,5 +1,6 @@
 /web/bundles/
 /web/uploads/
+/web/vendor/
 /app/bootstrap.php.cache
 /app/cache/*
 /app/config/parameters.yml
@@ -11,3 +12,4 @@
 /vendor/
 /bin/
 /composer.phar
+/node_modules/

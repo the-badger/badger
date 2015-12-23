@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Achievement list</h1>
 
-    <table>
+    <table class="table table-condensed">
         <thead>
             <tr>
                 <th>Id</th>
@@ -19,7 +19,7 @@
                 <td><a href="{{ path('admin_achievement_show', { 'id': achievement.id }) }}">{{ achievement.id }}</a></td>
                 <td>{{ achievement.title }}</td>
                 <td>{{ achievement.description }}</td>
-                <td><img src="{{ asset(achievement.getImageWebPath) }}" alt=""/></td>
+                <td><img src="{{ asset(achievement.getImageWebPath) }}" style="max-height: 50px; max-width: 50px;" alt=""/></td>
                 <td>
                     <ul>
                         <li>
