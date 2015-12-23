@@ -1,0 +1,22 @@
+Ironforge\AchievementBundle\Entity\Achievement:
+    type: entity
+    table: achievements
+    repositoryClass: Ironforge\AchievementBundle\Repository\AchievementRepository
+    fields:
+        id:
+            type: guid
+            id: true
+            generator:
+                strategy: UUID
+        title:
+            type: string
+            length: 255
+            nullable: false
+        description:
+            type: string
+            length: 1024
+            nullable: false
+        image:
+            type: string
+            length: 1024
+            nullable: true
