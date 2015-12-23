@@ -15,3 +15,14 @@ Ironforge\UserBundle\Entity\User:
             type: string
             length: 255
             nullable: true
+    manyToMany:
+        groups:
+            targetEntity: Group
+            joinTable:
+                name: fos_user_group
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    group_id:
+                        referencedColumnName: id
