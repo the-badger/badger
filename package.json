@@ -20,7 +20,9 @@
     "font-awesome": "^4.5.0",
     "jquery": "^2.1.4",
     "requirejs": "^2.1.22",
-    "semantic-ui-css": "^2.1.7"
+    "select2": "^4.0.1",
+    "semantic-ui-css": "^2.1.7",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

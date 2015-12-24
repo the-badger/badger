@@ -6,33 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="stylesheet" href="{{ asset('vendor/dist/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/semantic-ui-css/semantic.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/dist/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/dist/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
-<body>
+<body class="{% block bodyclass %}{% endblock %} admin">
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
+<div class="ui container">
+    <div class="ui grid">
 
-            <ul class="nav nav-sidebar">
-                <li class="active"><a href="#">Achievements</a></li>
-                <li><a href="#">Reports</a></li>
-                <li><a href="#">Analytics</a></li>
-                <li><a href="#">Export</a></li>
-            </ul>
+        <div class="four wide column">
+            <div class="ui vertical menu">
+                <div class="item">
+                    <img style="float: right;" src="{{ asset('bundles/gate/images/ironforge-small.png') }}" alt=""/><h3 style="margin: 0;">ADMIN</h3>
+                </div>
+                <div class="item">
+                    <div class="header">Achievements</div>
+                    <div class="menu">
+                        <a href="{{ url('admin_achievement_index') }}" class="item">List</a>
+                        <a href="{{ url('admin_achievement_give') }}" class="item">Give a Badge</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="header">Users</div>
+                    <div class="menu">
+                        <a class="item">List</a>
+                        <a href="{{ url('fos_user_group_list') }}" class="item">Groups</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main admin">
-        {% block body %}
-        {% endblock %}
+
+        <div class="twelve wide column">
+            {% block body %}
+            {% endblock %}
+        </div>
+
     </div>
 </div>
 
 <script src="{{ asset('vendor/dist/jquery.js') }}"></script>
-<script src="{{ asset('vendor/dist/bootstrap.min.js') }}"></script>
+<script src="{{ asset('vendor/dist/underscore-min.js') }}"></script>
+<script src="{{ asset('vendor/semantic-ui-css/semantic.min.js') }}"></script>
+<script src="{{ asset('vendor/dist/select2.min.js') }}"></script>
 
 {% block javascripts %}
 {% endblock %}

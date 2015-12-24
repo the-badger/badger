@@ -7,6 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Ironforge\AchievementBundle\Entity\Achievement;
 use Ironforge\AchievementBundle\Form\AchievementType;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Achievement controller.
@@ -24,9 +27,9 @@ class AchievementController extends Controller
 
         $achievements = $em->getRepository('AchievementBundle:Achievement')->findAll();
 
-        return $this->render('@Achievement/achievement/index.html.twig', array(
+        return $this->render('@Achievement/achievement/index.html.twig', [
             'achievements' => $achievements,
-        ));
+        ]);
     }
 
     /**
@@ -48,13 +51,13 @@ class AchievementController extends Controller
             $em->persist($achievement);
             $em->flush();
 
-            return $this->redirectToRoute('admin_achievement_show', array('id' => $achievement->getId()));
+            return $this->redirectToRoute('admin_achievement_show', ['id' => $achievement->getId()]);
         }
 
-        return $this->render('@Achievement/achievement/new.html.twig', array(
+        return $this->render('@Achievement/achievement/new.html.twig', [
             'achievement' => $achievement,
             'form' => $form->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -65,10 +68,10 @@ class AchievementController extends Controller
     {
         $deleteForm = $this->createDeleteForm($achievement);
 
-        return $this->render('@Achievement/achievement/show.html.twig', array(
+        return $this->render('@Achievement/achievement/show.html.twig', [
             'achievement' => $achievement,
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -90,14 +93,14 @@ class AchievementController extends Controller
             $em->persist($achievement);
             $em->flush();
 
-            return $this->redirectToRoute('admin_achievement_edit', array('id' => $achievement->getId()));
+            return $this->redirectToRoute('admin_achievement_edit', ['id' => $achievement->getId()]);
         }
 
-        return $this->render('@Achievement/achievement/edit.html.twig', array(
+        return $this->render('@Achievement/achievement/edit.html.twig', [
             'achievement' => $achievement,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        ]);
     }
 
     /**
@@ -118,6 +121,19 @@ class AchievementController extends Controller
         return $this->redirectToRoute('admin_achievement_index');
     }
 
+    public function giveAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
+        $achievements = $em->getRepository('AchievementBundle:Achievement')->findAll();
+        $achievements = $serializer->serialize($achievements, 'json');
+
+        return $this->render('@Achievement/achievement/give.html.twig', [
+            'achievements' => $achievements,
+        ]);
+    }
+
     /**
      * Creates a form to delete a Achievement entity.
      *
@@ -128,7 +144,7 @@ class AchievementController extends Controller
     private function createDeleteForm(Achievement $achievement)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_achievement_delete', array('id' => $achievement->getId())))
+            ->setAction($this->generateUrl('admin_achievement_delete', ['id' => $achievement->getId()]))
             ->setMethod('DELETE')
             ->getForm()
         ;

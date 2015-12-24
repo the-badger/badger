@@ -22,3 +22,8 @@ admin_achievement_delete:
     path:     /{id}/delete
     defaults: { _controller: "AchievementBundle:Achievement:delete" }
     methods:  DELETE
+
+admin_achievement_give:
+    path:     /give
+    defaults: { _controller: "AchievementBundle:Achievement:give" }
+    methods:  GET

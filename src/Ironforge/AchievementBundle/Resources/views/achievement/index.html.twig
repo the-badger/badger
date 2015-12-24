@@ -1,9 +1,9 @@
-{% extends 'GateBundle::base.html.twig' %}
+{% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
     <h1 class="page-header">Achievement list</h1>
 
-    <table class="table table-condensed table-striped">
+    <table class="ui celled table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -33,11 +33,14 @@
             </tr>
         {% endfor %}
         </tbody>
+        <tfoot class="full-width">
+        <tr>
+            <th colspan="5">
+                <a href="{{ path('admin_achievement_new') }}" class="ui right floated small primary labeled icon button">
+                    <i class="plus icon"></i> Create Achievement
+                </a>
+            </th>
+        </tr>
+        </tfoot>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_achievement_new') }}">Create a new entry</a>
-        </li>
-    </ul>
 {% endblock %}

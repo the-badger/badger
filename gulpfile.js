@@ -9,6 +9,9 @@ gulp.task('install', function() {
         './node_modules/requirejs/require.js',
         './node_modules/jquery/dist/jquery.js',
         './node_modules/font-awesome/css/font-awesome.min.css',
+        './node_modules/select2/dist/css/select2.min.css',
+        './node_modules/select2/dist/js/select2.min.js',
+        './node_modules/underscore/underscore-min.js'
     ]).pipe(gulp.dest('./web/vendor/dist/'));
 
     gulp.src(
