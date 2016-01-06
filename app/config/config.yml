@@ -18,7 +18,7 @@ framework:
         strict_requirements: ~
     form:            ~
     csrf_protection: ~
-    validation:      { enable_annotations: true }
+    validation:      { enabled: true, enable_annotations: true }
     #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']

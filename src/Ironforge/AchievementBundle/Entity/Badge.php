@@ -5,10 +5,11 @@ namespace Ironforge\AchievementBundle\Entity;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Achievement
+ * Badge
  */
-class Achievement
+class Badge
 {
+    /** @var string */
     private $file;
 
     /** @var string */

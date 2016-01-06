@@ -2,7 +2,7 @@
 
 namespace Ironforge\UserBundle;
 
-use Ironforge\UserBundle\DepencyInjection\IronforgeUserExtension;
+use Ironforge\UserBundle\DepencyInjection\UserExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -12,8 +12,4 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  */
 class UserBundle extends Bundle
 {
-    public function getContainerExtension()
-    {
-        return new IronforgeUserExtension();
-    }
 }

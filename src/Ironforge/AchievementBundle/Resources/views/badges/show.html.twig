@@ -1,35 +1,35 @@
 {% extends 'GateBundle::base.html.twig' %}
 
 {% block body %}
-    <h1>Achievement</h1>
+    <h1>Badge</h1>
 
     <table>
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ achievement.id }}</td>
+                <td>{{ badge.id }}</td>
             </tr>
             <tr>
                 <th>Title</th>
-                <td>{{ achievement.title }}</td>
+                <td>{{ badge.title }}</td>
             </tr>
             <tr>
                 <th>Description</th>
-                <td>{{ achievement.description }}</td>
+                <td>{{ badge.description }}</td>
             </tr>
             <tr>
                 <th>Image</th>
-                <td>{{ achievement.imagePath }}</td>
+                <td>{{ badge.imagePath }}</td>
             </tr>
         </tbody>
     </table>
 
     <ul>
         <li>
-            <a href="{{ path('admin_achievement_index') }}">Back to the list</a>
+            <a href="{{ path('admin_badge_index') }}">Back to the list</a>
         </li>
         <li>
-            <a href="{{ path('admin_achievement_edit', { 'id': achievement.id }) }}">Edit</a>
+            <a href="{{ path('admin_badge_edit', { 'id': badge.id }) }}">Edit</a>
         </li>
         <li>
             {{ form_start(delete_form) }}

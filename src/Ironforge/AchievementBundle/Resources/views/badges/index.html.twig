@@ -1,0 +1,46 @@
+{% extends 'GateBundle::base-admin.html.twig' %}
+
+{% block body %}
+    <h1 class="page-header">Badge list</h1>
+
+    <table class="ui celled table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for badge in badges %}
+            <tr>
+                <td><a href="{{ path('admin_badge_show', { 'id': badge.id }) }}">{{ badge.id }}</a></td>
+                <td>{{ badge.title }}</td>
+                <td>{{ badge.description }}</td>
+                <td><img src="{{ asset(badge.getImageWebPath) }}" style="max-height: 50px; max-width: 50px;" alt=""/></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_badge_show', { 'id': badge.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_badge_edit', { 'id': badge.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot class="full-width">
+        <tr>
+            <th colspan="5">
+                <a href="{{ path('admin_badge_new') }}" class="ui right floated small primary labeled icon button">
+                    <i class="plus icon"></i> Create Badge
+                </a>
+            </th>
+        </tr>
+        </tfoot>
+    </table>
+{% endblock %}

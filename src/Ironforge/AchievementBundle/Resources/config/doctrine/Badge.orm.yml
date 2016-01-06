@@ -1,7 +1,7 @@
-Ironforge\AchievementBundle\Entity\Achievement:
+Ironforge\AchievementBundle\Entity\Badge:
     type: entity
-    table: achievements
-    repositoryClass: Ironforge\AchievementBundle\Repository\AchievementRepository
+    table: badges
+    repositoryClass: Ironforge\AchievementBundle\Repository\BadgeRepository
     fields:
         id:
             type: guid

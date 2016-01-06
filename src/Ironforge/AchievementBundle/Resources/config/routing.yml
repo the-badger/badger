@@ -2,6 +2,6 @@ achievement:
     resource: "@AchievementBundle/Controller/"
     type:     annotation
 
-achievement_admin_achievement:
-    resource: "@AchievementBundle/Resources/config/routing/achievement.yml"
-    prefix:   /admin/achievement
+achievement_admin_badge:
+    resource: "@AchievementBundle/Resources/config/routing/badge.yml"
+    prefix:   /admin/badge

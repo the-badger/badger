@@ -1,4 +1,4 @@
-Ironforge\AchievementBundle\Entity\Achievement:
+Ironforge\AchievementBundle\Entity\Badge:
     properties:
         file:
             - File:
