@@ -16,7 +16,7 @@ class BadgeType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('description')
+            ->add('description', 'textarea')
             ->add('imagePath')
         ;
     }

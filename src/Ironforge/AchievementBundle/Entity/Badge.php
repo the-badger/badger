@@ -103,7 +103,7 @@ class Badge
     {
         return null === $this->imagePath
             ? null
-            : $this->getUploadDir() . '/' . $this->imagePath;
+            : '/' . $this->getUploadDir() . '/' . $this->imagePath;
     }
 
     protected function getUploadRootDir()

@@ -49,7 +49,7 @@ class BadgeController extends Controller
     {
         $badge = new Badge();
         $form = $this->createForm(new BadgeType(), $badge);
-        $form->add('file');
+        $form->add('file', 'file', ['label' => 'Badge image']);
         $form->remove('imagePath');
         $form->handleRequest($request);
 

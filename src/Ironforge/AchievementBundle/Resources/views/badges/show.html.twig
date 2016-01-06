@@ -1,40 +1,34 @@
-{% extends 'GateBundle::base.html.twig' %}
+{% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
     <h1>Badge</h1>
+    <div class="ui card">
+        <div class="blurring dimmable image">
+            <div class="ui dimmer">
+                <div class="content">
+                    <div class="center">
+                        <a href="{{ path('admin_badge_edit', { 'id': badge.id }) }}" class="ui inverted button">Edit</a>
+                    </div>
+                </div>
+            </div>
+            <img src="{{ badge.imageWebPath }}">
+        </div>
+        <div class="content">
+            <div class="header">{{ badge.title }}</div>
+            <div class="description">
+                {{ badge.description }}
+            </div>
+        </div>
+        <div class="extra content">
+            <small><i class="icon code"></i> {{ badge.id }}</small>
+        </div>
+    </div>
+{% endblock %}
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ badge.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ badge.title }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ badge.description }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td>{{ badge.imagePath }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('admin_badge_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('admin_badge_edit', { 'id': badge.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+{% block javascripts %}
+    <script>
+        $('.card .image').dimmer({
+            on: 'hover'
+        });
+    </script>
 {% endblock %}
