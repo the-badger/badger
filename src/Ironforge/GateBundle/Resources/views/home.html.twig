@@ -1,5 +1,27 @@
 {% extends '@Gate/base.html.twig' %}
 
 {% block body %}
-    Hi {{ user.username }}.
+    <div class="ui main text container ir-dashboard">
+        <div class="ui card">
+            <div class="image">
+                <img src="{{ app.user.profilePicture }}">
+            </div>
+            <div class="content">
+                <a class="header">{{ app.user.username }}</a>
+                <div class="meta">
+                    <span class="date">Last login {{ app.user.lastLogin|date("d/m/Y") }}</span>
+                </div>
+            </div>
+            <div class="extra content">
+                <div class="ui statistic">
+                    <div class="value">
+                        7
+                    </div>
+                    <div class="label">
+                        Badges
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

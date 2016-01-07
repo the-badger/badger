@@ -15,6 +15,9 @@ Ironforge\UserBundle\Entity\User:
             type: string
             length: 255
             nullable: true
+        profilePicture:
+            type: string
+            nullable: true
     manyToMany:
         groups:
             targetEntity: Group

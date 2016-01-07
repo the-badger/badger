@@ -14,9 +14,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('@Gate/home.html.twig', array(
-            'user' => $this->getUser(),
-        ));
+        return $this->render('@Gate/home.html.twig');
     }
 
     /**
@@ -25,8 +23,6 @@ class DefaultController extends Controller
     public function adminAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('@Gate/home.html.twig', array(
-            'user' => $this->getUser(),
-        ));
+        return $this->render('@Gate/home.html.twig');
     }
 }
