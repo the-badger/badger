@@ -29,4 +29,27 @@ class DefaultController extends Controller
         // replace this example code with whatever you need
         return $this->render('@Gate/home.html.twig');
     }
+
+    /**
+     * @Route("/user/{username}", name="userprofile")
+     */
+    public function userProfileAction(Request $request, $username)
+    {
+        $user = $this->getDoctrine()->getRepository('UserBundle:User')->findOneBy([
+            'username' => $username
+        ]);
+
+        $unlockedBadges = [];
+
+        if ($user) {
+            $unlockedBadges = $this->getDoctrine()->getRepository('AchievementBundle:UnlockedBadge')->findBy([
+                'user' => $user
+            ]);
+        }
+
+        return $this->render('@Gate/user-profile.html.twig', [
+            'user' => $user,
+            'unlockedBadges' => $unlockedBadges
+        ]);
+    }
 }
