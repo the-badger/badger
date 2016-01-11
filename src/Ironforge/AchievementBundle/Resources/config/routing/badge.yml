@@ -26,4 +26,9 @@ admin_badge_delete:
 admin_badge_give:
     path:     /give
     defaults: { _controller: "ironforge.achievement.badge.controller:giveAction" }
-    methods:  [GET,POST]
+    methods:  [GET]
+
+admin_badge_give_process:
+    path:     /give
+    defaults: { _controller: "ironforge.achievement.badge.controller:giveProcessAction" }
+    methods:  [POST]

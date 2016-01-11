@@ -29,23 +29,23 @@
             </div>
         </div>
 
-        {% if messages %}
-            {% for message in messages %}
-            <div class="ui icon {{ message.type }} message">
-                {% if message.type == 'error' %}
-                    <i class="warning sign icon"></i>
-                {% elseif message.type == 'positive' %}
-                    <i class="checkmark icon"></i>
-                {% endif %}
+        {% for flash_message in app.session.flashbag.get('notice') %}
+            <div class="ui icon positive message">
+                <i class="checkmark icon"></i>
                 <div class="content">
-                    <div class="header">
-                        {{ message.title }}
-                    </div>
-                    <p>{{ message.content }}</p>
+                    <p>{{ flash_message }}</p>
                 </div>
             </div>
-            {% endfor %}
-        {% endif %}
+        {% endfor %}
+
+        {% for flash_message in app.session.flashbag.get('error') %}
+            <div class="ui icon error message">
+                <i class="warning sign icon"></i>
+                <div class="content">
+                    <p>{{ flash_message }}</p>
+                </div>
+            </div>
+        {% endfor %}
 
         <div class="ui basic segment center aligned">
             <button type="submit" class="ui small green labeled icon button">

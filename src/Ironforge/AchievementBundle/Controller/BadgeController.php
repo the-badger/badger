@@ -135,41 +135,6 @@ class BadgeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $messages = [];
 
-        if ($request->isMethod('POST')) {
-            $validator = $this->get('validator');
-
-            $user = $this->userManager->findUserByUsername($request->get('user'));
-            $badge = $em->getRepository('AchievementBundle:Badge')->findOneById($request->get('badge'));
-
-            $unlocked = new UnlockedBadge();
-            $unlocked->setUser($user);
-            $unlocked->setBadge($badge);
-            $unlocked->setUnlockedDate(new \DateTime());
-
-            $errors = $validator->validate($unlocked);
-
-            if (0 === count($errors)) {
-                $em->persist($unlocked);
-                $em->flush();
-
-                $messages[] = [
-                    'type' => 'positive',
-                    'title' => 'Badge given to user',
-                    'content' => sprintf(
-                        '%s successfully received the badge "%s"!',
-                        $user->getUsername(),
-                        $badge->getTitle()
-                    )
-                ];
-            } else {
-                $messages[] = [
-                    'type' => 'error',
-                    'title' => 'Oups, an error occured!',
-                    'content' => (string) $errors
-                ];
-            }
-        }
-
         $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
         $badges = $em->getRepository('AchievementBundle:Badge')->findAll();
         $badges = $serializer->serialize($badges, 'json');
@@ -183,9 +148,52 @@ class BadgeController extends Controller
 
         return $this->render('@Achievement/badges/give.html.twig', [
             'badges' => $badges,
-            'users' => $usernames,
-            'messages' => $messages
+            'users' => $usernames
         ]);
+    }
+
+    public function giveProcessAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $validator = $this->get('validator');
+
+        $user = $this->userManager->findUserByUsername($request->get('user'));
+        $badge = $em->getRepository('AchievementBundle:Badge')->findOneById($request->get('badge'));
+
+        $isUnlocked = $em->getRepository('AchievementBundle:UnlockedBadge')->findOneBy([
+            'user' => $user,
+            'badge' => $badge
+        ]);
+
+        if ($isUnlocked) {
+            $this->addFlash('error', sprintf('%s already has the badge "%s"',
+                $user->getUsername(),
+                $badge->getTitle()
+            ));
+
+            return $this->redirectToRoute('admin_badge_give');
+        }
+
+        $unlocked = new UnlockedBadge();
+        $unlocked->setUser($user);
+        $unlocked->setBadge($badge);
+        $unlocked->setUnlockedDate(new \DateTime());
+
+        $errors = $validator->validate($unlocked);
+
+        if (0 === count($errors)) {
+            $em->persist($unlocked);
+            $em->flush();
+
+            $this->addFlash('notice', sprintf(
+                '%s successfully received the badge "%s"!',
+                $user->getUsername(),
+                $badge->getTitle()
+            ));
+        } else {
+            $this->addFlash('error', (string) $errors);
+        }
+
+        return $this->redirectToRoute('admin_badge_give');
     }
 
     /**

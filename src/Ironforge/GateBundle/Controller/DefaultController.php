@@ -31,7 +31,6 @@ class DefaultController extends Controller
     {
         $users = $this->getDoctrine()->getRepository('UserBundle:User')->findAll();
 
-        // replace this example code with whatever you need
         return $this->render('@Gate/users.html.twig', [
             'users' => $users
         ]);
@@ -42,8 +41,7 @@ class DefaultController extends Controller
      */
     public function adminAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('@Gate/home.html.twig');
+        return $this->render('@Gate/base-admin.html.twig');
     }
 
     /**
