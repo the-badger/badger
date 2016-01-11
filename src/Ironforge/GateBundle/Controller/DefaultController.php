@@ -13,13 +13,11 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $unlockedBadges = $this->getDoctrine()->getRepository('AchievementBundle:UnlockedBadge')->findBy(
-            ['user' => $this->getUser()]
-        );
+        $users = $this->getDoctrine()->getRepository('UserBundle:User')->findAll();
 
         // replace this example code with whatever you need
         return $this->render('@Gate/home.html.twig', [
-            'unlockedBadges' => $unlockedBadges
+            'users' => $users
         ]);
     }
 
