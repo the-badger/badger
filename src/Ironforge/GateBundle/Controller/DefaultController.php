@@ -13,9 +13,22 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $unlockedBadges = $this->getDoctrine()->getRepository('AchievementBundle:UnlockedBadge')->findBy(
+            ['user' => $this->getUser()]
+        );
+
         // replace this example code with whatever you need
-        return $this->render('@Gate/home.html.twig', array(
-            'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..'),
-        ));
+        return $this->render('@Gate/home.html.twig', [
+            'unlockedBadges' => $unlockedBadges
+        ]);
+    }
+
+    /**
+     * @Route("/admin", name="admin")
+     */
+    public function adminAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('@Gate/home.html.twig');
     }
 }

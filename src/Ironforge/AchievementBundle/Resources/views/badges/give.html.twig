@@ -1,0 +1,110 @@
+{% extends 'GateBundle::base-admin.html.twig' %}
+
+{% block body %}
+    <h1 class="page-header">Give a Badge</h1>
+
+    <form method="post">
+        <div class="ui grid">
+            <div class="ui eight wide column">
+                <div class="ui stacked segments">
+                    <div class="ui segment">
+                        <p>Select a badge</p>
+                    </div>
+                    <div class="ui segment">
+                        <select name="badge" id="badge" style="width: 100%;">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="ui eight wide column">
+                <div class="ui stacked segments">
+                    <div class="ui segment">
+                        <p>Select a user</p>
+                    </div>
+                    <div class="ui segment">
+                        <select name="user" id="user" style="width: 100%;">
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if messages %}
+            {% for message in messages %}
+            <div class="ui icon {{ message.type }} message">
+                {% if message.type == 'error' %}
+                    <i class="warning sign icon"></i>
+                {% elseif message.type == 'positive' %}
+                    <i class="checkmark icon"></i>
+                {% endif %}
+                <div class="content">
+                    <div class="header">
+                        {{ message.title }}
+                    </div>
+                    <p>{{ message.content }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="ui basic segment center aligned">
+            <button type="submit" class="ui small green labeled icon button">
+                <i class="fa fa-trophy icon"></i> Reward
+            </button>
+        </div>
+    </form>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var badgesJSON = '{{ badges|e('js') }}';
+        var badges = JSON.parse(badgesJSON);
+
+        var usersJSON = '{{ users|e('js') }}';
+        var users = JSON.parse(usersJSON);
+
+        badges = _.map(badges, function (badge) {
+            badge.text = badge.title;
+
+            return badge;
+        });
+
+        users = _.map(users, function (user) {
+            user.text = user;
+            user.id = user;
+
+            return user;
+        });
+
+        $('#badge').select2({
+            escapeMarkup: function (markup) { return markup; },
+            data: badges, // let our custom formatter work
+            templateResult: formatBadge // omitted for brevity, see the source of this page
+        });
+
+        $('#user').select2({
+            data: users
+        });
+
+        function formatBadge (badge) {
+            console.log(badge);
+            var markup = "<div class='select2-result-repository clearfix'>";
+
+            if (badge.imageWebPath) {
+                markup += "<div class='select2-result-repository__avatar'><img src='" + badge.imageWebPath + "' /></div>";
+            }
+
+            markup += "<div class='select2-result-repository__meta'>" +
+                      "<div class='select2-result-repository__title'>" + badge.title+ "</div>";
+
+            if (badge.description) {
+                markup += "<div class='select2-result-repository__description'>" + badge.description + "</div>";
+            }
+
+            markup += "</div></div>";
+
+            return markup;
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'GateBundle::base-admin.html.twig' %}
+
+{% block body %}
+    <h1>Badge creation</h1>
+
+    {{ form_start(form, { 'attr': {'class': 'ui form'} }) }}
+    {{ form_errors(form) }}
+
+    <div class="ui field">
+        {{ form_label(form.title) }}
+        {{ form_errors(form.title) }}
+        {{ form_widget(form.title) }}
+    </div>
+
+    <div class="ui field">
+        {{ form_label(form.description) }}
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description) }}
+    </div>
+
+    <div class="ui field">
+        {{ form_label(form.file) }}
+        {{ form_errors(form.file) }}
+        {{ form_widget(form.file) }}
+    </div>
+
+    <div class="ui clearing">
+        <button class="ui right floated primary button" type="submit">Create</button>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}

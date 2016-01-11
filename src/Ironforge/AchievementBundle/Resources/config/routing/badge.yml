@@ -1,0 +1,29 @@
+admin_badge_index:
+    path:     /
+    defaults: { _controller: "ironforge.achievement.badge.controller:indexAction" }
+    methods:  GET
+
+admin_badge_show:
+    path:     /{id}/show
+    defaults: { _controller: "ironforge.achievement.badge.controller:showAction" }
+    methods:  GET
+
+admin_badge_new:
+    path:     /new
+    defaults: { _controller: "ironforge.achievement.badge.controller:newAction" }
+    methods:  [GET, POST]
+
+admin_badge_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ironforge.achievement.badge.controller:editAction" }
+    methods:  [GET, POST]
+
+admin_badge_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ironforge.achievement.badge.controller:deleteAction" }
+    methods:  DELETE
+
+admin_badge_give:
+    path:     /give
+    defaults: { _controller: "ironforge.achievement.badge.controller:giveAction" }
+    methods:  [GET,POST]

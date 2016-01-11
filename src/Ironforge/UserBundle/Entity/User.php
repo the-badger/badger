@@ -15,6 +15,9 @@ class User extends BaseUser
     /** @var string */
     protected $github_access_token;
 
+    /** @var string */
+    protected $profilePicture;
+
     /**
      * @return string
      */
@@ -45,5 +48,21 @@ class User extends BaseUser
     public function setGithubAccessToken($github_access_token)
     {
         $this->github_access_token = $github_access_token;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProfilePicture()
+    {
+        return $this->profilePicture;
+    }
+
+    /**
+     * @param string $profilePicture
+     */
+    public function setProfilePicture($profilePicture)
+    {
+        $this->profilePicture = $profilePicture;
     }
 }

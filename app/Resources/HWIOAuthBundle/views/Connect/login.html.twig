@@ -1,0 +1,30 @@
+{% extends '@HWIOAuth/layout.html.twig' %}
+
+{% block bodyclass %}login{% endblock %}
+
+{% block hwi_oauth_content %}
+<div class="ui center aligned container" id="main-logo">
+    <img src="{{ asset('bundles/gate/images/ironforge.png') }}" alt="" width="150">
+</div>
+
+<div class="ui four column centered grid">
+    <div class="column aligned">
+        <div class="ui tall stacked segment">
+            <h4 class="ui header">Welcome! Please log in.</h4>
+            <div class="ui extra content">
+                <p>
+                    <a class="ui secondary button" href="{{ path('github_connect') }}">
+                        <i class="icon github"></i> Log in with GitHub
+                    </a>
+                </p>
+                <p>
+                    <a class="ui google plus button disabled">
+                        <i class="google icon"></i> Log in with Google
+                    </a>
+                </p>
+            </div>
+        </div>
+        <p style="color: #B9B9B9;">version {{ app_version }}</p>
+    </div>
+</div>
+{% endblock %}
