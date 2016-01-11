@@ -1,0 +1,22 @@
+{% extends '@Gate/base.html.twig' %}
+
+{% block body %}
+    <div class="ui main container ir-dashboard">
+        <h2 class="ui dividing header">All awarded users</h2>
+
+        <div class="ui six column grid">
+            {% for user in users %}
+                <div class="column">
+                    <div class="ui fluid card">
+                        <div class="image">
+                            <img src="{{ user.profilePicture }}">
+                        </div>
+                        <div class="content">
+                            <a href="{{ url('userprofile', {'username': user.username}) }}" class="header">{{ user.username }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

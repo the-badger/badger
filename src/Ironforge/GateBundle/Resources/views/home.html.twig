@@ -1,22 +1,38 @@
 {% extends '@Gate/base.html.twig' %}
 
 {% block body %}
-    <div class="ui main container ir-dashboard">
-        <h2 class="ui dividing header">All awarded Users</h2>
+    <div class="ui main container text ir-dashboard">
+        <h2 class="ui dividing header"><i class="icon feed"></i> Recent unlocks</h2>
 
-        <div class="ui six column grid">
-            {% for user in users %}
-            <div class="column">
-                <div class="ui fluid card">
-                    <div class="image">
-                        <img src="{{ user.profilePicture }}">
+        <div class="ui feed">
+            {% for unlock in unlockedBadges %}
+            <div class="event">
+                <div class="label">
+                    <img src="{{ unlock.user.profilePicture }}">
+                </div>
+                <div class="content">
+                    <div class="date">
+                        {{ unlock.unlockedDate|date('d/m/Y') }}
                     </div>
-                    <div class="content">
-                        <a href="{{ url('userprofile', {'username': user.username}) }}" class="header">{{ user.username }}</a>
+                    <div class="summary">
+                        <a href="{{ url('userprofile', {username: unlock.user.username}) }}">{{ unlock.user.username }}</a> unlocked the badge
+                        <a class="popup" data-variation="wide" data-position="right center" data-html="<div class='ui grid'> <div class='four wide column'> <img class='ui tiny image' src='{{ unlock.badge.imageWebPath }}' /> </div> <div class='twelve wide column'> {{ unlock.badge.description }} </div> </div>">{{ unlock.badge.title }}</a>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
+
+        {% if unlockedBadges|length == 0 %}
+            <div class="ui center aligned basic segment" style="color: #cecece;">
+                No unlock to show :)
+            </div>
+        {% endif %}
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('.popup').popup();
+    </script>
 {% endblock %}

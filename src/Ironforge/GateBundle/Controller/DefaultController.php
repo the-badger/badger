@@ -13,10 +13,26 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $lastUnlockedBadges = $this->getDoctrine()->getRepository('AchievementBundle:UnlockedBadge')->findBy(
+            [],
+            ['unlockedDate' => 'DESC'],
+            15
+        );
+
+        return $this->render('@Gate/home.html.twig', [
+            'unlockedBadges' => $lastUnlockedBadges
+        ]);
+    }
+
+    /**
+     * @Route("/users", name="users")
+     */
+    public function usersAction(Request $request)
+    {
         $users = $this->getDoctrine()->getRepository('UserBundle:User')->findAll();
 
         // replace this example code with whatever you need
-        return $this->render('@Gate/home.html.twig', [
+        return $this->render('@Gate/users.html.twig', [
             'users' => $users
         ]);
     }

@@ -22,41 +22,40 @@
                 </div>
             </div>
             <div class="twelve wide column">
+                <h2 class="ui dividing header"><i class="icon trophy"></i> Unlocked badges</h2>
                 {% if unlockedBadges|length > 0 %}
-                    <div class="ui stacked segments">
-                        <div class="ui segment">
-                            <p><b>Unlocked badges</b></p>
-                        </div>
-                        <div class="ui segment">
-                            <div class="ui three cards">
-                                {% for unlockedBadge in unlockedBadges %}
-                                    <div class="green card">
-                                        <div class="image" style="padding: 10px;">
-                                            <img src="{{ unlockedBadge.badge.imageWebPath }}">
-                                        </div>
-                                        <div class="content">
-                                            <div class="header">{{ unlockedBadge.badge.title }}</div>
-                                            <div class="description">
-                                                {{ unlockedBadge.badge.description }}
-                                            </div>
-                                        </div>
-                                        <div class="extra content">
-                                            <small><i class="icon check square"></i> Unlocked on {{ unlockedBadge.unlockedDate|date("d/m/Y") }}</small>
+                    <div class="ui basic segment">
+                        <div class="ui three cards">
+                            {% for unlockedBadge in unlockedBadges %}
+                                <div class="green card">
+                                    <div class="image" style="padding: 10px;">
+                                        <img src="{{ unlockedBadge.badge.imageWebPath }}">
+                                    </div>
+                                    <div class="content">
+                                        <div class="header">{{ unlockedBadge.badge.title }}</div>
+                                        <div class="description">
+                                            {{ unlockedBadge.badge.description }}
                                         </div>
                                     </div>
-                                {% endfor %}
-                            </div>
+                                    <div class="extra content">
+                                        <small><i class="icon check square"></i> Unlocked on {{ unlockedBadge.unlockedDate|date("d/m/Y") }}</small>
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 {% else %}
-                    <div class="ui icon message">
-                        <i class="frown icon"></i>
+                    <div class="ui message">
                         <div class="content">
                             <div class="header">
                                 No unlocked badge
                             </div>
                             <p>
-                                Challenge yourself by trying to unlock new badges and show the best you can do!
+                                {% if app.user.username == user.username %}
+                                    Challenge yourself by trying to unlock your first badges, you can do it! <i class="icon child"></i>
+                                {% else %}
+                                    This user has no badge for now, come later to see his profile!
+                                {% endif %}
                             </p>
                         </div>
                     </div>

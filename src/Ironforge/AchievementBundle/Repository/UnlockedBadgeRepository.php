@@ -9,5 +9,4 @@ namespace Ironforge\AchievementBundle\Repository;
  */
 class UnlockedBadgeRepository extends \Doctrine\ORM\EntityRepository
 {
-
 }
