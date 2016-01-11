@@ -2,15 +2,15 @@
 
 {% block body %}
 
-    <h1 class="page-header">Badge list</h1>
-    <a href="{{ path('admin_badge_new') }}" class="ui right floated small primary labeled icon button">
-        <i class="plus icon"></i> Create Badge
-    </a>
+<h1 class="page-header">Badge list</h1>
+<a href="{{ path('admin_badge_new') }}" class="ui right floated small primary labeled icon button">
+    <i class="plus icon"></i> Create Badge
+</a>
 
 <div class="ui three cards">
     {% for badge in badges %}
     <div class="card">
-        <div class="blurring dimmable image">
+        <div class="blurring dimmable image" style="padding: 10px;">
             <div class="ui dimmer">
                 <div class="content">
                     <div class="center">
@@ -32,6 +32,7 @@
     </div>
     {% endfor %}
 </div>
+
 {% endblock %}
 
 {% block javascripts %}
