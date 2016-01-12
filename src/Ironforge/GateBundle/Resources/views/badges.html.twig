@@ -1,0 +1,23 @@
+{% extends '@Gate/base.html.twig' %}
+
+{% block body %}
+    <div class="ui main container ir-dashboard">
+        <h2 class="ui dividing header">All available badges</h2>
+
+        <div class="ui six column grid">
+            {% for badge in badges %}
+                <div class="column">
+                    <div class="ui fluid card">
+                        <div class="image">
+                            <img src="{{ badge.imageWebPath }}">
+                        </div>
+                        <div class="content">
+                            {{ badge.title }}
+                            {{ badge.description }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

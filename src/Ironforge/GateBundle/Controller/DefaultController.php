@@ -66,4 +66,16 @@ class DefaultController extends Controller
             'unlockedBadges' => $unlockedBadges
         ]);
     }
+
+    /**
+     * @Route("/badges", name="badges")
+     */
+    public function badgeListAction(Request $request)
+    {
+        $badges = $this->getDoctrine()->getRepository('AchievementBundle:Badge')->findAll();
+
+        return $this->render('@Gate/badges.html.twig', [
+            'badges' => $badges
+        ]);
+    }
 }

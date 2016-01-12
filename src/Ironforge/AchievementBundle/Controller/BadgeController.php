@@ -2,12 +2,10 @@
 
 namespace Ironforge\AchievementBundle\Controller;
 
-use Doctrine\ORM\EntityManager;
 use FOS\UserBundle\Doctrine\UserManager;
 use Ironforge\AchievementBundle\Entity\UnlockedBadge;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Ironforge\AchievementBundle\Entity\Badge;
 use Ironforge\AchievementBundle\Form\BadgeType;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
