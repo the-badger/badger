@@ -48,8 +48,9 @@ class FOSUBUserProvider extends BaseClass
         $username = $response->getUsername();
         $user = $this->userManager->findUserBy(array($this->getProperty($response) => $username));
 
-        $email = '';
-        if (null !== $response->getEmail()){
+        // email is mandatory, we fill it up with random thing first
+        $email = uniqid('ironforge');
+        if (null !== $response->getEmail()) {
             $email = $response->getEmail();
         }
 
