@@ -1,0 +1,28 @@
+{% extends '@Gate/base.html.twig' %}
+
+{% block body %}
+    <div class="ui main container ir-dashboard">
+        <h2 class="ui dividing header">Available badges</h2>
+
+        <div class="ui four cards">
+            {% for badge in badges %}
+                <div class="card {{ badge not in unlockedBadges ? 'locked' : 'unlocked' }}" >
+                    <div class="image" style="padding: 10px;">
+                        {% if badge in unlockedBadges %}
+                        <span class="ui left corner green label">
+                            <i class="checkmark icon"></i>
+                        </span>
+                        {% endif %}
+                        <img src="{{ badge.imageWebPath }}">
+                    </div>
+                    <div class="content">
+                        <div class="header">{{ badge.title }}</div>
+                        <div class="description">
+                            {{ badge.description }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
