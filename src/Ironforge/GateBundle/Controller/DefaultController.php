@@ -73,9 +73,12 @@ class DefaultController extends Controller
     public function badgeListAction(Request $request)
     {
         $badges = $this->getDoctrine()->getRepository('AchievementBundle:Badge')->findAll();
+        $unlockedBadges = $this->getDoctrine()->getRepository('AchievementBundle:UnlockedBadge')
+            ->getUserUnlockedBadges($this->getUser());
 
         return $this->render('@Gate/badges.html.twig', [
-            'badges' => $badges
+            'badges' => $badges,
+            'unlockedBadges' => $unlockedBadges
         ]);
     }
 }

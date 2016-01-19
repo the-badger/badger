@@ -10,6 +10,18 @@
   margin-top: 80px;
 }
 
+.ui .card {
+  &.locked {
+    opacity: 0.4;
+  }
+  &.unlocked {
+    border: 1px solid #21BA45;
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(143,255,188,1);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(143,255,188,1);
+    box-shadow: 0px 0px 10px 0px rgba(143,255,188,1);
+  }
+}
+
 .select2-result-repository { padding-top: 4px; padding-bottom: 3px; }
 .select2-result-repository__avatar { float: left; width: 60px; margin-right: 10px; }
 .select2-result-repository__avatar img { height: 40px; border-radius: 2px; }

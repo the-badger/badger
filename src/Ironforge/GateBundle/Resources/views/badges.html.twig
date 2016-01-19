@@ -2,17 +2,22 @@
 
 {% block body %}
     <div class="ui main container ir-dashboard">
-        <h2 class="ui dividing header">All available badges</h2>
+        <h2 class="ui dividing header">Available badges</h2>
 
-        <div class="ui six column grid">
+        <div class="ui four cards">
             {% for badge in badges %}
-                <div class="column">
-                    <div class="ui fluid card">
-                        <div class="image">
-                            <img src="{{ badge.imageWebPath }}">
-                        </div>
-                        <div class="content">
-                            {{ badge.title }}
+                <div class="card {{ badge not in unlockedBadges ? 'locked' : 'unlocked' }}" >
+                    <div class="image" style="padding: 10px;">
+                        {% if badge in unlockedBadges %}
+                        <span class="ui left corner green label">
+                            <i class="checkmark icon"></i>
+                        </span>
+                        {% endif %}
+                        <img src="{{ badge.imageWebPath }}">
+                    </div>
+                    <div class="content">
+                        <div class="header">{{ badge.title }}</div>
+                        <div class="description">
                             {{ badge.description }}
                         </div>
                     </div>
