@@ -16,7 +16,7 @@
                         <img src="{{ badge.imageWebPath }}">
                     </div>
                     <div class="content">
-                        <div class="header">{{ badge.title }}</div>
+                        <div class="header"><a href="{{ url('viewbadge', {id: badge.id}) }}">{{ badge.title }}</a></div>
                         <div class="description">
                             {{ badge.description }}
                         </div>

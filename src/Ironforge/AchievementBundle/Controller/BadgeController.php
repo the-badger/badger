@@ -2,12 +2,15 @@
 
 namespace Ironforge\AchievementBundle\Controller;
 
-use FOS\UserBundle\Doctrine\UserManager;
+use Ironforge\AchievementBundle\AchievementEvents;
 use Ironforge\AchievementBundle\Entity\UnlockedBadge;
-use Symfony\Component\HttpFoundation\Request;
+use Ironforge\AchievementBundle\Event\BadgeUnlockEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Ironforge\AchievementBundle\Entity\Badge;
 use Ironforge\AchievementBundle\Form\BadgeType;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
@@ -17,16 +20,8 @@ use Symfony\Component\Serializer\Serializer;
  */
 class BadgeController extends Controller
 {
-    private $userManager;
-
-    public function __construct(UserManager $userManager)
-    {
-        $this->userManager = $userManager;
-    }
-
     /**
      * Lists all Badge entities.
-     *
      */
     public function indexAction()
     {
@@ -41,7 +36,6 @@ class BadgeController extends Controller
 
     /**
      * Creates a new Badge entity.
-     *
      */
     public function newAction(Request $request)
     {
@@ -69,7 +63,6 @@ class BadgeController extends Controller
 
     /**
      * Finds and displays a Badge entity.
-     *
      */
     public function showAction(Badge $badge)
     {
@@ -83,7 +76,6 @@ class BadgeController extends Controller
 
     /**
      * Displays a form to edit an existing Badge entity.
-     *
      */
     public function editAction(Request $request, Badge $badge)
     {
@@ -112,7 +104,6 @@ class BadgeController extends Controller
 
     /**
      * Deletes a Badge entity.
-     *
      */
     public function deleteAction(Request $request, Badge $badge)
     {
@@ -128,16 +119,21 @@ class BadgeController extends Controller
         return $this->redirectToRoute('admin_badge_index');
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
     public function giveAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->container->get('doctrine.orm.default_entity_manager');
         $messages = [];
 
         $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
         $badges = $em->getRepository('AchievementBundle:Badge')->findAll();
         $badges = $serializer->serialize($badges, 'json');
 
-        $users = $this->userManager->findUsers();
+        $users = $this->container->get('fos_user.user_manager')->findUsers();
         $usernames = [];
         foreach ($users as $user) {
             $usernames[] = $user->getUsername();
@@ -150,11 +146,16 @@ class BadgeController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
     public function giveProcessAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
         $validator = $this->get('validator');
 
-        $user = $this->userManager->findUserByUsername($request->get('user'));
+        $user = $this->container->get('fos_user.user_manager')->findUserByUsername($request->get('user'));
         $badge = $em->getRepository('AchievementBundle:Badge')->findOneById($request->get('badge'));
 
         $isUnlocked = $em->getRepository('AchievementBundle:UnlockedBadge')->findOneBy([
@@ -181,6 +182,9 @@ class BadgeController extends Controller
         if (0 === count($errors)) {
             $em->persist($unlocked);
             $em->flush();
+
+            $event = new BadgeUnlockEvent($unlocked);
+            $this->container->get('event_dispatcher')->dispatch(AchievementEvents::USER_UNLOCKS_BADGE, $event);
 
             $this->addFlash('notice', sprintf(
                 '%s successfully received the badge "%s"!',

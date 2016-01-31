@@ -1,0 +1,75 @@
+{% extends '@Gate/base.html.twig' %}
+
+{% block body %}
+<div class="ui main container ir-dashboard">
+    <div class="ui grid">
+        <div class="four wide column">
+            <div class="ui card {{ isUnlocked ? 'unlocked' : '' }}" >
+                <div class="image" style="padding: 10px;">
+                    {% if isUnlocked %}
+                        <span class="ui left corner green label">
+                            <i class="checkmark icon"></i>
+                        </span>
+                    {% endif %}
+                    <img src="{{ badge.imageWebPath }}">
+                </div>
+                <div class="content">
+                    <div class="header">{{ badge.title }}</div>
+                    <div class="description">
+                        {{ badge.description }}
+                    </div>
+                </div>
+                <div class="content" style="text-align: center;">
+                    <div class="ui small statistic">
+                        <div class="value">
+                            {{ percentUnlock }}%
+                        </div>
+                        <div class="label">
+                            of users
+                        </div>
+                        <div class="ui tiny indicating progress" data-percent="{{ percentUnlock }}" id="allunlocks" style="margin: 5px 0;">
+                            <div class="bar" style="min-width: 0;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="twelve wide column">
+            <h2 class="ui dividing header"><i class="icon trophy"></i> {{ unlockedBadges|length }} rewarded user(s)</h2>
+            {% if unlockedBadges|length > 0 %}
+                <div class="ui basic segment">
+                    <div class="ui five cards">
+                        {% for unlockedBadge in unlockedBadges %}
+                            <div class="ui fluid card">
+                                <div class="image">
+                                    <img src="{{ unlockedBadge.user.profilePicture }}">
+                                </div>
+                                <div class="content">
+                                    <a href="{{ url('userprofile', {'username': unlockedBadge.user.username}) }}" class="header">{{ unlockedBadge.user.username }}</a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="ui message">
+                    <div class="content">
+                        <div class="header">
+                            No unlock
+                        </div>
+                        <p>
+                            No one unlocked this badge!
+                        </p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('#allunlocks').progress();
+    </script>
+{% endblock %}

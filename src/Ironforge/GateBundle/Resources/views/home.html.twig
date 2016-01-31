@@ -16,7 +16,7 @@
                     </div>
                     <div class="summary">
                         <a href="{{ url('userprofile', {username: unlock.user.username}) }}">{{ unlock.user.username }}</a> unlocked the badge
-                        <a class="popup" data-variation="wide" data-position="right center" data-html="<div class='ui grid'> <div class='four wide column'> <img class='ui tiny image' src='{{ unlock.badge.imageWebPath }}' /> </div> <div class='twelve wide column'> {{ unlock.badge.description }} </div> </div>">{{ unlock.badge.title }}</a>
+                        <a href="{{ url('viewbadge', {id: unlock.badge.id}) }}" class="popup" data-variation="wide" data-position="right center" data-html="<div class='ui grid'> <div class='four wide column'> <img class='ui tiny image' src='{{ unlock.badge.imageWebPath }}' /> </div> <div class='twelve wide column'> {{ unlock.badge.description }} </div> </div>">{{ unlock.badge.title }}</a>
                     </div>
                 </div>
             </div>

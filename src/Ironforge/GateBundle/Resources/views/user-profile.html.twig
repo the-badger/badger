@@ -9,13 +9,16 @@
                         <div class="right floated meta">Core Team</div>
                         <img class="ui avatar image" src="{{ user.profilePicture }}"> {{ user.username }}
                     </div>
-                    <div class="content">
+                    <div class="content" style="text-align: center;">
                         <div class="ui small statistic">
                             <div class="value">
                                 {{ unlockedBadges|length }}
                             </div>
                             <div class="label">
-                                Badges
+                                of {{ badgesCount }} badges
+                            </div>
+                            <div class="ui tiny indicating progress" data-percent="{{ percentUnlock }}" id="allunlocks" style="margin: 5px 0;">
+                                <div class="bar" style="min-width: 0;"></div>
                             </div>
                         </div>
                     </div>
@@ -27,12 +30,15 @@
                     <div class="ui basic segment">
                         <div class="ui three cards">
                             {% for unlockedBadge in unlockedBadges %}
-                                <div class="card">
+                                <div class="unlocked card">
                                     <div class="image" style="padding: 10px;">
+                                        <span class="ui left corner green label">
+                                            <i class="checkmark icon"></i>
+                                        </span>
                                         <img src="{{ unlockedBadge.badge.imageWebPath }}">
                                     </div>
                                     <div class="content">
-                                        <div class="header">{{ unlockedBadge.badge.title }}</div>
+                                        <div class="header"><a href="{{ url('viewbadge', {id: unlockedBadge.badge.id}) }}">{{ unlockedBadge.badge.title }}</a></div>
                                         <div class="description">
                                             {{ unlockedBadge.badge.description }}
                                         </div>
@@ -63,4 +69,10 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('#allunlocks').progress();
+    </script>
 {% endblock %}

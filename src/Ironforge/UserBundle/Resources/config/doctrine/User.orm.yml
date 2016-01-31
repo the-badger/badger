@@ -1,6 +1,7 @@
 Ironforge\UserBundle\Entity\User:
     type:  entity
     table: fos_user
+    repositoryClass: Ironforge\UserBundle\Repository\UserRepository
     fields:
         id:
             id: true

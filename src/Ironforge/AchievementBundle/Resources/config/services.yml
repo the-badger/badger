@@ -1,10 +1,18 @@
 parameters:
     ironforge.achievement.badge.controller.class: Ironforge\AchievementBundle\Controller\BadgeController
+    ironforge.achievement.listener.class: Ironforge\AchievementBundle\EventListener\UnlockBadgeListener
 
 services:
     ironforge.achievement.badge.controller:
         class: %ironforge.achievement.badge.controller.class%
-        arguments:
-            - '@fos_user.user_manager.default'
         calls:
             - [ setContainer, [ @service_container ] ]
+
+    ironforge.achievement.listener:
+        class: %ironforge.achievement.listener.class%
+        arguments:
+            - '@router'
+            - '@logger'
+            - '%slack_webhook_url%'
+        tags:
+            - { name: kernel.event_listener, event: achievement.user_unlocks_badge, method: onUnlockBadge }

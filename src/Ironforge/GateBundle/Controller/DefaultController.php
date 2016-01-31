@@ -49,21 +49,66 @@ class DefaultController extends Controller
      */
     public function userProfileAction(Request $request, $username)
     {
+        $badgesCount = $this->getDoctrine()->getRepository('AchievementBundle:Badge')->countAll();
         $user = $this->getDoctrine()->getRepository('UserBundle:User')->findOneBy([
             'username' => $username
         ]);
 
         $unlockedBadges = [];
+        $percentUnlock = 0;
 
         if ($user) {
             $unlockedBadges = $this->getDoctrine()->getRepository('AchievementBundle:UnlockedBadge')->findBy([
                 'user' => $user
             ]);
+
+            if ($unlockedBadges) {
+                $percentUnlock = ceil(100 * count($unlockedBadges) / $badgesCount);
+            }
         }
 
         return $this->render('@Gate/user-profile.html.twig', [
-            'user' => $user,
-            'unlockedBadges' => $unlockedBadges
+            'user'           => $user,
+            'unlockedBadges' => $unlockedBadges,
+            'percentUnlock'  => $percentUnlock,
+            'badgesCount'    => $badgesCount
+        ]);
+    }
+
+    /**
+     * @Route("/badge/{id}", name="viewbadge")
+     */
+    public function badgeViewAction(Request $request, $id)
+    {
+        $user = $this->getUser();
+        $usersCount = $this->getDoctrine()->getRepository('UserBundle:User')->countAll();
+        $badge = $this->getDoctrine()->getRepository('AchievementBundle:Badge')->findOneBy([
+            'id' => $id
+        ]);
+
+        $unlockedBadges = [];
+        $isUnlocked = false;
+        $percentUnlock = 0;
+
+        if ($badge) {
+            $unlockedBadges = $this->getDoctrine()->getRepository('AchievementBundle:UnlockedBadge')->findBy([
+                'badge' => $badge
+            ]);
+
+            $isUnlocked = array_filter($unlockedBadges, function ($unlock) use ($user) {
+                return $unlock->getUser()->getId() === $user->getId();
+            });
+
+            if ($unlockedBadges) {
+                $percentUnlock = ceil(100 * count($unlockedBadges) / $usersCount);
+            }
+        }
+
+        return $this->render('@Gate/view-badge.html.twig', [
+            'badge'          => $badge,
+            'unlockedBadges' => $unlockedBadges,
+            'isUnlocked'     => $isUnlocked,
+            'percentUnlock'  => $percentUnlock
         ]);
     }
 
