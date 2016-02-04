@@ -16,6 +16,14 @@ Ironforge\UserBundle\Entity\User:
             type: string
             length: 255
             nullable: true
+        google_id:
+            type: string
+            length: 255
+            nullable: true
+        google_access_token:
+            type: string
+            length: 255
+            nullable: true
         profilePicture:
             type: string
             nullable: true

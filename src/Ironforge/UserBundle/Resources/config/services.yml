@@ -7,4 +7,4 @@ services:
         #this is the place where the properties are passed to the UserProvider - see config.yml
         arguments:
             - '@fos_user.user_manager'
-            - { github: github_id }
+            - { github: github_id, google: google_id }
