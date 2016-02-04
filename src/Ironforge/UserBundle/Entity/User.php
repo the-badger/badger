@@ -13,7 +13,13 @@ class User extends BaseUser
     protected $github_id;
 
     /** @var string */
+    protected $google_id;
+
+    /** @var string */
     protected $github_access_token;
+
+    /** @var string */
+    protected $google_access_token;
 
     /** @var string */
     protected $profilePicture;
@@ -48,6 +54,38 @@ class User extends BaseUser
     public function setGithubAccessToken($github_access_token)
     {
         $this->github_access_token = $github_access_token;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoogleId()
+    {
+        return $this->google_id;
+    }
+
+    /**
+     * @param string $google_id
+     */
+    public function setGoogleId($google_id)
+    {
+        $this->google_id = $google_id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getGoogleAccessToken()
+    {
+        return $this->google_access_token;
+    }
+
+    /**
+     * @param string $google_access_token
+     */
+    public function setGoogleAccessToken($google_access_token)
+    {
+        $this->google_access_token = $google_access_token;
     }
 
     /**

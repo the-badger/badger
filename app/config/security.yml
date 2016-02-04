@@ -23,6 +23,7 @@ security:
             oauth:
                 resource_owners:
                     github: "/login/check-github"
+                    google: "/login/check-google"
                 login_path: /login
                 failure_path: /login
 

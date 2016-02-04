@@ -12,6 +12,9 @@ github_login:
 github_connect:
     path: /connect/github
 
+google_login:
+    pattern: /login/check-google
+
 user_bundle:
     resource: '@UserBundle/Resources/config/routing.yml'
 
