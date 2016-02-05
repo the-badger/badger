@@ -22,5 +22,9 @@ parameters:
     github_client_id:     YOUR_GITHUB_CLIENT_ID
     github_client_secret: YOUR_GITHUB_CLIENT_SECRET
 
+    # For oAuth Google authentication
+    google_client_id:     YOUR_GOOGLE_CLIENT_ID
+    google_client_secret: YOUR_GOOGLE_CLIENT_SECRET
+
     # Slack webhook url to send message in Slack channels
     slack_webhook_url: YOU_SLACK_WEBHOOK_URL
