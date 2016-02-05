@@ -7,14 +7,12 @@
         <div class="ui six column grid">
             {% for user in users %}
                 <div class="column">
-                    <div class="ui fluid card">
+                    <a href="{{ url('userprofile', {'username': user.username}) }}" class="ui fluid card">
                         <div class="image">
                             <img src="{{ user.profilePicture }}">
                         </div>
-                        <div class="content">
-                            <a href="{{ url('userprofile', {'username': user.username}) }}" class="header">{{ user.username }}</a>
-                        </div>
-                    </div>
+                        <div class="content">{{ user.username }}</div>
+                    </a>
                 </div>
             {% endfor %}
         </div>

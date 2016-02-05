@@ -1,3 +1,9 @@
+# 0.2.0
+
+## Features
+
+- User can now click on profile picture instead of the name
+
 # 0.1.0
 
 ## Features
