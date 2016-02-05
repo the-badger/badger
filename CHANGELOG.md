@@ -2,7 +2,7 @@
 
 ## Features
 
-- User can now click on profile picture instead of the mame
+- User can now click on profile picture instead of the name
 
 # 0.1.0
 
