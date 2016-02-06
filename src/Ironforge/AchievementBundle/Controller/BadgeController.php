@@ -200,6 +200,65 @@ class BadgeController extends Controller
     }
 
     /**
+     * @return Response
+     */
+    public function removeAction()
+    {
+        $em = $this->container->get('doctrine.orm.default_entity_manager');
+
+        $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
+        $badges = $em->getRepository('AchievementBundle:Badge')->findAll();
+        $badges = $serializer->serialize($badges, 'json');
+
+        $users = $this->container->get('fos_user.user_manager')->findUsers();
+        $usernames = [];
+        foreach ($users as $user) {
+            $usernames[] = $user->getUsername();
+        }
+        $usernames = $serializer->serialize($usernames, 'json');
+
+        return $this->render('@Achievement/badges/remove.html.twig', [
+            'badges' => $badges,
+            'users' => $usernames
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return RedirectResponse
+     */
+    public function removeProcessAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = $this->container->get('fos_user.user_manager')->findUserByUsername($request->get('user'));
+        $badge = $em->getRepository('AchievementBundle:Badge')->findOneById($request->get('badge'));
+
+        $unlocked = $em->getRepository('AchievementBundle:UnlockedBadge')->findOneBy([
+            'user' => $user,
+            'badge' => $badge
+        ]);
+
+        if (null === $unlocked) {
+            $this->addFlash('error', sprintf('%s has no badge named "%s"', $user->getUsername(), $badge->getTitle()));
+
+            return $this->redirectToRoute('admin_badge_remove');
+        }
+
+        $em->remove($unlocked);
+        $em->flush();
+
+        $this->addFlash('notice', sprintf(
+            'Successfully removed the badge "%s" to the user "%s"!',
+            $badge->getTitle(),
+            $user->getUsername()
+        ));
+
+        return $this->redirectToRoute('admin_badge_remove');
+    }
+
+    /**
      * Creates a form to delete a Badge entity.
      *
      * @param Badge $achievement The Badge entity
