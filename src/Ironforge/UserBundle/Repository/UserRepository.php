@@ -24,4 +24,25 @@ class UserRepository extends EntityRepository
 
         return $query->getSingleScalarResult();
     }
+
+    /**
+     * @param string $order
+     *
+     * @return int
+     */
+    public function getSortedUserByUnlockedBadges($order = 'DESC')
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('u AS user, COUNT(ub.id) AS nbUnlockedBadges')
+            ->from('UserBundle:User', 'u')
+            ->leftJoin('AchievementBundle:UnlockedBadge', 'ub')
+            ->where('ub.user = u')
+            ->orderBy('nbUnlockedBadges', $order)
+            ->groupBy('u')
+        ;
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
 }

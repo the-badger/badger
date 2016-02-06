@@ -126,4 +126,16 @@ class DefaultController extends Controller
             'unlockedBadges' => $unlockedBadges
         ]);
     }
+
+    /**
+     * @Route("/leaderboard", name="leaderboard")
+     */
+    public function leaderboardAction(Request $request)
+    {
+        $users = $this->getDoctrine()->getRepository('UserBundle:User')->getSortedUserByUnlockedBadges();
+
+        return $this->render('@Gate/leaderboard.html.twig', [
+            'users' => $users
+        ]);
+    }
 }

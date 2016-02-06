@@ -151,7 +151,8 @@ class BadgeController extends Controller
      *
      * @return RedirectResponse
      */
-    public function giveProcessAction(Request $request) {
+    public function giveProcessAction(Request $request)
+    {
         $em = $this->getDoctrine()->getManager();
         $validator = $this->get('validator');
 
