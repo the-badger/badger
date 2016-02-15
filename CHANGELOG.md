@@ -4,6 +4,7 @@
 
 - User can now click on profile picture instead of the name
 - Introduce leaderboard view
+- Admin interface to remove given badges
 
 # 0.1.0
 
