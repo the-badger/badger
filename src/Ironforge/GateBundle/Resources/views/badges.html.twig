@@ -1,8 +1,12 @@
 {% extends '@Gate/base.html.twig' %}
 
 {% block body %}
-    <div class="ui main container ir-dashboard">
-        <h2 class="ui dividing header">Available badges</h2>
+    <div class="ui main container ir-badges">
+        <div class="ui center aligned basic segment">
+            <img class="ui image tiny" style="display: inline-block;" src="{{ asset('bundles/gate/images/badge.svg') }}" alt=""/>
+            <h2 class="main-title">AVAILABLE BADGES</h2>
+            <p style="color: #C3C3C3;">Here are badges you can unlock.<br/>Some of them are stupids, but a badge is a badge!</p>
+        </div>
 
         <div class="ui four cards">
             {% for badge in badges %}

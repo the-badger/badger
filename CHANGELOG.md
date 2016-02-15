@@ -3,6 +3,7 @@
 ## Features
 
 - User can now click on profile picture instead of the name
+- Introduce leaderboard view
 
 # 0.1.0
 

@@ -1,22 +1,27 @@
 {% extends '@Gate/base.html.twig' %}
 
 {% block body %}
-    <div class="ui main container text ir-dashboard">
-        <h2 class="ui dividing header"><i class="icon feed"></i> Recent unlocks</h2>
+    <div class="ui main container ir-feed">
+        <div class="ui center aligned basic segment">
+            <img class="ui image tiny" style="display: inline-block;" src="{{ asset('bundles/gate/images/feed.svg') }}" alt=""/>
+            <h2 class="main-title">RECENT UNLOCKS</h2>
+            <p style="color: #C3C3C3;">Be the first to know who unlocked a badge.</p>
+        </div>
 
-        <div class="ui feed">
+        <div class="ui feed" style="padding: 0px 280px;">
+            <div class="ui divider"></div>
             {% for unlock in unlockedBadges %}
             <div class="event">
                 <div class="label">
                     <img src="{{ unlock.user.profilePicture }}">
                 </div>
                 <div class="content">
-                    <div class="date">
-                        {{ unlock.unlockedDate|date('d/m/Y') }}
-                    </div>
                     <div class="summary">
                         <a href="{{ url('userprofile', {username: unlock.user.username}) }}">{{ unlock.user.username }}</a> unlocked the badge
                         <a href="{{ url('viewbadge', {id: unlock.badge.id}) }}" class="popup" data-variation="wide" data-position="right center" data-html="<div class='ui grid'> <div class='four wide column'> <img class='ui tiny image' src='{{ unlock.badge.imageWebPath }}' /> </div> <div class='twelve wide column'> {{ unlock.badge.description }} </div> </div>">{{ unlock.badge.title }}</a>
+                        <div class="date">
+                            {{ unlock.unlockedDate|date('d/m/Y') }}
+                        </div>
                     </div>
                 </div>
             </div>
