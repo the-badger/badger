@@ -1,6 +1,7 @@
 parameters:
     ironforge.achievement.badge.controller.class: Ironforge\AchievementBundle\Controller\BadgeController
     ironforge.achievement.listener.class: Ironforge\AchievementBundle\EventListener\UnlockBadgeListener
+    ironforge.notifier.slack.class: Ironforge\AchievementBundle\Notifier\SlackNotifier
 
 services:
     ironforge.achievement.badge.controller:
@@ -13,6 +14,11 @@ services:
         arguments:
             - '@router'
             - '@logger'
-            - '%slack_webhook_url%'
+            - '@ironforge.notifier.slack'
         tags:
             - { name: kernel.event_listener, event: achievement.user_unlocks_badge, method: onUnlockBadge }
+
+    ironforge.notifier.slack:
+        class: %ironforge.notifier.slack.class%
+        arguments:
+            - '%slack_webhook_url%'
