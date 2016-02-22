@@ -5,7 +5,7 @@ namespace Ironforge\AchievementBundle\Entity;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Badge
+ * Badge entity.
  */
 class Badge
 {

@@ -5,6 +5,8 @@ namespace Ironforge\AchievementBundle\Entity;
 use Ironforge\UserBundle\Entity\User;
 
 /**
+ * An UnlockedBadge is the entity that represents the user having a badge.
+ * 
  * @author Adrien Pétremann <petremann.adrien@gmail.com>
  */
 class UnlockedBadge

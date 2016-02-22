@@ -16,12 +16,15 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 /**
- * Badge controller.
+ * Badge controller for admin CRUD.
+ * Handles giving process too.
  */
 class BadgeController extends Controller
 {
     /**
      * Lists all Badge entities.
+     *
+     * @return Response
      */
     public function indexAction()
     {
@@ -36,6 +39,10 @@ class BadgeController extends Controller
 
     /**
      * Creates a new Badge entity.
+     *
+     * @param Request $request
+     *
+     * @return RedirectResponse|Response
      */
     public function newAction(Request $request)
     {
@@ -63,6 +70,10 @@ class BadgeController extends Controller
 
     /**
      * Finds and displays a Badge entity.
+     *
+     * @param Badge $badge
+     *
+     * @return Response
      */
     public function showAction(Badge $badge)
     {
@@ -76,6 +87,11 @@ class BadgeController extends Controller
 
     /**
      * Displays a form to edit an existing Badge entity.
+     *
+     * @param Request $request
+     * @param Badge   $badge
+     *
+     * @return RedirectResponse|Response
      */
     public function editAction(Request $request, Badge $badge)
     {
@@ -104,6 +120,11 @@ class BadgeController extends Controller
 
     /**
      * Deletes a Badge entity.
+     *
+     * @param Request $request
+     * @param Badge   $badge
+     *
+     * @return RedirectResponse
      */
     public function deleteAction(Request $request, Badge $badge)
     {
@@ -120,14 +141,13 @@ class BadgeController extends Controller
     }
 
     /**
-     * @param Request $request
+     * Display a form to give a Badge to a User.
      *
      * @return Response
      */
-    public function giveAction(Request $request)
+    public function giveAction()
     {
         $em = $this->container->get('doctrine.orm.default_entity_manager');
-        $messages = [];
 
         $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
         $badges = $em->getRepository('AchievementBundle:Badge')->findAll();
@@ -147,6 +167,8 @@ class BadgeController extends Controller
     }
 
     /**
+     * Give a Badge to a User.
+     *
      * @param Request $request
      *
      * @return RedirectResponse
@@ -200,6 +222,8 @@ class BadgeController extends Controller
     }
 
     /**
+     * Display a form to remove a Badge from a User.
+     *
      * @return Response
      */
     public function removeAction()
@@ -224,6 +248,8 @@ class BadgeController extends Controller
     }
 
     /**
+     * Remove a Badge from a User.
+     *
      * @param Request $request
      *
      * @return RedirectResponse

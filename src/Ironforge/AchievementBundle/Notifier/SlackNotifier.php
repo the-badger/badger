@@ -6,6 +6,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Request;
 
 /**
+ * Slack implementation of the NotifierInterface.
+ * It makes a CURL call to the slack api to send a message to a given channel.
+ *
  * @author Adrien Pétremann <petremann.adrien@gmail.com>
  */
 class SlackNotifier implements NotifierInterface

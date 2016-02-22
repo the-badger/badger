@@ -13,6 +13,8 @@ use Doctrine\ORM\EntityRepository;
 class BadgeRepository extends EntityRepository
 {
     /**
+     * Count all Badges in database.
+     *
      * @return int
      */
     public function countAll()

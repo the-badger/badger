@@ -6,6 +6,8 @@ use Ironforge\AchievementBundle\Entity\UnlockedBadge;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
+ * This event is dispatched when a User unlocked a Badge.
+ *
  * @author Adrien Pétremann <petremann.adrien@gmail.com>
  */
 class BadgeUnlockEvent extends Event

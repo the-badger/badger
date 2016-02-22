@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
+ * Event Listener to handle BadgeUnlockEvent, dispatched when a User unlocked a Badge.
+ *
  * @author Adrien Pétremann <petremann.adrien@gmail.com>
  */
 class UnlockBadgeListener
