@@ -5,19 +5,35 @@
     <div class="ui grid">
         <div class="four wide column">
             <div class="ui card {{ isUnlocked ? 'unlocked' : '' }}" >
+                {% if isUnlocked %}
                 <div class="image" style="padding: 10px;">
-                    {% if isUnlocked %}
-                        <span class="ui left corner green label">
-                            <i class="checkmark icon"></i>
-                        </span>
-                    {% endif %}
+                    <span class="ui left corner green label">
+                        <i class="checkmark icon"></i>
+                    </span>
                     <img src="{{ badge.imageWebPath }}">
                 </div>
+                {% else %}
+                <div class="blurring dimmable image" style="padding: 10px;">
+                    <div class="ui dimmer">
+                        <div class="content">
+                            <div class="center">
+                                {% if not isClaimed %}
+                                    <button class="ui inverted button claim"><i class="fa fa-thumbs-up"></i> Claim</button>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    <img src="{{ badge.imageWebPath }}">
+                </div>
+                {% endif %}
                 <div class="content">
                     <div class="header">{{ badge.title }}</div>
                     <div class="description">
                         {{ badge.description }}
                     </div>
+                    {% if isClaimed %}
+                        <a style="margin-top: 7px;" class="ui blue ribbon label"><i class="fa fa-clock-o"></i>&nbsp; You claimed this badge!</a>
+                    {% endif %}
                 </div>
                 <div class="content" style="text-align: center;">
                     <div class="ui small statistic">
@@ -71,5 +87,24 @@
 {% block javascripts %}
     <script>
         $('#allunlocks').progress();
+
+        {% if not isUnlocked and not isClaimed %}
+            $('.card .image').dimmer({on: 'hover'});
+
+            $button = $('.claim');
+            $button.click(function() {
+                if ($button.hasClass('blue') || $button.hasClass('loading')) {
+                    return;
+                }
+
+                $button.addClass('loading');
+
+                $.post('{{ url('claimbadge', {'id': badge.id}) }}').then(function() {
+                    $button.removeClass('loading').addClass('blue').html('<i class="fa fa-clock-o" ></i> Claimed!');
+                }, function () {
+                    $button.removeClass('loading').addClass('red').html('<i class="fa fa-exclamation-triangle"></i> An error occurred');
+                });
+            });
+        {% endif %}
     </script>
 {% endblock %}

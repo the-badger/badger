@@ -10,11 +10,16 @@
 
         <div class="ui four cards">
             {% for badge in badges %}
-                <div class="card {{ badge not in unlockedBadges ? 'locked' : 'unlocked' }}" >
+                <div class="card {{ badge.id in unlockedBadgesIds ? 'unlocked' : 'locked' }}" >
                     <div class="image" style="padding: 10px;">
-                        {% if badge in unlockedBadges %}
+                        {% if badge.id in unlockedBadgesIds %}
                         <span class="ui left corner green label">
                             <i class="checkmark icon"></i>
+                        </span>
+                        {% endif %}
+                        {% if badge.id in claimedBadgeIds %}
+                        <span class="ui left corner blue label">
+                            <i class="wait icon"></i>
                         </span>
                         {% endif %}
                         <img src="{{ badge.imageWebPath }}">
