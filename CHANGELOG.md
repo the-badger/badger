@@ -1,5 +1,11 @@
 # 0.X.X
 
+# 0.3.1
+
+## DX
+
+- Update application version
+
 # 0.3.0
 
 ## Features
