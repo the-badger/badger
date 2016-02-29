@@ -5,3 +5,7 @@ achievement:
 achievement_admin_badge:
     resource: "@AchievementBundle/Resources/config/routing/badge.yml"
     prefix:   /admin/badge
+
+achievement_admin_claimed_badge:
+    resource: "@AchievementBundle/Resources/config/routing/claimed-badge.yml"
+    prefix:   /admin/claimed-badge

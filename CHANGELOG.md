@@ -1,3 +1,10 @@
+# 0.X.X
+
+## Features
+
+- User can claim a badge
+- Admin interface to refuse/accept claimed badges
+
 # 0.2.0
 
 ## Features
