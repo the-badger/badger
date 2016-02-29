@@ -1,0 +1,14 @@
+admin_claimed_badge_index:
+    path:     /
+    defaults: { _controller: "ironforge.achievement.claimed_badge.controller:indexAction" }
+    methods:  GET
+
+admin_claimed_badge_reject:
+    path:     /{id}/reject
+    defaults: { _controller: "ironforge.achievement.claimed_badge.controller:rejectAction" }
+    methods:  GET
+
+admin_claimed_badge_accept:
+    path:     /{id}/accept
+    defaults: { _controller: "ironforge.achievement.claimed_badge.controller:acceptAction" }
+    methods:  GET

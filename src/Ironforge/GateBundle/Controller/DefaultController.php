@@ -2,8 +2,10 @@
 
 namespace Ironforge\GateBundle\Controller;
 
+use Ironforge\AchievementBundle\Entity\ClaimedBadge;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
@@ -80,36 +82,75 @@ class DefaultController extends Controller
      */
     public function badgeViewAction(Request $request, $id)
     {
-        $user = $this->getUser();
-        $usersCount = $this->getDoctrine()->getRepository('UserBundle:User')->countAll();
         $badge = $this->getDoctrine()->getRepository('AchievementBundle:Badge')->findOneBy([
             'id' => $id
         ]);
 
-        $unlockedBadges = [];
-        $isUnlocked = false;
+        if (null === $badge) {
+            throw $this->createNotFoundException();
+        }
+
+        $user = $this->getUser();
+        $usersCount = $this->getDoctrine()->getRepository('UserBundle:User')->countAll();
         $percentUnlock = 0;
 
-        if ($badge) {
-            $unlockedBadges = $this->getDoctrine()->getRepository('AchievementBundle:UnlockedBadge')->findBy([
-                'badge' => $badge
-            ]);
+        $unlockedBadges = $this->getDoctrine()->getRepository('AchievementBundle:UnlockedBadge')->findBy([
+            'badge' => $badge
+        ]);
 
-            $isUnlocked = array_filter($unlockedBadges, function ($unlock) use ($user) {
-                return $unlock->getUser()->getId() === $user->getId();
-            });
+        $isUnlocked = array_filter($unlockedBadges, function ($unlock) use ($user) {
+            return $unlock->getUser()->getId() === $user->getId();
+        });
 
-            if ($unlockedBadges) {
-                $percentUnlock = ceil(100 * count($unlockedBadges) / $usersCount);
-            }
+        $isClaimed = null !== $this->getDoctrine()->getRepository('AchievementBundle:ClaimedBadge')->findOneBy([
+            'badge' => $badge,
+            'user' => $user
+        ]);
+
+        if ($unlockedBadges) {
+            $percentUnlock = ceil(100 * count($unlockedBadges) / $usersCount);
         }
 
         return $this->render('@Gate/view-badge.html.twig', [
             'badge'          => $badge,
             'unlockedBadges' => $unlockedBadges,
             'isUnlocked'     => $isUnlocked,
+            'isClaimed'      => $isClaimed,
             'percentUnlock'  => $percentUnlock
         ]);
+    }
+
+    /**
+     * @Route("/claim/{id}", name="claimbadge")
+     */
+    public function claimBadgeAction($id)
+    {
+        $user = $this->getUser();
+        $badge = $this->getDoctrine()->getRepository('AchievementBundle:Badge')->find($id);
+
+        if (null === $badge) {
+            return new JsonResponse('No badge with this id.', 400);
+        }
+
+        $claimedBadge = $this->getDoctrine()->getRepository('AchievementBundle:ClaimedBadge')->findOneBy([
+            'user' => $user,
+            'badge' => $badge
+        ]);
+
+        if (null !== $claimedBadge) {
+            return new JsonResponse('This badge is already claimed.', 400);
+        }
+
+        $claimedBadge = new ClaimedBadge();
+        $claimedBadge->setBadge($badge);
+        $claimedBadge->setUser($user);
+        $claimedBadge->setClaimedDate(new \DateTime());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($claimedBadge);
+        $em->flush();
+
+        return new JsonResponse();
     }
 
     /**
@@ -118,12 +159,18 @@ class DefaultController extends Controller
     public function badgeListAction(Request $request)
     {
         $badges = $this->getDoctrine()->getRepository('AchievementBundle:Badge')->findAll();
-        $unlockedBadges = $this->getDoctrine()->getRepository('AchievementBundle:UnlockedBadge')
-            ->getUserUnlockedBadges($this->getUser());
+        $user = $this->getUser();
+
+        $unlockedBadgeIds = $this->getDoctrine()->getRepository('AchievementBundle:UnlockedBadge')
+            ->getUnlockedBadgeIdsByUser($user);
+
+        $claimedBadgeIds = $this->getDoctrine()->getRepository('AchievementBundle:ClaimedBadge')
+            ->getBadgeIdsClaimedByUser($user);
 
         return $this->render('@Gate/badges.html.twig', [
             'badges' => $badges,
-            'unlockedBadges' => $unlockedBadges
+            'unlockedBadgesIds' => $unlockedBadgeIds,
+            'claimedBadgeIds' => $claimedBadgeIds
         ]);
     }
 

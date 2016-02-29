@@ -1,0 +1,67 @@
+{% extends 'GateBundle::base-admin.html.twig' %}
+
+{% block body %}
+
+    <h1 class="page-header">Claimed Badge list</h1>
+
+    {% for flash_message in app.session.flashbag.get('notice') %}
+        <div class="ui icon positive message">
+            <i class="checkmark icon"></i>
+            <div class="content">
+                <p>{{ flash_message }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% for flash_message in app.session.flashbag.get('error') %}
+        <div class="ui icon error message">
+            <i class="warning sign icon"></i>
+            <div class="content">
+                <p>{{ flash_message }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% if claimedBadges is not empty %}
+    <table class="ui celled padded table">
+        <thead>
+        <tr><th class="single line">User</th>
+            <th>Badge</th>
+            <th>Claimed date</th>
+            <th>Accept that claim?</th>
+        </tr></thead>
+        <tbody>
+        {% for claimedBadge in claimedBadges %}
+        <tr>
+            <td>
+                <img class="ui avatar image" src="{{ claimedBadge.user.profilePicture }}">
+                <span>{{ claimedBadge.user.username }}</span>
+            </td>
+            <td class="single line">
+                <img class="ui avatar image" src="{{ claimedBadge.badge.imageWebPath }}">
+                <span class="popup" data-title="{{ claimedBadge.badge.title }}" data-content="{{ claimedBadge.badge.description }}">{{ claimedBadge.badge.title }}</span>
+            </td>
+            <td>
+                {{ claimedBadge.claimedDate|date("d/m/Y") }}
+            </td>
+            <td class="center aligned">
+                <div class="ui tiny buttons">
+                    <a href="{{ url('admin_claimed_badge_accept', { 'id': claimedBadge.id }) }}" class="ui positive button">Hell yes!</a>
+                    <div class="or"></div>
+                    <a href="{{ url('admin_claimed_badge_reject', { 'id': claimedBadge.id }) }}" class="ui red button">Nope.</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No claim, no pain.</p>
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('.popup').popup();
+    </script>
+{% endblock %}
