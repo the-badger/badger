@@ -1,5 +1,7 @@
 # 0.X.X
 
+# 0.3.0
+
 ## Features
 
 - User can claim a badge
