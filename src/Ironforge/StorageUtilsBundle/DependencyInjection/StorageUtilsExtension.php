@@ -1,6 +1,6 @@
 <?php
 
-namespace Ironforge\AchievementBundle\DependencyInjection;
+namespace Ironforge\StorageUtilsBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -10,7 +10,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 /**
  * @author Adrien Pétremann <petremann.adrien@gmail.com>
  */
-class AchievementExtension extends Extension
+class StorageUtilsExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -18,8 +18,6 @@ class AchievementExtension extends Extension
     public function load(array $configs, ContainerBuilder $container)
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-        $loader->load('factories.yml');
         $loader->load('savers.yml');
-        $loader->load('services.yml');
     }
 }
