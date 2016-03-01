@@ -89,10 +89,8 @@ class ClaimedBadgeController extends Controller
 
         $validator = $this->get('validator');
 
-        $unlocked = new UnlockedBadge();
-        $unlocked->setUser($user);
-        $unlocked->setBadge($badge);
-        $unlocked->setUnlockedDate(new \DateTime());
+        $unlockedBadgeFactory = $this->get('ironforge.achievement.unlocked_badge.factory');
+        $unlocked = $unlockedBadgeFactory->create($user, $badge);
 
         $errors = $validator->validate($unlocked);
 

@@ -141,10 +141,8 @@ class DefaultController extends Controller
             return new JsonResponse('This badge is already claimed.', 400);
         }
 
-        $claimedBadge = new ClaimedBadge();
-        $claimedBadge->setBadge($badge);
-        $claimedBadge->setUser($user);
-        $claimedBadge->setClaimedDate(new \DateTime());
+        $claimedBadgeFactory = $this->get('ironforge.achievement.claimed_badge.factory');
+        $claimedBadge = $claimedBadgeFactory->create($user, $badge);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($claimedBadge);

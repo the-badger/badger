@@ -46,7 +46,9 @@ class BadgeController extends Controller
      */
     public function newAction(Request $request)
     {
-        $badge = new Badge();
+        $badgeFactory = $this->get('ironforge.achievement.badge.factory');
+        $badge = $badgeFactory->create();
+
         $form = $this->createForm(new BadgeType(), $badge);
         $form->add('file', 'file', ['label' => 'Badge image']);
         $form->remove('imagePath');
@@ -195,10 +197,8 @@ class BadgeController extends Controller
             return $this->redirectToRoute('admin_badge_give');
         }
 
-        $unlocked = new UnlockedBadge();
-        $unlocked->setUser($user);
-        $unlocked->setBadge($badge);
-        $unlocked->setUnlockedDate(new \DateTime());
+        $unlockedBadgeFactory = $this->get('ironforge.achievement.unlocked_badge.factory');
+        $unlocked = $unlockedBadgeFactory->create($user, $badge);
 
         $errors = $validator->validate($unlocked);
 
