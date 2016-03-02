@@ -1,0 +1,50 @@
+<?php
+
+namespace Ironforge\StorageUtilsBundle\Doctrine\Remover;
+
+use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\Util\ClassUtils;
+use Ironforge\StorageUtilsBundle\Remover\RemoverInterface;
+
+/**
+ * Base remover, declared as different services for different classes
+ *
+ * @author Adrien Pétremann <adrien.petremann@akeneo.com>
+ */
+class BaseRemover implements RemoverInterface
+{
+    /** @var ObjectManager */
+    protected $objectManager;
+
+    /** @var string */
+    protected $removedClass;
+
+    /**
+     * @param ObjectManager $objectManager
+     * @param string        $removedClass
+     */
+    public function __construct(ObjectManager $objectManager, $removedClass)
+    {
+        $this->objectManager = $objectManager;
+        $this->removedClass = $removedClass;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function remove($object, array $options = [])
+    {
+        if (false === ($object instanceof $this->removedClass)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    'Expects a "%s", "%s" provided.',
+                    $this->removedClass,
+                    ClassUtils::getClass($object)
+                )
+            );
+        }
+
+        $this->objectManager->remove($object);
+        $this->objectManager->flush();
+    }
+}

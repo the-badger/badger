@@ -1,0 +1,2 @@
+parameters:
+    ironforge.storage_utils.saver.base.class: Ironforge\StorageUtilsBundle\Doctrine\Saver\BaseSaver

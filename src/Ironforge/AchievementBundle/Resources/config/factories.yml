@@ -1,0 +1,14 @@
+parameters:
+    ironforge.achievement.badge.factory.class: Ironforge\AchievementBundle\Factory\BadgeFactory
+    ironforge.achievement.unlocked_badge.factory.class: Ironforge\AchievementBundle\Factory\UnlockedBadgeFactory
+    ironforge.achievement.claimed_badge.factory.class: Ironforge\AchievementBundle\Factory\ClaimedBadgeFactory
+
+services:
+    ironforge.achievement.badge.factory:
+        class: %ironforge.achievement.badge.factory.class%
+
+    ironforge.achievement.unlocked_badge.factory:
+        class: %ironforge.achievement.unlocked_badge.factory.class%
+
+    ironforge.achievement.claimed_badge.factory:
+        class: %ironforge.achievement.claimed_badge.factory.class%

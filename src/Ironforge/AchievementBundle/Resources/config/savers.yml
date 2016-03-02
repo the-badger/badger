@@ -1,0 +1,22 @@
+parameters:
+    ironforge.achievements.saver.unlocked_badge.class: Ironforge\AchievementBundle\Doctrine\Saver\UnlockedBadgeSaver
+
+services:
+    ironforge.achievements.saver.badge:
+        class: %ironforge.storage_utils.saver.base.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Ironforge\AchievementBundle\Entity\Badge'
+
+    ironforge.achievements.saver.unlocked_badge:
+        class: %ironforge.achievements.saver.unlocked_badge.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@event_dispatcher'
+            - 'Ironforge\AchievementBundle\Entity\UnlockedBadge'
+
+    ironforge.achievements.saver.claimed_badge:
+        class: %ironforge.storage_utils.saver.base.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Ironforge\AchievementBundle\Entity\ClaimedBadge'

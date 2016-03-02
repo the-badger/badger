@@ -2,20 +2,24 @@
 
 namespace Ironforge\AchievementBundle\Controller;
 
-use Ironforge\AchievementBundle\AchievementEvents;
-use Ironforge\AchievementBundle\Entity\UnlockedBadge;
-use Ironforge\AchievementBundle\Event\BadgeUnlockEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @author Adrien Pétremann <adrien.petremann@akeneo.com>
  */
 class ClaimedBadgeController extends Controller
 {
+    /**
+     * Lists all ClaimedBadge entities.
+     *
+     * @return Response
+     */
     public function indexAction()
     {
-        $claimedBadges = $this->getDoctrine()->getRepository('AchievementBundle:ClaimedBadge')->findAll();
+        $claimedBadges = $this->get('ironforge.achievement.repository.claimed_badge')
+            ->findAll();
 
         return $this->render('@Achievement/claimed-badges/index.html.twig', [
             'claimedBadges' => $claimedBadges
@@ -31,24 +35,23 @@ class ClaimedBadgeController extends Controller
      */
     public function rejectAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $claimedBadge = $em->getRepository('AchievementBundle:ClaimedBadge')->find($id);
+        $claimedBadge = $this->get('ironforge.achievement.repository.claimed_badge')
+            ->find($id);
 
         if (null === $claimedBadge) {
             throw new \LogicException(sprint('No ClaimedBadge entity with id %s', $id));
         }
 
-        $badge = $claimedBadge->getBadge();
-        $user = $claimedBadge->getUser();
+        $badgeTitle = $claimedBadge->getBadge()->getTitle();
+        $username = $claimedBadge->getUser()->getUsername();
 
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($claimedBadge);
-        $em->flush();
+        $claimedBadgeRemover = $this->get('ironforge.achievements.remover.claimed_badge');
+        $claimedBadgeRemover->remove($claimedBadge);
 
         $this->addFlash('notice', sprintf(
             'Successfully rejected the badge "%s" for %s!',
-            $badge->getTitle(),
-            $user->getUsername()
+            $badgeTitle,
+            $username
         ));
 
         return $this->redirectToRoute('admin_claimed_badge_index');
@@ -63,8 +66,8 @@ class ClaimedBadgeController extends Controller
      */
     public function acceptAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $claimedBadge = $em->getRepository('AchievementBundle:ClaimedBadge')->find($id);
+        $claimedBadge = $this->get('ironforge.achievement.repository.claimed_badge')
+            ->find($id);
 
         if (null === $claimedBadge) {
             throw new \LogicException(sprint('No ClaimedBadge entity with id %s', $id));
@@ -73,10 +76,11 @@ class ClaimedBadgeController extends Controller
         $user = $claimedBadge->getUser();
         $badge = $claimedBadge->getBadge();
 
-        $isUnlocked = $em->getRepository('AchievementBundle:UnlockedBadge')->findOneBy([
-            'user' => $user,
-            'badge' => $badge
-        ]);
+        $isUnlocked = $this->get('ironforge.achievement.repository.unlocked_badge')
+            ->findOneBy([
+                'user' => $user,
+                'badge' => $badge
+            ]);
 
         if ($isUnlocked) {
             $this->addFlash('error', sprintf('%s already has the badge "%s"',
@@ -89,20 +93,17 @@ class ClaimedBadgeController extends Controller
 
         $validator = $this->get('validator');
 
-        $unlocked = new UnlockedBadge();
-        $unlocked->setUser($user);
-        $unlocked->setBadge($badge);
-        $unlocked->setUnlockedDate(new \DateTime());
+        $unlockedBadgeFactory = $this->get('ironforge.achievement.unlocked_badge.factory');
+        $unlockedBadge = $unlockedBadgeFactory->create($user, $badge);
 
-        $errors = $validator->validate($unlocked);
+        $errors = $validator->validate($unlockedBadge);
 
         if (0 === count($errors)) {
-            $em->remove($claimedBadge);
-            $em->persist($unlocked);
-            $em->flush();
+            $unlockedBadgeSaver = $this->get('ironforge.achievements.saver.unlocked_badge');
+            $claimedBadgeRemover = $this->get('ironforge.achievements.remover.claimed_badge');
 
-            $event = new BadgeUnlockEvent($unlocked);
-            $this->container->get('event_dispatcher')->dispatch(AchievementEvents::USER_UNLOCKS_BADGE, $event);
+            $unlockedBadgeSaver->save($unlockedBadge);
+            $claimedBadgeRemover->remove($claimedBadge);
 
             $this->addFlash('notice', sprintf(
                 '%s successfully received the badge "%s"!',

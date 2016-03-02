@@ -1,0 +1,2 @@
+parameters:
+    ironforge.storage_utils.remover.base.class: Ironforge\StorageUtilsBundle\Doctrine\Remover\BaseRemover

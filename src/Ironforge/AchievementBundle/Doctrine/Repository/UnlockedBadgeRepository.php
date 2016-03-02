@@ -1,22 +1,21 @@
 <?php
 
-namespace Ironforge\AchievementBundle\Repository;
+namespace Ironforge\AchievementBundle\Doctrine\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Ironforge\AchievementBundle\Entity\Badge;
+use Ironforge\AchievementBundle\Repository\UnlockedBadgeRepositoryInterface;
 use Ironforge\UserBundle\Entity\User;
 
 /**
+ * Doctrine implementation of repository for UnlockedBadge entities.
+ *
  * @author Adrien Pétremann <petremann.adrien@gmail.com>
  */
-class UnlockedBadgeRepository extends EntityRepository
+class UnlockedBadgeRepository extends EntityRepository implements UnlockedBadgeRepositoryInterface
 {
     /**
-     * Get all Badge ids unlocked by the given $user.
-     *
-     * @param User $user
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function getUnlockedBadgeIdsByUser(User $user)
     {

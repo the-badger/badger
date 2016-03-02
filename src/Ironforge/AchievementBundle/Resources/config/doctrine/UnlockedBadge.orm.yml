@@ -1,7 +1,7 @@
 Ironforge\AchievementBundle\Entity\UnlockedBadge:
     type: entity
     table: unlocked_badges
-    repositoryClass: Ironforge\AchievementBundle\Repository\UnlockedBadgeRepository
+    repositoryClass: Ironforge\AchievementBundle\Doctrine\Repository\UnlockedBadgeRepository
     fields:
         id:
             id: true

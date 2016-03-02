@@ -9,3 +9,7 @@ achievement_admin_badge:
 achievement_admin_claimed_badge:
     resource: "@AchievementBundle/Resources/config/routing/claimed-badge.yml"
     prefix:   /admin/claimed-badge
+
+achievement_admin_unlocked_badge:
+    resource: "@AchievementBundle/Resources/config/routing/unlocked-badge.yml"
+    prefix:   /admin/unlocked-badge
