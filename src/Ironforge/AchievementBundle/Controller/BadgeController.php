@@ -126,9 +126,8 @@ class BadgeController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($badge);
-            $em->flush();
+            $badgeRemover = $this->get('ironforge.achievements.remover.badge');
+            $badgeRemover->remove($badge);
         }
 
         return $this->redirectToRoute('admin_badge_index');

@@ -1,0 +1,18 @@
+services:
+    ironforge.achievements.remover.badge:
+        class: %ironforge.storage_utils.remover.base.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Ironforge\AchievementBundle\Entity\Badge'
+
+    ironforge.achievements.remover.unlocked_badge:
+        class: %ironforge.storage_utils.remover.base.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Ironforge\AchievementBundle\Entity\UnlockedBadge'
+
+    ironforge.achievements.remover.claimed_badge:
+        class: %ironforge.storage_utils.remover.base.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Ironforge\AchievementBundle\Entity\ClaimedBadge'

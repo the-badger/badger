@@ -93,25 +93,25 @@ class UnlockedBadgeController extends Controller
      */
     public function deleteAction(Request $request)
     {
-        $em = $this->container->get('doctrine.orm.default_entity_manager');
+        $em = $this->get('doctrine.orm.default_entity_manager');
 
         if ('POST' === $request->getMethod()) {
             $user = $this->container->get('fos_user.user_manager')->findUserByUsername($request->get('user'));
             $badge = $em->getRepository('AchievementBundle:Badge')->findOneById($request->get('badge'));
 
-            $unlocked = $em->getRepository('AchievementBundle:UnlockedBadge')->findOneBy([
+            $unlockedBadge = $em->getRepository('AchievementBundle:UnlockedBadge')->findOneBy([
                 'user' => $user,
                 'badge' => $badge
             ]);
 
-            if (null === $unlocked) {
+            if (null === $unlockedBadge) {
                 $this->addFlash('error', sprintf('%s has no badge named "%s"', $user->getUsername(), $badge->getTitle()));
 
                 return $this->redirectToRoute('admin_unlocked_badge_delete');
             }
 
-            $em->remove($unlocked);
-            $em->flush();
+            $unlockedBadgeRemover = $this->get('ironforge.achievements.remover.unlocked_badge');
+            $unlockedBadgeRemover->remove($unlockedBadge);
 
             $this->addFlash('notice', sprintf(
                 'Successfully removed the badge "%s" to the user "%s"!',
