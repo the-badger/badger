@@ -2,20 +2,24 @@
 
 namespace Ironforge\AchievementBundle\Controller;
 
-use Ironforge\AchievementBundle\AchievementEvents;
-use Ironforge\AchievementBundle\Entity\UnlockedBadge;
-use Ironforge\AchievementBundle\Event\BadgeUnlockEvent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * @author Adrien Pétremann <adrien.petremann@akeneo.com>
  */
 class ClaimedBadgeController extends Controller
 {
+    /**
+     * Lists all ClaimedBadge entities.
+     *
+     * @return Response
+     */
     public function indexAction()
     {
-        $claimedBadges = $this->getDoctrine()->getRepository('AchievementBundle:ClaimedBadge')->findAll();
+        $claimedBadges = $this->get('ironforge.achievement.repository.claimed_badge')
+            ->findAll();
 
         return $this->render('@Achievement/claimed-badges/index.html.twig', [
             'claimedBadges' => $claimedBadges
@@ -31,8 +35,7 @@ class ClaimedBadgeController extends Controller
      */
     public function rejectAction($id)
     {
-        $claimedBadge = $this->getDoctrine()
-            ->getRepository('AchievementBundle:ClaimedBadge')
+        $claimedBadge = $this->get('ironforge.achievement.repository.claimed_badge')
             ->find($id);
 
         if (null === $claimedBadge) {
@@ -63,8 +66,8 @@ class ClaimedBadgeController extends Controller
      */
     public function acceptAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $claimedBadge = $em->getRepository('AchievementBundle:ClaimedBadge')->find($id);
+        $claimedBadge = $this->get('ironforge.achievement.repository.claimed_badge')
+            ->find($id);
 
         if (null === $claimedBadge) {
             throw new \LogicException(sprint('No ClaimedBadge entity with id %s', $id));
@@ -73,10 +76,11 @@ class ClaimedBadgeController extends Controller
         $user = $claimedBadge->getUser();
         $badge = $claimedBadge->getBadge();
 
-        $isUnlocked = $em->getRepository('AchievementBundle:UnlockedBadge')->findOneBy([
-            'user' => $user,
-            'badge' => $badge
-        ]);
+        $isUnlocked = $this->get('ironforge.achievement.repository.unlocked_badge')
+            ->findOneBy([
+                'user' => $user,
+                'badge' => $badge
+            ]);
 
         if ($isUnlocked) {
             $this->addFlash('error', sprintf('%s already has the badge "%s"',

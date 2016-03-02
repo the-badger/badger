@@ -22,8 +22,7 @@ class BadgeController extends Controller
      */
     public function indexAction()
     {
-        $badges = $this->getDoctrine()
-            ->getRepository('AchievementBundle:Badge')
+        $badges = $this->get('ironforge.achievement.repository.badge')
             ->findAll();
 
         return $this->render('@Achievement/badges/index.html.twig', [

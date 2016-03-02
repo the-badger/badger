@@ -1,7 +1,7 @@
 Ironforge\AchievementBundle\Entity\ClaimedBadge:
     type: entity
     table: claimed_badges
-    repositoryClass: Ironforge\AchievementBundle\Repository\ClaimedBadgeRepository
+    repositoryClass: Ironforge\AchievementBundle\Doctrine\Repository\ClaimedBadgeRepository
     fields:
         id:
             id: true

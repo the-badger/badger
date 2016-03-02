@@ -1,21 +1,20 @@
 <?php
 
-namespace Ironforge\AchievementBundle\Repository;
+namespace Ironforge\AchievementBundle\Doctrine\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Ironforge\AchievementBundle\Repository\ClaimedBadgeRepositoryInterface;
 use Ironforge\UserBundle\Entity\User;
 
 /**
+ * Doctrine implementation of repository for ClaimedBadge entities.
+ *
  * @author Adrien Pétremann <adrien.petremann@akeneo.com>
  */
-class ClaimedBadgeRepository extends EntityRepository
+class ClaimedBadgeRepository extends EntityRepository implements ClaimedBadgeRepositoryInterface
 {
     /**
-     * Get all Badge ids claimed by the given $user.
-     *
-     * @param User $user
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function getBadgeIdsClaimedByUser(User $user)
     {

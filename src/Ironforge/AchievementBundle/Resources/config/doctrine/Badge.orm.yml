@@ -1,7 +1,7 @@
 Ironforge\AchievementBundle\Entity\Badge:
     type: entity
     table: badges
-    repositoryClass: Ironforge\AchievementBundle\Repository\BadgeRepository
+    repositoryClass: Ironforge\AchievementBundle\Doctrine\Repository\BadgeRepository
     fields:
         id:
             type: guid

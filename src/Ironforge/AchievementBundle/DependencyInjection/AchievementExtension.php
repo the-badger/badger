@@ -21,6 +21,7 @@ class AchievementExtension extends Extension
         $loader->load('controllers.yml');
         $loader->load('factories.yml');
         $loader->load('removers.yml');
+        $loader->load('repositories.yml');
         $loader->load('savers.yml');
         $loader->load('services.yml');
     }

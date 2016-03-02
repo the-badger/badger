@@ -26,18 +26,18 @@ class UnlockedBadgeController extends Controller
      */
     public function newAction(Request $request)
     {
-        $em = $this->get('doctrine.orm.default_entity_manager');
-
         if ('POST' === $request->getMethod()) {
             $validator = $this->get('validator');
 
             $user = $this->container->get('fos_user.user_manager')->findUserByUsername($request->get('user'));
-            $badge = $em->getRepository('AchievementBundle:Badge')->findOneById($request->get('badge'));
+            $badge = $this->get('ironforge.achievement.repository.badge')
+                ->findOneById($request->get('badge'));
 
-            $isUnlocked = $em->getRepository('AchievementBundle:UnlockedBadge')->findOneBy([
-                'user' => $user,
-                'badge' => $badge
-            ]);
+            $isUnlocked = $this->get('ironforge.achievement.repository.unlocked_badge')
+                ->findOneBy([
+                    'user' => $user,
+                    'badge' => $badge
+                ]);
 
             if ($isUnlocked) {
                 $this->addFlash('error', sprintf('%s already has the badge "%s"',
@@ -68,7 +68,8 @@ class UnlockedBadgeController extends Controller
         }
 
         $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
-        $badges = $em->getRepository('AchievementBundle:Badge')->findAll();
+        $badges = $this->get('ironforge.achievement.repository.badge')
+            ->findAll();
         $badges = $serializer->serialize($badges, 'json');
 
         $users = $this->container->get('fos_user.user_manager')->findUsers();
@@ -93,16 +94,17 @@ class UnlockedBadgeController extends Controller
      */
     public function deleteAction(Request $request)
     {
-        $em = $this->get('doctrine.orm.default_entity_manager');
+        $badgeRepository = $this->get('ironforge.achievement.repository.badge');
 
         if ('POST' === $request->getMethod()) {
             $user = $this->container->get('fos_user.user_manager')->findUserByUsername($request->get('user'));
-            $badge = $em->getRepository('AchievementBundle:Badge')->findOneById($request->get('badge'));
+            $badge = $badgeRepository->findOneById($request->get('badge'));
 
-            $unlockedBadge = $em->getRepository('AchievementBundle:UnlockedBadge')->findOneBy([
-                'user' => $user,
-                'badge' => $badge
-            ]);
+            $unlockedBadge = $this->get('ironforge.achievement.repository.unlocked_badge')
+                ->findOneBy([
+                    'user' => $user,
+                    'badge' => $badge
+                ]);
 
             if (null === $unlockedBadge) {
                 $this->addFlash('error', sprintf('%s has no badge named "%s"', $user->getUsername(), $badge->getTitle()));
@@ -121,7 +123,7 @@ class UnlockedBadgeController extends Controller
         }
 
         $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
-        $badges = $em->getRepository('AchievementBundle:Badge')->findAll();
+        $badges = $badgeRepository->findAll();
         $badges = $serializer->serialize($badges, 'json');
 
         $users = $this->container->get('fos_user.user_manager')->findUsers();
