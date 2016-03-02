@@ -22,23 +22,3 @@ admin_badge_delete:
     path:     /{id}/delete
     defaults: { _controller: "ironforge.achievement.badge.controller:deleteAction" }
     methods:  DELETE
-
-admin_badge_give:
-    path:     /give
-    defaults: { _controller: "ironforge.achievement.badge.controller:giveAction" }
-    methods:  [GET]
-
-admin_badge_remove:
-    path:     /remove
-    defaults: { _controller: "ironforge.achievement.badge.controller:removeAction" }
-    methods:  [GET]
-
-admin_badge_give_process:
-    path:     /give
-    defaults: { _controller: "ironforge.achievement.badge.controller:giveProcessAction" }
-    methods:  [POST]
-
-admin_badge_remove_process:
-    path:     /remove
-    defaults: { _controller: "ironforge.achievement.badge.controller:removeProcessAction" }
-    methods:  [POST]

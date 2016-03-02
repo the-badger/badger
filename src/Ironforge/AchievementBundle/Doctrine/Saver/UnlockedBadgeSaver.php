@@ -2,6 +2,7 @@
 
 namespace Ironforge\AchievementBundle\Doctrine\Saver;
 
+use Doctrine\Common\Persistence\ObjectManager;
 use Ironforge\AchievementBundle\AchievementEvents;
 use Ironforge\AchievementBundle\Event\BadgeUnlockEvent;
 use Ironforge\StorageUtilsBundle\Saver\SaverInterface;

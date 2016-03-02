@@ -2,22 +2,16 @@
 
 namespace Ironforge\AchievementBundle\Controller;
 
-use Ironforge\AchievementBundle\AchievementEvents;
-use Ironforge\AchievementBundle\Entity\UnlockedBadge;
-use Ironforge\AchievementBundle\Event\BadgeUnlockEvent;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Ironforge\AchievementBundle\Entity\Badge;
 use Ironforge\AchievementBundle\Form\BadgeType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 /**
  * Badge controller for admin CRUD.
- * Handles giving process too.
  */
 class BadgeController extends Controller
 {
@@ -28,9 +22,9 @@ class BadgeController extends Controller
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $badges = $em->getRepository('AchievementBundle:Badge')->findAll();
+        $badges = $this->getDoctrine()
+            ->getRepository('AchievementBundle:Badge')
+            ->findAll();
 
         return $this->render('@Achievement/badges/index.html.twig', [
             'badges' => $badges,
@@ -57,9 +51,8 @@ class BadgeController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $badge->upload();
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($badge);
-            $em->flush();
+            $badgeSaver = $this->get('ironforge.achievements.saver.badge');
+            $badgeSaver->save($badge);
 
             return $this->redirectToRoute('admin_badge_show', ['id' => $badge->getId()]);
         }
@@ -106,9 +99,8 @@ class BadgeController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $badge->upload();
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($badge);
-            $em->flush();
+            $badgeSaver = $this->get('ironforge.achievements.saver.badge');
+            $badgeSaver->save($badge);
 
             return $this->redirectToRoute('admin_badge_edit', ['id' => $badge->getId()]);
         }
@@ -143,153 +135,11 @@ class BadgeController extends Controller
     }
 
     /**
-     * Display a form to give a Badge to a User.
-     *
-     * @return Response
-     */
-    public function giveAction()
-    {
-        $em = $this->container->get('doctrine.orm.default_entity_manager');
-
-        $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
-        $badges = $em->getRepository('AchievementBundle:Badge')->findAll();
-        $badges = $serializer->serialize($badges, 'json');
-
-        $users = $this->container->get('fos_user.user_manager')->findUsers();
-        $usernames = [];
-        foreach ($users as $user) {
-            $usernames[] = $user->getUsername();
-        }
-        $usernames = $serializer->serialize($usernames, 'json');
-
-        return $this->render('@Achievement/badges/give.html.twig', [
-            'badges' => $badges,
-            'users' => $usernames
-        ]);
-    }
-
-    /**
-     * Give a Badge to a User.
-     *
-     * @param Request $request
-     *
-     * @return RedirectResponse
-     */
-    public function giveProcessAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $validator = $this->get('validator');
-
-        $user = $this->container->get('fos_user.user_manager')->findUserByUsername($request->get('user'));
-        $badge = $em->getRepository('AchievementBundle:Badge')->findOneById($request->get('badge'));
-
-        $isUnlocked = $em->getRepository('AchievementBundle:UnlockedBadge')->findOneBy([
-            'user' => $user,
-            'badge' => $badge
-        ]);
-
-        if ($isUnlocked) {
-            $this->addFlash('error', sprintf('%s already has the badge "%s"',
-                $user->getUsername(),
-                $badge->getTitle()
-            ));
-
-            return $this->redirectToRoute('admin_badge_give');
-        }
-
-        $unlockedBadgeFactory = $this->get('ironforge.achievement.unlocked_badge.factory');
-        $unlocked = $unlockedBadgeFactory->create($user, $badge);
-
-        $errors = $validator->validate($unlocked);
-
-        if (0 === count($errors)) {
-            $em->persist($unlocked);
-            $em->flush();
-
-            $event = new BadgeUnlockEvent($unlocked);
-            $this->container->get('event_dispatcher')->dispatch(AchievementEvents::USER_UNLOCKS_BADGE, $event);
-
-            $this->addFlash('notice', sprintf(
-                '%s successfully received the badge "%s"!',
-                $user->getUsername(),
-                $badge->getTitle()
-            ));
-        } else {
-            $this->addFlash('error', (string) $errors);
-        }
-
-        return $this->redirectToRoute('admin_badge_give');
-    }
-
-    /**
-     * Display a form to remove a Badge from a User.
-     *
-     * @return Response
-     */
-    public function removeAction()
-    {
-        $em = $this->container->get('doctrine.orm.default_entity_manager');
-
-        $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
-        $badges = $em->getRepository('AchievementBundle:Badge')->findAll();
-        $badges = $serializer->serialize($badges, 'json');
-
-        $users = $this->container->get('fos_user.user_manager')->findUsers();
-        $usernames = [];
-        foreach ($users as $user) {
-            $usernames[] = $user->getUsername();
-        }
-        $usernames = $serializer->serialize($usernames, 'json');
-
-        return $this->render('@Achievement/badges/remove.html.twig', [
-            'badges' => $badges,
-            'users' => $usernames
-        ]);
-    }
-
-    /**
-     * Remove a Badge from a User.
-     *
-     * @param Request $request
-     *
-     * @return RedirectResponse
-     */
-    public function removeProcessAction(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-
-        $user = $this->container->get('fos_user.user_manager')->findUserByUsername($request->get('user'));
-        $badge = $em->getRepository('AchievementBundle:Badge')->findOneById($request->get('badge'));
-
-        $unlocked = $em->getRepository('AchievementBundle:UnlockedBadge')->findOneBy([
-            'user' => $user,
-            'badge' => $badge
-        ]);
-
-        if (null === $unlocked) {
-            $this->addFlash('error', sprintf('%s has no badge named "%s"', $user->getUsername(), $badge->getTitle()));
-
-            return $this->redirectToRoute('admin_badge_remove');
-        }
-
-        $em->remove($unlocked);
-        $em->flush();
-
-        $this->addFlash('notice', sprintf(
-            'Successfully removed the badge "%s" to the user "%s"!',
-            $badge->getTitle(),
-            $user->getUsername()
-        ));
-
-        return $this->redirectToRoute('admin_badge_remove');
-    }
-
-    /**
      * Creates a form to delete a Badge entity.
      *
      * @param Badge $achievement The Badge entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createDeleteForm(Badge $achievement)
     {
