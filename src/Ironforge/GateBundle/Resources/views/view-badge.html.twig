@@ -4,7 +4,7 @@
 <div class="ui main container ir-dashboard">
     <div class="ui grid">
         <div class="four wide column">
-            <div class="ui card {{ isUnlocked ? 'unlocked' : '' }}" >
+            <div class="ui card badge {{ isUnlocked ? 'unlocked' : '' }}" >
                 {% if isUnlocked %}
                 <div class="image" style="padding: 10px;">
                     <span class="ui left corner green label">
@@ -89,7 +89,7 @@
         $('#allunlocks').progress();
 
         {% if not isUnlocked and not isClaimed %}
-            $('.card .image').dimmer({on: 'hover'});
+            $('.card.badge .image').dimmer({on: 'hover'});
 
             $button = $('.claim');
             $button.click(function() {
