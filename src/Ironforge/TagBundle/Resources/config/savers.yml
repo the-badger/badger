@@ -1,0 +1,6 @@
+services:
+    ironforge.tags.saver.tag:
+        class: %ironforge.storage_utils.saver.base.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Ironforge\TagBundle\Entity\Tag'

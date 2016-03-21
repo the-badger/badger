@@ -1,0 +1,45 @@
+{% extends '@Gate/base-admin.html.twig' %}
+
+{% block body %}
+    <h1>Tag creation</h1>
+
+    {{ form_start(form, { 'attr': {'class': 'ui form'} }) }}
+    {{ form_errors(form) }}
+
+    <div class="ui field">
+        {{ form_label(form.name) }}
+        {{ form_errors(form.name) }}
+        {{ form_widget(form.name) }}
+    </div>
+
+    <div class="ui field">
+        {{ form_label(form.code) }}
+        {{ form_errors(form.code) }}
+        {{ form_widget(form.code) }}
+    </div>
+
+    <div class="ui clearing">
+        <button class="ui right floated primary button" type="submit">Create</button>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}
+
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function() {
+            $('#tag_name').on('input', function () {
+                var name = $('#tag_name').val();
+                // Credits: http://stackoverflow.com/questions/11815883/convert-non-ascii-characters-umlauts-accents-to-their-closest-ascii-equiva
+                var code = name.normalize('NFKD').toLowerCase()
+                    .replace(/[\u0300-\u036F]/g, '')
+                    .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
+                    .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
+                    .replace(/^-+|-+$/g, ''); // remove leading, trailing -
+
+                $('#tag_code').val(code);
+            });
+        });
+    </script>
+{% endblock %}

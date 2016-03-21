@@ -1,0 +1,4 @@
+services:
+#    tag.example:
+#        class: TagBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
