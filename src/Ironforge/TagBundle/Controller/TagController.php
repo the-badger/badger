@@ -61,6 +61,9 @@ class TagController extends Controller
     /**
      * Finds and displays a Tag entity.
      *
+     * @param Tag $tag
+     *
+     * @return Response
      */
     public function showAction(Tag $tag)
     {
@@ -75,17 +78,21 @@ class TagController extends Controller
     /**
      * Displays a form to edit an existing Tag entity.
      *
+     * @param Request $request
+     * @param Tag     $tag
+     *
+     * @return RedirectResponse|Response
      */
     public function editAction(Request $request, Tag $tag)
     {
         $deleteForm = $this->createDeleteForm($tag);
         $editForm = $this->createForm('Ironforge\TagBundle\Form\TagType', $tag);
+        $editForm->remove('createdAt');
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($tag);
-            $em->flush();
+            $tagSaver = $this->get('ironforge.tags.saver.tag');
+            $tagSaver->save($tag);
 
             return $this->redirectToRoute('admin_tag_edit', ['id' => $tag->getId()]);
         }
@@ -107,9 +114,8 @@ class TagController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($tag);
-            $em->flush();
+            $tagRemover = $this->get('ironforge.tags.remover.tag');
+            $tagRemover->remove($tag);
         }
 
         return $this->redirectToRoute('admin_tag_index');
