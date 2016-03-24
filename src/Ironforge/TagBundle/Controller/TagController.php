@@ -2,6 +2,7 @@
 
 namespace Ironforge\TagBundle\Controller;
 
+use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -107,6 +108,10 @@ class TagController extends Controller
     /**
      * Deletes a Tag entity.
      *
+     * @param Request $request
+     * @param Tag     $tag
+     *
+     * @return RedirectResponse
      */
     public function deleteAction(Request $request, Tag $tag)
     {
@@ -126,7 +131,7 @@ class TagController extends Controller
      *
      * @param Tag $tag The Tag entity
      *
-     * @return \Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createDeleteForm(Tag $tag)
     {
