@@ -2,9 +2,7 @@
 
 namespace Ironforge\AchievementBundle\Form;
 
-use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -23,6 +21,7 @@ class BadgeType extends AbstractType
                 'label' => 'Tagged in',
                 'multiple' => true,
                 'property' => 'name',
+                'required' => false,
                 'class' => 'Ironforge\TagBundle\Entity\Tag'
             ])
             ->add('imagePath')
