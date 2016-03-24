@@ -1,7 +1,3 @@
 tag_admin_tag:
     resource: "@TagBundle/Resources/config/routing/tag.yml"
     prefix:   /admin/tag
-
-tag_homepage:
-    path:     /
-    defaults: { _controller: TagBundle:Default:index }

@@ -20,9 +20,7 @@ class Tag implements TagInterface
     private $createdAt;
 
     /**
-     * Get id
-     *
-     * @return int
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -30,11 +28,7 @@ class Tag implements TagInterface
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Tag
+     * {@inheritdoc}
      */
     public function setName($name)
     {
@@ -44,9 +38,7 @@ class Tag implements TagInterface
     }
 
     /**
-     * Get name
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -54,11 +46,7 @@ class Tag implements TagInterface
     }
 
     /**
-     * Set code
-     *
-     * @param string $code
-     *
-     * @return Tag
+     * {@inheritdoc}
      */
     public function setCode($code)
     {
@@ -68,9 +56,7 @@ class Tag implements TagInterface
     }
 
     /**
-     * Get code
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getCode()
     {
@@ -78,11 +64,7 @@ class Tag implements TagInterface
     }
 
     /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Tag
+     * {@inheritdoc}
      */
     public function setCreatedAt(\DateTime $createdAt)
     {
@@ -92,9 +74,7 @@ class Tag implements TagInterface
     }
 
     /**
-     * Get createdAt
-     *
-     * @return \DateTime
+     * {@inheritdoc}
      */
     public function getCreatedAt()
     {
