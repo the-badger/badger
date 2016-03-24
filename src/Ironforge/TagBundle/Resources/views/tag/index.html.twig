@@ -18,7 +18,7 @@
         <tbody>
         {% for tag in tags %}
             <tr class="center aligned">
-                <td><a class="ui blue label" href="{{ path('admin_tag_show', { 'id': tag.id }) }}">{{ tag.name }}</a></td>
+                <td><a class="ui teal label" href="{{ path('admin_tag_show', { 'id': tag.id }) }}">{{ tag.name }}</a></td>
                 <td><pre>{{ tag.code }}</pre></td>
                 <td>{% if tag.createdAt %}{{ tag.createdAt|date('d/m/Y H:i') }}{% endif %}</td>
                 <td>

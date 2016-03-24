@@ -58,7 +58,7 @@ class BadgeController extends Controller
 
         return $this->render('@Achievement/badges/new.html.twig', [
             'badge' => $badge,
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 

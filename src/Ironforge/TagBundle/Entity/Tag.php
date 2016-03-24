@@ -5,7 +5,7 @@ namespace Ironforge\TagBundle\Entity;
 /**
  * Tag entity.
  */
-class Tag
+class Tag implements TagInterface
 {
     /** @var int */
     private $id;
@@ -84,7 +84,7 @@ class Tag
      *
      * @return Tag
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
 

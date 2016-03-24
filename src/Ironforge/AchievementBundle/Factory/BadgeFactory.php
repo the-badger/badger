@@ -2,6 +2,7 @@
 
 namespace Ironforge\AchievementBundle\Factory;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Ironforge\AchievementBundle\Entity\Badge;
 
 /**
@@ -14,6 +15,9 @@ class BadgeFactory implements BadgeFactoryInterface
      */
     public function create()
     {
-        return new Badge();
+        $badge = new Badge();
+        $badge->setTags(new ArrayCollection());
+
+        return $badge;
     }
 }

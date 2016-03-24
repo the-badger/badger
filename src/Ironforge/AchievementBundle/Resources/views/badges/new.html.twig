@@ -19,6 +19,12 @@
     </div>
 
     <div class="ui field">
+        {{ form_label(form.tags) }}
+        {{ form_errors(form.tags) }}
+        {{ form_widget(form.tags) }}
+    </div>
+
+    <div class="ui field">
         {{ form_label(form.file) }}
         {{ form_errors(form.file) }}
         {{ form_widget(form.file) }}
@@ -29,4 +35,12 @@
     </div>
 
     {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('#badge_tags').selectize({
+            plugins: ['remove_button'],
+        });
+    </script>
 {% endblock %}

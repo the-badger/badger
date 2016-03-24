@@ -29,6 +29,11 @@
         <div class="extra content">
             <small><i class="icon code"></i> {{ badge.id }}</small>
         </div>
+        <div class="extra content">
+            {% for tag in badge.tags %}
+                <span class="ui teal tiny label">{{ tag.name }}</span>
+            {% endfor %}
+        </div>
     </div>
     {% endfor %}
 </div>
