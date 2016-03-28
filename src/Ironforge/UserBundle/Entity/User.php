@@ -2,9 +2,11 @@
 
 namespace Ironforge\UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
+use Ironforge\TagBundle\Taggable\TaggableInterface;
 
-class User extends BaseUser
+class User extends BaseUser implements TaggableInterface
 {
     /** @var string */
     protected $id;
@@ -23,6 +25,9 @@ class User extends BaseUser
 
     /** @var string */
     protected $profilePicture;
+
+    /** @var ArrayCollection */
+    protected $tags;
 
     /**
      * @return string
@@ -102,5 +107,21 @@ class User extends BaseUser
     public function setProfilePicture($profilePicture)
     {
         $this->profilePicture = $profilePicture;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTags(ArrayCollection $tags)
+    {
+        $this->tags = $tags;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

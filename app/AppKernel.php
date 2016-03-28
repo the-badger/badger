@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Ironforge\AchievementBundle\AchievementBundle(),
             new Ironforge\GateBundle\GateBundle(),
             new Ironforge\StorageUtilsBundle\StorageUtilsBundle(),
+            new Ironforge\TagBundle\TagBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

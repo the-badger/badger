@@ -1,0 +1,6 @@
+parameters:
+    ironforge.tags.tag.factory.class: Ironforge\TagBundle\Factory\TagFactory
+
+services:
+    ironforge.tags.tag.factory:
+        class: %ironforge.tags.tag.factory.class%

@@ -17,6 +17,13 @@ class BadgeType extends AbstractType
         $builder
             ->add('title')
             ->add('description', 'textarea')
+            ->add('tags', 'entity', [
+                'label' => 'Tagged in',
+                'multiple' => true,
+                'property' => 'name',
+                'required' => false,
+                'class' => 'Ironforge\TagBundle\Entity\Tag'
+            ])
             ->add('imagePath')
         ;
     }
@@ -26,8 +33,8 @@ class BadgeType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'Ironforge\AchievementBundle\Entity\Badge'
-        ));
+        ]);
     }
 }

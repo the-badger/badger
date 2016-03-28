@@ -1,0 +1,34 @@
+{% extends '@Gate/base-admin.html.twig' %}
+
+{% block body %}
+    <h1>Tag list</h1>
+    <a href="{{ path('admin_tag_new') }}" class="ui right floated small primary labeled icon button">
+        <i class="plus icon"></i>Create Tag
+    </a>
+
+    <table class="ui celled table" style="margin-top: 65px;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Created at</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tag in tags %}
+            <tr class="center aligned">
+                <td><a class="ui teal label" href="{{ path('admin_tag_show', { 'id': tag.id }) }}">{{ tag.name }}</a></td>
+                <td><pre>{{ tag.code }}</pre></td>
+                <td>{% if tag.createdAt %}{{ tag.createdAt|date('d/m/Y H:i') }}{% endif %}</td>
+                <td>
+                    <div class="ui small basic icon buttons">
+                        <a href="{{ path('admin_tag_show', { 'id': tag.id }) }}" class="ui button"><i class="eye icon"></i></a>
+                        <a href="{{ path('admin_tag_edit', { 'id': tag.id }) }}" class="ui button"><i class="pencil icon"></i></a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

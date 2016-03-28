@@ -21,6 +21,7 @@
     "jquery": "^2.1.4",
     "requirejs": "^2.1.22",
     "select2": "^4.0.1",
+    "selectize": "^0.12.1",
     "semantic-ui-css": "^2.1.7",
     "underscore": "^1.8.3"
   },

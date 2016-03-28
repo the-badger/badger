@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{ asset('vendor/semantic-ui-css/semantic.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/dist/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/dist/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/dist/selectize.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/dist/selectize.default.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     {% block stylesheets %}{% endblock %}
@@ -33,6 +35,19 @@
                         <a href="{{ url('admin_unlocked_badge_delete') }}" class="item">Remove a Badge</a>
                     </div>
                 </div>
+                <div class="item">
+                    <div class="header">Tags</div>
+                    <div class="menu">
+                        <a href="{{ url('admin_tag_index') }}" class="item">List</a>
+                        <a href="{{ url('admin_tag_new') }}" class="item">Create</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="header">Users</div>
+                    <div class="menu">
+                        <a href="{{ url('admin_user_index') }}" class="item">List</a>
+                    </div>
+                </div>
                 <a href="{{ url('admin_claimed_badge_index') }}" class="item">
                     Claimed badges <i class="wait icon"></i>
                 </a>
@@ -52,6 +67,7 @@
 <script src="{{ asset('vendor/dist/underscore-min.js') }}"></script>
 <script src="{{ asset('vendor/semantic-ui-css/semantic.min.js') }}"></script>
 <script src="{{ asset('vendor/dist/select2.min.js') }}"></script>
+<script src="{{ asset('vendor/dist/selectize.min.js') }}"></script>
 
 {% block javascripts %}
 {% endblock %}

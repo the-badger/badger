@@ -1,0 +1,6 @@
+services:
+    ironforge.tags.remover.tag:
+        class: %ironforge.storage_utils.remover.base.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Ironforge\TagBundle\Entity\Tag'

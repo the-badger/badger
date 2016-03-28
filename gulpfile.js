@@ -11,6 +11,9 @@ gulp.task('install', function() {
         './node_modules/font-awesome/css/font-awesome.min.css',
         './node_modules/select2/dist/css/select2.min.css',
         './node_modules/select2/dist/js/select2.min.js',
+        './node_modules/selectize/dist/js/standalone/selectize.min.js',
+        './node_modules/selectize/dist/css/selectize.css',
+        './node_modules/selectize/dist/css/selectize.default.css',
         './node_modules/underscore/underscore-min.js'
     ]).pipe(gulp.dest('./web/vendor/dist/'));
 

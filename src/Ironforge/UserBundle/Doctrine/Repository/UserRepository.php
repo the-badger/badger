@@ -1,16 +1,17 @@
 <?php
 
-namespace Ironforge\UserBundle\Repository;
+namespace Ironforge\UserBundle\Doctrine\Repository;
 
 use Doctrine\ORM\EntityRepository;
+use Ironforge\UserBundle\Repository\UserRepositoryInterface;
 
 /**
  * @author Adrien Pétremann <petremann.adrien@gmail.com>
  */
-class UserRepository extends EntityRepository
+class UserRepository extends EntityRepository implements UserRepositoryInterface
 {
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function countAll()
     {
@@ -24,10 +25,7 @@ class UserRepository extends EntityRepository
     }
 
     /**
-     * @param string $order
-     * @param int    $limit
-     *
-     * @return int
+     * {@inheritdoc}
      */
     public function getSortedUserByUnlockedBadges($order = 'DESC', $limit = 7)
     {

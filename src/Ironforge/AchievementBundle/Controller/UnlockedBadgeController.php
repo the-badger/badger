@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
@@ -26,12 +27,25 @@ class UnlockedBadgeController extends Controller
      */
     public function newAction(Request $request)
     {
+        $badgeRepository = $this->get('ironforge.achievement.repository.badge');
+
         if ('POST' === $request->getMethod()) {
             $validator = $this->get('validator');
 
             $user = $this->container->get('fos_user.user_manager')->findUserByUsername($request->get('user'));
-            $badge = $this->get('ironforge.achievement.repository.badge')
-                ->findOneById($request->get('badge'));
+            $badge = $badgeRepository->findOneById($request->get('badge'));
+
+            $token = new UsernamePasswordToken($user, 'none', 'none', $user->getRoles());
+            $isUnlockable = $this->get('security.access.decision_manager')->decide($token, ['view'], $badge);
+
+            if (!$isUnlockable) {
+                $this->addFlash('error', sprintf('%s does not have access to badge "%s"',
+                    $user->getUsername(),
+                    $badge->getTitle()
+                ));
+
+                return $this->redirectToRoute('admin_unlocked_badge_new');
+            }
 
             $isUnlocked = $this->get('ironforge.achievement.repository.unlocked_badge')
                 ->findOneBy([
@@ -67,9 +81,12 @@ class UnlockedBadgeController extends Controller
             }
         }
 
-        $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
-        $badges = $this->get('ironforge.achievement.repository.badge')
-            ->findAll();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+        $serializer = new Serializer([$normalizer], [new JsonEncoder()]);
+        $badges = $badgeRepository->findAll();
         $badges = $serializer->serialize($badges, 'json');
 
         $users = $this->container->get('fos_user.user_manager')->findUsers();
@@ -122,7 +139,11 @@ class UnlockedBadgeController extends Controller
             ));
         }
 
-        $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+        $serializer = new Serializer([$normalizer], [new JsonEncoder()]);
         $badges = $badgeRepository->findAll();
         $badges = $serializer->serialize($badges, 'json');
 

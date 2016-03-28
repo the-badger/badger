@@ -19,6 +19,12 @@
     </div>
 
     <div class="ui field">
+        {{ form_label(edit_form.tags) }}
+        {{ form_errors(edit_form.tags) }}
+        {{ form_widget(edit_form.tags) }}
+    </div>
+
+    <div class="ui field">
         {{ form_label(edit_form.file) }}
         <img src="{{ badge.imageWebPath }}" alt=""/>
         {{ form_errors(edit_form.file) }}
@@ -31,15 +37,17 @@
 
     {{ form_end(edit_form) }}
 
-
-    {#{{ form_start(edit_form) }}#}
-        {#{{ form_widget(edit_form) }}#}
-        {#<input type="submit" value="Edit" />#}
-    {#{{ form_end(edit_form) }}#}
-
     {{ form_start(delete_form) }}
     <div class="ui clearing">
         <button class="ui right floated red button" type="submit">Delete</button>
     </div>
     {{ form_end(delete_form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('#badge_tags').selectize({
+            plugins: ['remove_button'],
+        });
+    </script>
 {% endblock %}

@@ -7,6 +7,7 @@ use Ironforge\AchievementBundle\AchievementEvents;
 use Ironforge\AchievementBundle\Event\BadgeUnlockEvent;
 use Ironforge\StorageUtilsBundle\Saver\SaverInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Security\Acl\Util\ClassUtils;
 
 /**
  * @author Adrien Pétremann <adrien.petremann@akeneo.com>
@@ -47,7 +48,7 @@ class UnlockedBadgeSaver implements SaverInterface
                 sprintf(
                     'Expects a "%s", "%s" provided.',
                     $this->savedClass,
-                    ClassUtils::getClass($unlockedBadge)
+                    ClassUtils::getRealClass($unlockedBadge)
                 )
             );
         }

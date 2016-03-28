@@ -23,3 +23,6 @@ gate_bundle:
 
 achievement_bundle:
     resource: '@AchievementBundle/Resources/config/routing.yml'
+
+tag_bundle:
+    resource: "@TagBundle/Resources/config/routing.yml"

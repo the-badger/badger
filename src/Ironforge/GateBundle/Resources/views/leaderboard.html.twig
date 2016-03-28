@@ -9,7 +9,7 @@
             <p style="color: #C3C3C3;">Maybe you've seen them. Maybe you've even talked to them.<br/>Here are the most awarded members of Ironforge!</p>
         </div>
 
-        <div class="ui divided items" style="padding: 0px 280px;">
+        <div class="ui divided items" style="padding: 0 280px;">
             {% for user in users %}
             <div class="item" style="padding-left: 25px; {% if app.user.username == user.user.username %}border-left: 5px solid #D5AD6D;{% endif %}">
                 <span style="display: inline-block; padding-top: 17px; padding-right: 25px; color: #A9A9A9;">#{{ loop.index }}</span>

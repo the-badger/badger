@@ -1,0 +1,50 @@
+{% extends '@Gate/base-admin.html.twig' %}
+
+{% block body %}
+    <h1>Tag edit</h1>
+
+    {{ form_start(edit_form, { 'attr': {'class': 'ui form'} }) }}
+    {{ form_errors(edit_form) }}
+
+    <div class="ui field">
+        {{ form_label(edit_form.name) }}
+        {{ form_errors(edit_form.name) }}
+        {{ form_widget(edit_form.name) }}
+    </div>
+
+    <div class="ui field">
+        {{ form_label(edit_form.code) }}
+        {{ form_errors(edit_form.code) }}
+        {{ form_widget(edit_form.code) }}
+    </div>
+
+    <div class="ui clearing">
+        <button class="ui right floated primary button" type="submit">Edit</button>
+    </div>
+
+    {{ form_end(edit_form) }}
+
+    {{ form_start(delete_form) }}
+    <div class="ui clearing">
+        <button class="ui right floated red button" type="submit">Delete</button>
+    </div>
+    {{ form_end(delete_form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function() {
+            $('#tag_name').on('input', function () {
+                var name = $('#tag_name').val();
+                // Credits: http://stackoverflow.com/questions/11815883/convert-non-ascii-characters-umlauts-accents-to-their-closest-ascii-equiva
+                var code = name.normalize('NFKD').toLowerCase()
+                        .replace(/[\u0300-\u036F]/g, '')
+                        .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
+                        .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
+                        .replace(/^-+|-+$/g, ''); // remove leading, trailing -
+
+                $('#tag_code').val(code);
+            });
+        });
+    </script>
+{% endblock %}

@@ -2,12 +2,14 @@
 
 namespace Ironforge\AchievementBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Ironforge\TagBundle\Taggable\TaggableInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Badge entity.
  */
-class Badge
+class Badge implements TaggableInterface
 {
     /** @var string */
     private $file;
@@ -23,6 +25,9 @@ class Badge
 
     /** @var string */
     protected $imagePath;
+
+    /** @var ArrayCollection */
+    protected $tags;
 
     /**
      * @return string
@@ -162,5 +167,21 @@ class Badge
 
         // clean up the file property as you won't need it anymore
         $this->file = null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTags(ArrayCollection $tags)
+    {
+        $this->tags = $tags;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }
