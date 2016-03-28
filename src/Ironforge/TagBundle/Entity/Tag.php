@@ -19,6 +19,9 @@ class Tag implements TagInterface
     /** @var \DateTime */
     private $createdAt;
 
+    /** @var Badge[] */
+    private $badges;
+
     /**
      * {@inheritdoc}
      */
@@ -79,6 +82,22 @@ class Tag implements TagInterface
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBadges()
+    {
+        return $this->badges;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setBadges($badges)
+    {
+        $this->badges = $badges;
     }
 }
 

@@ -156,8 +156,8 @@ class DefaultController extends Controller
      */
     public function badgeListAction(Request $request)
     {
-        $badges = $this->get('ironforge.achievement.repository.badge')->findAll();
         $user = $this->getUser();
+        $userTags = $user->getTags();
 
         $unlockedBadgeIds = $this->get('ironforge.achievement.repository.unlocked_badge')
             ->getUnlockedBadgeIdsByUser($user);
@@ -166,7 +166,7 @@ class DefaultController extends Controller
             ->getBadgeIdsClaimedByUser($user);
 
         return $this->render('@Gate/badges.html.twig', [
-            'badges' => $badges,
+            'tags' => $userTags,
             'unlockedBadgesIds' => $unlockedBadgeIds,
             'claimedBadgeIds' => $claimedBadgeIds
         ]);

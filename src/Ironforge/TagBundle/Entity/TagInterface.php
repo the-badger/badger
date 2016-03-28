@@ -61,4 +61,14 @@ interface TagInterface
      * @return \DateTime
      */
     public function getCreatedAt();
+
+    /**
+     * @return Badge[]
+     */
+    public function getBadges();
+
+    /**
+     * @param Badge[] $badges
+     */
+    public function setBadges($badges);
 }
