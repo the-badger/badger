@@ -1,5 +1,11 @@
 # 0.X.X
 
+## Features
+
+- Tags. User & badges now belong to tags, they are kind of "groups" to better organize your community!
+- Admin interface to view users & delete them (just in case, don't worry!)
+- Admin CRUD for tags
+
 # 0.3.1
 
 ## DX
