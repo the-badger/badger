@@ -48,6 +48,8 @@ class UnlockedBadgeRepository extends EntityRepository implements UnlockedBadgeR
             ->leftjoin('ub.badge', 'b')
             ->leftJoin('b.tags', 't')
             ->where('t.id IN (:ids)')->setParameter('ids', $tagIds, Connection::PARAM_STR_ARRAY)
+            ->orderBy('ub.unlockedDate', 'desc')
+            ->setMaxResults(15)
             ->groupBy('ub.id');
 
         return $qb->getQuery()->getResult(Query::HYDRATE_OBJECT);

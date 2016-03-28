@@ -6,8 +6,7 @@
             <div class="four wide column">
                 <div class="ui card">
                     <div class="content">
-                        <div class="right floated meta">Core Team</div>
-                        <img class="ui avatar image" src="{{ user.profilePicture }}"> {{ user.username }}
+                        <img class="ui avatar image" src="{{ user.profilePicture }}"> <b>{{ user.username }}</b>
                     </div>
                     <div class="content" style="text-align: center;">
                         <div class="ui small statistic">
@@ -15,13 +14,17 @@
                                 {{ unlockedBadges|length }}
                             </div>
                             <div class="label">
-                                of {{ badgesCount }} badges
-                            </div>
-                            <div class="ui tiny indicating progress" data-percent="{{ percentUnlock }}" id="allunlocks" style="margin: 5px 0;">
-                                <div class="bar" style="min-width: 0;"></div>
+                                badges
                             </div>
                         </div>
                     </div>
+                    {% if user.tags|length > 0 %}
+                    <div class="extra content">
+                        {% for tag in user.tags %}
+                            <span class="ui teal small label">{{ tag.name }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="twelve wide column">
@@ -69,10 +72,4 @@
             </div>
         </div>
     </div>
-{% endblock %}
-
-{% block javascripts %}
-    <script>
-        $('#allunlocks').progress();
-    </script>
 {% endblock %}

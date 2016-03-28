@@ -49,29 +49,35 @@ class DefaultController extends Controller
      */
     public function userProfileAction(Request $request, $username)
     {
-        $badgesCount = $this->get('ironforge.achievement.repository.badge')->countAll();
         $user = $this->getDoctrine()->getRepository('UserBundle:User')->findOneBy([
             'username' => $username
         ]);
 
         $unlockedBadges = [];
-        $percentUnlock = 0;
 
         if ($user) {
             $unlockedBadges = $this->get('ironforge.achievement.repository.unlocked_badge')->findBy([
                 'user' => $user
             ]);
 
-            if ($unlockedBadges) {
-                $percentUnlock = ceil(100 * count($unlockedBadges) / $badgesCount);
+            foreach ($unlockedBadges as $key => $unlockedBadge) {
+                if (!$this->get('security.authorization_checker')->isGranted('view', $unlockedBadge->getBadge())) {
+                    unset($unlockedBadges[$key]);
+                }
+            }
+        }
+
+        $displayedTags = $user->getTags();
+
+        foreach ($displayedTags as $key => $userTag) {
+            if (!$this->get('security.authorization_checker')->isGranted('view', $userTag)) {
+                unset($displayedTags[$key]);
             }
         }
 
         return $this->render('@Gate/user-profile.html.twig', [
             'user'           => $user,
-            'unlockedBadges' => $unlockedBadges,
-            'percentUnlock'  => $percentUnlock,
-            'badgesCount'    => $badgesCount
+            'unlockedBadges' => $unlockedBadges
         ]);
     }
 

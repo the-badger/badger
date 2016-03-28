@@ -1,6 +1,16 @@
+parameters:
+    ironforge.tag.tagged_entity_voter.class: Ironforge\TagBundle\Security\TaggedEntityVoter
+    ironforge.tag.tag_voter.class: Ironforge\TagBundle\Security\TagVoter
+
 services:
-    app.post_voter:
-        class: Ironforge\TagBundle\Security\TaggedEntityVoter
+    ironforge.tag.tagged_entity_voter:
+        class: %ironforge.tag.tagged_entity_voter.class%
+        tags:
+            - { name: security.voter }
+        public: false
+
+    ironforge.tag.tag_voter:
+        class: %ironforge.tag.tag_voter.class%
         tags:
             - { name: security.voter }
         public: false
