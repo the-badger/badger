@@ -20,7 +20,7 @@ class UnlockedBadge
     /** @var Badge */
     protected $badge;
 
-    /** @var DateTime */
+    /** @var \DateTime */
     protected $unlockedDate;
 
     /**
@@ -72,7 +72,7 @@ class UnlockedBadge
     }
 
     /**
-     * @return DateTime
+     * @return \DateTime
      */
     public function getUnlockedDate()
     {
@@ -80,9 +80,9 @@ class UnlockedBadge
     }
 
     /**
-     * @param DateTime $unlockedDate
+     * @param \DateTime $unlockedDate
      */
-    public function setUnlockedDate($unlockedDate)
+    public function setUnlockedDate(\DateTime $unlockedDate)
     {
         $this->unlockedDate = $unlockedDate;
     }

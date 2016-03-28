@@ -33,8 +33,8 @@ class BadgeType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults(array(
+        $resolver->setDefaults([
             'data_class' => 'Ironforge\AchievementBundle\Entity\Badge'
-        ));
+        ]);
     }
 }

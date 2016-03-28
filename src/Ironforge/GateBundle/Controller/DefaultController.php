@@ -2,7 +2,6 @@
 
 namespace Ironforge\GateBundle\Controller;
 
-use Ironforge\AchievementBundle\Entity\ClaimedBadge;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;

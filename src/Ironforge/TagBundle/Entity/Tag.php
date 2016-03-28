@@ -2,6 +2,8 @@
 
 namespace Ironforge\TagBundle\Entity;
 
+use Ironforge\AchievementBundle\Entity\Badge;
+
 /**
  * Tag entity.
  */
@@ -95,7 +97,7 @@ class Tag implements TagInterface
     /**
      * {@inheritdoc}
      */
-    public function setBadges($badges)
+    public function setBadges(array $badges)
     {
         $this->badges = $badges;
     }

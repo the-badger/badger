@@ -2,6 +2,8 @@
 
 namespace Ironforge\TagBundle\Entity;
 
+use Ironforge\AchievementBundle\Entity\Badge;
+
 /**
  * @author Adrien Pétremann <adrien.petremann@akeneo.com>
  */
@@ -70,5 +72,5 @@ interface TagInterface
     /**
      * @param Badge[] $badges
      */
-    public function setBadges($badges);
+    public function setBadges(array $badges);
 }

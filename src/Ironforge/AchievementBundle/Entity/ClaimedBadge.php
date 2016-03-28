@@ -20,7 +20,7 @@ class ClaimedBadge
     /** @var Badge */
     protected $badge;
 
-    /** @var DateTime */
+    /** @var \DateTime */
     protected $claimedDate;
 
     /**

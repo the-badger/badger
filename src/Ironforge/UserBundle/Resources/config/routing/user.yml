@@ -8,11 +8,6 @@ admin_user_show:
     defaults: { _controller: "UserBundle:User:show" }
     methods:  GET
 
-admin_user_new:
-    path:     /new
-    defaults: { _controller: "UserBundle:User:new" }
-    methods:  [GET, POST]
-
 admin_user_edit:
     path:     /{id}/edit
     defaults: { _controller: "UserBundle:User:edit" }

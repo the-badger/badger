@@ -2,7 +2,6 @@
 
 namespace Ironforge\UserBundle;
 
-use Ironforge\UserBundle\DepencyInjection\UserExtension;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**

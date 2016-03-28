@@ -39,7 +39,7 @@ class ClaimedBadgeController extends Controller
             ->find($id);
 
         if (null === $claimedBadge) {
-            throw new \LogicException(sprint('No ClaimedBadge entity with id %s', $id));
+            throw new \LogicException(sprintf('No ClaimedBadge entity with id %s', $id));
         }
 
         $badgeTitle = $claimedBadge->getBadge()->getTitle();
@@ -70,7 +70,7 @@ class ClaimedBadgeController extends Controller
             ->find($id);
 
         if (null === $claimedBadge) {
-            throw new \LogicException(sprint('No ClaimedBadge entity with id %s', $id));
+            throw new \LogicException(sprintf('No ClaimedBadge entity with id %s', $id));
         }
 
         $user = $claimedBadge->getUser();
