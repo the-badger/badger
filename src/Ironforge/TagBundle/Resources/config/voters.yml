@@ -1,0 +1,6 @@
+services:
+    app.post_voter:
+        class: Ironforge\TagBundle\Security\TaggedEntityVoter
+        tags:
+            - { name: security.voter }
+        public: false
