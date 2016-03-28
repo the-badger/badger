@@ -15,10 +15,8 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $lastUnlockedBadges = $this->get('ironforge.achievement.repository.unlocked_badge')->findBy(
-            [],
-            ['unlockedDate' => 'DESC'],
-            15
+        $lastUnlockedBadges = $this->get('ironforge.achievement.repository.unlocked_badge')->findByTags(
+            $this->getUser()->getTags()->toArray()
         );
 
         return $this->render('@Gate/home.html.twig', [
@@ -85,6 +83,10 @@ class DefaultController extends Controller
         $badge = $this->get('ironforge.achievement.repository.badge')->findOneBy([
             'id' => $id
         ]);
+
+        if (!$this->get('security.authorization_checker')->isGranted('view', $badge)) {
+            throw $this->createNotFoundException();
+        }
 
         if (null === $badge) {
             throw $this->createNotFoundException();

@@ -2,8 +2,9 @@
 
 namespace Ironforge\AchievementBundle\Doctrine\Repository;
 
+use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;
-use Ironforge\AchievementBundle\Entity\Badge;
+use Doctrine\ORM\Query;
 use Ironforge\AchievementBundle\Repository\UnlockedBadgeRepositoryInterface;
 use Ironforge\UserBundle\Entity\User;
 
@@ -29,5 +30,26 @@ class UnlockedBadgeRepository extends EntityRepository implements UnlockedBadgeR
         $queryResult = $qb->getQuery()->getScalarResult();
 
         return array_column($queryResult, 'id');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findByTags(array $tags)
+    {
+        $tagIds = [];
+        foreach ($tags as $tag) {
+            $tagIds[] = $tag->getId();
+        }
+
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('ub')
+            ->from('AchievementBundle:UnlockedBadge', 'ub')
+            ->leftjoin('ub.badge', 'b')
+            ->leftJoin('b.tags', 't')
+            ->where('t.id IN (:ids)')->setParameter('ids', $tagIds, Connection::PARAM_STR_ARRAY)
+            ->groupBy('ub.id');
+
+        return $qb->getQuery()->getResult(Query::HYDRATE_OBJECT);
     }
 }
