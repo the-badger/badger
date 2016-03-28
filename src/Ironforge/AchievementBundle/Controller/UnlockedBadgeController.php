@@ -81,7 +81,11 @@ class UnlockedBadgeController extends Controller
             }
         }
 
-        $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+        $serializer = new Serializer([$normalizer], [new JsonEncoder()]);
         $badges = $badgeRepository->findAll();
         $badges = $serializer->serialize($badges, 'json');
 
@@ -135,7 +139,11 @@ class UnlockedBadgeController extends Controller
             ));
         }
 
-        $serializer = new Serializer([new ObjectNormalizer()], [new JsonEncoder()]);
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+        $serializer = new Serializer([$normalizer], [new JsonEncoder()]);
         $badges = $badgeRepository->findAll();
         $badges = $serializer->serialize($badges, 'json');
 

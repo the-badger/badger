@@ -23,6 +23,7 @@ Ironforge\AchievementBundle\Entity\Badge:
     manyToMany:
         tags:
             targetEntity: Ironforge\TagBundle\Entity\Tag
+            inversedBy: badges
             joinTable:
                 name: badges_tags
                 joinColumns:

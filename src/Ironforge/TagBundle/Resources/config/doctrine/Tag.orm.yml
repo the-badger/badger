@@ -21,11 +21,4 @@ Ironforge\TagBundle\Entity\Tag:
     manyToMany:
         badges:
             targetEntity: Ironforge\AchievementBundle\Entity\Badge
-            joinTable:
-                name: badges_tags
-                joinColumns:
-                    tag_id:
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    badge_id:
-                        referencedColumnName: id
+            mappedBy: tags
