@@ -139,6 +139,10 @@ class DefaultController extends Controller
             return new JsonResponse('No badge with this id.', 400);
         }
 
+        if (!$this->get('security.authorization_checker')->isGranted('view', $badge)) {
+            return new JsonResponse('No badge with this id.', 400);
+        }
+
         $claimedBadge = $this->get('badger.game.repository.claimed_badge')->findOneBy([
             'user' => $user,
             'badge' => $badge
