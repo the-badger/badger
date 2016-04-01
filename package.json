@@ -1,5 +1,5 @@
 {
-  "name": "ironforge",
+  "name": "badger",
   "version": "0.1.0",
   "description": "Some Akeneo stuff",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/akeneo/ironforge.git"
+    "url": "https://github.com/akeneo/badger.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/akeneo/ironforge/issues"
+    "url": "https://github.com/akeneo/badger/issues"
   },
-  "homepage": "https://github.com/akeneo/ironforge",
+  "homepage": "https://github.com/akeneo/badger",
   "dependencies": {
     "font-awesome": "^4.5.0",
     "jquery": "^2.1.4",

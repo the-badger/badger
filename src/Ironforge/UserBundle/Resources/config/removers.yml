@@ -1,6 +1,0 @@
-services:
-    ironforge.user.remover.user:
-        class: %ironforge.storage_utils.remover.base.class%
-        arguments:
-            - '@doctrine.orm.entity_manager'
-            - 'Ironforge\UserBundle\Entity\User'

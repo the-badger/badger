@@ -30,7 +30,7 @@ security:
                 oauth_user_provider:
                     # This is a custom user provider, created from FOSUBUserProvider - will manage the
                     # automatic user registration on your site, with data from the provider (facebook. google, etc.)
-                    service: ironforge.user_bundle.security.user_provider
+                    service: badger.user_bundle.security.user_provider
             logout: true
             anonymous: true
 
