@@ -11,5 +11,12 @@ use Doctrine\Common\Persistence\ObjectRepository;
  */
 interface TagRepositoryInterface extends ObjectRepository
 {
-
+    /**
+     * Find if there is already a tag with isDefault = true
+     *
+     * @param array $fields
+     *
+     * @return array
+     */
+    public function findByUniqueIsDefault(array $fields);
 }
