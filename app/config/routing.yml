@@ -21,8 +21,8 @@ user_bundle:
 gate_bundle:
     resource: '@GateBundle/Resources/config/routing.yml'
 
-achievement_bundle:
-    resource: '@AchievementBundle/Resources/config/routing.yml'
+game_bundle:
+    resource: '@GameBundle/Resources/config/routing.yml'
 
 tag_bundle:
     resource: "@TagBundle/Resources/config/routing.yml"

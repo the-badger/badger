@@ -1,0 +1,14 @@
+parameters:
+    ironforge.game.badge.factory.class: Ironforge\GameBundle\Factory\BadgeFactory
+    ironforge.game.unlocked_badge.factory.class: Ironforge\GameBundle\Factory\UnlockedBadgeFactory
+    ironforge.game.claimed_badge.factory.class: Ironforge\GameBundle\Factory\ClaimedBadgeFactory
+
+services:
+    ironforge.game.badge.factory:
+        class: %ironforge.game.badge.factory.class%
+
+    ironforge.game.unlocked_badge.factory:
+        class: %ironforge.game.unlocked_badge.factory.class%
+
+    ironforge.game.claimed_badge.factory:
+        class: %ironforge.game.claimed_badge.factory.class%

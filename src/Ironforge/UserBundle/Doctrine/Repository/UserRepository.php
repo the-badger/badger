@@ -32,7 +32,7 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('u AS user, COUNT(ub.id) AS nbUnlockedBadges')
             ->from('UserBundle:User', 'u')
-            ->leftJoin('AchievementBundle:UnlockedBadge', 'ub')
+            ->leftJoin('GameBundle:UnlockedBadge', 'ub')
             ->where('ub.user = u')
             ->setMaxResults($limit)
             ->orderBy('nbUnlockedBadges', $order)

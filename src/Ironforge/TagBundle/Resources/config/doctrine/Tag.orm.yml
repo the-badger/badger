@@ -20,5 +20,5 @@ Ironforge\TagBundle\Entity\Tag:
             column: created_at
     manyToMany:
         badges:
-            targetEntity: Ironforge\AchievementBundle\Entity\Badge
+            targetEntity: Ironforge\GameBundle\Entity\Badge
             mappedBy: tags

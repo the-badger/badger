@@ -2,7 +2,7 @@
 
 namespace Ironforge\TagBundle\Entity;
 
-use Ironforge\AchievementBundle\Entity\Badge;
+use Ironforge\GameBundle\Entity\Badge;
 
 /**
  * Tag entity.

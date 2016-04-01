@@ -1,0 +1,26 @@
+parameters:
+    ironforge.game.repository.badge.class: Ironforge\GameBundle\Doctrine\Repository\BadgeRepository
+    ironforge.game.repository.claimed_badge.class: Ironforge\GameBundle\Doctrine\Repository\ClaimedBadgeRepository
+    ironforge.game.repository.unlocked_badge.class: Ironforge\GameBundle\Doctrine\Repository\UnlockedBadgeRepository
+
+services:
+    ironforge.game.repository.badge:
+        class: %ironforge.game.repository.badge.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Ironforge\GameBundle\Entity\Badge
+
+    ironforge.game.repository.claimed_badge:
+        class: %ironforge.game.repository.claimed_badge.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Ironforge\GameBundle\Entity\ClaimedBadge
+
+    ironforge.game.repository.unlocked_badge:
+        class: %ironforge.game.repository.unlocked_badge.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Ironforge\GameBundle\Entity\UnlockedBadge

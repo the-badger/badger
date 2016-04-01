@@ -14,7 +14,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $lastUnlockedBadges = $this->get('ironforge.achievement.repository.unlocked_badge')->findByTags(
+        $lastUnlockedBadges = $this->get('ironforge.game.repository.unlocked_badge')->findByTags(
             $this->getUser()->getTags()->toArray()
         );
 
@@ -55,7 +55,7 @@ class DefaultController extends Controller
         $unlockedBadges = [];
 
         if ($user) {
-            $unlockedBadges = $this->get('ironforge.achievement.repository.unlocked_badge')->findBy([
+            $unlockedBadges = $this->get('ironforge.game.repository.unlocked_badge')->findBy([
                 'user' => $user
             ]);
 
@@ -85,7 +85,7 @@ class DefaultController extends Controller
      */
     public function badgeViewAction(Request $request, $id)
     {
-        $badge = $this->get('ironforge.achievement.repository.badge')->findOneBy([
+        $badge = $this->get('ironforge.game.repository.badge')->findOneBy([
             'id' => $id
         ]);
 
@@ -101,7 +101,7 @@ class DefaultController extends Controller
         $usersCount = $this->getDoctrine()->getRepository('UserBundle:User')->countAll();
         $percentUnlock = 0;
 
-        $unlockedBadges = $this->get('ironforge.achievement.repository.unlocked_badge')->findBy([
+        $unlockedBadges = $this->get('ironforge.game.repository.unlocked_badge')->findBy([
             'badge' => $badge
         ]);
 
@@ -109,7 +109,7 @@ class DefaultController extends Controller
             return $unlock->getUser()->getId() === $user->getId();
         });
 
-        $isClaimed = null !== $this->get('ironforge.achievement.repository.claimed_badge')->findOneBy([
+        $isClaimed = null !== $this->get('ironforge.game.repository.claimed_badge')->findOneBy([
             'badge' => $badge,
             'user' => $user
         ]);
@@ -133,13 +133,13 @@ class DefaultController extends Controller
     public function claimBadgeAction($id)
     {
         $user = $this->getUser();
-        $badge = $this->get('ironforge.achievement.repository.badge')->find($id);
+        $badge = $this->get('ironforge.game.repository.badge')->find($id);
 
         if (null === $badge) {
             return new JsonResponse('No badge with this id.', 400);
         }
 
-        $claimedBadge = $this->get('ironforge.achievement.repository.claimed_badge')->findOneBy([
+        $claimedBadge = $this->get('ironforge.game.repository.claimed_badge')->findOneBy([
             'user' => $user,
             'badge' => $badge
         ]);
@@ -148,7 +148,7 @@ class DefaultController extends Controller
             return new JsonResponse('This badge is already claimed.', 400);
         }
 
-        $claimedBadgeFactory = $this->get('ironforge.achievement.claimed_badge.factory');
+        $claimedBadgeFactory = $this->get('ironforge.game.claimed_badge.factory');
         $claimedBadge = $claimedBadgeFactory->create($user, $badge);
 
         $em = $this->getDoctrine()->getManager();
@@ -166,10 +166,10 @@ class DefaultController extends Controller
         $user = $this->getUser();
         $userTags = $user->getTags();
 
-        $unlockedBadgeIds = $this->get('ironforge.achievement.repository.unlocked_badge')
+        $unlockedBadgeIds = $this->get('ironforge.game.repository.unlocked_badge')
             ->getUnlockedBadgeIdsByUser($user);
 
-        $claimedBadgeIds = $this->get('ironforge.achievement.repository.claimed_badge')
+        $claimedBadgeIds = $this->get('ironforge.game.repository.claimed_badge')
             ->getBadgeIdsClaimedByUser($user);
 
         return $this->render('@Gate/badges.html.twig', [

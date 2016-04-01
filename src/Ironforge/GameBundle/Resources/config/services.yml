@@ -1,0 +1,30 @@
+parameters:
+    ironforge.game.badge.controller.class: Ironforge\GameBundle\Controller\BadgeController
+    ironforge.game.claimed_badge.controller.class: Ironforge\GameBundle\Controller\ClaimedBadgeController
+    ironforge.game.listener.class: Ironforge\GameBundle\EventListener\UnlockBadgeListener
+    ironforge.notifier.slack.class: Ironforge\GameBundle\Notifier\SlackNotifier
+
+services:
+    ironforge.game.badge.controller:
+        class: %ironforge.game.badge.controller.class%
+        calls:
+            - [ setContainer, [ @service_container ] ]
+
+    ironforge.game.claimed_badge.controller:
+        class: %ironforge.game.claimed_badge.controller.class%
+        calls:
+            - [ setContainer, [ @service_container ] ]
+
+    ironforge.game.listener:
+        class: %ironforge.game.listener.class%
+        arguments:
+            - '@router'
+            - '@logger'
+            - '@ironforge.notifier.slack'
+        tags:
+            - { name: kernel.event_listener, event: game.user_unlocks_badge, method: onUnlockBadge }
+
+    ironforge.notifier.slack:
+        class: %ironforge.notifier.slack.class%
+        arguments:
+            - '%slack_webhook_url%'

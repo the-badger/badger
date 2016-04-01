@@ -1,0 +1,20 @@
+parameters:
+    ironforge.game.badge.controller.class: Ironforge\GameBundle\Controller\BadgeController
+    ironforge.game.claimed_badge.controller.class: Ironforge\GameBundle\Controller\ClaimedBadgeController
+    ironforge.game.unlocked_badge.controller.class: Ironforge\GameBundle\Controller\UnlockedBadgeController
+
+services:
+    ironforge.game.badge.controller:
+        class: %ironforge.game.badge.controller.class%
+        calls:
+            - [ setContainer, [ @service_container ] ]
+
+    ironforge.game.claimed_badge.controller:
+        class: %ironforge.game.claimed_badge.controller.class%
+        calls:
+            - [ setContainer, [ @service_container ] ]
+
+    ironforge.game.unlocked_badge.controller:
+        class: %ironforge.game.unlocked_badge.controller.class%
+        calls:
+            - [ setContainer, [ @service_container ] ]

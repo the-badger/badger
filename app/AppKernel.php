@@ -18,13 +18,13 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Ironforge\UserBundle\UserBundle(),
-            new Ironforge\AchievementBundle\AchievementBundle(),
+            new Ironforge\GameBundle\GameBundle(),
             new Ironforge\GateBundle\GateBundle(),
             new Ironforge\StorageUtilsBundle\StorageUtilsBundle(),
             new Ironforge\TagBundle\TagBundle(),
         );
 
-        if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
+        if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();

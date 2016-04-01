@@ -1,0 +1,24 @@
+Ironforge\GameBundle\Entity\UnlockedBadge:
+    type: entity
+    table: unlocked_badges
+    repositoryClass: Ironforge\GameBundle\Doctrine\Repository\UnlockedBadgeRepository
+    fields:
+        id:
+            id: true
+            type: guid
+            generator:
+                strategy: UUID
+        unlockedDate:
+            type: datetime
+            nullable: false
+    manyToOne:
+        user:
+            targetEntity: Ironforge\UserBundle\Entity\User
+            joinColumn:
+                user_id:
+                    referencedColumnName: id
+        badge:
+            targetEntity: Ironforge\GameBundle\Entity\Badge
+            joinColumn:
+                badge_id:
+                    referencedColumnName: id
