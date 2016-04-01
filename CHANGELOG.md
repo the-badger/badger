@@ -1,4 +1,8 @@
-# 0.X.X
+# 0.4.0
+
+## DX
+
+- Update namespace to Badger instead of Ironforge
 
 ## Features
 
