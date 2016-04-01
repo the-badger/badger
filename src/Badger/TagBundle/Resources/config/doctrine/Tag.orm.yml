@@ -15,6 +15,9 @@ Badger\TagBundle\Entity\Tag:
             type: string
             length: 255
             unique: true
+        isDefault:
+            type: boolean
+            name: is_default
         createdAt:
             type: datetime
             column: created_at

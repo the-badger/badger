@@ -18,6 +18,9 @@ class Tag implements TagInterface
     /** @var string */
     private $code;
 
+    /** @var bool */
+    private $isDefault;
+
     /** @var \DateTime */
     private $createdAt;
 
@@ -66,6 +69,24 @@ class Tag implements TagInterface
     public function getCode()
     {
         return $this->code;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setIsDefault($isDefault)
+    {
+        $this->isDefault = $isDefault;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isDefault()
+    {
+        return $this->isDefault;
     }
 
     /**
