@@ -1,0 +1,30 @@
+parameters:
+    badger.game.badge.controller.class: Badger\GameBundle\Controller\BadgeController
+    badger.game.claimed_badge.controller.class: Badger\GameBundle\Controller\ClaimedBadgeController
+    badger.game.listener.class: Badger\GameBundle\EventListener\UnlockBadgeListener
+    badger.notifier.slack.class: Badger\GameBundle\Notifier\SlackNotifier
+
+services:
+    badger.game.badge.controller:
+        class: %badger.game.badge.controller.class%
+        calls:
+            - [ setContainer, [ @service_container ] ]
+
+    badger.game.claimed_badge.controller:
+        class: %badger.game.claimed_badge.controller.class%
+        calls:
+            - [ setContainer, [ @service_container ] ]
+
+    badger.game.listener:
+        class: %badger.game.listener.class%
+        arguments:
+            - '@router'
+            - '@logger'
+            - '@badger.notifier.slack'
+        tags:
+            - { name: kernel.event_listener, event: game.user_unlocks_badge, method: onUnlockBadge }
+
+    badger.notifier.slack:
+        class: %badger.notifier.slack.class%
+        arguments:
+            - '%slack_webhook_url%'

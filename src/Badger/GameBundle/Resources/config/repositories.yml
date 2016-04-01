@@ -1,0 +1,26 @@
+parameters:
+    badger.game.repository.badge.class: Badger\GameBundle\Doctrine\Repository\BadgeRepository
+    badger.game.repository.claimed_badge.class: Badger\GameBundle\Doctrine\Repository\ClaimedBadgeRepository
+    badger.game.repository.unlocked_badge.class: Badger\GameBundle\Doctrine\Repository\UnlockedBadgeRepository
+
+services:
+    badger.game.repository.badge:
+        class: %badger.game.repository.badge.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Badger\GameBundle\Entity\Badge
+
+    badger.game.repository.claimed_badge:
+        class: %badger.game.repository.claimed_badge.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Badger\GameBundle\Entity\ClaimedBadge
+
+    badger.game.repository.unlocked_badge:
+        class: %badger.game.repository.unlocked_badge.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Badger\GameBundle\Entity\UnlockedBadge

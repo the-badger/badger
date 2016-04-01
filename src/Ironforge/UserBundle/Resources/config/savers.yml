@@ -1,6 +1,0 @@
-services:
-    ironforge.user.saver.user:
-        class: %ironforge.storage_utils.saver.base.class%
-        arguments:
-            - '@doctrine.orm.entity_manager'
-            - 'Ironforge\UserBundle\Entity\User'

@@ -1,0 +1,14 @@
+parameters:
+    badger.game.badge.factory.class: Badger\GameBundle\Factory\BadgeFactory
+    badger.game.unlocked_badge.factory.class: Badger\GameBundle\Factory\UnlockedBadgeFactory
+    badger.game.claimed_badge.factory.class: Badger\GameBundle\Factory\ClaimedBadgeFactory
+
+services:
+    badger.game.badge.factory:
+        class: %badger.game.badge.factory.class%
+
+    badger.game.unlocked_badge.factory:
+        class: %badger.game.unlocked_badge.factory.class%
+
+    badger.game.claimed_badge.factory:
+        class: %badger.game.claimed_badge.factory.class%

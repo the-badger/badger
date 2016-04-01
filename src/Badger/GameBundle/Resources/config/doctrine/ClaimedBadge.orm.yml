@@ -1,0 +1,24 @@
+Badger\GameBundle\Entity\ClaimedBadge:
+    type: entity
+    table: claimed_badges
+    repositoryClass: Badger\GameBundle\Doctrine\Repository\ClaimedBadgeRepository
+    fields:
+        id:
+            id: true
+            type: guid
+            generator:
+                strategy: UUID
+        claimedDate:
+            type: datetime
+            nullable: false
+    manyToOne:
+        user:
+            targetEntity: Badger\UserBundle\Entity\User
+            joinColumn:
+                user_id:
+                    referencedColumnName: id
+        badge:
+            targetEntity: Badger\GameBundle\Entity\Badge
+            joinColumn:
+                badge_id:
+                    referencedColumnName: id

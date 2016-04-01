@@ -1,8 +1,0 @@
-Ironforge\GameBundle\Entity\UnlockedBadge:
-    properties:
-        user:
-            - NotNull: ~
-        badge:
-            - NotNull: ~
-        unlockedDate:
-            - NotNull: ~

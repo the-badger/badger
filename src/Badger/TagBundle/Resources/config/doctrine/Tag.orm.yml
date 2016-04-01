@@ -1,0 +1,24 @@
+Badger\TagBundle\Entity\Tag:
+    type: entity
+    table: tags
+    repositoryClass: Badger\TagBundle\Doctrine\Repository\TagRepository
+    fields:
+        id:
+            type: guid
+            id: true
+            generator:
+                strategy: UUID
+        name:
+            type: string
+            length: 255
+        code:
+            type: string
+            length: 255
+            unique: true
+        createdAt:
+            type: datetime
+            column: created_at
+    manyToMany:
+        badges:
+            targetEntity: Badger\GameBundle\Entity\Badge
+            mappedBy: tags
