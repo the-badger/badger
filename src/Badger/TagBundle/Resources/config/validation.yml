@@ -1,4 +1,4 @@
-Ironforge\TagBundle\Entity\Tag:
+Badger\TagBundle\Entity\Tag:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: isDefault

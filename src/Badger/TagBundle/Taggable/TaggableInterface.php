@@ -2,8 +2,8 @@
 
 namespace Badger\TagBundle\Taggable;
 
+use Badger\TagBundle\Entity\TagInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Ironforge\TagBundle\Entity\TagInterface;
 
 /**
  * @author Adrien Pétremann <adrien.petremann@akeneo.com>

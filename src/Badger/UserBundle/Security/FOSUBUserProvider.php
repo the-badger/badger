@@ -2,10 +2,10 @@
 
 namespace Badger\UserBundle\Security;
 
+use Badger\TagBundle\Repository\TagRepositoryInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
-use Ironforge\TagBundle\Repository\TagRepositoryInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
