@@ -1,24 +1,24 @@
 admin_badge_index:
     path:     /
-    defaults: { _controller: "badger.game.badge.controller:indexAction" }
+    defaults: { _controller: "GameBundle:Badge:index" }
     methods:  GET
 
 admin_badge_show:
     path:     /{id}/show
-    defaults: { _controller: "badger.game.badge.controller:showAction" }
+    defaults: { _controller: "GameBundle:Badge:show" }
     methods:  GET
 
 admin_badge_new:
     path:     /new
-    defaults: { _controller: "badger.game.badge.controller:newAction" }
+    defaults: { _controller: "GameBundle:Badge:new" }
     methods:  [GET, POST]
 
 admin_badge_edit:
     path:     /{id}/edit
-    defaults: { _controller: "badger.game.badge.controller:editAction" }
+    defaults: { _controller: "GameBundle:Badge:edit" }
     methods:  [GET, POST]
 
 admin_badge_delete:
     path:     /{id}/delete
-    defaults: { _controller: "badger.game.badge.controller:deleteAction" }
+    defaults: { _controller: "GameBundle:Badge:delete" }
     methods:  DELETE
