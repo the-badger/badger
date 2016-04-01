@@ -2,6 +2,7 @@
 
 namespace Badger\GameBundle\Entity;
 
+use Badger\TagBundle\Entity\TagInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Badger\TagBundle\Taggable\TaggableInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -167,6 +168,16 @@ class Badge implements TaggableInterface
 
         // clean up the file property as you won't need it anymore
         $this->file = null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addTag(TagInterface $tag)
+    {
+        $this->tags[] = $tag;
+
+        return $this;
     }
 
     /**

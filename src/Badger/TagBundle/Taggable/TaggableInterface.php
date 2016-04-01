@@ -2,6 +2,7 @@
 
 namespace Badger\TagBundle\Taggable;
 
+use Badger\TagBundle\Entity\TagInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -9,6 +10,13 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 interface TaggableInterface
 {
+    /**
+     * @param TagInterface $tag
+     *
+     * @return TaggableInterface
+     */
+    public function addTag(TagInterface $tag);
+
     /**
      * @param ArrayCollection $tags
      */

@@ -2,6 +2,8 @@
 
 namespace Badger\UserBundle\Security;
 
+use Badger\TagBundle\Repository\TagRepositoryInterface;
+use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -13,6 +15,19 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class FOSUBUserProvider extends BaseClass
 {
+    /** @var TagRepositoryInterface */
+    private $tagRepository;
+
+    public function __construct(
+        UserManagerInterface $userManager,
+        array $properties,
+        TagRepositoryInterface $tagRepository
+    ) {
+        parent::__construct($userManager, $properties);
+
+        $this->tagRepository = $tagRepository;
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -73,6 +88,12 @@ class FOSUBUserProvider extends BaseClass
             $user->setPassword($username); // TODO: change
             $user->setProfilePicture($response->getProfilePicture());
             $user->setEnabled(true);
+
+            $tag = $this->tagRepository->findOneBy(['isDefault' => true]);
+            if (null !== $tag) {
+                $user->addTag($tag);
+            }
+
             $this->userManager->updateUser($user);
 
             return $user;

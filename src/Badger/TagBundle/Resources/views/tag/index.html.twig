@@ -11,6 +11,7 @@
             <tr>
                 <th>Name</th>
                 <th>Code</th>
+                <th>Is default</th>
                 <th>Created at</th>
                 <th>Actions</th>
             </tr>
@@ -20,6 +21,7 @@
             <tr class="center aligned">
                 <td><a class="ui teal label" href="{{ path('admin_tag_show', { 'id': tag.id }) }}">{{ tag.name }}</a></td>
                 <td><pre>{{ tag.code }}</pre></td>
+                <td><i class="{{ true == tag.isDefault ? 'check green' : 'close red' }} icon"></i></td>
                 <td>{% if tag.createdAt %}{{ tag.createdAt|date('d/m/Y H:i') }}{% endif %}</td>
                 <td>
                     <div class="ui small basic icon buttons">

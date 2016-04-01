@@ -21,7 +21,7 @@ interface TagInterface
      *
      * @param string $name
      *
-     * @return Tag
+     * @return TagInterface
      */
     public function setName($name);
 
@@ -37,7 +37,7 @@ interface TagInterface
      *
      * @param string $code
      *
-     * @return Tag
+     * @return TagInterface
      */
     public function setCode($code);
 
@@ -49,11 +49,23 @@ interface TagInterface
     public function getCode();
 
     /**
+     * @param bool $isDefault
+     *
+     * @return TagInterface
+     */
+    public function setIsDefault($isDefault);
+
+    /**
+     * @return bool
+     */
+    public function isDefault();
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
-     * @return Tag
+     * @return TagInterface
      */
     public function setCreatedAt(\DateTime $createdAt);
 

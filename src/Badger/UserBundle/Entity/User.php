@@ -2,9 +2,10 @@
 
 namespace Badger\UserBundle\Entity;
 
+use Badger\TagBundle\Entity\TagInterface;
+use Badger\TagBundle\Taggable\TaggableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
-use Badger\TagBundle\Taggable\TaggableInterface;
 
 class User extends BaseUser implements TaggableInterface
 {
@@ -107,6 +108,16 @@ class User extends BaseUser implements TaggableInterface
     public function setProfilePicture($profilePicture)
     {
         $this->profilePicture = $profilePicture;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addTag(TagInterface $tag)
+    {
+        $this->tags[] = $tag;
+
+        return $this;
     }
 
     /**
