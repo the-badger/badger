@@ -18,9 +18,10 @@ class TagType extends AbstractType
             ->add('name')
             ->add('code')
             ->add('createdAt', 'datetime')
+            ->add('isDefault')
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

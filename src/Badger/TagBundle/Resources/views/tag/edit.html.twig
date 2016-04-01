@@ -18,6 +18,17 @@
         {{ form_widget(edit_form.code) }}
     </div>
 
+    <div class="ui field">
+        {{ form_errors(edit_form.isDefault) }}
+
+        <div class="inline field">
+            <div class="ui toggle checkbox">
+                {{ form_widget(edit_form.isDefault) }}
+                {{ form_label(edit_form.isDefault) }}
+            </div>
+        </div>
+    </div>
+
     <div class="ui clearing">
         <button class="ui right floated primary button" type="submit">Edit</button>
     </div>
