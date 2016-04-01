@@ -33,8 +33,8 @@ class UnlockedBadgeSaver implements SaverInterface
         EventDispatcherInterface $eventDispatcher,
         $savedClass
     ) {
-        $this->objectManager = $objectManager;
-        $this->savedClass = $savedClass;
+        $this->objectManager   = $objectManager;
+        $this->savedClass      = $savedClass;
         $this->eventDispatcher = $eventDispatcher;
     }
 

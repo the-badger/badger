@@ -10,7 +10,7 @@ class BadgeType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
-     * @param array $options
+     * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,16 +18,16 @@ class BadgeType extends AbstractType
             ->add('title')
             ->add('description', 'textarea')
             ->add('tags', 'entity', [
-                'label' => 'Tagged in',
+                'label'    => 'Tagged in',
                 'multiple' => true,
                 'property' => 'name',
                 'required' => false,
-                'class' => 'Badger\TagBundle\Entity\Tag'
+                'class'    => 'Badger\TagBundle\Entity\Tag'
             ])
             ->add('imagePath')
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
