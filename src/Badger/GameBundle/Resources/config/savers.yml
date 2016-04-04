@@ -38,3 +38,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\GameBundle\Entity\Configuration'
+
+    badger.game.saver.adventure:
+        class: %badger.storage_utils.saver.base.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\Adventure'
