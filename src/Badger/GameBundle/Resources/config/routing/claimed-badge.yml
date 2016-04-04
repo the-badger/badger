@@ -1,14 +1,14 @@
 admin_claimed_badge_index:
     path:     /
-    defaults: { _controller: "badger.game.claimed_badge.controller:indexAction" }
+    defaults: { _controller: "GameBundle:ClaimedBadge:index" }
     methods:  GET
 
 admin_claimed_badge_reject:
     path:     /{id}/reject
-    defaults: { _controller: "badger.game.claimed_badge.controller:rejectAction" }
+    defaults: { _controller: "GameBundle:ClaimedBadge:reject" }
     methods:  GET
 
 admin_claimed_badge_accept:
     path:     /{id}/accept
-    defaults: { _controller: "badger.game.claimed_badge.controller:acceptAction" }
+    defaults: { _controller: "GameBundle:ClaimedBadge:accept" }
     methods:  GET
