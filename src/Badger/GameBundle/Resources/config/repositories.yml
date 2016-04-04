@@ -5,6 +5,7 @@ parameters:
     badger.game.repository.unlocked_badge.class: Badger\GameBundle\Doctrine\Repository\UnlockedBadgeRepository
     badger.game.repository.quest_completion.class: Badger\GameBundle\Doctrine\Repository\QuestCompletionRepository
     badger.game.repository.configuration.class: Badger\GameBundle\Doctrine\Repository\ConfigurationRepository
+    badger.game.repository.adventure.class: Badger\GameBundle\Doctrine\Repository\AdventureRepository
 
 services:
     badger.game.repository.badge:
@@ -42,3 +43,10 @@ services:
         factory: ['@doctrine.orm.entity_manager', 'getRepository']
         arguments:
             - Badger\GameBundle\Entity\Configuration
+
+    badger.game.repository.adventure:
+        class: %badger.game.repository.adventure.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Badger\GameBundle\Entity\Adventure

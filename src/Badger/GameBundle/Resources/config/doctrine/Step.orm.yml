@@ -1,0 +1,30 @@
+Badger\GameBundle\Entity\Step:
+    type: entity
+    table: step
+    repositoryClass: Badger\GameBundle\Repository\StepRepository
+    fields:
+        id:
+            type: guid
+            id: true
+            generator:
+                strategy: UUID
+        title:
+            type: string
+            length: 255
+        position:
+            type: integer
+            nullable: true
+        rewardPoint:
+            type: integer
+    manyToOne:
+        adventure:
+            targetEntity: Badger\GameBundle\Entity\Adventure
+            inversedBy: steps
+            joinTable:
+                name: adventure_badge
+                joinColumns:
+                    adventure_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    badge_id:
+                        referencedColumnName: id
