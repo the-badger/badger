@@ -1,0 +1,55 @@
+{% extends 'GateBundle::base-admin.html.twig' %}
+
+{% block body %}
+    <h1>Adventure</h1>
+
+    <table class="ui definition table">
+        <tbody>
+        <tr>
+            <td>UUID</td>
+            <td>{{ adventure.id }}</td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td>{{ adventure.title}}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{ adventure.description|nl2br }}</td>
+        </tr>
+        <tr>
+            <td>Is step linked</td>
+            <td>{{ adventure.isStepLinked ? '<i class="fa fa-check green"></i>' : '<i class="fa fa-times red"></i>' }}</td>
+        </tr>
+        <tr>
+            <td>Completion badge</td>
+            <td>{{ null != adventure.badge ? adventure.badge.title : '' }}</td>
+        </tr>
+        <tr>
+            <td>Nuts</td>
+            <td>{{ adventure.rewardPoint }}</td>
+        </tr>
+        <tr>
+            <td>Steps</td>
+            <td>
+                <div class="ui steps adventure{{ 0 == adventure.isStepLinked ? ' not-linked' : '' }}">
+                    {% for step in adventure.steps %}
+                        <div class="step">
+                            <div class="content">
+                                <div class="title">{{ step.title }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        {{ form_start(delete_form) }}
+        <button class="ui red right floated button" type="submit">Delete</button>
+        {{ form_end(delete_form) }}
+        <a href="{{ path('admin_adventure_form', { 'id': adventure.id }) }}" class="ui right floated button">Edit</a>
+    </div>
+{% endblock %}

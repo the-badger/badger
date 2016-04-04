@@ -27,3 +27,29 @@
         </div>
     </div>
 {%- endblock radio_widget -%}
+
+{%- block step_widget -%}
+    <div class="fields">
+        <div class="thirteen wide field">
+            <div class="field">
+                {{ form_errors(form) }}
+                {{ form_row(form.title) }}
+            </div>
+            <div class="fields">
+                <div class="three wide field">
+                    {{ form_row(form.rewardPoint) }}
+                </div>
+                <div class="two wide field">
+                    {{ form_row(form.position) }}
+                </div>
+                <div class="eleven wide field">
+                    {{ form_row(form.badge) }}
+                </div>
+            </div>
+        </div>
+        <div class="three wide field">
+            <a href="#" class="ui button red mini right floated remove-step"><i class="close icon"></i> Delete step</a>
+        </div>
+    </div>
+    <div class="ui divider"></div>
+{%- endblock step_widget -%}

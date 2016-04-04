@@ -1,0 +1,63 @@
+{% extends 'GateBundle::base-admin.html.twig' %}
+
+{% block body %}
+    <h1>Adventure creation</h1>
+
+    {{ form_start(form, { 'attr': {'class': 'ui form'} }) }}
+    {{ form_errors(form) }}
+
+    <div class="two fields">
+        <div class="fourteen wide field">
+            {{ form_row(form.title) }}
+        </div>
+        <div class="two wide field">
+            {{ form_row(form.rewardPoint) }}
+        </div>
+    </div>
+
+    {{ form_row(form.description) }}
+    {{ form_row(form.badge) }}
+    {{ form_row(form.isStepLinked) }}
+
+    <div class="ui horizontal divider">
+        Steps
+    </div>
+
+    <div class="ui field adventure-steps" data-prototype="{{ form_widget(form.steps.vars.prototype)|e }}">
+        {{ form_row(form.steps) }}
+    </div>
+    <a href="#" id="add-another-step" class="ui button green">Add another step</a>
+
+    <div class="ui clearing">
+        <button class="ui right floated primary button" type="submit">
+            {{ null == form.vars.id ? 'Create' : 'Edit' }}
+        </button>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        var stepCount = '{{ form.steps|length }}';
+
+        $(document).ready(function() {
+            $('#add-another-step').click(function(e) {
+                e.preventDefault();
+
+                var stepList = $('.adventure-steps');
+
+                var newWidget = stepList.attr('data-prototype');
+                newWidget = newWidget.replace(/__name__/g, stepCount);
+                stepCount++;
+
+                var newLi = $('<div class="ui field"></div>').html(newWidget);
+                newLi.appendTo(stepList);
+            });
+
+            $('.remove-step').click(function(e) {
+                $(this).closest('.fields').closest('.field').remove();
+            });
+        })
+    </script>
+{% endblock %}
