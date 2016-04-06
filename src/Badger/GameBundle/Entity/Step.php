@@ -4,8 +4,10 @@ namespace Badger\GameBundle\Entity;
 
 /**
  * Step
+ *
+ * @author Marie Bochu <marie.bochu@akeneo.com>
  */
-class Step
+class Step implements StepInterface
 {
     /** @var int */
     private $id;
@@ -29,9 +31,7 @@ class Step
     private $adventure;
 
     /**
-     * Get id
-     *
-     * @return int
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -39,11 +39,7 @@ class Step
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Step
+     * {@inheritdoc}
      */
     public function setTitle($title)
     {
@@ -53,9 +49,7 @@ class Step
     }
 
     /**
-     * Get title
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getTitle()
     {
@@ -63,11 +57,7 @@ class Step
     }
 
     /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Adventure
+     * {@inheritdoc}
      */
     public function setDescription($description)
     {
@@ -77,9 +67,7 @@ class Step
     }
 
     /**
-     * Get description
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getDescription()
     {
@@ -87,11 +75,7 @@ class Step
     }
 
     /**
-     * Set position
-     *
-     * @param integer $position
-     *
-     * @return Step
+     * {@inheritdoc}
      */
     public function setPosition($position)
     {
@@ -101,9 +85,7 @@ class Step
     }
 
     /**
-     * Get position
-     *
-     * @return int
+     * {@inheritdoc}
      */
     public function getPosition()
     {
@@ -111,11 +93,7 @@ class Step
     }
 
     /**
-     * Set rewardPoint
-     *
-     * @param integer $rewardPoint
-     *
-     * @return Step
+     * {@inheritdoc}
      */
     public function setRewardPoint($rewardPoint)
     {
@@ -125,9 +103,7 @@ class Step
     }
 
     /**
-     * Get rewardPoint
-     *
-     * @return int
+     * {@inheritdoc}
      */
     public function getRewardPoint()
     {
@@ -135,11 +111,7 @@ class Step
     }
 
     /**
-     * Set badge
-     *
-     * @param Badge $badge
-     *
-     * @return Adventure
+     * {@inheritdoc}
      */
     public function setBadge(Badge $badge)
     {
@@ -149,9 +121,7 @@ class Step
     }
 
     /**
-     * Get badge
-     *
-     * @return Badge
+     * {@inheritdoc}
      */
     public function getBadge()
     {
@@ -159,13 +129,9 @@ class Step
     }
 
     /**
-     * Set adventure
-     *
-     * @param Adventure $adventure
-     *
-     * @return Step
+     * {@inheritdoc}
      */
-    public function setAdventure(Adventure $adventure)
+    public function setAdventure(AdventureInterface $adventure)
     {
         $this->adventure = $adventure;
 
@@ -173,9 +139,7 @@ class Step
     }
 
     /**
-     * Get adventure
-     *
-     * @return Adventure
+     * {@inheritdoc}
      */
     public function getAdventure()
     {

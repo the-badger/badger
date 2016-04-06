@@ -6,8 +6,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Adventure
+ *
+ * @author Marie Bochu <marie.bochu@akeneo.com>
  */
-class Adventure
+class Adventure implements AdventureInterface
 {
     /** @var int */
     private $id;
@@ -36,9 +38,7 @@ class Adventure
     }
 
     /**
-     * Get id
-     *
-     * @return int
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -46,11 +46,7 @@ class Adventure
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Adventure
+     * {@inheritdoc}
      */
     public function setTitle($title)
     {
@@ -60,9 +56,7 @@ class Adventure
     }
 
     /**
-     * Get title
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getTitle()
     {
@@ -70,11 +64,7 @@ class Adventure
     }
 
     /**
-     * Set description
-     *
-     * @param string $description
-     *
-     * @return Adventure
+     * {@inheritdoc}
      */
     public function setDescription($description)
     {
@@ -84,9 +74,7 @@ class Adventure
     }
 
     /**
-     * Get description
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getDescription()
     {
@@ -94,11 +82,7 @@ class Adventure
     }
 
     /**
-     * Set rewardPoint
-     *
-     * @param integer $rewardPoint
-     *
-     * @return Adventure
+     * {@inheritdoc}
      */
     public function setRewardPoint($rewardPoint)
     {
@@ -108,9 +92,7 @@ class Adventure
     }
 
     /**
-     * Get rewardPoint
-     *
-     * @return int
+     * {@inheritdoc}
      */
     public function getRewardPoint()
     {
@@ -118,11 +100,7 @@ class Adventure
     }
 
     /**
-     * Set isStepLinked
-     *
-     * @param bool $isStepLinked
-     *
-     * @return Adventure
+     * {@inheritdoc}
      */
     public function setIsStepLinked($isStepLinked)
     {
@@ -132,9 +110,7 @@ class Adventure
     }
 
     /**
-     * Get isStepLinked
-     *
-     * @return bool
+     * {@inheritdoc}
      */
     public function isStepLinked()
     {
@@ -142,11 +118,7 @@ class Adventure
     }
 
     /**
-     * Set badge
-     *
-     * @param Badge $badge
-     *
-     * @return Adventure
+     * {@inheritdoc}
      */
     public function setBadge(Badge $badge)
     {
@@ -156,9 +128,7 @@ class Adventure
     }
 
     /**
-     * Get badge
-     *
-     * @return Badge
+     * {@inheritdoc}
      */
     public function getBadge()
     {
@@ -166,11 +136,9 @@ class Adventure
     }
 
     /**
-     * @param Step $step
-     *
-     * @return Adventure
+     * {@inheritdoc}
      */
-    public function addStep(Step $step)
+    public function addStep(StepInterface $step)
     {
         $step->setAdventure($this);
         $this->steps[] = $step;
@@ -179,11 +147,9 @@ class Adventure
     }
 
     /**
-     * @param Step $step
-     *
-     * @return Adventure
+     * {@inheritdoc}
      */
-    public function removeStep(Step $step)
+    public function removeStep(StepInterface $step)
     {
         $this->steps->removeElement($step);
 
@@ -191,9 +157,7 @@ class Adventure
     }
 
     /**
-     * @param array $steps
-     *
-     * @return Adventure
+     * {@inheritdoc}
      */
     public function setSteps($steps)
     {
@@ -205,7 +169,7 @@ class Adventure
     }
 
     /**
-     * @return ArrayCollection
+     * {@inheritdoc}
      */
     public function getSteps()
     {
