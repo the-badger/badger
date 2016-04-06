@@ -15,6 +15,11 @@ class StepType extends AbstractType
     {
         $builder
             ->add('title')
+            ->add('description', 'textarea', [
+                'attr' => [
+                    'rows' => 3
+                ]
+            ])
             ->add('position')
             ->add('rewardPoint')
             ->add('badge', 'entity', [

@@ -19,7 +19,7 @@
         </tr>
         <tr>
             <td>Is step linked</td>
-            <td>{{ adventure.isStepLinked ? '<i class="fa fa-check green"></i>' : '<i class="fa fa-times red"></i>' }}</td>
+            <td><i class="{{ true == adventure.isStepLinked ? 'check green' : 'close red' }} icon"></i></td>
         </tr>
         <tr>
             <td>Completion badge</td>
@@ -37,6 +37,7 @@
                         <div class="step">
                             <div class="content">
                                 <div class="title">{{ step.title }}</div>
+                                <div class="description">{{ step.description }}</div>
                             </div>
                         </div>
                     {% endfor %}
