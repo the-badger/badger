@@ -1,3 +1,15 @@
+# 0.4.2
+
+## Bug fixes
+
+- Fix routing for claimed badges
+
+# 0.4.1
+
+## Bug fixes
+
+- Fix tag creation form
+
 # 0.4.0
 
 ## DX
