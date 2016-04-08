@@ -1,7 +1,7 @@
 Badger\GameBundle\Entity\Step:
     type: entity
     table: step
-    repositoryClass: Badger\GameBundle\Repository\StepRepository
+    repositoryClass: Badger\GameBundle\Doctrine\Repository\StepRepository
     fields:
         id:
             type: guid

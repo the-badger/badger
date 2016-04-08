@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Repository;
+namespace Badger\GameBundle\Doctrine\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
