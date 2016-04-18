@@ -1,3 +1,10 @@
+# 0.4.x
+
+## UI
+
+- Update login screen
+- Update admin UI to have more space
+
 # 0.4.2
 
 ## Bug fixes
