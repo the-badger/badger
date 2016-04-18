@@ -1,3 +1,14 @@
+# 0.4.x
+
+## Features
+
+- Configuration. Personalize your Badger instance with configuration variables.
+
+## UI
+
+- Update login screen
+- Update admin UI to have more space
+
 # 0.4.2
 
 ## Bug fixes
