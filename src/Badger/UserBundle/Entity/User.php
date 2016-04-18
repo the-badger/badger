@@ -7,7 +7,7 @@ use Badger\TagBundle\Taggable\TaggableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 
-class User extends BaseUser implements TaggableInterface
+class User extends BaseUser implements UserInterface, TaggableInterface
 {
     /** @var string */
     protected $id;
@@ -31,7 +31,7 @@ class User extends BaseUser implements TaggableInterface
     protected $tags;
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getGithubId()
     {
@@ -39,7 +39,7 @@ class User extends BaseUser implements TaggableInterface
     }
 
     /**
-     * @param string $github_id
+     * {@inheritdoc}
      */
     public function setGithubId($github_id)
     {
@@ -47,7 +47,7 @@ class User extends BaseUser implements TaggableInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getGithubAccessToken()
     {
@@ -55,7 +55,7 @@ class User extends BaseUser implements TaggableInterface
     }
 
     /**
-     * @param string $github_access_token
+     * {@inheritdoc}
      */
     public function setGithubAccessToken($github_access_token)
     {
@@ -63,7 +63,7 @@ class User extends BaseUser implements TaggableInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getGoogleId()
     {
@@ -71,7 +71,7 @@ class User extends BaseUser implements TaggableInterface
     }
 
     /**
-     * @param string $google_id
+     * {@inheritdoc}
      */
     public function setGoogleId($google_id)
     {
@@ -79,7 +79,7 @@ class User extends BaseUser implements TaggableInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getGoogleAccessToken()
     {
@@ -87,7 +87,7 @@ class User extends BaseUser implements TaggableInterface
     }
 
     /**
-     * @param string $google_access_token
+     * {@inheritdoc}
      */
     public function setGoogleAccessToken($google_access_token)
     {
@@ -95,7 +95,7 @@ class User extends BaseUser implements TaggableInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getProfilePicture()
     {
@@ -103,7 +103,7 @@ class User extends BaseUser implements TaggableInterface
     }
 
     /**
-     * @param string $profilePicture
+     * {@inheritdoc}
      */
     public function setProfilePicture($profilePicture)
     {
