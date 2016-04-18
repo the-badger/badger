@@ -1,38 +1,34 @@
-{% extends '@Gate/base-admin.html.twig' %}
+{% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <h1>Tag edit</h1>
+    <h1>Configuration edit</h1>
 
-    {{ form_start(edit_form, { 'attr': {'class': 'ui form'} }) }}
-    {{ form_errors(edit_form) }}
-    {{ form_widget(edit_form) }}
+    {{ form_start(form, { 'attr': {'class': 'ui form'} }) }}
+    {{ form_errors(form) }}
+    {{ form_widget(form) }}
 
     <div class="ui clearing">
-        <button class="ui right floated primary button" type="submit">Edit</button>
+        <button class="ui right floated primary button" type="submit">
+            {{ null == form.vars.value.id ? 'Create' : 'Edit' }}
+        </button>
     </div>
 
-    {{ form_end(edit_form) }}
-
-    {{ form_start(delete_form) }}
-    <div class="ui clearing">
-        <button class="ui right floated red button" type="submit">Delete</button>
-    </div>
-    {{ form_end(delete_form) }}
+    {{ form_end(form) }}
 {% endblock %}
 
 {% block javascripts %}
     <script>
         $(document).ready(function() {
-            $('#tag_name').on('input', function () {
-                var name = $('#tag_name').val();
+            $('#configuration_title').on('input', function () {
+                var title = $('#configuration_title').val();
                 // Credits: http://stackoverflow.com/questions/11815883/convert-non-ascii-characters-umlauts-accents-to-their-closest-ascii-equiva
-                var code = name.normalize('NFKD').toLowerCase()
+                var code = title.normalize('NFKD').toLowerCase()
                         .replace(/[\u0300-\u036F]/g, '')
                         .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
                         .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
                         .replace(/^-+|-+$/g, ''); // remove leading, trailing -
 
-                $('#tag_code').val(code);
+                $('#configuration_code').val(code);
             });
         });
     </script>

@@ -1,0 +1,9 @@
+admin_configuration_index:
+    path:     /
+    defaults: { _controller: "GameBundle:Configuration:index" }
+    methods:  GET
+
+admin_configuration_form:
+    path:     /form/{id}
+    defaults: { _controller: "GameBundle:Configuration:form", id: null }
+    methods:  [GET, POST]

@@ -5,29 +5,7 @@
 
     {{ form_start(form, { 'attr': {'class': 'ui form'} }) }}
     {{ form_errors(form) }}
-
-    <div class="ui field">
-        {{ form_label(form.name) }}
-        {{ form_errors(form.name) }}
-        {{ form_widget(form.name) }}
-    </div>
-
-    <div class="ui field">
-        {{ form_label(form.code) }}
-        {{ form_errors(form.code) }}
-        {{ form_widget(form.code) }}
-    </div>
-
-    <div class="ui field">
-        {{ form_errors(form.isDefault) }}
-
-        <div class="inline field">
-            <div class="ui toggle checkbox">
-                {{ form_widget(form.isDefault) }}
-                {{ form_label(form.isDefault) }}
-            </div>
-        </div>
-    </div>
+    {{ form_widget(form) }}
 
     <div class="ui clearing">
         <button class="ui right floated primary button" type="submit">Create</button>

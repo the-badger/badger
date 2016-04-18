@@ -1,0 +1,11 @@
+parameters:
+    badger.game.twig.configuration.class: Badger\GameBundle\Twig\ConfigurationExtension
+
+services:
+    badger.game.twig.configuration:
+        class: %badger.game.twig.configuration.class%
+        public: false
+        arguments:
+            - '@badger.game.repository.configuration'
+        tags:
+            - { name: twig.extension }
