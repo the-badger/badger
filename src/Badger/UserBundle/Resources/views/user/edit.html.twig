@@ -11,16 +11,17 @@
             {{ form_widget(edit_form) }}
         </div>
         <div class="ui secondary clearing segment">
-            {{ form_start(delete_form) }}
-            <div class="ui clearing">
-                <button class="ui right floated red button" type="submit"><i class="times icon"></i> Delete</button>
-            </div>
-            {{ form_end(delete_form) }}
-
             <button class="ui right floated green button" type="submit"><i class="save icon"></i> Save</button>
         </div>
     </div>
+
     {{ form_end(edit_form) }}
+
+    {{ form_start(delete_form) }}
+    <div class="ui basic segment center aligned clearing">
+        <button class="ui small basic red button" type="submit"><i class="remove icon"></i> Delete</button>
+    </div>
+    {{ form_end(delete_form) }}
 
 {% endblock %}
 
