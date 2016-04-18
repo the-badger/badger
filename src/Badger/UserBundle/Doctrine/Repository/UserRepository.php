@@ -27,7 +27,7 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getSortedUserByUnlockedBadges($order = 'DESC', $limit = 7)
+    public function getSortedUserByUnlockedBadges($order = 'DESC', $limit = 10)
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('u AS user, COUNT(ub.id) AS nbUnlockedBadges')
