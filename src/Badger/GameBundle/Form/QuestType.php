@@ -6,35 +6,36 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class BadgeType extends AbstractType
+class QuestType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('title')
             ->add('description', 'textarea')
+            ->add('reward', 'integer')
+            ->add('startDate', 'date', ['widget' => 'single_text', 'format' => 'yyyy/MM/dd'])
+            ->add('endDate', 'date', ['widget' => 'single_text', 'format' => 'yyyy/MM/dd'])
             ->add('tags', 'entity', [
-                'label' => 'Tagged in',
+                'label'    => 'Tagged in',
                 'multiple' => true,
                 'property' => 'name',
                 'required' => false,
-                'class' => 'Badger\TagBundle\Entity\Tag'
+                'class'    => 'Badger\TagBundle\Entity\Tag'
             ])
-            ->add('imagePath')
         ;
     }
 
     /**
-     * @param OptionsResolver $resolver
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Badger\GameBundle\Entity\Badge'
+            'data_class' => 'Badger\GameBundle\Entity\Quest'
         ]);
     }
 }

@@ -1,0 +1,24 @@
+admin_quest_index:
+    path:     /
+    defaults: { _controller: "GameBundle:Quest:index" }
+    methods:  GET
+
+admin_quest_show:
+    path:     /{id}/show
+    defaults: { _controller: "GameBundle:Quest:show" }
+    methods:  GET
+
+admin_quest_new:
+    path:     /new
+    defaults: { _controller: "GameBundle:Quest:new" }
+    methods:  [GET, POST]
+
+admin_quest_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GameBundle:Quest:edit" }
+    methods:  [GET, POST]
+
+admin_quest_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GameBundle:Quest:delete" }
+    methods:  DELETE

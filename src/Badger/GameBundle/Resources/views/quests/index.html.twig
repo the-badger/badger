@@ -1,0 +1,47 @@
+{% extends 'GateBundle::base-admin.html.twig' %}
+
+{% block body %}
+
+    <h1 class="page-header"><i class="icon list layout"></i> Quest list</h1>
+
+    <div class="ui raised segments">
+        <div class="ui secondary clearing segment">
+            <a href="{{ path('admin_quest_new') }}" class="ui right floated small green labeled icon button">
+                <i class="plus icon"></i> Create Quest
+            </a>
+        </div>
+        <div class="ui segment">
+            <div class="ui four cards">
+                {% for quest in quests %}
+                    <div class="card">
+                        <div class="content">
+                            <div class="header"><a href="{{ path('admin_quest_edit', { 'id': quest.id }) }}">{{ quest.title }}</a></div>
+                            <div class="description">
+                                {{ quest.description|nl2br }}
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <small><i class="icon code"></i> {{ quest.id }}</small>
+                        </div>
+                        {% if quest.tags|length > 0 %}
+                            <div class="extra content">
+                                {% for tag in quest.tags %}
+                                    <span class="ui teal tiny label">{{ tag.name }}</span>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('.cards .image').dimmer({
+            on: 'hover'
+        });
+    </script>
+{% endblock %}

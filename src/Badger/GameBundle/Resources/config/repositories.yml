@@ -1,5 +1,6 @@
 parameters:
     badger.game.repository.badge.class: Badger\GameBundle\Doctrine\Repository\BadgeRepository
+    badger.game.repository.quest.class: Badger\GameBundle\Doctrine\Repository\QuestRepository
     badger.game.repository.claimed_badge.class: Badger\GameBundle\Doctrine\Repository\ClaimedBadgeRepository
     badger.game.repository.unlocked_badge.class: Badger\GameBundle\Doctrine\Repository\UnlockedBadgeRepository
     badger.game.repository.configuration.class: Badger\GameBundle\Doctrine\Repository\ConfigurationRepository
@@ -11,6 +12,13 @@ services:
         factory_method: getRepository
         arguments:
             - Badger\GameBundle\Entity\Badge
+
+    badger.game.repository.quest:
+        class: %badger.game.repository.quest.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Badger\GameBundle\Entity\Quest
 
     badger.game.repository.claimed_badge:
         class: %badger.game.repository.claimed_badge.class%

@@ -8,6 +8,12 @@ services:
             - '@doctrine.orm.entity_manager'
             - 'Badger\GameBundle\Entity\Badge'
 
+    badger.game.saver.quest:
+        class: %badger.storage_utils.saver.base.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\Quest'
+
     badger.game.saver.unlocked_badge:
         class: %badger.game.saver.unlocked_badge.class%
         arguments:

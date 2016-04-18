@@ -1,0 +1,40 @@
+Badger\GameBundle\Entity\Quest:
+    type: entity
+    table: quests
+    repositoryClass: Badger\GameBundle\Doctrine\Repository\QuestRepository
+    fields:
+        id:
+            type: guid
+            id: true
+            generator:
+                strategy: UUID
+        title:
+            type: string
+            length: 255
+            nullable: false
+        description:
+            type: string
+            length: 1024
+            nullable: false
+        reward:
+            type: integer
+            nullable: false
+            default: 0
+        startDate:
+            type: date
+            nullable: false
+        endDate:
+            type: date
+            nullable: false
+    manyToMany:
+        tags:
+            targetEntity: Badger\TagBundle\Entity\Tag
+            inversedBy: badges
+            joinTable:
+                name: quest_tags
+                joinColumns:
+                    badge_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    tag_id:
+                        referencedColumnName: id
