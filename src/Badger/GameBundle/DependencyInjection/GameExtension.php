@@ -21,6 +21,7 @@ class GameExtension extends Extension
         $loader->load('factories.yml');
         $loader->load('removers.yml');
         $loader->load('repositories.yml');
+        $loader->load('twig.yml');
         $loader->load('savers.yml');
         $loader->load('services.yml');
     }
