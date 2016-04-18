@@ -1,23 +1,27 @@
 {% extends '@Gate/base-admin.html.twig' %}
 
 {% block body %}
-    <h1>User edit</h1>
+    <h1 class="page-header">User edit</h1>
 
     {{ form_start(edit_form, { 'attr': {'class': 'ui form'} }) }}
     {{ form_errors(edit_form) }}
-    {{ form_widget(edit_form) }}
 
-    <div class="ui clearing">
-        <button class="ui right floated primary button" type="submit">Edit</button>
+    <div class="ui segments">
+        <div class="ui segment">
+            {{ form_widget(edit_form) }}
+        </div>
+        <div class="ui secondary clearing segment">
+            {{ form_start(delete_form) }}
+            <div class="ui clearing">
+                <button class="ui right floated red button" type="submit"><i class="times icon"></i> Delete</button>
+            </div>
+            {{ form_end(delete_form) }}
+
+            <button class="ui right floated green button" type="submit"><i class="save icon"></i> Save</button>
+        </div>
     </div>
-
     {{ form_end(edit_form) }}
 
-    {{ form_start(delete_form) }}
-    <div class="ui clearing">
-        <button class="ui right floated red button" type="submit">Delete</button>
-    </div>
-    {{ form_end(delete_form) }}
 {% endblock %}
 
 {% block javascripts %}

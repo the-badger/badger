@@ -13,3 +13,7 @@ game_admin_claimed_badge:
 game_admin_unlocked_badge:
     resource: "@GameBundle/Resources/config/routing/unlocked-badge.yml"
     prefix:   /admin/unlocked-badge
+
+game_admin_configuration:
+    resource: "@GameBundle/Resources/config/routing/configuration.yml"
+    prefix:   /admin/configuration

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/dist/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
@@ -18,8 +19,7 @@
 {% if app.user %}
 <div class="ui fixed inverted menu">
     <div class="ui container">
-        <a href="{{ url('homepage') }}" class="header item">
-            <img class="logo" src="{{ asset('bundles/gate/images/badger-small-white.png') }}">&nbsp;
+        <a href="{{ url('homepage') }}" class="header item logo navbar-logo">
             Badger
         </a>
         <a class="item" href="{{ url('users') }}">Users</a>

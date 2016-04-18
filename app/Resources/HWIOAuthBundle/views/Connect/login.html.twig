@@ -3,25 +3,30 @@
 {% block bodyclass %}login{% endblock %}
 
 {% block hwi_oauth_content %}
-<div class="ui center aligned container" id="main-logo">
-    <img src="{{ asset('bundles/gate/images/badger.png') }}" alt="" width="150">
+<div class="ui center aligned fluid container" id="main-logo">
+    {{ configuration('title') }}
 </div>
 
 <div class="ui four column centered grid">
     <div class="column aligned">
-        <div class="ui tall stacked segment">
-            <h4 class="ui header">Welcome! Please log in.</h4>
-            <div class="ui extra content">
-                <p>
-                    <a class="ui secondary button" href="{{ path('github_connect') }}">
-                        <i class="icon github"></i> Log in with GitHub
-                    </a>
-                </p>
-                <p>
-                    <a class="ui google plus button" href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}">
-                        <i class="google icon"></i> Log in with Google
-                    </a>
-                </p>
+        <div class="ui tall stacked raised segments">
+            <div class="ui left aligned secondary segment">
+                {{ configuration('intro-login'|nl2br) }}
+            </div>
+            <div class="ui segment">
+                <h4 class="ui header">Please log in.</h4>
+                <div class="ui extra content">
+                    <p>
+                        <a class="ui secondary button" href="{{ path('github_connect') }}">
+                            <i class="icon github"></i> Log in with GitHub
+                        </a>
+                    </p>
+                    <p>
+                        <a class="ui google plus button" href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}">
+                            <i class="google icon"></i> Log in with Google
+                        </a>
+                    </p>
+                </div>
             </div>
         </div>
         <p style="color: #B9B9B9;">version {{ app_version }}</p>

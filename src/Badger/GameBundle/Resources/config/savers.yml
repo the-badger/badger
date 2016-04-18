@@ -20,3 +20,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\GameBundle\Entity\ClaimedBadge'
+
+    badger.game.saver.configuration:
+        class: %badger.storage_utils.saver.base.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\Configuration'

@@ -19,43 +19,47 @@
 <body class="{% block bodyclass %}{% endblock %} admin">
 
 <div class="ui container">
-    <div class="ui grid">
-
-        <div class="four wide column">
-            <div class="ui vertical menu">
-                <div class="item">
-                    <img style="float: right;" src="{{ asset('bundles/gate/images/badger-small.png') }}" alt=""/><h3 style="margin: 0;">ADMIN</h3>
-                </div>
-                <div class="item">
-                    <div class="header">Badges</div>
-                    <div class="menu">
-                        <a href="{{ url('admin_badge_index') }}" class="item">List</a>
-                        <a href="{{ url('admin_badge_new') }}" class="item">Create</a>
-                        <a href="{{ url('admin_unlocked_badge_new') }}" class="item">Give a Badge</a>
-                        <a href="{{ url('admin_unlocked_badge_delete') }}" class="item">Remove a Badge</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="header">Tags</div>
-                    <div class="menu">
-                        <a href="{{ url('admin_tag_index') }}" class="item">List</a>
-                        <a href="{{ url('admin_tag_new') }}" class="item">Create</a>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="header">Users</div>
-                    <div class="menu">
-                        <a href="{{ url('admin_user_index') }}" class="item">List</a>
-                    </div>
-                </div>
-                <a href="{{ url('admin_claimed_badge_index') }}" class="item">
-                    Claimed badges <i class="wait icon"></i>
-                </a>
-                <a href="{{ url('homepage') }}" class="item"><i class="icon home"></i> Back to dashboard</a>
+    <div class="ui small menu">
+        <div class="ui dropdown item">
+            <i class="icon trophy"></i> Badges <i class="dropdown icon"></i>
+            <div class="menu">
+                <a href="{{ url('admin_badge_index') }}" class="item"><i class="icon list layout"></i> List</a>
+                <a href="{{ url('admin_badge_new') }}" class="item"><i class="icon plus"></i> Create</a>
+                <a href="{{ url('admin_claimed_badge_index') }}" class="item"><i class="wait icon"></i> Claimed Badges</a>
+                <a href="{{ url('admin_unlocked_badge_new') }}" class="item"><i class="icon add user"></i> Give a Badge</a>
+                <a href="{{ url('admin_unlocked_badge_delete') }}" class="item"><i class="icon remove user"></i> Remove a Badge</a>
             </div>
         </div>
+        <div class="ui dropdown item">
+            <i class="icon tags"></i> Tags <i class="dropdown icon"></i>
+            <div class="menu">
+                <a href="{{ url('admin_tag_index') }}" class="item"><i class="icon list layout"></i> List</a>
+                <a href="{{ url('admin_tag_new') }}" class="item"><i class="icon plus"></i> Create</a>
+            </div>
+        </div>
+        <div class="ui dropdown item">
+            <i class="icon users"></i> Users <i class="dropdown icon"></i>
+            <div class="menu">
+                <a href="{{ url('admin_user_index') }}" class="item"><i class="icon list layout"></i> List</a>
+            </div>
+        </div>
+        <div class="ui dropdown item">
+            <i class="icon setting"></i> Configuration <i class="dropdown icon"></i>
+            <div class="menu">
+                <a href="{{ url('admin_configuration_index') }}" class="item"><i class="icon list layout"></i> List</a>
+                <a href="{{ url('admin_configuration_form') }}" class="item"><i class="icon plus"></i> Create</a>
+            </div>
+        </div>
+        <div class="right menu">
+            <div class="item">
+                <a href="{{ url('homepage') }}" class="ui button"><i class="icon home"></i> Back to Dashboard</a>
+            </div>
+        </div>
+    </div>
 
-        <div class="twelve wide column">
+    <div class="ui grid">
+
+        <div class="sixteen wide column">
             {% block body %}
             {% endblock %}
         </div>
@@ -68,8 +72,10 @@
 <script src="{{ asset('vendor/semantic-ui-css/semantic.min.js') }}"></script>
 <script src="{{ asset('vendor/dist/select2.min.js') }}"></script>
 <script src="{{ asset('vendor/dist/selectize.min.js') }}"></script>
+<script>
+    $('.ui.dropdown').dropdown();
+</script>
 
-{% block javascripts %}
-{% endblock %}
+{% block javascripts %}{% endblock %}
 </body>
 </html>
