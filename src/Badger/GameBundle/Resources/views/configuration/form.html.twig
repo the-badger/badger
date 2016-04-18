@@ -1,0 +1,35 @@
+{% extends 'GateBundle::base-admin.html.twig' %}
+
+{% block body %}
+    <h1>Configuration edit</h1>
+
+    {{ form_start(form, { 'attr': {'class': 'ui form'} }) }}
+    {{ form_errors(form) }}
+    {{ form_widget(form) }}
+
+    <div class="ui clearing">
+        <button class="ui right floated primary button" type="submit">
+            {{ null == form.vars.value.id ? 'Create' : 'Edit' }}
+        </button>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function() {
+            $('#configuration_title').on('input', function () {
+                var title = $('#configuration_title').val();
+                // Credits: http://stackoverflow.com/questions/11815883/convert-non-ascii-characters-umlauts-accents-to-their-closest-ascii-equiva
+                var code = title.normalize('NFKD').toLowerCase()
+                        .replace(/[\u0300-\u036F]/g, '')
+                        .replace(/[^\w\s-]/g, '') // remove non-word [a-z0-9_], non-whitespace, non-hyphen characters
+                        .replace(/[\s_-]+/g, '-') // swap any length of whitespace, underscore, hyphen characters with a single -
+                        .replace(/^-+|-+$/g, ''); // remove leading, trailing -
+
+                $('#configuration_code').val(code);
+            });
+        });
+    </script>
+{% endblock %}
