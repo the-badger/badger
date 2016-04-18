@@ -1,0 +1,21 @@
+Badger\GameBundle\Entity\Configuration:
+    type: entity
+    table: configuration
+    repositoryClass: Badger\GameBundle\Doctrine\Repository\ConfigurationRepository
+    fields:
+        id:
+            id: true
+            type: guid
+            generator:
+                strategy: UUID
+        title:
+            type: string
+            length: 255
+            unique: true
+        code:
+            type: string
+            length: 255
+            unique: true
+        value:
+            type: text
+            nullable: true
