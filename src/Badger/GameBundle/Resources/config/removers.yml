@@ -16,3 +16,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\GameBundle\Entity\ClaimedBadge'
+
+    badger.game.remover.configuration:
+        class: %badger.storage_utils.remover.base.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\Configuration'
