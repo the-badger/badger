@@ -1,3 +1,9 @@
+# 0.4.4
+
+## Bug fixes
+
+- Fix User edit on save
+
 # 0.4.3
 
 ## Features
