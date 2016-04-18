@@ -6,9 +6,13 @@ use Badger\GameBundle\Entity\Quest;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * @author Olivier Soulet <olivier.soulet@akeneo.com>
+ * Quest Factory
+ *
+ * @author    Olivier Soulet <olivier.soulet@akeneo.com>
+ * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
-class QuestFactory implements QuestFactoryInterface
+class QuestFactory implements SimpleFactoryInterface
 {
     /**
      * {@inheritdoc}

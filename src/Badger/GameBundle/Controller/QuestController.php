@@ -122,7 +122,7 @@ class QuestController extends Controller
             $questRemover->remove($quest);
         }
 
-        return $this->redirectToRoute('admin_badge_index');
+        return $this->redirectToRoute('admin_quest_index');
     }
 
     /**
@@ -135,7 +135,7 @@ class QuestController extends Controller
     private function createDeleteForm(Quest $quest)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_badge_delete', ['id' => $quest->getId()]))
+            ->setAction($this->generateUrl('admin_quest_delete', ['id' => $quest->getId()]))
             ->setMethod('DELETE')
             ->getForm()
         ;

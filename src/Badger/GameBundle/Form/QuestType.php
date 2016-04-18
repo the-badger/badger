@@ -9,8 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class QuestType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array                $options
+     * {@inheritdoc}
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -18,8 +17,8 @@ class QuestType extends AbstractType
             ->add('title')
             ->add('description', 'textarea')
             ->add('reward', 'integer')
-            ->add('startDate', 'date')
-            ->add('endDate', 'date')
+            ->add('startDate', 'date', ['widget' => 'single_text', 'format' => 'yyyy/MM/dd'])
+            ->add('endDate', 'date', ['widget' => 'single_text', 'format' => 'yyyy/MM/dd'])
             ->add('tags', 'entity', [
                 'label'    => 'Tagged in',
                 'multiple' => true,
@@ -31,7 +30,7 @@ class QuestType extends AbstractType
     }
 
     /**
-     * @param OptionsResolver $resolver
+     * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {

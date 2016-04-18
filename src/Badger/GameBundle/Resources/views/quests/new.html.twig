@@ -6,41 +6,7 @@
     {{ form_start(form, { 'attr': {'class': 'ui form'} }) }}
     {{ form_errors(form) }}
 
-    <div class="ui field">
-        {{ form_label(form.title) }}
-        {{ form_errors(form.title) }}
-        {{ form_widget(form.title) }}
-    </div>
-
-    <div class="ui field">
-        {{ form_label(form.description) }}
-        {{ form_errors(form.description) }}
-        {{ form_widget(form.description) }}
-    </div>
-
-    <div class="ui field">
-        {{ form_label(form.startDate) }}
-        {{ form_errors(form.startDate) }}
-        {{ form_widget(form.startDate) }}
-    </div>
-
-    <div class="ui field">
-        {{ form_label(form.endDate) }}
-        {{ form_errors(form.endDate) }}
-        {{ form_widget(form.endDate) }}
-    </div>
-
-    <div class="ui field">
-        {{ form_label(form.reward) }}
-        {{ form_errors(form.reward) }}
-        {{ form_widget(form.reward) }}
-    </div>
-
-    <div class="ui field">
-        {{ form_label(form.tags) }}
-        {{ form_errors(form.tags) }}
-        {{ form_widget(form.tags) }}
-    </div>
+    {{ form_widget(form) }}
 
     <div class="ui clearing">
         <button class="ui right floated primary button" type="submit">Create</button>

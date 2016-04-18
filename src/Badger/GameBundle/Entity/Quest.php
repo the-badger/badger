@@ -2,6 +2,7 @@
 
 namespace Badger\GameBundle\Entity;
 
+use Badger\TagBundle\Entity\TagInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Badger\TagBundle\Taggable\TaggableInterface;
 
@@ -151,6 +152,16 @@ class Quest implements TaggableInterface
     public function setEndDate($endDate)
     {
         $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addTag(TagInterface $tag)
+    {
+        $this->tags[] = $tag;
 
         return $this;
     }
