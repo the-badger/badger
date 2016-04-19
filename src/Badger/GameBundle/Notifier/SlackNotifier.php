@@ -37,6 +37,6 @@ class SlackNotifier implements NotifierInterface
             json_encode($data)
         );
 
-        $response = $client->send($request, ['timeout' => 2]);
+        $client->sendAsync($request, ['timeout' => 2]);
     }
 }
