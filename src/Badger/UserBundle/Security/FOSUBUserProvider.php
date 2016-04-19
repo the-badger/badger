@@ -9,7 +9,11 @@ use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * Class FOSUBUserProvider
+ * User provider to handle oAuth responses.
+ *
+ * @author    Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
+ * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  *
  * Credits: https://gist.github.com/danvbe/4476697
  */
@@ -18,6 +22,11 @@ class FOSUBUserProvider extends BaseClass
     /** @var TagRepositoryInterface */
     private $tagRepository;
 
+    /**
+     * @param UserManagerInterface   $userManager
+     * @param array                  $properties
+     * @param TagRepositoryInterface $tagRepository
+     */
     public function __construct(
         UserManagerInterface $userManager,
         array $properties,
@@ -36,20 +45,20 @@ class FOSUBUserProvider extends BaseClass
         $property = $this->getProperty($response);
         $username = $response->getUsername();
 
-        //on connect - get the access token and the user ID
+        // On connect - get the access token and the user ID
         $service = $response->getResourceOwner()->getName();
         $setter = 'set'.ucfirst($service);
         $setter_id = $setter.'Id';
         $setter_token = $setter.'AccessToken';
 
-        //we "disconnect" previously connected users
+        // "Disconnect" previously connected users
         if (null !== $previousUser = $this->userManager->findUserBy([$property => $username])) {
             $previousUser->$setter_id(null);
             $previousUser->$setter_token(null);
             $this->userManager->updateUser($previousUser);
         }
 
-        //we connect current user
+        // Connect current user
         $user->$setter_id($username);
         $user->$setter_token($response->getAccessToken());
         $this->userManager->updateUser($user);
@@ -63,26 +72,24 @@ class FOSUBUserProvider extends BaseClass
         $username = $response->getUsername();
         $user = $this->userManager->findUserBy([$this->getProperty($response) => $username]);
 
-        // email is mandatory, we fill it up with random thing first
+        // Email is mandatory, we fill it up with random thing first
         $email = uniqid('badger');
         if (null !== $response->getEmail()) {
             $email = $response->getEmail();
         }
 
-        //when the user is registrating
+        // When the user is registering
         if (null === $user) {
             $service = $response->getResourceOwner()->getName();
             $setter = 'set'.ucfirst($service);
             $setter_id = $setter.'Id';
             $setter_token = $setter.'AccessToken';
 
-            // create new user here
+            // Create new user here
             $user = $this->userManager->createUser();
             $user->$setter_id($username);
             $user->$setter_token($response->getAccessToken());
 
-            //I have set all requested data with the user's username
-            //modify here with relevant data
             $user->setUsername($response->getNickname());
             $user->setEmail($email);
             $user->setPassword($username); // TODO: change
@@ -98,12 +105,13 @@ class FOSUBUserProvider extends BaseClass
 
             return $user;
         }
-        //if user exists - go with the HWIOAuth way
+
+        // If user exists - go with the HWIOAuth way
         $user = parent::loadUserByOAuthUserResponse($response);
         $serviceName = $response->getResourceOwner()->getName();
         $setter = 'set' . ucfirst($serviceName) . 'AccessToken';
 
-        //update access token
+        // Update access token
         $user->$setter($response->getAccessToken());
 
         return $user;

@@ -4,7 +4,6 @@ namespace Badger\TagBundle\Security;
 
 use Badger\TagBundle\Entity\TagInterface;
 use Badger\TagBundle\Taggable\TaggableInterface;
-use Badger\UserBundle\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
@@ -41,7 +40,7 @@ class TaggedEntityVoter extends Voter
     {
         $user = $token->getUser();
 
-        if (!$user instanceof User || !$user instanceof TaggableInterface) {
+        if (!$user instanceof TaggableInterface) {
             return false;
         }
 
