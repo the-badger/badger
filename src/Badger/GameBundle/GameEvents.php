@@ -5,7 +5,7 @@ namespace Badger\GameBundle;
 /**
  * @author    Adrien Pétremann <adrien.petremann@akeneo.com>
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 class GameEvents
 {
@@ -13,7 +13,7 @@ class GameEvents
      * The Game.user_unlocks_badge event is thrown each time a user unlocked
      * a new badge.
      *
-     * The event listener receives an
+     * The event listener receives a
      * Badger\GameBundle\Event\BadgeUnlockEvent
      *
      * @var string

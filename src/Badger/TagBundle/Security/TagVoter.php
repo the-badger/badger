@@ -11,7 +11,9 @@ use Symfony\Component\Security\Core\Authorization\Voter\Voter;
  * Voter for Tag entities.
  * Is able to tell if a User can view a given Tag.
  *
- * @author Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author    Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
+ * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
 class TagVoter extends Voter
 {
