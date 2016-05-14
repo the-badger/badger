@@ -1,3 +1,10 @@
+# 0.4.5
+
+## UI
+
+- Add the new Badger logo!
+- Update overall UI
+
 # 0.4.4
 
 ## Bug fixes
