@@ -3,25 +3,34 @@
 {% block body %}
     <div class="ui main container ir-leaderboard">
 
-        <div class="ui center aligned basic segment">
-            <img class="ui image tiny" style="display: inline-block;" src="{{ asset('bundles/gate/images/podium.svg') }}" alt=""/>
-            <h2 class="main-title">LEADERBOARD</h2>
-            <p style="color: #C3C3C3;">Maybe you've seen them. Maybe you've even talked to them.<br/>Here are the most awarded members of Badger!</p>
-        </div>
+        <div class="ui basic segment">
 
-        <div class="ui divided items" style="padding: 0 280px;">
-            {% for user in users %}
-            <div class="item" style="padding-left: 25px; {% if app.user.username == user.user.username %}border-left: 5px solid #D5AD6D;{% endif %}">
-                <span style="display: inline-block; padding-top: 17px; padding-right: 25px; color: #A9A9A9;">#{{ loop.index }}</span>
-                <div class="ui mini circular image" style="width: 55px;">
-                    <img src="{{ user.user.profilePicture }}">
+            <div class="ui grid">
+                <div class="four wide column">
+                    <div class="ui secondary vertical pointing menu">
+                        <a class="active item">
+                            <i class="trophy icon"></i>
+                            Number of Badges
+                        </a>
+                    </div>
                 </div>
-                <div class="middle aligned content">
-                    <a style="font-weight: normal;" href="{{ url('userprofile', {'username': user.user.username}) }}" class="header">{{ user.user.username }}</a>
-                    <span style="font-size: 20px; font-weight: bold;" class="ui right floated">{{ user.nbUnlockedBadges }}</span>
+                <div class="twelve wide stretched column">
+                    <div class="ui divided items segment" style="padding: 30px 50px;">
+                        {% for user in users %}
+                            <div class="item" style="padding-left: 25px; {% if app.user.username == user.user.username %}border-left: 5px solid #D5AD6D;{% endif %}">
+                                <span style="display: inline-block; padding-top: 17px; padding-right: 25px; color: #A9A9A9;">#{{ loop.index }}</span>
+                                <div class="ui mini circular image" style="width: 55px;">
+                                    <img src="{{ user.user.profilePicture }}">
+                                </div>
+                                <div class="middle aligned content">
+                                    <a style="font-weight: normal;" href="{{ url('userprofile', {'username': user.user.username}) }}" class="header">{{ user.user.username }}</a>
+                                    <span style="font-size: 20px; font-weight: bold;" class="ui right floated">{{ user.nbUnlockedBadges }}</span>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
     </div>
 {% endblock %}
