@@ -51,9 +51,9 @@
             </div>
         </div>
         <div class="twelve wide column">
-            <h2 class="ui dividing header"><i class="icon trophy"></i> {{ unlockedBadges|length }} rewarded user(s)</h2>
             {% if unlockedBadges|length > 0 %}
-                <div class="ui basic segment">
+                <div class="ui segment">
+                    <h2 class="ui dividing header">People who have this badge</h2>
                     <div class="ui five cards">
                         {% for unlockedBadge in unlockedBadges %}
                             <div class="ui fluid card">

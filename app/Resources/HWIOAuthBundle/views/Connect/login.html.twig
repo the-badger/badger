@@ -4,29 +4,24 @@
 
 {% block hwi_oauth_content %}
 <div class="ui center aligned fluid container" id="main-logo">
-    {{ configuration('title') }}
+    <img src="{{ asset('bundles/gate/images/badger-300.png') }}" alt="">
 </div>
 
-<div class="ui four column centered grid">
+<div class="ui three column centered grid">
     <div class="column aligned">
-        <div class="ui tall stacked raised segments">
-            <div class="ui left aligned secondary segment">
-                {{ configuration('intro-login'|nl2br) }}
-            </div>
-            <div class="ui segment">
-                <h4 class="ui header">Please log in.</h4>
-                <div class="ui extra content">
-                    <p>
-                        <a class="ui secondary button" href="{{ path('github_connect') }}">
-                            <i class="icon github"></i> Log in with GitHub
-                        </a>
-                    </p>
-                    <p>
-                        <a class="ui google plus button" href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}">
-                            <i class="google icon"></i> Log in with Google
-                        </a>
-                    </p>
-                </div>
+        <div class="ui raised segment" style="padding: 25px;">
+            <h3 class="ui header" style="font-weight: normal;">Sign in to Badger</h3>
+            <div class="ui extra content" style="margin: 50px;">
+                <p>
+                    <a class="ui labeled icon google plus large button" href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}">
+                        <i class="google icon"></i> Sign in with Google
+                    </a>
+                </p>
+                <p>
+                    <a class="ui labeled icon large button" href="{{ path('github_connect') }}">
+                        <i class="icon github"></i> Sign in with GitHub
+                    </a>
+                </p>
             </div>
         </div>
         <p style="color: #B9B9B9;">version {{ app_version }}</p>
