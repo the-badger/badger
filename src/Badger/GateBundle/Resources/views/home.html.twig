@@ -2,14 +2,9 @@
 
 {% block body %}
     <div class="ui main container ir-feed">
-        <div class="ui center aligned basic segment">
-            <img class="ui image tiny" style="display: inline-block;" src="{{ asset('bundles/gate/images/feed.svg') }}" alt=""/>
-            <h2 class="main-title">RECENT UNLOCKS</h2>
-            <p style="color: #C3C3C3;">Be the first to know who unlocked a badge.</p>
-        </div>
+        <div class="ui segment feed" style="padding: 30px 50px;">
+            <h2 class="ui header main-title">Activity Feed</h2>
 
-        <div class="ui feed" style="padding: 0 280px;">
-            <div class="ui divider"></div>
             {% for unlock in unlockedBadges %}
             <div class="event">
                 <div class="label">
