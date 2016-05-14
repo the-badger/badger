@@ -28,9 +28,9 @@
                 </div>
             </div>
             <div class="twelve wide column">
-                <h2 class="ui dividing header"><i class="icon trophy"></i> Unlocked badges</h2>
                 {% if unlockedBadges|length > 0 %}
-                    <div class="ui basic segment">
+                    <div class="ui segment">
+                        <h2 class="ui dividing header">Unlocked badges</h2>
                         <div class="ui three cards">
                             {% for unlockedBadge in unlockedBadges %}
                                 <div class="unlocked card">
