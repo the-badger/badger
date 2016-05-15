@@ -3,15 +3,15 @@
 {% block bodyclass %}login{% endblock %}
 
 {% block hwi_oauth_content %}
-<div class="ui center aligned fluid container" id="main-logo">
+<div class="ui center aligned fluid grid" id="main-logo">
     <img src="{{ asset('bundles/gate/images/badger-300.png') }}" alt="">
 </div>
 
-<div class="ui three column centered grid">
+<div class="ui three column centered grid stackable">
     <div class="column aligned">
         <div class="ui raised segment" style="padding: 25px;">
             <h3 class="ui header" style="font-weight: normal;">Sign in to Badger</h3>
-            <div class="ui extra content" style="margin: 50px;">
+            <div class="ui extra content" style="margin: 50px 0;">
                 <p>
                     <a class="ui labeled icon google plus large button" href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}">
                         <i class="google icon"></i> Sign in with Google
