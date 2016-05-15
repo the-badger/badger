@@ -12,23 +12,52 @@
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <style>
+        /* TODO Move this into proper CSS/less file */
+        #hamburger {
+            display:none;
+            line-height:26px;
+            padding-right:12px;
+        }
+        @media only screen and (max-width: 700px) {
+            #hamburger {
+                display: block;
+            }
+            .ui.menu:not(.vertical) .item.menu-element, .username {
+                display: none;
+            }
+        }
+        body.pushable, body.pushable>.pusher {
+            background: #f5f5f5!important;
+        }
+    </style>
 </head>
-<body class="{% block bodyclass %}{% endblock %}">
+<body class="{% block bodyclass %}{% endblock %} pushable">
 
 {% if app.user %}
+<div class="ui left demo vertical sidebar labeled icon menu">
+    <a class="item {{ app.request.attributes.get('_route') == 'homepage' ? 'active' : '' }}" href="{{ url('homepage') }}"><i class="feed icon"></i> Feed</a>
+    <a class="item {{ app.request.attributes.get('_route') == 'badges' ? 'active' : '' }}" href="{{ url('badges') }}"><i class="trophy icon"></i> Badges</a>
+    <a class="item {{ app.request.attributes.get('_route') == 'users' ? 'active' : '' }}" href="{{ url('users') }}"><i class="users icon"></i> People</a>
+    <a class="item {{ app.request.attributes.get('_route') == 'leaderboard' ? 'active' : '' }}" href="{{ url('leaderboard') }}"><i class="line chart icon"></i> Leaderboard</a>
+</div>
+
 <div class="ui fixed menu">
     <div class="ui container">
+        <a class="item" id="hamburger">
+            <i class="sidebar icon"></i>
+        </a>
         <a href="{{ url('homepage') }}" class="header item logo navbar-logo">
             <img style="width: 100px;" src="{{ asset('bundles/gate/images/badger-150.png') }}" alt="">
         </a>
-        <a class="item {{ app.request.attributes.get('_route')  == 'homepage' ? 'active' : '' }}" href="{{ url('homepage') }}"><i class="feed icon"></i> Feed</a>
-        <a class="item {{ app.request.attributes.get('_route')  == 'badges' ? 'active' : '' }}" href="{{ url('badges') }}"><i class="trophy icon"></i> Badges</a>
-        <a class="item {{ app.request.attributes.get('_route')  == 'users' ? 'active' : '' }}" href="{{ url('users') }}"><i class="users icon"></i> People</a>
-        <a class="item {{ app.request.attributes.get('_route')  == 'leaderboard' ? 'active' : '' }}" href="{{ url('leaderboard') }}"><i class="line chart icon"></i> Leaderboard</a>
+        <a class="item menu-element {{ app.request.attributes.get('_route') == 'homepage' ? 'active' : '' }}" href="{{ url('homepage') }}"><i class="feed icon"></i> Feed</a>
+        <a class="item menu-element {{ app.request.attributes.get('_route') == 'badges' ? 'active' : '' }}" href="{{ url('badges') }}"><i class="trophy icon"></i> Badges</a>
+        <a class="item menu-element {{ app.request.attributes.get('_route') == 'users' ? 'active' : '' }}" href="{{ url('users') }}"><i class="users icon"></i> People</a>
+        <a class="item menu-element {{ app.request.attributes.get('_route') == 'leaderboard' ? 'active' : '' }}" href="{{ url('leaderboard') }}"><i class="line chart icon"></i> Leaderboard</a>
         <div class="right menu">
             <div class="ui dropdown item">
                 <img class="ui avatar image" src="{{ app.user.profilePicture }}" alt=""/>
-                &nbsp; {{ app.user.username }} <i class="dropdown icon"></i>
+                <div class="username">&nbsp; {{ app.user.username }}</div> <i class="dropdown icon"></i>
                 <div class="menu">
                     <a href="{{ url('userprofile', {'username': app.user.username}) }}" class="item">My Profile</a>
                     <a href="{{ url('fos_user_security_logout') }}" class="item">Logout</a>
@@ -48,6 +77,11 @@
     $('.ui.dropdown')
             .dropdown()
     ;
+    $('#hamburger').click(function() {
+        $('.ui.sidebar')
+                .sidebar('toggle')
+        ;
+    });
 </script>
 
 {% block javascripts %}
