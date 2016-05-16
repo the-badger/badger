@@ -2,8 +2,8 @@
 
 {% block body %}
     <div class="ui main container ir-people">
-        <div class="ui segment" style="padding: 30px 50px;">
-            <div class="ui six column grid">
+        <div class="ui segment">
+            <div class="ui stackable six column grid">
                 {% for user in users %}
                     <div class="column">
                         <a href="{{ url('userprofile', {'username': user.username}) }}" class="ui fluid card">
