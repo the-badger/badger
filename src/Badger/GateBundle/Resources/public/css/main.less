@@ -81,7 +81,9 @@ body {
 
 .ir-leaderboard {
   .leaderboard-index, .leaderboard-unlocked {
-    display: inline-block; padding-top: 17px; padding-right: 25px;
+    display: inline-block;
+    padding-top: 30px !important;
+    padding-right: 25px;
   }
   .leaderboard-index {
     color: #A9A9A9;
@@ -92,6 +94,18 @@ body {
   .leaderboard-username .image {
     width: 55px;
     margin-right: 20px;
+  }
+  .leaderboard-users {
+    padding: 30px 50px;
+  }
+  .user {
+    border-top: 1px solid rgba(34,36,38,.15);
+    margin: 0!important;
+
+    &:first-child {
+      border-top: none;
+      padding-top: 0!important;
+    }
   }
 }
 
@@ -106,6 +120,17 @@ body {
   }
   .ui.menu:not(.vertical) .item.menu-element, .username {
     display: none;
+  }
+  .ir-leaderboard {
+    .leaderboard-username .image {
+      display: none;
+    }
+    .leaderboard-index, .leaderboard-unlocked {
+      padding-top: 1rem !important;
+    }
+    .leaderboard-users {
+      padding: 0;
+    }
   }
 }
 body.pushable, body.pushable>.pusher {

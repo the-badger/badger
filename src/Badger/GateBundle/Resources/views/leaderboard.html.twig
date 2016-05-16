@@ -12,10 +12,10 @@
                 </div>
             </div>
             <div class="twelve wide stretched column">
-                <div class="ui divided items segment grid">
+                <div class="ui segment leaderboard-users">
                     {% for user in users %}
-                        <div class="row" style="{% if app.user.username == user.user.username %}border-left: 5px solid #D5AD6D;{% endif %}">
-                        <div class="two wide column right aligned leaderboard-index">
+                        <div class="ui grid user" style="{% if app.user.username == user.user.username %}border-left: 5px solid #D5AD6D;{% endif %}">
+                            <div class="two wide column right aligned leaderboard-index">
                                 <span>&#9839;{{ loop.index }}</span>
                             </div>
                             <div class="twelve wide column header leaderboard-username">
