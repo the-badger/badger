@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="ui main container ir-dashboard">
-        <div class="ui grid">
+        <div class="ui grid stackable">
             <div class="four wide column">
                 <div class="ui card">
                     <div class="content">
@@ -31,7 +31,7 @@
                 {% if unlockedBadges|length > 0 %}
                     <div class="ui segment">
                         <h2 class="ui dividing header">Unlocked badges</h2>
-                        <div class="ui three cards">
+                        <div class="ui stackable three cards">
                             {% for unlockedBadge in unlockedBadges %}
                                 <div class="unlocked card">
                                     <div class="image" style="padding: 10px;">
