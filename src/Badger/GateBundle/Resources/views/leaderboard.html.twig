@@ -2,33 +2,34 @@
 
 {% block body %}
     <div class="ui main container ir-leaderboard">
-
-        <div class="ui basic segment">
-
-            <div class="ui grid">
-                <div class="four wide column">
-                    <div class="ui secondary vertical pointing menu">
-                        <a class="active item">
-                            <i class="trophy icon"></i>
-                            Number of Badges
-                        </a>
-                    </div>
+        <div class="ui stackable grid">
+            <div class="four wide column">
+                <div class="ui secondary vertical pointing menu">
+                    <a class="active item">
+                        <i class="trophy icon"></i>
+                        Number of Badges
+                    </a>
                 </div>
-                <div class="twelve wide stretched column">
-                    <div class="ui divided items segment" style="padding: 30px 50px;">
-                        {% for user in users %}
-                            <div class="item" style="padding-left: 25px; {% if app.user.username == user.user.username %}border-left: 5px solid #D5AD6D;{% endif %}">
-                                <span style="display: inline-block; padding-top: 17px; padding-right: 25px; color: #A9A9A9;">#{{ loop.index }}</span>
-                                <div class="ui mini circular image" style="width: 55px;">
+            </div>
+            <div class="twelve wide stretched column">
+                <div class="ui segment leaderboard-users">
+                    {% for user in users %}
+                        <div class="ui grid user" style="{% if app.user.username == user.user.username %}border-left: 5px solid #D5AD6D;{% endif %}">
+                            <div class="two wide column right aligned leaderboard-index">
+                                <span>&#9839;{{ loop.index }}</span>
+                            </div>
+                            <div class="twelve wide column header leaderboard-username">
+                                <div class="ui mini circular image">
                                     <img src="{{ user.user.profilePicture }}">
                                 </div>
-                                <div class="middle aligned content">
-                                    <a style="font-weight: normal;" href="{{ url('userprofile', {'username': user.user.username}) }}" class="header">{{ user.user.username }}</a>
-                                    <span style="font-size: 20px; font-weight: bold;" class="ui right floated">{{ user.nbUnlockedBadges }}</span>
-                                </div>
+                                <a style="font-weight: normal;" href="{{ url('userprofile', {'username': user.user.username}) }}" class="header">{{ user.user.username }}</a>
+                                <span style="font-size: 20px; font-weight: bold;" class="ui right floated"></span>
                             </div>
-                        {% endfor %}
-                    </div>
+                            <div class="two wide column center aligned leaderboard-unlocked">
+                                <span style="display:inline-block">{{ user.nbUnlockedBadges }}</span>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

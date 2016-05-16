@@ -2,42 +2,40 @@
 
 {% block body %}
     <div class="ui main container ir-badges">
-        <div class="ui basic segment">
-            <div class="ui top attached tabular menu">
-                {% for tag in tags %}
-                    <a class="item {{ 1 == loop.index ? 'active' : ''}}" data-tab="{{ tag.code }}">{{ tag.name }}</a>
-                {% endfor %}
-            </div>
+        <div class="ui four stackable tabs tabular menu top attached">
             {% for tag in tags %}
-                <div class="ui bottom attached segment {{ 1 == loop.index ? 'active' : ''}} tab" data-tab="{{ tag.code }}">
-                    <div class="ui four cards">
-                        {% for badge in tag.badges %}
-                            <div class="card {{ badge.id in unlockedBadgesIds ? 'unlocked' : 'locked' }}" >
-                                <div class="image" style="padding: 10px;">
-                                    {% if badge.id in unlockedBadgesIds %}
-                                        <span class="ui left corner green label">
-                            <i class="checkmark icon"></i>
-                        </span>
-                                    {% endif %}
-                                    {% if badge.id in claimedBadgeIds %}
-                                        <span class="ui left corner blue label">
-                            <i class="wait icon"></i>
-                        </span>
-                                    {% endif %}
-                                    <img src="{{ badge.imageWebPath }}">
-                                </div>
-                                <div class="content">
-                                    <div class="header"><a href="{{ url('viewbadge', {id: badge.id}) }}">{{ badge.title }}</a></div>
-                                    <div class="description">
-                                        {{ badge.description }}
-                                    </div>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
+                <a class="item {{ 1 == loop.index ? 'active' : ''}}" data-tab="{{ tag.code }}">{{ tag.name }}</a>
             {% endfor %}
         </div>
+        {% for tag in tags %}
+            <div class="ui bottom attached segment {{ 1 == loop.index ? 'active' : ''}} tab" data-tab="{{ tag.code }}">
+                <div class="ui four stackable cards">
+                    {% for badge in tag.badges %}
+                        <div class="card {{ badge.id in unlockedBadgesIds ? 'unlocked' : 'locked' }}" >
+                            <div class="image" style="padding: 10px;">
+                                {% if badge.id in unlockedBadgesIds %}
+                                    <span class="ui left corner green label">
+                                        <i class="checkmark icon"></i>
+                                    </span>
+                                {% endif %}
+                                {% if badge.id in claimedBadgeIds %}
+                                    <span class="ui left corner blue label">
+                                        <i class="wait icon"></i>
+                                    </span>
+                                {% endif %}
+                                <img src="{{ badge.imageWebPath }}">
+                            </div>
+                            <div class="content">
+                                <div class="header"><a href="{{ url('viewbadge', {id: badge.id}) }}">{{ badge.title }}</a></div>
+                                <div class="description">
+                                    {{ badge.description }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}
 
