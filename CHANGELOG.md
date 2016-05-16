@@ -1,3 +1,9 @@
+# 0.5.X
+
+## UI
+
+- Add mobile support (responsive), woohoo!
+
 # 0.4.5
 
 ## UI
