@@ -38,5 +38,39 @@ nodejs node_modules/gulp/bin/gulp.js less # Compile bundle .less files to .css
 nodejs node_modules/gulp/bin/gulp.js install # Move downloaded assets to web/ directory
 ```
 
+## Configuration
+Once Badger has been installed, you'll have some small things to configure in order to use the application.
+
+### Setup GitHub oAuth login
+1. Create a GitHub application with your GitHub account by following this link: https://github.com/settings/developers
+2. Fill in needed informations. **Homepage URL** & **Authorization callback URL** should have the same URL, which is your Badger index page (eg. `http://badger.example.com/`)
+3. Once the application created, put your **Client ID** & **Client Secret** tokens in the parameters file of your Badger app:
+```yml
+# ./app/config/parameters.yml
+parameters:
+    github_client_id: 123456789
+    github_client_secret: abcdef123456789
+```
+
+### Setup Google oAuth login
+1. Create a Google application with your Google account by following this link: https://console.developers.google.com/
+2. Fill in needed informations. Put your Badger index page (eg. `http://badger.example.com/`) as a **valid redirect domain**
+3. Once the application created, put your **Client ID** & **Client Secret** tokens in the parameters file of your Badger app:
+```yml
+# ./app/config/parameters.yml
+parameters:
+    google_client_id: abcdefg123456789.apps.googleusercontent.com
+    google_client_secret: 123456789abcd
+```
+
+### Create an admin user
+To manage Badger, you'll need one or several administrators. To promote a user, use this command:
+
+```bash
+php app/console fos:user:promote <username> ROLE_ADMIN
+```
+
+Note that the promoted user will need to **logout then login again** to have full power :metal:
+
 ## License
 Badger is licensed under the [Open Software License v. 3.0 (OSL-3.0)](https://opensource.org/licenses/OSL-3.0)
