@@ -3,7 +3,7 @@
 </p>
 
 ## Badger
-Badger is a gamification platform initially developed as an internal project by [Akeneo](www.akeneo.com).
+Badger is a gamification platform initially developed as an internal project by [Akeneo](http://www.akeneo.com).
 
 ## Prerequisite
 - PHP 5.5+
