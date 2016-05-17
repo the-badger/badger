@@ -3,8 +3,7 @@ parameters:
 
 services:
     badger.tag.repository.tag:
-        class: %badger.tag.repository.tag.class%
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
+        class: '%badger.tag.repository.tag.class%'
+        factory: [doctrine.orm.entity_manager, getRepository]
         arguments:
             - Badger\TagBundle\Entity\Tag

@@ -3,32 +3,32 @@ parameters:
 
 services:
     badger.game.saver.badge:
-        class: %badger.storage_utils.saver.base.class%
+        class: '%badger.storage_utils.saver.base.class%'
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\GameBundle\Entity\Badge'
 
     badger.game.saver.quest:
-        class: %badger.storage_utils.saver.base.class%
+        class: '%badger.storage_utils.saver.base.class%'
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\GameBundle\Entity\Quest'
 
     badger.game.saver.unlocked_badge:
-        class: %badger.game.saver.unlocked_badge.class%
+        class: '%badger.game.saver.unlocked_badge.class%'
         arguments:
             - '@doctrine.orm.entity_manager'
             - '@event_dispatcher'
             - 'Badger\GameBundle\Entity\UnlockedBadge'
 
     badger.game.saver.claimed_badge:
-        class: %badger.storage_utils.saver.base.class%
+        class: '%badger.storage_utils.saver.base.class%'
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\GameBundle\Entity\ClaimedBadge'
 
     badger.game.saver.configuration:
-        class: %badger.storage_utils.saver.base.class%
+        class: '%badger.storage_utils.saver.base.class%'
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\GameBundle\Entity\Configuration'
