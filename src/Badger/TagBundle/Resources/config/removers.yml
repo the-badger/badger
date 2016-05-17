@@ -1,6 +1,6 @@
 services:
     badger.tags.remover.tag:
-        class: %badger.storage_utils.remover.base.class%
+        class: '%badger.storage_utils.remover.base.class%'
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\TagBundle\Entity\Tag'

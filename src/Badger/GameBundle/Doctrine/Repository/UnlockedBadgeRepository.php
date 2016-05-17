@@ -25,7 +25,7 @@ class UnlockedBadgeRepository extends EntityRepository implements UnlockedBadgeR
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('b.id')
             ->from('GameBundle:UnlockedBadge', 'ub')
-            ->leftjoin('ub.badge', 'b')
+            ->leftJoin('ub.badge', 'b')
             ->where($qb->expr()->eq('ub.user', '?1'))
             ->setParameter(1, $user);
 
@@ -47,7 +47,7 @@ class UnlockedBadgeRepository extends EntityRepository implements UnlockedBadgeR
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('ub')
             ->from('GameBundle:UnlockedBadge', 'ub')
-            ->leftjoin('ub.badge', 'b')
+            ->leftJoin('ub.badge', 'b')
             ->leftJoin('b.tags', 't')
             ->where('t.id IN (:ids)')->setParameter('ids', $tagIds, Connection::PARAM_STR_ARRAY)
             ->orderBy('ub.unlockedDate', 'desc')

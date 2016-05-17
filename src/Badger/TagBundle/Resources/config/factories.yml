@@ -3,4 +3,4 @@ parameters:
 
 services:
     badger.tags.tag.factory:
-        class: %badger.tags.tag.factory.class%
+        class: '%badger.tags.tag.factory.class%'

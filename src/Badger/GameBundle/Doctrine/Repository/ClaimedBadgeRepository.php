@@ -23,7 +23,7 @@ class ClaimedBadgeRepository extends EntityRepository implements ClaimedBadgeRep
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('b.id')
             ->from('GameBundle:ClaimedBadge', 'cb')
-            ->leftjoin('cb.badge', 'b')
+            ->leftJoin('cb.badge', 'b')
             ->where($qb->expr()->eq('cb.user', '?1'))
             ->setParameter(1, $user);
 
