@@ -2,7 +2,7 @@
 
 namespace Badger\GameBundle\Controller;
 
-use Badger\GameBundle\Entity\Quest;
+use Badger\GameBundle\Entity\QuestInterface;
 use Badger\GameBundle\Form\QuestType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
@@ -64,11 +64,11 @@ class QuestController extends Controller
     /**
      * Finds and displays a Quest entity.
      *
-     * @param Quest $quest
+     * @param QuestInterface $quest
      *
      * @return Response
      */
-    public function showAction(Quest $quest)
+    public function showAction(QuestInterface $quest)
     {
         $deleteForm = $this->createDeleteForm($quest);
 
@@ -81,12 +81,12 @@ class QuestController extends Controller
     /**
      * Displays a form to edit an existing Quest entity.
      *
-     * @param Request $request
-     * @param Quest   $quest
+     * @param Request        $request
+     * @param QuestInterface $quest
      *
      * @return RedirectResponse|Response
      */
-    public function editAction(Request $request, Quest $quest)
+    public function editAction(Request $request, QuestInterface $quest)
     {
         $deleteForm = $this->createDeleteForm($quest);
         $editForm = $this->createForm(new QuestType(), $quest);
@@ -109,12 +109,12 @@ class QuestController extends Controller
     /**
      * Deletes a Quest entity.
      *
-     * @param Request $request
-     * @param Quest   $quest
+     * @param Request        $request
+     * @param QuestInterface $quest
      *
      * @return RedirectResponse
      */
-    public function deleteAction(Request $request, Quest $quest)
+    public function deleteAction(Request $request, QuestInterface $quest)
     {
         $form = $this->createDeleteForm($quest);
         $form->handleRequest($request);
@@ -130,11 +130,11 @@ class QuestController extends Controller
     /**
      * Creates a form to delete a Quest entity.
      *
-     * @param Quest $quest The Quest entity
+     * @param QuestInterface $quest The Quest entity
      *
      * @return Form The form
      */
-    private function createDeleteForm(Quest $quest)
+    private function createDeleteForm(QuestInterface $quest)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('admin_quest_delete', ['id' => $quest->getId()]))

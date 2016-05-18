@@ -4,7 +4,6 @@ namespace Badger\GameBundle\Entity;
 
 use Badger\TagBundle\Entity\TagInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Badger\TagBundle\Taggable\TaggableInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -13,10 +12,10 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-class Badge implements TaggableInterface
+class Badge implements BadgeInterface
 {
     /** @var string */
-    private $file;
+    protected $file;
 
     /** @var string */
     protected $id;
@@ -34,7 +33,7 @@ class Badge implements TaggableInterface
     protected $tags;
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -42,7 +41,7 @@ class Badge implements TaggableInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getTitle()
     {
@@ -50,9 +49,7 @@ class Badge implements TaggableInterface
     }
 
     /**
-     * @param string $title
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function setTitle($title)
     {
@@ -62,7 +59,7 @@ class Badge implements TaggableInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getDescription()
     {
@@ -70,9 +67,7 @@ class Badge implements TaggableInterface
     }
 
     /**
-     * @param string $description
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function setDescription($description)
     {
@@ -82,7 +77,7 @@ class Badge implements TaggableInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getImagePath()
     {
@@ -90,9 +85,7 @@ class Badge implements TaggableInterface
     }
 
     /**
-     * @param string $imagePath
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function setImagePath($imagePath)
     {
@@ -101,38 +94,8 @@ class Badge implements TaggableInterface
         return $this;
     }
 
-    public function getImageAbsolutePath()
-    {
-        return null === $this->imagePath
-            ? null
-            : $this->getUploadRootDir() . '/' . $this->imagePath;
-    }
-
-    public function getImageWebPath()
-    {
-        return null === $this->imagePath
-            ? null
-            : '/' . $this->getUploadDir() . '/' . $this->imagePath;
-    }
-
-    protected function getUploadRootDir()
-    {
-        // the absolute directory path where uploaded
-        // documents should be saved
-        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
-    }
-
-    protected function getUploadDir()
-    {
-        // get rid of the __DIR__ so it doesn't screw up
-        // when displaying uploaded doc/image in the view.
-        return 'uploads/game';
-    }
-
     /**
-     * Sets file.
-     *
-     * @param UploadedFile $file
+     * {@inheritdoc}
      */
     public function setFile(UploadedFile $file = null)
     {
@@ -140,15 +103,16 @@ class Badge implements TaggableInterface
     }
 
     /**
-     * Get file.
-     *
-     * @return UploadedFile
+     * {@inheritdoc}
      */
     public function getFile()
     {
         return $this->file;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function upload()
     {
         // the file property can be empty if the field is not required
@@ -197,5 +161,51 @@ class Badge implements TaggableInterface
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * Returns the absolute path of the image, null if no image
+     *
+     * @return null|string
+     */
+    public function getImageAbsolutePath()
+    {
+        return null === $this->imagePath
+            ? null
+            : $this->getUploadRootDir() . '/' . $this->imagePath;
+    }
+
+    /**
+     * Returns the path of the image for the web, null if no image
+     *
+     * @return null|string
+     */
+    public function getImageWebPath()
+    {
+        return null === $this->imagePath
+            ? null
+            : '/' . $this->getUploadDir() . '/' . $this->imagePath;
+    }
+
+    /**
+     * Returns the absolute directory path where uploaded documents should be saved
+     *
+     * @return string
+     */
+    protected function getUploadRootDir()
+    {
+        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+    }
+
+    /**
+     * Returns the path where upload files.
+     *
+     * Get rid of the __DIR__ so it doesn't screw up when displaying uploaded doc/image in the view.
+     *
+     * @return string
+     */
+    protected function getUploadDir()
+    {
+        return 'uploads/game';
     }
 }

@@ -2,7 +2,7 @@
 
 namespace spec\Badger\StorageUtilsBundle\Doctrine\Remover;
 
-use Badger\GameBundle\Entity\Badge;
+use Badger\GameBundle\Entity\BadgeInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use PhpSpec\ObjectBehavior;
 
@@ -18,7 +18,7 @@ class BaseRemoverSpec extends ObjectBehavior
         $this->shouldHaveType('Badger\StorageUtilsBundle\Remover\RemoverInterface');
     }
 
-    function it_removes_the_object_and_flushes_the_unit_of_work($objectManager, Badge $type)
+    function it_removes_the_object_and_flushes_the_unit_of_work($objectManager, BadgeInterface $type)
     {
         $objectManager->remove($type)->shouldBeCalled();
         $objectManager->flush()->shouldBeCalled();

@@ -2,7 +2,7 @@
 
 namespace Badger\GameBundle\Factory;
 
-use Badger\GameBundle\Entity\Badge;
+use Badger\GameBundle\Entity\BadgeInterface;
 
 /**
  * @author    Adrien Pétremann <adrien.petremann@akeneo.com>
@@ -12,9 +12,9 @@ use Badger\GameBundle\Entity\Badge;
 interface BadgeFactoryInterface
 {
     /**
-     * Create a Badge instance.
+     * Create a BadgeInterface instance.
      *
-     * @return Badge
+     * @return BadgeInterface
      */
     public function create();
 }

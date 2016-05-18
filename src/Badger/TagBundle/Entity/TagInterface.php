@@ -2,7 +2,7 @@
 
 namespace Badger\TagBundle\Entity;
 
-use Badger\GameBundle\Entity\Badge;
+use Badger\GameBundle\Entity\BadgeInterface;
 
 /**
  * @author    Adrien Pétremann <adrien.petremann@akeneo.com>
@@ -79,12 +79,12 @@ interface TagInterface
     public function getCreatedAt();
 
     /**
-     * @return Badge[]
+     * @return BadgeInterface[]
      */
     public function getBadges();
 
     /**
-     * @param Badge[] $badges
+     * @param BadgeInterface[] $badges
      */
     public function setBadges(array $badges);
 }

@@ -2,7 +2,7 @@
 
 namespace Badger\GameBundle\Controller;
 
-use Badger\GameBundle\Entity\Badge;
+use Badger\GameBundle\Entity\BadgeInterface;
 use Badger\GameBundle\Form\BadgeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
@@ -68,11 +68,11 @@ class BadgeController extends Controller
     /**
      * Finds and displays a Badge entity.
      *
-     * @param Badge $badge
+     * @param BadgeInterface $badge
      *
      * @return Response
      */
-    public function showAction(Badge $badge)
+    public function showAction(BadgeInterface $badge)
     {
         $deleteForm = $this->createDeleteForm($badge);
 
@@ -85,12 +85,12 @@ class BadgeController extends Controller
     /**
      * Displays a form to edit an existing Badge entity.
      *
-     * @param Request $request
-     * @param Badge   $badge
+     * @param Request        $request
+     * @param BadgeInterface $badge
      *
      * @return RedirectResponse|Response
      */
-    public function editAction(Request $request, Badge $badge)
+    public function editAction(Request $request, BadgeInterface $badge)
     {
         $deleteForm = $this->createDeleteForm($badge);
         $editForm = $this->createForm(new BadgeType(), $badge);
@@ -117,12 +117,12 @@ class BadgeController extends Controller
     /**
      * Deletes a Badge entity.
      *
-     * @param Request $request
-     * @param Badge   $badge
+     * @param Request        $request
+     * @param BadgeInterface $badge
      *
      * @return RedirectResponse
      */
-    public function deleteAction(Request $request, Badge $badge)
+    public function deleteAction(Request $request, BadgeInterface $badge)
     {
         $form = $this->createDeleteForm($badge);
         $form->handleRequest($request);
@@ -138,11 +138,11 @@ class BadgeController extends Controller
     /**
      * Creates a form to delete a Badge entity.
      *
-     * @param Badge $badge The Badge entity
+     * @param BadgeInterface $badge The Badge entity
      *
      * @return Form The form
      */
-    private function createDeleteForm(Badge $badge)
+    private function createDeleteForm(BadgeInterface $badge)
     {
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('admin_badge_delete', ['id' => $badge->getId()]))

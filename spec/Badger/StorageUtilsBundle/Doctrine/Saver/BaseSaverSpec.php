@@ -2,7 +2,7 @@
 
 namespace spec\Badger\StorageUtilsBundle\Doctrine\Saver;
 
-use Badger\GameBundle\Entity\Badge;
+use Badger\GameBundle\Entity\BadgeInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use PhpSpec\ObjectBehavior;
 
@@ -18,7 +18,7 @@ class BaseSaverSpec extends ObjectBehavior
         $this->shouldHaveType('Badger\StorageUtilsBundle\Saver\SaverInterface');
     }
 
-    function it_persists_the_object_and_flushes_the_unit_of_work($objectManager, Badge $type)
+    function it_persists_the_object_and_flushes_the_unit_of_work($objectManager, BadgeInterface $type)
     {
         $objectManager->persist($type)->shouldBeCalled();
         $objectManager->flush()->shouldBeCalled();
@@ -26,7 +26,7 @@ class BaseSaverSpec extends ObjectBehavior
         $this->save($type);
     }
 
-    function it_throws_exception_when_save_anything_else_than_the_expected_class($optionsResolver)
+    function it_throws_exception_when_save_anything_else_than_the_expected_class()
     {
         $anythingElse = new \stdClass();
         $exception = new \InvalidArgumentException(

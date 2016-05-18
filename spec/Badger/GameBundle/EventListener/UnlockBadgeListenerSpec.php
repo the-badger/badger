@@ -2,8 +2,8 @@
 
 namespace spec\Badger\GameBundle\EventListener;
 
-use Badger\GameBundle\Entity\Badge;
-use Badger\GameBundle\Entity\UnlockedBadge;
+use Badger\GameBundle\Entity\BadgeInterface;
+use Badger\GameBundle\Entity\UnlockedBadgeInterface;
 use Badger\GameBundle\Event\BadgeUnlockEvent;
 use Badger\GameBundle\Notifier\NotifierInterface;
 use Badger\UserBundle\Entity\UserInterface;
@@ -22,8 +22,8 @@ class UnlockBadgeListenerSpec extends ObjectBehavior
         $router,
         $notifier,
         BadgeUnlockEvent $event,
-        UnlockedBadge $unlockedBadge,
-        Badge $badge,
+        UnlockedBadgeInterface $unlockedBadge,
+        BadgeInterface $badge,
         UserInterface $user
     ) {
         $user->getUsername()->willReturn('Bender');

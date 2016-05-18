@@ -2,7 +2,7 @@
 
 namespace Badger\GameBundle\Event;
 
-use Badger\GameBundle\Entity\UnlockedBadge;
+use Badger\GameBundle\Entity\UnlockedBadgeInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**
@@ -14,19 +14,19 @@ use Symfony\Component\EventDispatcher\Event;
  */
 class BadgeUnlockEvent extends Event
 {
-    /** @var UnlockedBadge */
+    /** @var UnlockedBadgeInterface */
     protected $unlockedBadge;
 
     /**
-     * @param UnlockedBadge $unlockedBadge
+     * @param UnlockedBadgeInterface $unlockedBadge
      */
-    public function __construct(UnlockedBadge $unlockedBadge)
+    public function __construct(UnlockedBadgeInterface $unlockedBadge)
     {
         $this->unlockedBadge = $unlockedBadge;
     }
 
     /**
-     * @return UnlockedBadge
+     * @return UnlockedBadgeInterface
      */
     public function getUnlockedBadge()
     {

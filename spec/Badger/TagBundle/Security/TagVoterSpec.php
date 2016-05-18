@@ -2,10 +2,9 @@
 
 namespace spec\Badger\TagBundle\Security;
 
-use Badger\GameBundle\Entity\Badge;
+use Badger\GameBundle\Entity\BadgeInterface;
 use Badger\TagBundle\Entity\TagInterface;
 use Badger\TagBundle\Security\TagVoter;
-use Badger\UserBundle\Entity\User;
 use Badger\UserBundle\Entity\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
@@ -21,7 +20,7 @@ class TagVoterSpec extends ObjectBehavior
 
     function it_grants_tag_view_on_authorized_users(
         TokenInterface $token,
-        User $user,
+        UserInterface $user,
         ArrayCollection $userTags,
         TagInterface $tagCommunity,
         TagInterface $tagPrivate
@@ -38,7 +37,7 @@ class TagVoterSpec extends ObjectBehavior
 
     function it_does_not_grant_tag_view_on_unauthorized_users(
         TokenInterface $token,
-        User $user,
+        UserInterface $user,
         ArrayCollection $userTags,
         TagInterface $tagCommunity,
         TagInterface $tagPrivate
@@ -64,7 +63,7 @@ class TagVoterSpec extends ObjectBehavior
 
     function it_supports_only_tag_entity(
         TokenInterface $token,
-        Badge $badge
+        BadgeInterface $badge
     ) {
         $this->vote($token, $badge, [TagVoter::VIEW])->shouldReturn(VoterInterface::ACCESS_ABSTAIN);
     }
