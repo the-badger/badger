@@ -2,7 +2,6 @@
 
 namespace Badger\UserBundle\Controller;
 
-use Badger\UserBundle\Entity\UserInterface;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,11 +59,8 @@ class UserController extends Controller
     /**
      * Finds and displays a User entity.
      *
-     * @param UserInterface $user
-     *
-     * @return Response
      */
-    public function showAction(UserInterface $user)
+    public function showAction(User $user)
     {
         $deleteForm = $this->createDeleteForm($user);
 

@@ -3,7 +3,8 @@ parameters:
 
 services:
     badger.user.repository.user:
-        class: '%badger.user.repository.user.class%'
-        factory: [doctrine.orm.entity_manager, getRepository]
+        class: %badger.user.repository.user.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
         arguments:
             - Badger\UserBundle\Entity\User
