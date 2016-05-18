@@ -3,7 +3,7 @@ parameters:
 
 services:
     badger.game.twig.configuration:
-        class: %badger.game.twig.configuration.class%
+        class: '%badger.game.twig.configuration.class%'
         public: false
         arguments:
             - '@badger.game.repository.configuration'

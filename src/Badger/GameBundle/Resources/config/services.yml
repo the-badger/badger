@@ -4,7 +4,7 @@ parameters:
 
 services:
     badger.game.listener:
-        class: %badger.game.listener.class%
+        class: '%badger.game.listener.class%'
         arguments:
             - '@router'
             - '@logger'
@@ -13,6 +13,6 @@ services:
             - { name: kernel.event_listener, event: game.user_unlocks_badge, method: onUnlockBadge }
 
     badger.notifier.slack:
-        class: %badger.notifier.slack.class%
+        class: '%badger.notifier.slack.class%'
         arguments:
             - '%slack_webhook_url%'
