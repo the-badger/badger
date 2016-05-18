@@ -30,6 +30,14 @@ EXIT
 composer install
 ```
 
+### Create database tables
+You will need to create the database tables before to use badger. Use this command:
+
+```bash
+php app/console doctrine:schema:update --force
+```
+
+
 #### 3) Install frontend assets
 ```bash
 npm install # Install frontend dependencies, like Bootstrap
