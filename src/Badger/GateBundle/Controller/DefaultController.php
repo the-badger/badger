@@ -5,7 +5,7 @@ namespace Badger\GateBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
@@ -16,7 +16,7 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="homepage")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $lastUnlockedBadges = $this->get('badger.game.repository.unlocked_badge')->findByTags(
             $this->getUser()->getTags()->toArray()
@@ -30,7 +30,7 @@ class DefaultController extends Controller
     /**
      * @Route("/users", name="users")
      */
-    public function usersAction()
+    public function usersAction(Request $request)
     {
         $users = $this->getDoctrine()->getRepository('UserBundle:User')->findAll();
 
@@ -42,18 +42,15 @@ class DefaultController extends Controller
     /**
      * @Route("/admin", name="admin")
      */
-    public function adminAction()
+    public function adminAction(Request $request)
     {
         return $this->render('@Gate/base-admin.html.twig');
     }
 
     /**
      * @Route("/user/{username}", name="userprofile")
-     * @param string $username
-     *
-     * @return Response
      */
-    public function userProfileAction($username)
+    public function userProfileAction(Request $request, $username)
     {
         $user = $this->getDoctrine()->getRepository('UserBundle:User')->findOneBy([
             'username' => $username
@@ -89,11 +86,8 @@ class DefaultController extends Controller
 
     /**
      * @Route("/badge/{id}", name="viewbadge")
-     * @param $id
-     *
-     * @return Response
      */
-    public function badgeViewAction($id)
+    public function badgeViewAction(Request $request, $id)
     {
         $badge = $this->get('badger.game.repository.badge')->findOneBy([
             'id' => $id
@@ -139,9 +133,6 @@ class DefaultController extends Controller
 
     /**
      * @Route("/claim/{id}", name="claimbadge")
-     * @param int $id
-     *
-     * @return JsonResponse
      */
     public function claimBadgeAction($id)
     {
@@ -177,10 +168,8 @@ class DefaultController extends Controller
 
     /**
      * @Route("/badges", name="badges")
-     * 
-     * @return Response
      */
-    public function badgeListAction()
+    public function badgeListAction(Request $request)
     {
         $user = $this->getUser();
         $userTags = $user->getTags();
@@ -200,10 +189,8 @@ class DefaultController extends Controller
 
     /**
      * @Route("/leaderboard", name="leaderboard")
-     * 
-     * @return Response
      */
-    public function leaderboardAction()
+    public function leaderboardAction(Request $request)
     {
         $users = $this->getDoctrine()->getRepository('UserBundle:User')->getSortedUserByUnlockedBadges();
 

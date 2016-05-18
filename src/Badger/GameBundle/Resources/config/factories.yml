@@ -7,16 +7,16 @@ parameters:
 
 services:
     badger.game.badge.factory:
-        class: '%badger.game.badge.factory.class%'
+        class: %badger.game.badge.factory.class%
 
     badger.game.quest.factory:
-        class: '%badger.game.quest.factory.class%'
+        class: %badger.game.quest.factory.class%
 
     badger.game.unlocked_badge.factory:
-        class: '%badger.game.unlocked_badge.factory.class%'
+        class: %badger.game.unlocked_badge.factory.class%
 
     badger.game.claimed_badge.factory:
-        class: '%badger.game.claimed_badge.factory.class%'
+        class: %badger.game.claimed_badge.factory.class%
 
     badger.game.configuration.factory:
-        class: '%badger.game.configuration.factory.class%'
+        class: %badger.game.configuration.factory.class%

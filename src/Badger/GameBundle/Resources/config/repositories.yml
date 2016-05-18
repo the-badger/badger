@@ -7,31 +7,36 @@ parameters:
 
 services:
     badger.game.repository.badge:
-        class: '%badger.game.repository.badge.class%'
-        factory: [doctrine.orm.entity_manager, getRepository]
+        class: %badger.game.repository.badge.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
         arguments:
             - Badger\GameBundle\Entity\Badge
 
     badger.game.repository.quest:
-        class: '%badger.game.repository.quest.class%'
-        factory: [doctrine.orm.entity_manager, getRepository]
+        class: %badger.game.repository.quest.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
         arguments:
             - Badger\GameBundle\Entity\Quest
 
     badger.game.repository.claimed_badge:
-        class: '%badger.game.repository.claimed_badge.class%'
-        factory: [doctrine.orm.entity_manager, getRepository]
+        class: %badger.game.repository.claimed_badge.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
         arguments:
             - Badger\GameBundle\Entity\ClaimedBadge
 
     badger.game.repository.unlocked_badge:
-        class: '%badger.game.repository.unlocked_badge.class%'
-        factory: [doctrine.orm.entity_manager, getRepository]
+        class: %badger.game.repository.unlocked_badge.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
         arguments:
             - Badger\GameBundle\Entity\UnlockedBadge
 
     badger.game.repository.configuration:
-        class: '%badger.game.repository.configuration.class%'
-        factory: [doctrine.orm.entity_manager, getRepository]
+        class: %badger.game.repository.configuration.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
         arguments:
             - Badger\GameBundle\Entity\Configuration

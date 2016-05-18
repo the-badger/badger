@@ -2,6 +2,7 @@
 
 namespace Badger\GameBundle\Controller;
 
+use Badger\GameBundle\Entity\Badge;
 use Badger\GameBundle\Entity\Quest;
 use Badger\GameBundle\Form\QuestType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
