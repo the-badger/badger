@@ -1,0 +1,9 @@
+badge_proposal_index:
+    path:     /
+    defaults: { _controller: "GameBundle:BadgeProposal:index" }
+    methods:  GET
+
+badge_proposal_new:
+    path:     /new
+    defaults: { _controller: "GameBundle:BadgeProposal:new" }
+    methods:  [GET, POST]

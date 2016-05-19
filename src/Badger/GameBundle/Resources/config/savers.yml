@@ -32,3 +32,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\GameBundle\Entity\Configuration'
+
+    badger.game.saver.badge_proposal:
+        class: %badger.storage_utils.saver.base.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\BadgeProposal'

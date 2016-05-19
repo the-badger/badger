@@ -1,0 +1,40 @@
+{% extends 'GateBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="ui main container ir-badge-proposals">
+        <div class="ui segment">
+            <div>
+                <a class="ui right floated button" href="{{ url('badge_proposal_new') }}"><i class="ui plus icon"></i> Propose a badge</a>
+                <h2 class="ui header main-title">Badge Proposals</h2>
+            </div>
+            <div class="badge-proposals">
+                {% if badgeProposals is not empty %}
+                    {% for badgeProposal in badgeProposals %}
+                        <div class="ui grid" style="clear:both">
+                            <div class="eleven wide column">
+                                <h3>{{ badgeProposal.title }}</h3>
+                                <div class="description">{{ badgeProposal.description }}</div>
+                            </div>
+                            <div class="three wide column leaderboard-username">
+                                <div class="ui mini circular image">
+                                    <img src="{{ badgeProposal.user.profilePicture }}">
+                                </div>
+                                <a style="font-weight: normal;" href="{{ url('userprofile', {'username': badgeProposal.user.username}) }}" class="header">{{ badgeProposal.user.username }}</a>
+                                <span style="font-size: 20px; font-weight: bold;" class="ui right floated"></span>
+                            </div>
+                            <div class="one wide column">
+                                <i class="fa fa-thumbs-o-up"></i>
+                            </div>
+                            <div class="one wide column">
+                                <i class="fa fa-thumbs-o-down"></i>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% else %}
+                    There is no badge proposal for now!
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

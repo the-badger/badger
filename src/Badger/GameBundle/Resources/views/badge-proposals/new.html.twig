@@ -1,0 +1,23 @@
+{% extends 'GateBundle::base.html.twig' %}
+
+{% block body %}
+    <div class="ui main container ir-badge-proposals">
+        <div class="ui segment">
+            <h1 class="page-header"><i class="icon plus"></i> Propose a badge</h1>
+
+            {{ form_start(form, { 'attr': {'class': 'ui form'} }) }}
+            {{ form_errors(form) }}
+
+            <div class="ui raised segments">
+                <div class="ui segment">
+                    {{ form_widget(form) }}
+                </div>
+                <div class="ui secondary clearing segment">
+                    <button class="ui right floated green button" type="submit"><i class="ui icon save"></i> Create</button>
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

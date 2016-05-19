@@ -1,0 +1,24 @@
+Badger\GameBundle\Entity\BadgeProposal:
+    type: entity
+    table: badge_proposals
+    repositoryClass: Badger\GameBundle\Doctrine\Repository\BadgeProposalRepository
+    fields:
+        id:
+            id: true
+            type: guid
+            generator:
+                strategy: UUID
+        title:
+            type: string
+            length: 255
+            nullable: false
+        description:
+            type: string
+            length: 1024
+            nullable: false
+    manyToOne:
+        user:
+            targetEntity: Badger\UserBundle\Entity\User
+            joinColumn:
+                user_id:
+                    referencedColumnName: id
