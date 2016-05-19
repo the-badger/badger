@@ -1,6 +1,6 @@
 services:
     badger.tags.saver.tag:
-        class: %badger.storage_utils.saver.base.class%
+        class: '%badger.storage_utils.saver.base.class%'
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\TagBundle\Entity\Tag'
