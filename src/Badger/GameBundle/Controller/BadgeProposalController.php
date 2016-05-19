@@ -4,6 +4,7 @@ namespace Badger\GameBundle\Controller;
 
 use Badger\GameBundle\Form\BadgeProposalType;
 use Badger\GateBundle\Controller\DefaultController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,9 +29,11 @@ class BadgeProposalController extends DefaultController
     public function indexAction(Request $request)
     {
         $badgeProposals = $this->get('badger.game.repository.badge_proposal')->findAll();
+        $badgeVotes = $this->get('badger.game.repository.badge_vote')->findBy(['user' => $this->getUser()]);
 
         return $this->render('@Game/badge-proposals/index.html.twig', [
-            'badgeProposals' => $badgeProposals
+            'badgeProposals' => $badgeProposals,
+            'badgeVotes'     => $badgeVotes
         ]);
     }
 
@@ -58,6 +61,28 @@ class BadgeProposalController extends DefaultController
         return $this->render('@Game/badge-proposals/new.html.twig', [
             'badgeProposal' => $badgeProposal,
             'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function upvoteAction(Request $request)
+    {
+        $badgeProposalRepository = $this->get('badger.game.repository.badge_proposal');
+        $badgeVoteRepository     = $this->get('badger.game.repository.badge_vote');
+        $badgeVoteEngine         = $this->get('badger.game.helper.badge_vote_engine');
+
+        $badgeProposal = $badgeProposalRepository->find($request->get('badgeProposalId'));
+        $user          = $this->getUser();
+
+        $badgeVoteEngine->upvote($user, $badgeProposal);
+
+        return JsonResponse::create([
+            'upvotes'   => $badgeVoteRepository->getUpvotesCount($badgeProposal),
+            'downvotes' => $badgeVoteRepository->getDownvotesCount($badgeProposal)
         ]);
     }
 }

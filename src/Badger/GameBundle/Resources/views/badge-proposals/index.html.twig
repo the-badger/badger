@@ -23,7 +23,9 @@
                                 <span style="font-size: 20px; font-weight: bold;" class="ui right floated"></span>
                             </div>
                             <div class="one wide column">
-                                <i class="fa fa-thumbs-o-up"></i>
+                                <a href="#" data-badge-proposal-id="{{ badgeProposal.id }}" class="upvote-button">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                </a>
                             </div>
                             <div class="one wide column">
                                 <i class="fa fa-thumbs-o-down"></i>
@@ -37,4 +39,24 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function updateVotes(result) {
+            // TODO
+            console.log(result);
+        }
+        $(document).ready(function() {
+            $('.upvote-button').click(function () {
+                $.post(
+                    '{{ url('badge_proposal_upvote') }}',
+                    { badgeProposalId: $(this).data('badge-proposal-id') },
+                    updateVotes
+                );
+
+                return false;
+            });
+        });
+    </script>
 {% endblock %}
