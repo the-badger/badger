@@ -10,7 +10,7 @@ class BaseSaverSpec extends ObjectBehavior
 {
     function let(ObjectManager $objectManager)
     {
-        $this->beConstructedWith($objectManager, 'Badger\GameBundle\Entity\Badge');
+        $this->beConstructedWith($objectManager, 'Badger\GameBundle\Entity\BadgeInterface');
     }
 
     function it_is_a_saver()
@@ -31,7 +31,7 @@ class BaseSaverSpec extends ObjectBehavior
         $anythingElse = new \stdClass();
         $exception = new \InvalidArgumentException(
             sprintf(
-                'Expects a "Badger\GameBundle\Entity\Badge", "%s" provided.',
+                'Expects a "Badger\GameBundle\Entity\BadgeInterface", "%s" provided.',
                 get_class($anythingElse)
             )
         );
