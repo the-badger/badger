@@ -3,6 +3,7 @@
 namespace Badger\GameBundle\Entity;
 
 use Badger\UserBundle\Entity\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Badge proposal entity interface
@@ -53,4 +54,9 @@ interface BadgeProposalInterface
      * @return BadgeProposalInterface
      */
     public function setUser(UserInterface $user);
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getBadgeVotes();
 }

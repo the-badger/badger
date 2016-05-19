@@ -22,3 +22,7 @@ Badger\GameBundle\Entity\BadgeProposal:
             joinColumn:
                 user_id:
                     referencedColumnName: id
+    oneToMany:
+        badge_votes:
+            targetEntity: Badger\GameBundle\Entity\BadgeVote
+            mappedBy: badgeProposal

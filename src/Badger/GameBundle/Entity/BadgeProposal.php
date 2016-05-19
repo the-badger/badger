@@ -3,6 +3,7 @@
 namespace Badger\GameBundle\Entity;
 
 use Badger\UserBundle\Entity\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Badge proposal entity
@@ -24,6 +25,9 @@ class BadgeProposal implements BadgeProposalInterface
 
     /** @var UserInterface */
     protected $user;
+
+    /** @var ArrayCollection */
+    protected $badge_votes;
 
     /**
      * {@inheritdoc}
@@ -85,5 +89,13 @@ class BadgeProposal implements BadgeProposalInterface
         $this->user = $user;
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBadgeVotes()
+    {
+        return $this->badge_votes;
     }
 }

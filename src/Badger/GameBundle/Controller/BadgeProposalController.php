@@ -28,7 +28,7 @@ class BadgeProposalController extends DefaultController
      */
     public function indexAction(Request $request)
     {
-        $badgeProposals = $this->get('badger.game.repository.badge_proposal')->findAll();
+        $badgeProposals = $this->get('badger.game.repository.badge_proposal')->findAllForIndex();
         $badgeVotes = $this->get('badger.game.repository.badge_vote')->findBy(['user' => $this->getUser()]);
 
         return $this->render('@Game/badge-proposals/index.html.twig', [
