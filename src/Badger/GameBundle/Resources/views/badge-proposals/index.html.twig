@@ -10,7 +10,7 @@
             <div class="badge-proposals">
                 {% if badgeProposals is not empty %}
                     {% for badgeProposal in badgeProposals %}
-                        <div class="ui grid" style="clear:both">
+                        <div class="ui grid" data-badge-proposal-id="{{ badgeProposal.id }}" style="clear:both">
                             <div class="eleven wide column">
                                 <h3>{{ badgeProposal.title }}</h3>
                                 <div class="description">{{ badgeProposal.description }}</div>
@@ -22,13 +22,15 @@
                                 <a style="font-weight: normal;" href="{{ url('userprofile', {'username': badgeProposal.user.username}) }}" class="header">{{ badgeProposal.user.username }}</a>
                                 <span style="font-size: 20px; font-weight: bold;" class="ui right floated"></span>
                             </div>
-                            <div class="one wide column">
-                                <a href="#" data-badge-proposal-id="{{ badgeProposal.id }}" class="upvote-button">
-                                    <i class="fa fa-thumbs-o-up"></i>
+                            <div class="one wide column vote downvote{% if true == has_downvoted(badgeVotes, badgeProposal) %} activated{% endif %}">
+                                <a href="#" class="downvote-button">
+                                    <i class="fa fa-thumbs-o-down"></i>
                                 </a>
                             </div>
-                            <div class="one wide column">
-                                <i class="fa fa-thumbs-o-down"></i>
+                            <div class="one wide column vote upvote{% if true == has_upvoted(badgeVotes, badgeProposal) %} activated{% endif %}">
+                                <a href="#" class="upvote-button">
+                                    <i class="fa fa-thumbs-o-up"></i>
+                                </a>
                             </div>
                         </div>
                     {% endfor %}
@@ -50,11 +52,18 @@
         $(document).ready(function() {
             $('.upvote-button').click(function () {
                 $.post(
-                    '{{ url('badge_proposal_upvote') }}',
-                    { badgeProposalId: $(this).data('badge-proposal-id') },
-                    updateVotes
+                        '{{ url('badge_proposal_toggle_upvote') }}',
+                        {badgeProposalId: $(this).closest('.grid').data('badge-proposal-id')},
+                        updateVotes
                 );
-
+                return false;
+            });
+            $('.downvote-button').click(function () {
+                $.post(
+                        '{{ url('badge_proposal_toggle_downvote') }}',
+                        {badgeProposalId: $(this).closest('.grid').data('badge-proposal-id')},
+                        updateVotes
+                );
                 return false;
             });
         });

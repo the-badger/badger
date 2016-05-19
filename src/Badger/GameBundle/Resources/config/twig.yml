@@ -1,5 +1,6 @@
 parameters:
     badger.game.twig.configuration.class: Badger\GameBundle\Twig\ConfigurationExtension
+    badger.game.twig.vote.class: Badger\GameBundle\Twig\VoteExtension
 
 services:
     badger.game.twig.configuration:
@@ -7,5 +8,11 @@ services:
         public: false
         arguments:
             - '@badger.game.repository.configuration'
+        tags:
+            - { name: twig.extension }
+
+    badger.game.twig.vote:
+        class: '%badger.game.twig.vote.class%'
+        public: false
         tags:
             - { name: twig.extension }

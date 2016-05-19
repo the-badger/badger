@@ -8,7 +8,12 @@ badge_proposal_new:
     defaults: { _controller: "GameBundle:BadgeProposal:new" }
     methods:  [GET, POST]
 
-badge_proposal_upvote:
-    path:     /agree
-    defaults: { _controller: "GameBundle:BadgeProposal:upvote" }
+badge_proposal_toggle_upvote:
+    path:     /upvote
+    defaults: { _controller: "GameBundle:BadgeProposal:toggleUpvote" }
+    methods:  [POST]
+
+badge_proposal_toggle_downvote:
+    path:     /downvote
+    defaults: { _controller: "GameBundle:BadgeProposal:toggleDownvote" }
     methods:  [POST]

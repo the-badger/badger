@@ -42,18 +42,18 @@ class BadgeVoteEngine
      * @param UserInterface          $user
      * @param BadgeProposalInterface $badgeProposal
      */
-    public function upvote(UserInterface $user, BadgeProposalInterface $badgeProposal)
+    public function toggleUpvote(UserInterface $user, BadgeProposalInterface $badgeProposal)
     {
-        $this->vote($user, $badgeProposal, true);
+        $this->toggleVote($user, $badgeProposal, true);
     }
 
     /**
      * @param UserInterface          $user
      * @param BadgeProposalInterface $badgeProposal
      */
-    public function downvote(UserInterface $user, BadgeProposalInterface $badgeProposal)
+    public function toggleDownvote(UserInterface $user, BadgeProposalInterface $badgeProposal)
     {
-        $this->vote($user, $badgeProposal, false);
+        $this->toggleVote($user, $badgeProposal, false);
     }
 
     /**
@@ -70,16 +70,25 @@ class BadgeVoteEngine
     }
 
     /**
+     * Change the vote of a user
+     *
+     * 3 cases:
+     * - User already voted the same opinion, we deactivated the vote.
+     * - User already voted with the opposite opinion, we change the vote.
+     * - User has not voted, we add a new vote.
+     *
      * @param UserInterface          $user
      * @param BadgeProposalInterface $badgeProposal
      * @param bool                   $upOrDown
      */
-    protected function vote(UserInterface $user, BadgeProposalInterface $badgeProposal, $upOrDown)
+    protected function toggleVote(UserInterface $user, BadgeProposalInterface $badgeProposal, $upOrDown)
     {
         $existingVote = $this->findVote($user, $badgeProposal);
 
-        if (null != $existingVote) {
-            if ($upOrDown !== $existingVote->getVote()) {
+        if (null !== $existingVote) {
+            if ($existingVote->getVote() === $upOrDown) {
+                $this->badgeVoteRemover->remove($existingVote);
+            } else {
                 $existingVote->setVote($upOrDown);
                 $this->badgeVoteSaver->save($existingVote);
             }
