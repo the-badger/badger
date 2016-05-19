@@ -4,7 +4,6 @@ namespace Badger\GameBundle\Entity;
 
 use Badger\TagBundle\Entity\TagInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Badger\TagBundle\Taggable\TaggableInterface;
 
 /**
  * Quest entity.
@@ -12,7 +11,7 @@ use Badger\TagBundle\Taggable\TaggableInterface;
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-class Quest implements TaggableInterface
+class Quest implements QuestInterface
 {
     /** @var string */
     protected $id;
@@ -36,7 +35,7 @@ class Quest implements TaggableInterface
     protected $tags;
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -44,7 +43,7 @@ class Quest implements TaggableInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getTitle()
     {
@@ -52,9 +51,7 @@ class Quest implements TaggableInterface
     }
 
     /**
-     * @param string $title
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function setTitle($title)
     {
@@ -64,7 +61,7 @@ class Quest implements TaggableInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getDescription()
     {
@@ -72,9 +69,7 @@ class Quest implements TaggableInterface
     }
 
     /**
-     * @param string $description
-     *
-     * @return $this
+     * {@inheritdoc}
      */
     public function setDescription($description)
     {
@@ -84,7 +79,7 @@ class Quest implements TaggableInterface
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getReward()
     {
@@ -92,13 +87,57 @@ class Quest implements TaggableInterface
     }
 
     /**
-     * @param int $reward
-     *
-     * @return Quest
+     * {@inheritdoc}
      */
     public function setReward($reward)
     {
         $this->reward = $reward;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getStartDate()
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setStartDate($startDate)
+    {
+        $this->startDate = $startDate;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addTag(TagInterface $tag)
+    {
+        $this->tags[] = $tag;
 
         return $this;
     }
@@ -117,55 +156,5 @@ class Quest implements TaggableInterface
     public function getTags()
     {
         return $this->tags;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->startDate;
-    }
-
-    /**
-     * @param \DateTime $startDate
-     *
-     * @return Quest
-     */
-    public function setStartDate($startDate)
-    {
-        $this->startDate = $startDate;
-
-        return $this;
-    }
-
-    /**
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->endDate;
-    }
-
-    /**
-     * @param \DateTime $endDate
-     *
-     * @return Quest
-     */
-    public function setEndDate($endDate)
-    {
-        $this->endDate = $endDate;
-
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function addTag(TagInterface $tag)
-    {
-        $this->tags[] = $tag;
-
-        return $this;
     }
 }

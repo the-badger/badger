@@ -2,7 +2,7 @@
 
 namespace spec\Badger\StorageUtilsBundle\Doctrine\Remover;
 
-use Badger\GameBundle\Entity\Badge;
+use Badger\GameBundle\Entity\BadgeInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use PhpSpec\ObjectBehavior;
 
@@ -10,7 +10,7 @@ class BaseRemoverSpec extends ObjectBehavior
 {
     function let(ObjectManager $objectManager)
     {
-        $this->beConstructedWith($objectManager, 'Badger\GameBundle\Entity\Badge');
+        $this->beConstructedWith($objectManager, 'Badger\GameBundle\Entity\BadgeInterface');
     }
 
     function it_is_a_remover()
@@ -18,7 +18,7 @@ class BaseRemoverSpec extends ObjectBehavior
         $this->shouldHaveType('Badger\StorageUtilsBundle\Remover\RemoverInterface');
     }
 
-    function it_removes_the_object_and_flushes_the_unit_of_work($objectManager, Badge $type)
+    function it_removes_the_object_and_flushes_the_unit_of_work($objectManager, BadgeInterface $type)
     {
         $objectManager->remove($type)->shouldBeCalled();
         $objectManager->flush()->shouldBeCalled();
@@ -30,7 +30,7 @@ class BaseRemoverSpec extends ObjectBehavior
         $anythingElse = new \stdClass();
         $exception = new \InvalidArgumentException(
             sprintf(
-                'Expects a "Badger\GameBundle\Entity\Badge", "%s" provided.',
+                'Expects a "Badger\GameBundle\Entity\BadgeInterface", "%s" provided.',
                 get_class($anythingElse)
             )
         );

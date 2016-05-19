@@ -1,8 +1,7 @@
 <?php
 
 namespace Badger\TagBundle\Entity;
-
-use Badger\GameBundle\Entity\Badge;
+use Badger\GameBundle\Entity\BadgeInterface;
 
 /**
  * Tag entity.
@@ -13,22 +12,22 @@ use Badger\GameBundle\Entity\Badge;
 class Tag implements TagInterface
 {
     /** @var int */
-    private $id;
+    protected $id;
 
     /** @var string */
-    private $name;
+    protected $name;
 
     /** @var string */
-    private $code;
+    protected $code;
 
     /** @var bool */
-    private $isDefault;
+    protected $isDefault;
 
     /** @var \DateTime */
-    private $createdAt;
+    protected $createdAt;
 
-    /** @var Badge[] */
-    private $badges;
+    /** @var BadgeInterface[] */
+    protected $badges;
 
     /**
      * {@inheritdoc}

@@ -11,7 +11,7 @@ use Badger\UserBundle\Entity\User;
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-class UnlockedBadge
+class UnlockedBadge implements UnlockedBadgeInterface
 {
     /** @var string */
     protected $id;
@@ -19,14 +19,14 @@ class UnlockedBadge
     /** @var User */
     protected $user;
 
-    /** @var Badge */
+    /** @var BadgeInterface */
     protected $badge;
 
     /** @var \DateTime */
     protected $unlockedDate;
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -34,7 +34,7 @@ class UnlockedBadge
     }
 
     /**
-     * @param string $id
+     * {@inheritdoc}
      */
     public function setId($id)
     {
@@ -42,7 +42,7 @@ class UnlockedBadge
     }
 
     /**
-     * @return User
+     * {@inheritdoc}
      */
     public function getUser()
     {
@@ -50,7 +50,7 @@ class UnlockedBadge
     }
 
     /**
-     * @param User $user
+     * {@inheritdoc}
      */
     public function setUser($user)
     {
@@ -58,7 +58,7 @@ class UnlockedBadge
     }
 
     /**
-     * @return Badge
+     * {@inheritdoc}
      */
     public function getBadge()
     {
@@ -66,7 +66,7 @@ class UnlockedBadge
     }
 
     /**
-     * @param Badge $badge
+     * {@inheritdoc}
      */
     public function setBadge($badge)
     {
@@ -74,7 +74,7 @@ class UnlockedBadge
     }
 
     /**
-     * @return \DateTime
+     * {@inheritdoc}
      */
     public function getUnlockedDate()
     {
@@ -82,7 +82,7 @@ class UnlockedBadge
     }
 
     /**
-     * @param \DateTime $unlockedDate
+     * {@inheritdoc}
      */
     public function setUnlockedDate(\DateTime $unlockedDate)
     {

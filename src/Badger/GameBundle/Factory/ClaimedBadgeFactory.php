@@ -2,9 +2,9 @@
 
 namespace Badger\GameBundle\Factory;
 
+use Badger\GameBundle\Entity\BadgeInterface;
 use Badger\GameBundle\Entity\ClaimedBadge;
-use Badger\UserBundle\Entity\User;
-use Badger\GameBundle\Entity\Badge;
+use Badger\UserBundle\Entity\UserInterface;
 
 /**
  * @author    Adrien Pétremann <adrien.petremann@akeneo.com>
@@ -16,7 +16,7 @@ class ClaimedBadgeFactory implements ClaimedBadgeFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function create(User $user, Badge $badge)
+    public function create(UserInterface $user, BadgeInterface $badge)
     {
         $claimedBadge = new ClaimedBadge();
 

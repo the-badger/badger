@@ -8,24 +8,22 @@ namespace Badger\GameBundle\Entity;
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-class Configuration
+class Configuration implements ConfigurationInterface
 {
     /** @var int */
-    private $id;
+    protected $id;
 
     /** @var string */
-    private $title;
+    protected $title;
 
     /** @var string */
-    private $code;
+    protected $code;
 
     /** @var string */
-    private $value;
+    protected $value;
 
     /**
-     * Get id
-     *
-     * @return int
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -33,11 +31,7 @@ class Configuration
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     *
-     * @return Configuration
+     * {@inheritdoc}
      */
     public function setTitle($title)
     {
@@ -47,9 +41,7 @@ class Configuration
     }
 
     /**
-     * Get title
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getTitle()
     {
@@ -57,11 +49,7 @@ class Configuration
     }
 
     /**
-     * Set code
-     *
-     * @param string $code
-     *
-     * @return Configuration
+     * {@inheritdoc}
      */
     public function setCode($code)
     {
@@ -71,9 +59,7 @@ class Configuration
     }
 
     /**
-     * Get code
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getCode()
     {
@@ -81,11 +67,7 @@ class Configuration
     }
 
     /**
-     * Set value
-     *
-     * @param string $value
-     *
-     * @return Configuration
+     * {@inheritdoc}
      */
     public function setValue($value)
     {
@@ -95,9 +77,7 @@ class Configuration
     }
 
     /**
-     * Get value
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getValue()
     {

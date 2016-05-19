@@ -12,7 +12,9 @@ use Badger\GameBundle\Entity\Configuration;
 class ConfigurationFactory
 {
     /**
-     * {@inheritdoc}
+     * Creates a Configuration
+     *
+     * // TODO Create an interface for this class
      */
     public function create()
     {

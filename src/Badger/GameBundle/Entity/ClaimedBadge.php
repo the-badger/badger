@@ -11,7 +11,7 @@ use Badger\UserBundle\Entity\User;
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-class ClaimedBadge
+class ClaimedBadge implements ClaimedBadgeInterface
 {
     /** @var string */
     protected $id;
@@ -19,14 +19,14 @@ class ClaimedBadge
     /** @var User */
     protected $user;
 
-    /** @var Badge */
+    /** @var BadgeInterface */
     protected $badge;
 
     /** @var \DateTime */
     protected $claimedDate;
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -34,7 +34,7 @@ class ClaimedBadge
     }
 
     /**
-     * @param string $id
+     * {@inheritdoc}
      */
     public function setId($id)
     {
@@ -42,7 +42,7 @@ class ClaimedBadge
     }
 
     /**
-     * @return User
+     * {@inheritdoc}
      */
     public function getUser()
     {
@@ -50,7 +50,7 @@ class ClaimedBadge
     }
 
     /**
-     * @param User $user
+     * {@inheritdoc}
      */
     public function setUser($user)
     {
@@ -58,7 +58,7 @@ class ClaimedBadge
     }
 
     /**
-     * @return Badge
+     * {@inheritdoc}
      */
     public function getBadge()
     {
@@ -66,7 +66,7 @@ class ClaimedBadge
     }
 
     /**
-     * @param Badge $badge
+     * {@inheritdoc}
      */
     public function setBadge($badge)
     {
@@ -74,7 +74,7 @@ class ClaimedBadge
     }
 
     /**
-     * @return \DateTime
+     * {@inheritdoc}
      */
     public function getClaimedDate()
     {
@@ -82,7 +82,7 @@ class ClaimedBadge
     }
 
     /**
-     * @param \DateTime $claimedDate
+     * {@inheritdoc}
      */
     public function setClaimedDate($claimedDate)
     {
