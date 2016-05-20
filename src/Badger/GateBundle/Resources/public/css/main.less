@@ -150,10 +150,31 @@ body.pushable, body.pushable>.pusher {
     color: lightgray;
     font-size:32px;
   }
-  .vote.upvote.activated .fa {
+  .ui.grid.voteup .vote.upvote .fa {
     color: seagreen;
   }
-  .vote.downvote.activated .fa {
+  .ui.grid.votedown .vote.downvote .fa {
+    color: darkred;
+  }
+  .ui.grid .vote {
+    text-align:center;
+  }
+  .ui.grid .votes-count {
+    color: #888;
+    font-size:10px;
+    padding-top: 3px;
+  }
+  .ui.grid .score {
+    color: #888;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 32px;
+    padding-top:20px;
+  }
+  .ui.grid .score.positive {
+    color: seagreen;
+  }
+  .ui.grid .score.negative {
     color: darkred;
   }
 }

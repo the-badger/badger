@@ -13,4 +13,5 @@ use Doctrine\Common\Persistence\ObjectRepository;
  */
 interface BadgeProposalRepositoryInterface extends ObjectRepository
 {
+    public function findBadgeProposalVotes();
 }

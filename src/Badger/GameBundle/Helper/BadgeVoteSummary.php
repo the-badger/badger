@@ -4,6 +4,7 @@ namespace Badger\GameBundle\Helper;
 
 use Badger\GameBundle\Entity\BadgeProposalInterface;
 use Badger\GameBundle\Entity\BadgeVoteInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Summary of the badge votes to present data
@@ -20,6 +21,9 @@ class BadgeVoteSummary
     /** @var BadgeVoteInterface[] */
     protected $userVotes;
 
+    /** @var ArrayCollection */
+    protected $badgeProposalVotes;
+
     /**
      * @param BadgeProposalInterface[] $badgeProposals
      */
@@ -34,6 +38,14 @@ class BadgeVoteSummary
     public function setUserVotes($badgeVotes)
     {
         $this->userVotes = $badgeVotes;
+    }
+
+    /**
+     * @param ArrayCollection $badgeProposalVotes
+     */
+    public function setBadgeProposalVotes($badgeProposalVotes)
+    {
+        $this->badgeProposalVotes = $badgeProposalVotes;
     }
 
     /**
@@ -74,5 +86,47 @@ class BadgeVoteSummary
         }
 
         return false;
+    }
+
+    /**
+     * @param BadgeProposalInterface $badgeProposal
+     *
+     * @return int
+     */
+    public function countUpvotes(BadgeProposalInterface $badgeProposal)
+    {
+        foreach ($this->badgeProposalVotes as $badgeProposalVote) {
+            if ($badgeProposalVote['id'] === $badgeProposal->getId()) {
+                return (int) $badgeProposalVote['upvotes'];
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * @param BadgeProposalInterface $badgeProposal
+     *
+     * @return int
+     */
+    public function countDownvotes(BadgeProposalInterface $badgeProposal)
+    {
+        foreach ($this->badgeProposalVotes as $badgeProposalVote) {
+            if ($badgeProposalVote['id'] === $badgeProposal->getId()) {
+                return - (int) $badgeProposalVote['downvotes'];
+            }
+        }
+
+        return 0;
+    }
+
+    /**
+     * @param BadgeProposalInterface $badgeProposal
+     *
+     * @return int
+     */
+    public function score(BadgeProposalInterface $badgeProposal)
+    {
+        return $this->countUpvotes($badgeProposal) - $this->countDownvotes($badgeProposal);
     }
 }

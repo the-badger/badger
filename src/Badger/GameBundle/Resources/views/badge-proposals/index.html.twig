@@ -11,8 +11,14 @@
                 {% set badgeProposals = badgeVoteSummary.getBadgeProposals %}
                 {% if badgeProposals is not empty %}
                     {% for badgeProposal in badgeProposals %}
-                        <div class="ui grid" data-badge-proposal-id="{{ badgeProposal.id }}" style="clear:both">
-                            <div class="eleven wide column">
+                        <div
+                            class="ui grid {% if true == badgeVoteSummary.hasUpvoted(badgeProposal) %} voteup{% endif %} {% if true == badgeVoteSummary.hasDownvoted(badgeProposal) %} votedown{% endif %}"
+                            style="clear:both"
+                            data-badge-proposal-id="{{ badgeProposal.id }}"
+                            data-count-up-votes="{{ badgeVoteSummary.countUpvotes(badgeProposal) }}"
+                            data-count-down-votes="{{ badgeVoteSummary.countDownvotes(badgeProposal) }}"
+                        >
+                            <div class="ten wide column">
                                 <h3>{{ badgeProposal.title }}</h3>
                                 <div class="description">{{ badgeProposal.description }}</div>
                             </div>
@@ -23,15 +29,18 @@
                                 <a style="font-weight: normal;" href="{{ url('userprofile', {'username': badgeProposal.user.username}) }}" class="header">{{ badgeProposal.user.username }}</a>
                                 <span style="font-size: 20px; font-weight: bold;" class="ui right floated"></span>
                             </div>
-                            <div class="one wide column vote downvote{% if true == badgeVoteSummary.hasDownvoted(badgeProposal) %} activated{% endif %}">
+                            <div class="one wide column vote downvote">
                                 <a href="#" class="downvote-button">
                                     <i class="fa fa-thumbs-o-down"></i>
                                 </a>
+                                <div class="votes-count"></div>
                             </div>
-                            <div class="one wide column vote upvote{% if true == badgeVoteSummary.hasUpvoted(badgeProposal) %} activated{% endif %}">
+                            <div class="one wide column score"></div>
+                            <div class="one wide column vote upvote">
                                 <a href="#" class="upvote-button">
                                     <i class="fa fa-thumbs-o-up"></i>
                                 </a>
+                                <div class="votes-count"></div>
                             </div>
                         </div>
                     {% endfor %}
@@ -46,26 +55,76 @@
 
 {% block javascripts %}
     <script>
-        function updateVotes(result) {
-            // TODO
-            console.log(result);
+        function updateVotes($proposal) {
+            $proposal.find('.upvote .votes-count').html($proposal.data('count-up-votes'));
+            $proposal.find('.downvote .votes-count').html($proposal.data('count-down-votes'));
+            count = $proposal.data('count-up-votes') - $proposal.data('count-down-votes');
+            if (count > 0) {
+                $proposal.find('.score').removeClass('negative').addClass('positive').html('+' + count);
+            } else if (count < 0) {
+                $proposal.find('.score').removeClass('positive').addClass('negative').html(count);
+            } else {
+                $proposal.find('.score').removeClass('positive').removeClass('negative').html(0);
+            }
+
         }
+
         $(document).ready(function() {
             $('.upvote-button').click(function () {
+                var $proposal = $(this).closest('.grid');
                 $.post(
                         '{{ url('badge_proposal_toggle_upvote') }}',
-                        {badgeProposalId: $(this).closest('.grid').data('badge-proposal-id')},
-                        updateVotes
+                        { badgeProposalId: $proposal.data('badge-proposal-id') },
+                        function() {
+                            if ($proposal.hasClass('voteup')) {
+                                $proposal
+                                    .removeClass('voteup')
+                                    .data('count-up-votes', $proposal.data('count-up-votes') - 1);
+                            } else if ($proposal.hasClass('votedown')) {
+                                $proposal
+                                    .removeClass('votedown')
+                                    .addClass('voteup')
+                                    .data('count-up-votes', $proposal.data('count-up-votes') + 1)
+                                    .data('count-down-votes', $proposal.data('count-down-votes') - 1);
+                            } else {
+                                $proposal
+                                    .addClass('voteup')
+                                    .data('count-up-votes', $proposal.data('count-up-votes') + 1);
+                            }
+                            updateVotes($proposal);
+                        }
                 );
                 return false;
             });
             $('.downvote-button').click(function () {
+                var $proposal = $(this).closest('.grid');
                 $.post(
                         '{{ url('badge_proposal_toggle_downvote') }}',
-                        {badgeProposalId: $(this).closest('.grid').data('badge-proposal-id')},
-                        updateVotes
+                        { badgeProposalId: $proposal.data('badge-proposal-id') },
+                        function() {
+                            if ($proposal.hasClass('votedown')) {
+                                $proposal
+                                        .removeClass('votedown')
+                                        .data('count-down-votes', $proposal.data('count-down-votes') - 1);
+                            } else if ($proposal.hasClass('voteup')) {
+                                $proposal
+                                        .removeClass('voteup')
+                                        .addClass('votedown')
+                                        .data('count-down-votes', $proposal.data('count-down-votes') + 1)
+                                        .data('count-up-votes', $proposal.data('count-up-votes') - 1);
+                            } else {
+                                $proposal
+                                        .addClass('votedown')
+                                        .data('count-down-votes', $proposal.data('count-down-votes') + 1);
+                            }
+                            updateVotes($proposal);
+                        }
                 );
                 return false;
+            });
+
+            $('.badge-proposals .grid').each(function() {
+                updateVotes($(this));
             });
         });
     </script>
