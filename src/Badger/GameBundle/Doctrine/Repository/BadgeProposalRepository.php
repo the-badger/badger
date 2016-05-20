@@ -14,15 +14,4 @@ use Doctrine\ORM\EntityRepository;
  */
 class BadgeProposalRepository extends EntityRepository implements BadgeProposalRepositoryInterface
 {
-    public function findAllForIndex()
-    {
-        $query = $this->createQueryBuilder('p')
-            ->select('p, SUM(uv.vote) AS upvotes, SUM(dv.vote) AS downvotes')
-            ->leftJoin('p.badge_votes', 'uv')
-            ->leftJoin('p.badge_votes', 'dv')
-            ->groupBy('p.id')
-            ->getQuery();
-
-        return $query->getArrayResult();
-    }
 }

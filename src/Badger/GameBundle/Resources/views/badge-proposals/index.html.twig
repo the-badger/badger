@@ -8,6 +8,7 @@
                 <h2 class="ui header main-title">Badge Proposals</h2>
             </div>
             <div class="badge-proposals">
+                {% set badgeProposals = badgeVoteSummary.getBadgeProposals %}
                 {% if badgeProposals is not empty %}
                     {% for badgeProposal in badgeProposals %}
                         <div class="ui grid" data-badge-proposal-id="{{ badgeProposal.id }}" style="clear:both">
@@ -22,12 +23,12 @@
                                 <a style="font-weight: normal;" href="{{ url('userprofile', {'username': badgeProposal.user.username}) }}" class="header">{{ badgeProposal.user.username }}</a>
                                 <span style="font-size: 20px; font-weight: bold;" class="ui right floated"></span>
                             </div>
-                            <div class="one wide column vote downvote{% if true == has_downvoted(badgeVotes, badgeProposal) %} activated{% endif %}">
+                            <div class="one wide column vote downvote{% if true == badgeVoteSummary.hasDownvoted(badgeProposal) %} activated{% endif %}">
                                 <a href="#" class="downvote-button">
                                     <i class="fa fa-thumbs-o-down"></i>
                                 </a>
                             </div>
-                            <div class="one wide column vote upvote{% if true == has_upvoted(badgeVotes, badgeProposal) %} activated{% endif %}">
+                            <div class="one wide column vote upvote{% if true == badgeVoteSummary.hasUpvoted(badgeProposal) %} activated{% endif %}">
                                 <a href="#" class="upvote-button">
                                     <i class="fa fa-thumbs-o-up"></i>
                                 </a>
