@@ -19,7 +19,7 @@
                             data-count-up-votes="{{ badgeVoteSummary.countUpvotes(badgeProposal) }}"
                             data-count-down-votes="{{ badgeVoteSummary.countDownvotes(badgeProposal) }}"
                         >
-                            <div class="ten wide column">
+                            <div class="nine wide column">
                                 <h3>{{ badgeProposal.title }}</h3>
                                 <div class="description">{{ badgeProposal.description }}</div>
                             </div>
@@ -29,7 +29,7 @@
                                 </div>
                                 <a href="{{ url('userprofile', {'username': badgeProposal.user.username}) }}" class="header">{{ badgeProposal.user.username }}</a>
                             </div>
-                            <div class="three wide column votes">
+                            <div class="four wide column votes">
                                 <div class="vote downvote">
                                     <a href="#" class="downvote-button">
                                         <i class="fa fa-thumbs-o-down"></i>

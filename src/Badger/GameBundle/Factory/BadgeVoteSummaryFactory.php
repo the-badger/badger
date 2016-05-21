@@ -5,7 +5,6 @@ namespace Badger\GameBundle\Factory;
 use Badger\GameBundle\Doctrine\Repository\BadgeVoteRepository;
 use Badger\GameBundle\Helper\BadgeVoteSummary;
 use Badger\GameBundle\Repository\BadgeProposalRepositoryInterface;
-use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\UserInterface;
 
 /**
@@ -43,10 +42,10 @@ class BadgeVoteSummaryFactory
     public function create(UserInterface $user)
     {
         $badgeVoteSummary = new BadgeVoteSummary();
-
-        $badgeVoteSummary->setBadgeProposals($this->badgeProposalRepository->findAll());
-        $badgeVoteSummary->setUserVotes($this->badgeVoteRepository->findBy(['user' => $user]));
-        $badgeVoteSummary->setVoteCounts($this->badgeProposalRepository->findVoteCounts());
+        $badgeVoteSummary
+            ->setBadgeProposals($this->badgeProposalRepository->findAllSorted())
+            ->setUserVotes($this->badgeVoteRepository->findBy(['user' => $user]))
+            ->setVoteCounts($this->badgeProposalRepository->findVoteCounts());
 
         return $badgeVoteSummary;
     }

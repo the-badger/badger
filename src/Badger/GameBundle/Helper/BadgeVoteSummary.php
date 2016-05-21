@@ -26,26 +26,38 @@ class BadgeVoteSummary
 
     /**
      * @param BadgeProposalInterface[] $badgeProposals
+     *
+     * @return BadgeVoteSummary
      */
     public function setBadgeProposals(array $badgeProposals)
     {
         $this->badgeProposals = $badgeProposals;
+
+        return $this;
     }
 
     /**
      * @param BadgeVoteInterface[] $badgeVotes
+     *
+     * @return BadgeVoteSummary
      */
     public function setUserVotes($badgeVotes)
     {
         $this->userVotes = $badgeVotes;
+
+        return $this;
     }
 
     /**
      * @param ArrayCollection $voteCounts
+     *
+     * @return BadgeVoteSummary
      */
     public function setVoteCounts($voteCounts)
     {
         $this->voteCounts = $voteCounts;
+
+        return $this;
     }
 
     /**

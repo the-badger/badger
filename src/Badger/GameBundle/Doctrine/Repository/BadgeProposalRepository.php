@@ -14,6 +14,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class BadgeProposalRepository extends EntityRepository implements BadgeProposalRepositoryInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function findVoteCounts()
     {
         $query = $this->createQueryBuilder('p')
@@ -24,5 +27,20 @@ class BadgeProposalRepository extends EntityRepository implements BadgeProposalR
             ->getQuery();
 
         return $query->getArrayResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findAllSorted()
+    {
+        $query = $this->createQueryBuilder('p')
+            ->addSelect('SUM(v.opinion) AS HIDDEN opinion_sum')
+            ->leftJoin('p.badge_votes', 'v')
+            ->groupBy('p.id')
+            ->orderBy('opinion_sum', 'DESC')
+            ->getQuery();
+
+        return $query->getResult();
     }
 }
