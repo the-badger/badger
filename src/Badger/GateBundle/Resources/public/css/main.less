@@ -6,7 +6,7 @@ body {
   margin-top: 10px;
 }
 
-.ir-leaderboard, .ir-badges, .ir-feed, .ir-people, .ir-badge-proposals {
+.ir-leaderboard, .ir-badges, .ir-feed, .ir-people, .ir-badge-proposals, .ir-dashboard {
   margin-top: 80px;
 
   .main-title {
@@ -144,8 +144,8 @@ body.pushable, body.pushable>.pusher {
         font-size:32px;
       }
     }
-    &.voteup .vote.upvote .fa { color: seagreen; }
-    &.votedown .vote.downvote .fa { color: darkred; }
+    &.has-upvoted .vote.upvote .fa { color: seagreen; }
+    &.has-downvoted .vote.downvote .fa { color: darkred; }
 
     .score {
       color: #888;

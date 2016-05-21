@@ -8,7 +8,7 @@ Badger\GameBundle\Entity\BadgeVote:
             type: guid
             generator:
                 strategy: UUID
-        vote:
+        opinion:
             type: smallint
     manyToOne:
         user:

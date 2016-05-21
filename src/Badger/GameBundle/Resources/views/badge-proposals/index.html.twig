@@ -13,7 +13,7 @@
                 {% if badgeProposals is not empty %}
                     {% for badgeProposal in badgeProposals %}
                         <div
-                            class="ui grid badge-proposal stackable {% if true == badgeVoteSummary.hasUpvoted(badgeProposal) %} voteup{% endif %} {% if true == badgeVoteSummary.hasDownvoted(badgeProposal) %} votedown{% endif %}"
+                            class="ui grid badge-proposal stackable {% if true == badgeVoteSummary.hasUpvoted(badgeProposal) %} has-upvoted{% endif %} {% if true == badgeVoteSummary.hasDownvoted(badgeProposal) %} has-downvoted{% endif %}"
                             style="clear:both"
                             data-badge-proposal-id="{{ badgeProposal.id }}"
                             data-count-up-votes="{{ badgeVoteSummary.countUpvotes(badgeProposal) }}"
@@ -60,7 +60,7 @@
         function updateVotes($proposal) {
             $proposal.find('.upvote .votes-count').html($proposal.data('count-up-votes'));
             $proposal.find('.downvote .votes-count').html($proposal.data('count-down-votes'));
-            count = $proposal.data('count-up-votes') - $proposal.data('count-down-votes');
+            var count = $proposal.data('count-up-votes') - $proposal.data('count-down-votes');
             if (count > 0) {
                 $proposal.find('.score').removeClass('negative').addClass('positive').html('+' + count);
             } else if (count < 0) {
@@ -68,7 +68,6 @@
             } else {
                 $proposal.find('.score').removeClass('positive').removeClass('negative').html(0);
             }
-
         }
 
         $(document).ready(function() {
@@ -78,19 +77,19 @@
                         '{{ url('badge_proposal_toggle_upvote') }}',
                         { badgeProposalId: $proposal.data('badge-proposal-id') },
                         function() {
-                            if ($proposal.hasClass('voteup')) {
+                            if ($proposal.hasClass('has-upvoted')) {
                                 $proposal
-                                    .removeClass('voteup')
+                                    .removeClass('has-upvoted')
                                     .data('count-up-votes', $proposal.data('count-up-votes') - 1);
-                            } else if ($proposal.hasClass('votedown')) {
+                            } else if ($proposal.hasClass('has-downvoted')) {
                                 $proposal
-                                    .removeClass('votedown')
-                                    .addClass('voteup')
+                                    .removeClass('has-downvoted')
+                                    .addClass('has-upvoted')
                                     .data('count-up-votes', $proposal.data('count-up-votes') + 1)
                                     .data('count-down-votes', $proposal.data('count-down-votes') - 1);
                             } else {
                                 $proposal
-                                    .addClass('voteup')
+                                    .addClass('has-upvoted')
                                     .data('count-up-votes', $proposal.data('count-up-votes') + 1);
                             }
                             updateVotes($proposal);
@@ -104,20 +103,20 @@
                         '{{ url('badge_proposal_toggle_downvote') }}',
                         { badgeProposalId: $proposal.data('badge-proposal-id') },
                         function() {
-                            if ($proposal.hasClass('votedown')) {
+                            if ($proposal.hasClass('has-downvoted')) {
                                 $proposal
-                                        .removeClass('votedown')
-                                        .data('count-down-votes', $proposal.data('count-down-votes') - 1);
-                            } else if ($proposal.hasClass('voteup')) {
+                                    .removeClass('has-downvoted')
+                                    .data('count-down-votes', $proposal.data('count-down-votes') - 1);
+                            } else if ($proposal.hasClass('has-upvoted')) {
                                 $proposal
-                                        .removeClass('voteup')
-                                        .addClass('votedown')
-                                        .data('count-down-votes', $proposal.data('count-down-votes') + 1)
-                                        .data('count-up-votes', $proposal.data('count-up-votes') - 1);
+                                    .removeClass('has-upvoted')
+                                    .addClass('has-downvoted')
+                                    .data('count-down-votes', $proposal.data('count-down-votes') + 1)
+                                    .data('count-up-votes', $proposal.data('count-up-votes') - 1);
                             } else {
                                 $proposal
-                                        .addClass('votedown')
-                                        .data('count-down-votes', $proposal.data('count-down-votes') + 1);
+                                    .addClass('has-downvoted')
+                                    .data('count-down-votes', $proposal.data('count-down-votes') + 1);
                             }
                             updateVotes($proposal);
                         }

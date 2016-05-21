@@ -85,28 +85,20 @@ class BadgeProposalController extends DefaultController
 
     /**
      * @param Request $request
-     * @param bool    $upOrDown
+     * @param bool    $opinion
      *
      * @return Response
      */
-    protected function vote(Request $request, $upOrDown)
+    protected function vote(Request $request, $opinion)
     {
         $badgeProposalRepository = $this->get('badger.game.repository.badge_proposal');
-        $badgeVoteRepository     = $this->get('badger.game.repository.badge_vote');
         $badgeVoteEngine         = $this->get('badger.game.helper.badge_vote_engine');
 
         $badgeProposal = $badgeProposalRepository->find($request->get('badgeProposalId'));
         $user          = $this->getUser();
 
-        if ($upOrDown) {
-            $badgeVoteEngine->toggleUpvote($user, $badgeProposal);
-        } else {
-            $badgeVoteEngine->toggleDownvote($user, $badgeProposal);
-        }
+        $badgeVoteEngine->toggleVote($user, $badgeProposal, $opinion);
 
-        return JsonResponse::create([
-            'upvotes'   => $badgeVoteRepository->getUpvotesCount($badgeProposal),
-            'downvotes' => $badgeVoteRepository->getDownvotesCount($badgeProposal)
-        ]);
+        return JsonResponse::create([ 'success' => true ]);
     }
 }

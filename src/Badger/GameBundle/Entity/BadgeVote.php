@@ -23,7 +23,7 @@ class BadgeVote implements BadgeVoteInterface
     protected $badgeProposal;
 
     /** @var integer */
-    protected $vote;
+    protected $opinion;
 
     /**
      * {@inheritdoc}
@@ -72,19 +72,19 @@ class BadgeVote implements BadgeVoteInterface
     /**
      * @return bool
      */
-    public function getVote()
+    public function getOpinion()
     {
-        return $this->vote > 0;
+        return $this->opinion > 0;
     }
 
     /**
-     * @param bool $vote
+     * @param bool $opinion
      *
      * @return BadgeVoteInterface
      */
-    public function setVote($vote)
+    public function setOpinion($opinion)
     {
-        $this->vote = $vote ? 1 : -1;
+        $this->opinion = $opinion ? 1 : -1;
 
         return $this;
     }

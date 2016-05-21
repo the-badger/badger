@@ -45,12 +45,12 @@ interface BadgeVoteInterface
     /**
      * @return bool
      */
-    public function getVote();
+    public function getOpinion();
 
     /**
      * @param bool $vote
      *
      * @return BadgeVoteInterface
      */
-    public function setVote($vote);
+    public function setOpinion($vote);
 }

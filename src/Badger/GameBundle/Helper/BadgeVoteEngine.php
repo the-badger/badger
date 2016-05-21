@@ -28,6 +28,11 @@ class BadgeVoteEngine
     /** @var SaverInterface */
     var $badgeVoteSaver;
 
+    /**
+     * @param BadgeVoteRepositoryInterface $badgeVoteRepository
+     * @param RemoverInterface $badgeVoteRemover
+     * @param SaverInterface $badgeVoteSaver
+     */
     public function __construct(
         BadgeVoteRepositoryInterface $badgeVoteRepository,
         RemoverInterface $badgeVoteRemover,
@@ -39,38 +44,7 @@ class BadgeVoteEngine
     }
 
     /**
-     * @param UserInterface          $user
-     * @param BadgeProposalInterface $badgeProposal
-     */
-    public function toggleUpvote(UserInterface $user, BadgeProposalInterface $badgeProposal)
-    {
-        $this->toggleVote($user, $badgeProposal, true);
-    }
-
-    /**
-     * @param UserInterface          $user
-     * @param BadgeProposalInterface $badgeProposal
-     */
-    public function toggleDownvote(UserInterface $user, BadgeProposalInterface $badgeProposal)
-    {
-        $this->toggleVote($user, $badgeProposal, false);
-    }
-
-    /**
-     * @param UserInterface          $user
-     * @param BadgeProposalInterface $badgeProposal
-     */
-    public function removeVote(UserInterface $user, BadgeProposalInterface $badgeProposal)
-    {
-        $vote = $this->findVote($user, $badgeProposal);
-
-        if (null !== $vote) {
-            $this->badgeVoteRemover->remove($vote);
-        }
-    }
-
-    /**
-     * Change the vote of a user
+     * Toggle the vote of a user from its new opinion.
      *
      * 3 cases:
      * - User already voted the same opinion, we deactivated the vote.
@@ -79,17 +53,17 @@ class BadgeVoteEngine
      *
      * @param UserInterface          $user
      * @param BadgeProposalInterface $badgeProposal
-     * @param bool                   $upOrDown
+     * @param bool                   $opinion
      */
-    protected function toggleVote(UserInterface $user, BadgeProposalInterface $badgeProposal, $upOrDown)
+    public function toggleVote(UserInterface $user, BadgeProposalInterface $badgeProposal, $opinion)
     {
         $existingVote = $this->findVote($user, $badgeProposal);
 
         if (null !== $existingVote) {
-            if ($existingVote->getVote() === $upOrDown) {
+            if ($existingVote->getOpinion() === $opinion) {
                 $this->badgeVoteRemover->remove($existingVote);
             } else {
-                $existingVote->setVote($upOrDown);
+                $existingVote->setOpinion($opinion);
                 $this->badgeVoteSaver->save($existingVote);
             }
         } else {
@@ -97,7 +71,7 @@ class BadgeVoteEngine
             $vote
                 ->setUser($user)
                 ->setBadgeProposal($badgeProposal)
-                ->setVote($upOrDown);
+                ->setOpinion($opinion);
             $this->badgeVoteSaver->save($vote);
         }
     }

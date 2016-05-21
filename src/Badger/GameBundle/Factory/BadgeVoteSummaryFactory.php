@@ -46,7 +46,7 @@ class BadgeVoteSummaryFactory
 
         $badgeVoteSummary->setBadgeProposals($this->badgeProposalRepository->findAll());
         $badgeVoteSummary->setUserVotes($this->badgeVoteRepository->findBy(['user' => $user]));
-        $badgeVoteSummary->setBadgeProposalVotes($this->badgeProposalRepository->findBadgeProposalVotes());
+        $badgeVoteSummary->setVoteCounts($this->badgeProposalRepository->findVoteCounts());
 
         return $badgeVoteSummary;
     }

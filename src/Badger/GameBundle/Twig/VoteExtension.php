@@ -34,7 +34,7 @@ class VoteExtension extends \Twig_Extension
     {
         foreach ($badgeVotes as $badgeVote) {
             if ($badgeVote->getBadgeProposal() === $badgeProposal) {
-                return $badgeVote->getVote();
+                return $badgeVote->getOpinion();
             }
         }
 
@@ -51,7 +51,7 @@ class VoteExtension extends \Twig_Extension
     {
         foreach ($badgeVotes as $badgeVote) {
             if ($badgeVote->getBadgeProposal() === $badgeProposal) {
-                return !$badgeVote->getVote();
+                return !$badgeVote->getOpinion();
             }
         }
 

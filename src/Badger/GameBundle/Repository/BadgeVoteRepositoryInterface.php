@@ -2,7 +2,6 @@
 
 namespace Badger\GameBundle\Repository;
 
-use Badger\GameBundle\Entity\BadgeProposalInterface;
 use Doctrine\Common\Persistence\ObjectRepository;
 
 /**
@@ -14,23 +13,4 @@ use Doctrine\Common\Persistence\ObjectRepository;
  */
 interface BadgeVoteRepositoryInterface extends ObjectRepository
 {
-    /**
-     * @param BadgeProposalInterface $badgeProposal
-     *
-     * @return integer
-     *
-     * @throws \Doctrine\ORM\NoResultException
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     */
-    public function getUpvotesCount(BadgeProposalInterface $badgeProposal);
-
-    /**
-     * @param BadgeProposalInterface $badgeProposal
-     *
-     * @return integer
-     *
-     * @throws \Doctrine\ORM\NoResultException
-     * @throws \Doctrine\ORM\NonUniqueResultException
-     */
-    public function getDownvotesCount(BadgeProposalInterface $badgeProposal);
 }
