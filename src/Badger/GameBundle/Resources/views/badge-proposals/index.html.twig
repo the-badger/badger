@@ -3,16 +3,17 @@
 {% block body %}
     <div class="ui main container ir-badge-proposals">
         <div class="ui segment">
-            <div>
+            <h2 class="ui header main-title">
                 <a class="ui right floated button" href="{{ url('badge_proposal_new') }}"><i class="ui plus icon"></i> Propose a badge</a>
-                <h2 class="ui header main-title">Badge Proposals</h2>
-            </div>
+                Badge Proposals
+            </h2>
+
             <div class="badge-proposals">
                 {% set badgeProposals = badgeVoteSummary.getBadgeProposals %}
                 {% if badgeProposals is not empty %}
                     {% for badgeProposal in badgeProposals %}
                         <div
-                            class="ui grid {% if true == badgeVoteSummary.hasUpvoted(badgeProposal) %} voteup{% endif %} {% if true == badgeVoteSummary.hasDownvoted(badgeProposal) %} votedown{% endif %}"
+                            class="ui grid badge-proposal stackable {% if true == badgeVoteSummary.hasUpvoted(badgeProposal) %} voteup{% endif %} {% if true == badgeVoteSummary.hasDownvoted(badgeProposal) %} votedown{% endif %}"
                             style="clear:both"
                             data-badge-proposal-id="{{ badgeProposal.id }}"
                             data-count-up-votes="{{ badgeVoteSummary.countUpvotes(badgeProposal) }}"
@@ -22,25 +23,26 @@
                                 <h3>{{ badgeProposal.title }}</h3>
                                 <div class="description">{{ badgeProposal.description }}</div>
                             </div>
-                            <div class="three wide column leaderboard-username">
+                            <div class="three wide column">
                                 <div class="ui mini circular image">
                                     <img src="{{ badgeProposal.user.profilePicture }}">
                                 </div>
-                                <a style="font-weight: normal;" href="{{ url('userprofile', {'username': badgeProposal.user.username}) }}" class="header">{{ badgeProposal.user.username }}</a>
-                                <span style="font-size: 20px; font-weight: bold;" class="ui right floated"></span>
+                                <a href="{{ url('userprofile', {'username': badgeProposal.user.username}) }}" class="header">{{ badgeProposal.user.username }}</a>
                             </div>
-                            <div class="one wide column vote downvote">
-                                <a href="#" class="downvote-button">
-                                    <i class="fa fa-thumbs-o-down"></i>
-                                </a>
-                                <div class="votes-count"></div>
-                            </div>
-                            <div class="one wide column score"></div>
-                            <div class="one wide column vote upvote">
-                                <a href="#" class="upvote-button">
-                                    <i class="fa fa-thumbs-o-up"></i>
-                                </a>
-                                <div class="votes-count"></div>
+                            <div class="three wide column votes">
+                                <div class="vote downvote">
+                                    <a href="#" class="downvote-button">
+                                        <i class="fa fa-thumbs-o-down"></i>
+                                    </a>
+                                    <div class="votes-count"></div>
+                                </div>
+                                <div class="score"></div>
+                                <div class="vote upvote">
+                                    <a href="#" class="upvote-button">
+                                        <i class="fa fa-thumbs-o-up"></i>
+                                    </a>
+                                    <div class="votes-count"></div>
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
@@ -71,7 +73,7 @@
 
         $(document).ready(function() {
             $('.upvote-button').click(function () {
-                var $proposal = $(this).closest('.grid');
+                var $proposal = $(this).closest('.badge-proposal');
                 $.post(
                         '{{ url('badge_proposal_toggle_upvote') }}',
                         { badgeProposalId: $proposal.data('badge-proposal-id') },
@@ -97,7 +99,7 @@
                 return false;
             });
             $('.downvote-button').click(function () {
-                var $proposal = $(this).closest('.grid');
+                var $proposal = $(this).closest('.badge-proposal');
                 $.post(
                         '{{ url('badge_proposal_toggle_downvote') }}',
                         { badgeProposalId: $proposal.data('badge-proposal-id') },
@@ -123,7 +125,7 @@
                 return false;
             });
 
-            $('.badge-proposals .grid').each(function() {
+            $('.badge-proposals .badge-proposal').each(function() {
                 updateVotes($(this));
             });
         });
