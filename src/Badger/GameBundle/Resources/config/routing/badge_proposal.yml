@@ -9,11 +9,11 @@ badge_proposal_new:
     methods:  [GET, POST]
 
 badge_proposal_toggle_upvote:
-    path:     /upvote
+    path:     /{id}/upvote
     defaults: { _controller: "GameBundle:BadgeProposal:toggleUpvote" }
     methods:  [POST]
 
 badge_proposal_toggle_downvote:
-    path:     /downvote
+    path:     /{id}/downvote
     defaults: { _controller: "GameBundle:BadgeProposal:toggleDownvote" }
     methods:  [POST]

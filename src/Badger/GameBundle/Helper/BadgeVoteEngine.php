@@ -20,27 +20,27 @@ use Badger\UserBundle\Entity\UserInterface;
 class BadgeVoteEngine
 {
     /** @var BadgeVoteRepositoryInterface */
-    var $badgeVoteRepository;
+    protected $repository;
 
     /** @var RemoverInterface */
-    var $badgeVoteRemover;
+    protected $remover;
 
     /** @var SaverInterface */
-    var $badgeVoteSaver;
+    protected $saver;
 
     /**
-     * @param BadgeVoteRepositoryInterface $badgeVoteRepository
-     * @param RemoverInterface $badgeVoteRemover
-     * @param SaverInterface $badgeVoteSaver
+     * @param BadgeVoteRepositoryInterface $repository
+     * @param RemoverInterface             $remover
+     * @param SaverInterface               $saver
      */
     public function __construct(
-        BadgeVoteRepositoryInterface $badgeVoteRepository,
-        RemoverInterface $badgeVoteRemover,
-        SaverInterface $badgeVoteSaver
+        BadgeVoteRepositoryInterface $repository,
+        RemoverInterface $remover,
+        SaverInterface $saver
     ) {
-        $this->badgeVoteRepository = $badgeVoteRepository;
-        $this->badgeVoteRemover    = $badgeVoteRemover;
-        $this->badgeVoteSaver      = $badgeVoteSaver;
+        $this->repository = $repository;
+        $this->remover    = $remover;
+        $this->saver      = $saver;
     }
 
     /**
@@ -61,19 +61,23 @@ class BadgeVoteEngine
 
         if (null !== $existingVote) {
             if ($existingVote->getOpinion() === $opinion) {
-                $this->badgeVoteRemover->remove($existingVote);
-            } else {
-                $existingVote->setOpinion($opinion);
-                $this->badgeVoteSaver->save($existingVote);
+                $this->remover->remove($existingVote);
+
+                return;
             }
-        } else {
-            $vote = new BadgeVote();
-            $vote
-                ->setUser($user)
-                ->setBadgeProposal($badgeProposal)
-                ->setOpinion($opinion);
-            $this->badgeVoteSaver->save($vote);
+
+            $existingVote->setOpinion($opinion);
+            $this->saver->save($existingVote);
+
+            return;
         }
+
+        $vote = new BadgeVote();
+        $vote
+            ->setUser($user)
+            ->setBadgeProposal($badgeProposal)
+            ->setOpinion($opinion);
+        $this->saver->save($vote);
     }
 
     /**
@@ -86,7 +90,7 @@ class BadgeVoteEngine
      */
     protected function findVote(UserInterface $user, BadgeProposalInterface $badgeProposal)
     {
-        return $this->badgeVoteRepository->findOneBy([
+        return $this->repository->findOneBy([
             'user'          => $user,
             'badgeProposal' => $badgeProposal
         ]);

@@ -11,7 +11,7 @@ use Badger\GameBundle\Entity\BadgeProposal;
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-class BadgeProposalFactory implements BadgeProposalFactoryInterface
+class BadgeProposalFactory implements SimpleFactoryInterface
 {
     /**
      * {@inheritdoc}

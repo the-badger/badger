@@ -64,37 +64,37 @@ class BadgeProposalController extends DefaultController
     }
 
     /**
-     * @param Request $request
+     * @param string $id BadgeProposal id
      *
      * @return Response
      */
-    public function toggleUpvoteAction(Request $request)
+    public function toggleUpvoteAction($id)
     {
-        return $this->vote($request, true);
+        return $this->vote($id, true);
     }
 
     /**
-     * @param Request $request
+     * @param string $id BadgeProposal id
      *
      * @return Response
      */
-    public function toggleDownvoteAction(Request $request)
+    public function toggleDownvoteAction($id)
     {
-        return $this->vote($request, false);
+        return $this->vote($id, false);
     }
 
     /**
-     * @param Request $request
-     * @param bool    $opinion
+     * @param string $id      BadgeProposal id
+     * @param bool   $opinion
      *
      * @return Response
      */
-    protected function vote(Request $request, $opinion)
+    protected function vote($id, $opinion)
     {
         $badgeProposalRepository = $this->get('badger.game.repository.badge_proposal');
         $badgeVoteEngine         = $this->get('badger.game.helper.badge_vote_engine');
 
-        $badgeProposal = $badgeProposalRepository->find($request->get('badgeProposalId'));
+        $badgeProposal = $badgeProposalRepository->find($id);
         $user          = $this->getUser();
 
         $badgeVoteEngine->toggleVote($user, $badgeProposal, $opinion);

@@ -35,7 +35,7 @@ class User extends BaseUser implements UserInterface, TaggableInterface
     protected $tags;
 
     /** @var ArrayCollection */
-    protected $badge_votes;
+    protected $badgeVotes;
 
     /**
      * {@inheritdoc}
@@ -148,6 +148,6 @@ class User extends BaseUser implements UserInterface, TaggableInterface
      */
     public function getBadgetVotes()
     {
-        return $this->badge_votes;
+        return $this->badgeVotes;
     }
 }

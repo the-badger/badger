@@ -21,7 +21,7 @@
                         >
                             <div class="nine wide column">
                                 <h3>{{ badgeProposal.title }}</h3>
-                                <div class="description">{{ badgeProposal.description }}</div>
+                                <div class="description">{{ badgeProposal.description|nl2br }}</div>
                             </div>
                             <div class="three wide column">
                                 <div class="ui mini circular image">
@@ -31,14 +31,14 @@
                             </div>
                             <div class="four wide column votes">
                                 <div class="vote downvote">
-                                    <a href="#" class="downvote-button">
+                                    <a href="{{ url('badge_proposal_toggle_downvote', {'id': badgeProposal.id}) }}" class="downvote-button">
                                         <i class="fa fa-thumbs-o-down"></i>
                                     </a>
                                     <div class="votes-count"></div>
                                 </div>
                                 <div class="score"></div>
                                 <div class="vote upvote">
-                                    <a href="#" class="upvote-button">
+                                    <a href="{{ url('badge_proposal_toggle_upvote', {'id': badgeProposal.id}) }}" class="upvote-button">
                                         <i class="fa fa-thumbs-o-up"></i>
                                     </a>
                                     <div class="votes-count"></div>
@@ -74,8 +74,8 @@
             $('.upvote-button').click(function () {
                 var $proposal = $(this).closest('.badge-proposal');
                 $.post(
-                        '{{ url('badge_proposal_toggle_upvote') }}',
-                        { badgeProposalId: $proposal.data('badge-proposal-id') },
+                        $(this).attr('href'),
+                        {},
                         function() {
                             if ($proposal.hasClass('has-upvoted')) {
                                 $proposal
@@ -100,8 +100,8 @@
             $('.downvote-button').click(function () {
                 var $proposal = $(this).closest('.badge-proposal');
                 $.post(
-                        '{{ url('badge_proposal_toggle_downvote') }}',
-                        { badgeProposalId: $proposal.data('badge-proposal-id') },
+                        $(this).attr('href'),
+                        {},
                         function() {
                             if ($proposal.hasClass('has-downvoted')) {
                                 $proposal

@@ -49,6 +49,6 @@ Badger\UserBundle\Entity\User:
                     tag_id:
                         referencedColumnName: id
     oneToMany:
-        badge_votes:
+        badgeVotes:
             targetEntity: Badger\GameBundle\Entity\BadgeVote
             mappedBy: user

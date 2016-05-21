@@ -37,13 +37,16 @@ class BadgeVoteSummary
     }
 
     /**
-     * @param BadgeVoteInterface[] $badgeVotes
+     * @param BadgeVoteInterface[] $userVotes
      *
      * @return BadgeVoteSummary
      */
-    public function setUserVotes($badgeVotes)
+    public function setUserVotes($userVotes)
     {
-        $this->userVotes = $badgeVotes;
+        $this->userVotes = [];
+        foreach($userVotes as $userVote) {
+            $this->userVotes[$userVote->getBadgeProposal()->getId()] = $userVote->getOpinion();
+        };
 
         return $this;
     }
@@ -55,7 +58,10 @@ class BadgeVoteSummary
      */
     public function setVoteCounts($voteCounts)
     {
-        $this->voteCounts = $voteCounts;
+        $this->voteCounts = [];
+        foreach ($voteCounts as $proposalCounts) {
+            $this->voteCounts[$proposalCounts['id']] = $proposalCounts;
+        }
 
         return $this;
     }
@@ -75,10 +81,8 @@ class BadgeVoteSummary
      */
     public function hasUpvoted(BadgeProposalInterface $badgeProposal)
     {
-        foreach ($this->userVotes as $userVote) {
-            if ($userVote->getBadgeProposal() === $badgeProposal) {
-                return true === $userVote->getOpinion();
-            }
+        if (isset($this->userVotes[$badgeProposal->getId()])) {
+            return true === $this->userVotes[$badgeProposal->getId()];
         }
 
         return false;
@@ -91,10 +95,8 @@ class BadgeVoteSummary
      */
     public function hasDownvoted(BadgeProposalInterface $badgeProposal)
     {
-        foreach ($this->userVotes as $userVote) {
-            if ($userVote->getBadgeProposal() === $badgeProposal) {
-                return false === $userVote->getOpinion();
-            }
+        if (isset($this->userVotes[$badgeProposal->getId()])) {
+            return false === $this->userVotes[$badgeProposal->getId()];
         }
 
         return false;
@@ -107,10 +109,8 @@ class BadgeVoteSummary
      */
     public function countUpvotes(BadgeProposalInterface $badgeProposal)
     {
-        foreach ($this->voteCounts as $proposalCounts) {
-            if ($proposalCounts['id'] === $badgeProposal->getId()) {
-                return (int) $proposalCounts['upvotes'];
-            }
+        if (isset($this->voteCounts[$badgeProposal->getId()])) {
+            return (int) $this->voteCounts[$badgeProposal->getId()]['upvotes'];
         }
 
         return 0;
@@ -123,10 +123,8 @@ class BadgeVoteSummary
      */
     public function countDownvotes(BadgeProposalInterface $badgeProposal)
     {
-        foreach ($this->voteCounts as $proposalCounts) {
-            if ($proposalCounts['id'] === $badgeProposal->getId()) {
-                return (int) $proposalCounts['downvotes'];
-            }
+        if (isset($this->voteCounts[$badgeProposal->getId()])) {
+            return (int) $this->voteCounts[$badgeProposal->getId()]['downvotes'];
         }
 
         return 0;

@@ -21,8 +21,8 @@ class BadgeProposalRepository extends EntityRepository implements BadgeProposalR
     {
         $query = $this->createQueryBuilder('p')
             ->select('p.id, SUM(uv.opinion) AS upvotes, - SUM(dv.opinion) AS downvotes')
-            ->leftJoin('p.badge_votes', 'uv', 'WITH', 'uv.opinion > 0')
-            ->leftJoin('p.badge_votes', 'dv', 'WITH', 'dv.opinion < 0')
+            ->leftJoin('p.badgeVotes', 'uv', 'WITH', 'uv.opinion > 0')
+            ->leftJoin('p.badgeVotes', 'dv', 'WITH', 'dv.opinion < 0')
             ->groupBy('p.id')
             ->getQuery();
 
@@ -36,7 +36,7 @@ class BadgeProposalRepository extends EntityRepository implements BadgeProposalR
     {
         $query = $this->createQueryBuilder('p')
             ->addSelect('SUM(v.opinion) AS HIDDEN opinion_sum')
-            ->leftJoin('p.badge_votes', 'v')
+            ->leftJoin('p.badgeVotes', 'v')
             ->groupBy('p.id')
             ->orderBy('opinion_sum', 'DESC')
             ->getQuery();

@@ -5,7 +5,7 @@ namespace Badger\GameBundle\Factory;
 use Badger\GameBundle\Doctrine\Repository\BadgeVoteRepository;
 use Badger\GameBundle\Helper\BadgeVoteSummary;
 use Badger\GameBundle\Repository\BadgeProposalRepositoryInterface;
-use FOS\UserBundle\Model\UserInterface;
+use Badger\UserBundle\Entity\UserInterface;
 
 /**
  * Factory for BadgeVoteSummary creation

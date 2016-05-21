@@ -27,7 +27,7 @@ class BadgeProposal implements BadgeProposalInterface
     protected $user;
 
     /** @var ArrayCollection */
-    protected $badge_votes;
+    protected $badgeVotes;
 
     /**
      * {@inheritdoc}
@@ -96,6 +96,6 @@ class BadgeProposal implements BadgeProposalInterface
      */
     public function getBadgeVotes()
     {
-        return $this->badge_votes;
+        return $this->badgeVotes;
     }
 }
