@@ -16,27 +16,21 @@ Badger is based on the great Symfony framework. **If you encounter some installa
 please have a look on the [Symfony installation documentation](http://symfony.com/doc/2.8/book/installation.html).
 If you still have some troubles, feel free to open a [GitHub issue](https://github.com/grena/gruik/issues/new).
 
-#### 1) Setup your database
-```
-mysql -u root -p
-
-CREATE DATABASE badger;
-GRANT ALL PRIVILEGES ON badger.* TO badger_user@localhost IDENTIFIED BY 'badger_password';
-EXIT
-```
-
-#### 2) Install Composer dependencies
+#### 1) Install Composer dependencies
 ```
 composer install
 ```
 
-### Create database tables
-You will need to create the database tables before to use badger. Use this command:
+#### 2) Setup your database
+```
+mysql -u root -p
 
-```bash
+    CREATE DATABASE badger;
+    GRANT ALL PRIVILEGES ON badger.* TO badger_user@localhost IDENTIFIED BY 'badger_password';
+    EXIT
+
 php app/console doctrine:schema:update --force
 ```
-
 
 #### 3) Install frontend assets
 ```bash
