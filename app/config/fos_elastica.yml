@@ -1,0 +1,30 @@
+fos_elastica:
+    clients:
+        default: { host: %elastic_host%, port: %elastic_port% }
+    indexes:
+        badger:
+            settings:
+                index:
+                    analysis:
+                        analyzer:
+                            my_analyzer:
+                                type: custom
+                                tokenizer: lowercase
+                                filter   : [my_ngram]
+                        filter:
+                            my_ngram:
+                                type: "nGram"
+                                min_gram: 1
+                                max_gram: 20
+            client: default
+            types:
+                user:
+                    mappings:
+                        username: { boost: 8, analyzer: my_analyzer }
+                        profilePicture: ~
+                    persistence:
+                        driver: orm
+                        model: Badger\UserBundle\Entity\User
+                        finder: ~
+                        provider: ~
+                        listener: ~

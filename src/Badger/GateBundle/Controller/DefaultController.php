@@ -5,6 +5,7 @@ namespace Badger\GateBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -275,6 +276,19 @@ class DefaultController extends Controller
 
         return $this->render('@Gate/leaderboard.html.twig', [
             'users' => $users
+        ]);
+    }
+
+    /**
+     * @Route("/user/search/{token}", name="search")
+     */
+    public function findAction(Request $request)
+    {
+        $token = $request->get('token');
+        $results = $this->get('badger.user.repository.elastic.user')->findUser($token);
+
+        return $this->render('@Gate/users-search.html.twig', [
+            'users' => $results,
         ]);
     }
 }

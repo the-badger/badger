@@ -1,5 +1,6 @@
 parameters:
     badger.user.repository.user.class: Badger\UserBundle\Doctrine\Repository\UserRepository
+    badger.user.repository.elastic.user.class: Badger\UserBundle\Doctrine\Repository\ElasticUserRepository
 
 services:
     badger.user.repository.user:
@@ -7,3 +8,8 @@ services:
         factory: ['@doctrine.orm.entity_manager', 'getRepository']
         arguments:
             - 'Badger\UserBundle\Entity\User'
+
+    badger.user.repository.elastic.user:
+        class: %badger.user.repository.elastic.user.class%
+        arguments:
+            - '@fos_elastica.index.badger.user'

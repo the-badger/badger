@@ -1,0 +1,27 @@
+{% extends '@Gate/base.html.twig' %}
+
+{% block body %}
+
+
+    <div class="ui main container ir-people">
+        <input id="test" type="text" autocomplete="off" tabindex="" placeholder="Pick some people..." />
+        <div class="ui middle aligned animated massive list">
+            {% for user in users %}
+            <div class="item">
+                <img class="ui avatar image" src="{{ user.profilePicture }}">
+                <div class="content">
+                    <a class="header" href="{{ url('userprofile', {'username': user.username}) }}">{{ user.highlights | raw}}</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{#{% block javascripts %}#}
+    {#<script>#}
+        {#$('#test').selectize({#}
+            {#plugins: ['remove_button']#}
+        {#});#}
+    {#</script>#}
+{#{% endblock %}#}

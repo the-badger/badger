@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new Badger\GateBundle\GateBundle(),
             new Badger\StorageUtilsBundle\StorageUtilsBundle(),
             new Badger\TagBundle\TagBundle(),
+            new FOS\ElasticaBundle\FOSElasticaBundle(),
         );
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
