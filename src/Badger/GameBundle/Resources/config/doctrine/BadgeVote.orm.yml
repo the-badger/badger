@@ -13,11 +13,13 @@ Badger\GameBundle\Entity\BadgeVote:
     manyToOne:
         user:
             targetEntity: Badger\UserBundle\Entity\User
+            inversedBy: badgeVotes
             joinColumn:
                 user_id:
                     referencedColumnName: id
         badgeProposal:
             targetEntity: Badger\GameBundle\Entity\BadgeProposal
+            inversedBy: badgeVotes
             joinColumn:
                 badge_proposal_id:
                     referencedColumnName: id

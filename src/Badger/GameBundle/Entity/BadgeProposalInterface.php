@@ -59,4 +59,28 @@ interface BadgeProposalInterface
      * @return ArrayCollection
      */
     public function getBadgeVotes();
+    
+    /**
+     * @param UserInterface $user
+     *
+     * @return bool
+     */
+    public function hasUserUpvoted(UserInterface $user);
+
+    /**
+     * @param UserInterface $user
+     *
+     * @return bool
+     */
+    public function hasUserDownvoted(UserInterface $user);
+
+    /**
+     * @return int
+     */
+    public function getUpvotesCount();
+
+    /**
+     * @return int
+     */
+    public function getDownvotesCount();
 }

@@ -98,4 +98,62 @@ class BadgeProposal implements BadgeProposalInterface
     {
         return $this->badgeVotes;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasUserUpvoted(UserInterface $user)
+    {
+        foreach ($this->getBadgeVotes() as $badgeVote) {
+            if ($user === $badgeVote->getUser()) {
+                return true === $badgeVote->getOpinion();
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasUserDownvoted(UserInterface $user)
+    {
+        foreach ($this->getBadgeVotes() as $badgeVote) {
+            if ($user === $badgeVote->getUser()) {
+                return false === $badgeVote->getOpinion();
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUpvotesCount()
+    {
+        $count = 0;
+        foreach ($this->getBadgeVotes() as $badgeVote) {
+            if (true === $badgeVote->getOpinion()) {
+                $count++;
+            }
+        }
+
+        return $count;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDownvotesCount()
+    {
+        $count = 0;
+        foreach ($this->getBadgeVotes() as $badgeVote) {
+            if (false === $badgeVote->getOpinion()) {
+                $count++;
+            }
+        }
+
+        return $count;
+    }
 }

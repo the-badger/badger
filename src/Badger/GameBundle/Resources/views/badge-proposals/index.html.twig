@@ -12,11 +12,11 @@
                 {% if badgeProposals is not empty %}
                     {% for badgeProposal in badgeProposals %}
                         <div
-                            class="ui grid badge-proposal stackable {% if true == badgeVoteSummary.hasUpvoted(badgeProposal) %} has-upvoted{% endif %} {% if true == badgeVoteSummary.hasDownvoted(badgeProposal) %} has-downvoted{% endif %}"
+                            class="ui grid badge-proposal stackable {% if true == badgeProposal.hasUserUpvoted(app.user) %} has-upvoted{% endif %} {% if true == badgeProposal.hasUserDownvoted(app.user) %} has-downvoted{% endif %}"
                             style="clear:both"
                             data-badge-proposal-id="{{ badgeProposal.id }}"
-                            data-count-up-votes="{{ badgeVoteSummary.countUpvotes(badgeProposal) }}"
-                            data-count-down-votes="{{ badgeVoteSummary.countDownvotes(badgeProposal) }}"
+                            data-count-up-votes="{{ badgeProposal.getUpvotesCount() }}"
+                            data-count-down-votes="{{ badgeProposal.getDownvotesCount() }}"
                         >
                             <div class="nine wide column">
                                 <h3>{{ badgeProposal.title }}</h3>

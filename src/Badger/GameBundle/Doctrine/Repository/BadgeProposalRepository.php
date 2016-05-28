@@ -17,30 +17,37 @@ class BadgeProposalRepository extends EntityRepository implements BadgeProposalR
     /**
      * {@inheritdoc}
      */
-    public function findVoteCounts()
-    {
-        $query = $this->createQueryBuilder('p')
-            ->select('p.id, SUM(uv.opinion) AS upvotes, - SUM(dv.opinion) AS downvotes')
-            ->leftJoin('p.badgeVotes', 'uv', 'WITH', 'uv.opinion > 0')
-            ->leftJoin('p.badgeVotes', 'dv', 'WITH', 'dv.opinion < 0')
-            ->groupBy('p.id')
-            ->getQuery();
-
-        return $query->getArrayResult();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function findAllSorted()
     {
-        $query = $this->createQueryBuilder('p')
-            ->addSelect('SUM(v.opinion) AS HIDDEN opinion_sum')
+        /**
+         * The eager loading of BadgeVotes need to do a left join to proposal. But this is not possible with this
+         * kind of query because we need to group by proposal id to get order, and doctrines does not allow left join
+         * to sub queries (or it need to write full SQL query).
+         * So, we execute 2 queries:
+         * - first one get the proposal ids in the needed order
+         * - second one is a standard findAll, where left join to proposals is automatically done by EAGER.
+         * Then, we just map the 2 queries to have proposals in the right order.
+         */
+        $queryOrder = $this->createQueryBuilder('p')
+            ->select('p.id')
+            ->addSelect('COALESCE(SUM(v.opinion),0) AS HIDDEN opinion_sum')
             ->leftJoin('p.badgeVotes', 'v')
             ->groupBy('p.id')
             ->orderBy('opinion_sum', 'DESC')
             ->getQuery();
+        $orderProposalIds = $queryOrder->getArrayResult();
 
-        return $query->getResult();
+        $proposals = $this->findAll();
+        $result = [];
+        foreach ($orderProposalIds as $orderProposalId) {
+            foreach ($proposals as $proposal) {
+                if ($proposal->getId() === $orderProposalId['id']) {
+                    // Should be optimized by removing the matched proposals
+                    array_push($result, $proposal);
+                }
+            }
+        }
+
+        return $result;
     }
 }

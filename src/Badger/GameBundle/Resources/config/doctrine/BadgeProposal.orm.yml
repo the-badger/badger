@@ -26,3 +26,4 @@ Badger\GameBundle\Entity\BadgeProposal:
         badgeVotes:
             targetEntity: Badger\GameBundle\Entity\BadgeVote
             mappedBy: badgeProposal
+            fetch: EAGER

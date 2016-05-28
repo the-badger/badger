@@ -16,13 +16,6 @@ use Doctrine\Common\Persistence\ObjectRepository;
 interface BadgeProposalRepositoryInterface extends ObjectRepository
 {
     /**
-     * Returns each proposal id, associated with count of upvotes and count of downvotes.
-     *
-     * @return ArrayCollection
-     */
-    public function findVoteCounts();
-
-    /**
      * Returns each proposal, sorted by their score (upvotes - downvotes)
      *
      * @return BadgeProposalInterface[]

@@ -5,7 +5,6 @@ parameters:
     badger.game.claimed_badge.factory.class: Badger\GameBundle\Factory\ClaimedBadgeFactory
     badger.game.configuration.factory.class: Badger\GameBundle\Factory\ConfigurationFactory
     badger.game.badge_proposal.factory.class: Badger\GameBundle\Factory\BadgeProposalFactory
-    badger.game.badge_vote_summary.factory.class: Badger\GameBundle\Factory\BadgeVoteSummaryFactory
 
 services:
     badger.game.badge.factory:
@@ -25,9 +24,3 @@ services:
 
     badger.game.badge_proposal.factory:
         class: '%badger.game.badge_proposal.factory.class%'
-
-    badger.game.badge_vote_summary.factory:
-        class: '%badger.game.badge_vote_summary.factory.class%'
-        arguments:
-            - '@badger.game.repository.badge_proposal'
-            - '@badger.game.repository.badge_vote'

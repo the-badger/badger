@@ -1,6 +1,5 @@
 parameters:
     badger.game.helper.badge_vote_engine.class: Badger\GameBundle\Vote\BadgeVoteEngine
-    badger.game.helper.badge_vote_summary.class: Badger\GameBundle\Vote\BadgeVoteSummary
 
 services:
     badger.game.helper.badge_vote_engine:
@@ -9,6 +8,3 @@ services:
             - '@badger.game.repository.badge_vote'
             - '@badger.game.remover.badge_vote'
             - '@badger.game.saver.badge_vote'
-
-    badger.game.helper.badge_vote_summary:
-        class: %badger.game.helper.badge_vote_summary.class%

@@ -28,12 +28,9 @@ class BadgeProposalController extends Controller
     public function indexAction(Request $request)
     {
         $badgeProposalRepository = $this->get('badger.game.repository.badge_proposal');
-        $badgeVoteSummaryFactory = $this->get('badger.game.badge_vote_summary.factory');
-        $badgeVoteSummary = $badgeVoteSummaryFactory->create($this->getUser());
 
         return $this->render('@Game/badge-proposals/index.html.twig', [
-            'badgeProposals'   => $badgeProposalRepository->findAllSorted(),
-            'badgeVoteSummary' => $badgeVoteSummary,
+            'badgeProposals' => $badgeProposalRepository->findAllSorted(),
         ]);
     }
 
