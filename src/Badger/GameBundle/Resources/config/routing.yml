@@ -2,6 +2,10 @@ game:
     resource: "@GameBundle/Controller/"
     type:     annotation
 
+game_badge_proposals:
+    resource: "@GameBundle/Resources/config/routing/badge_proposal.yml"
+    prefix:   /badge_proposals
+
 game_admin_badge:
     resource: "@GameBundle/Resources/config/routing/badge.yml"
     prefix:   /admin/badge

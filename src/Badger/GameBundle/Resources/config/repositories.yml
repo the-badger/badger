@@ -4,6 +4,8 @@ parameters:
     badger.game.repository.claimed_badge.class: Badger\GameBundle\Doctrine\Repository\ClaimedBadgeRepository
     badger.game.repository.unlocked_badge.class: Badger\GameBundle\Doctrine\Repository\UnlockedBadgeRepository
     badger.game.repository.configuration.class: Badger\GameBundle\Doctrine\Repository\ConfigurationRepository
+    badger.game.repository.badge_proposal.class: Badger\GameBundle\Doctrine\Repository\BadgeProposalRepository
+    badger.game.repository.badge_vote.class: Badger\GameBundle\Doctrine\Repository\BadgeVoteRepository
 
 services:
     badger.game.repository.badge:
@@ -35,3 +37,17 @@ services:
         factory: ['@doctrine.orm.entity_manager', 'getRepository']
         arguments:
             - Badger\GameBundle\Entity\Configuration
+
+    badger.game.repository.badge_proposal:
+        class: %badger.game.repository.badge_proposal.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Badger\GameBundle\Entity\BadgeProposal
+
+    badger.game.repository.badge_vote:
+        class: %badger.game.repository.badge_vote.class%
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - Badger\GameBundle\Entity\BadgeVote

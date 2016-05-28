@@ -1,0 +1,19 @@
+badge_proposal_index:
+    path:     /
+    defaults: { _controller: "GameBundle:BadgeProposal:index" }
+    methods:  GET
+
+badge_proposal_new:
+    path:     /new
+    defaults: { _controller: "GameBundle:BadgeProposal:new" }
+    methods:  [GET, POST]
+
+badge_proposal_toggle_upvote:
+    path:     /{id}/upvote
+    defaults: { _controller: "GameBundle:BadgeProposal:toggleUpvote" }
+    methods:  [POST]
+
+badge_proposal_toggle_downvote:
+    path:     /{id}/downvote
+    defaults: { _controller: "GameBundle:BadgeProposal:toggleDownvote" }
+    methods:  [POST]

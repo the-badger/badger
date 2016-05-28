@@ -1,0 +1,25 @@
+Badger\GameBundle\Entity\BadgeVote:
+    type: entity
+    table: badge_votes
+    repositoryClass: Badger\GameBundle\Doctrine\Repository\BadgeVoteRepository
+    fields:
+        id:
+            id: true
+            type: guid
+            generator:
+                strategy: UUID
+        opinion:
+            type: smallint
+    manyToOne:
+        user:
+            targetEntity: Badger\UserBundle\Entity\User
+            inversedBy: badgeVotes
+            joinColumn:
+                user_id:
+                    referencedColumnName: id
+        badgeProposal:
+            targetEntity: Badger\GameBundle\Entity\BadgeProposal
+            inversedBy: badgeVotes
+            joinColumn:
+                badge_proposal_id:
+                    referencedColumnName: id

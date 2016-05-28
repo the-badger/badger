@@ -21,6 +21,7 @@ class GameExtension extends Extension
     {
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('factories.yml');
+        $loader->load('votes.yml');
         $loader->load('removers.yml');
         $loader->load('repositories.yml');
         $loader->load('twig.yml');

@@ -48,3 +48,7 @@ Badger\UserBundle\Entity\User:
                 inverseJoinColumns:
                     tag_id:
                         referencedColumnName: id
+    oneToMany:
+        badgeVotes:
+            targetEntity: Badger\GameBundle\Entity\BadgeVote
+            mappedBy: user
