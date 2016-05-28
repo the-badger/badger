@@ -3,7 +3,7 @@
 namespace Badger\GameBundle\Factory;
 
 use Badger\GameBundle\Doctrine\Repository\BadgeVoteRepository;
-use Badger\GameBundle\Helper\BadgeVoteSummary;
+use Badger\GameBundle\Vote\BadgeVoteSummary;
 use Badger\GameBundle\Repository\BadgeProposalRepositoryInterface;
 use Badger\UserBundle\Entity\UserInterface;
 
@@ -43,7 +43,6 @@ class BadgeVoteSummaryFactory
     {
         $badgeVoteSummary = new BadgeVoteSummary();
         $badgeVoteSummary
-            ->setBadgeProposals($this->badgeProposalRepository->findAllSorted())
             ->setUserVotes($this->badgeVoteRepository->findBy(['user' => $user]))
             ->setVoteCounts($this->badgeProposalRepository->findVoteCounts());
 

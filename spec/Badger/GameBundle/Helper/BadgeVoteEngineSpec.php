@@ -1,6 +1,6 @@
 <?php
 
-namespace spec\Badger\GameBundle\Helper;
+namespace spec\Badger\GameBundle\Vote;
 
 use Badger\GameBundle\Entity\BadgeProposalInterface;
 use Badger\GameBundle\Entity\BadgeVoteInterface;
@@ -23,7 +23,7 @@ class BadgeVoteEngineSpec extends ObjectBehavior
 
     function it_is_initializable()
     {
-        $this->shouldHaveType('Badger\GameBundle\Helper\BadgeVoteEngine');
+        $this->shouldHaveType('Badger\GameBundle\Vote\BadgeVoteEngine');
     }
 
     function it_should_create_a_vote(

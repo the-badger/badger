@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Helper;
+namespace Badger\GameBundle\Vote;
 
 use Badger\GameBundle\Entity\BadgeProposalInterface;
 use Badger\GameBundle\Entity\BadgeVote;

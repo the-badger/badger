@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Helper;
+namespace Badger\GameBundle\Vote;
 
 use Badger\GameBundle\Entity\BadgeProposalInterface;
 use Badger\GameBundle\Entity\BadgeVoteInterface;
@@ -15,26 +15,11 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class BadgeVoteSummary
 {
-    /** @var BadgeProposalInterface[] */
-    protected $badgeProposals;
-
     /** @var BadgeVoteInterface[] */
     protected $userVotes;
 
     /** @var ArrayCollection */
     protected $voteCounts;
-
-    /**
-     * @param BadgeProposalInterface[] $badgeProposals
-     *
-     * @return BadgeVoteSummary
-     */
-    public function setBadgeProposals(array $badgeProposals)
-    {
-        $this->badgeProposals = $badgeProposals;
-
-        return $this;
-    }
 
     /**
      * @param BadgeVoteInterface[] $userVotes
@@ -64,14 +49,6 @@ class BadgeVoteSummary
         }
 
         return $this;
-    }
-
-    /**
-     * @return BadgeProposalInterface[]
-     */
-    public function getBadgeProposals()
-    {
-        return $this->badgeProposals;
     }
 
     /**
