@@ -70,21 +70,30 @@ class BadgeVote implements BadgeVoteInterface
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
     public function getOpinion()
     {
-        return $this->opinion > 0;
+        if (0 === $this->opinion) {
+            return null;
+        }
+        if ($this->opinion > 0) {
+            return true;
+        }
+        return false;
     }
 
     /**
-     * @param bool $opinion
-     *
-     * @return BadgeVoteInterface
+     * {@inheritdoc}
      */
     public function setOpinion($opinion)
     {
-        $this->opinion = $opinion ? 1 : -1;
+        if (null === $opinion) {
+            $this->opinion = 0;
+        }
+        else {
+            $this->opinion = $opinion ? 1 : -1;
+        }
 
         return $this;
     }

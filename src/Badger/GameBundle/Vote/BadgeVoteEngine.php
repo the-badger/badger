@@ -22,24 +22,18 @@ class BadgeVoteEngine
     /** @var BadgeVoteRepositoryInterface */
     protected $repository;
 
-    /** @var RemoverInterface */
-    protected $remover;
-
     /** @var SaverInterface */
     protected $saver;
 
     /**
      * @param BadgeVoteRepositoryInterface $repository
-     * @param RemoverInterface             $remover
      * @param SaverInterface               $saver
      */
     public function __construct(
         BadgeVoteRepositoryInterface $repository,
-        RemoverInterface $remover,
         SaverInterface $saver
     ) {
         $this->repository = $repository;
-        $this->remover    = $remover;
         $this->saver      = $saver;
     }
 
@@ -61,9 +55,7 @@ class BadgeVoteEngine
 
         if (null !== $existingVote) {
             if ($existingVote->getOpinion() === $opinion) {
-                $this->remover->remove($existingVote);
-
-                return;
+                $opinion = null;
             }
 
             $existingVote->setOpinion($opinion);

@@ -43,14 +43,14 @@ interface BadgeVoteInterface
     public function setBadgeProposal(BadgeProposalInterface $badgeProposal);
 
     /**
-     * @return bool
+     * @return bool|null
      */
     public function getOpinion();
 
     /**
-     * @param bool $vote
+     * @param bool|null $opinion
      *
      * @return BadgeVoteInterface
      */
-    public function setOpinion($vote);
+    public function setOpinion($opinion);
 }

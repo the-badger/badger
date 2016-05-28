@@ -6,5 +6,4 @@ services:
         class: %badger.game.helper.badge_vote_engine.class%
         arguments:
             - '@badger.game.repository.badge_vote'
-            - '@badger.game.remover.badge_vote'
             - '@badger.game.saver.badge_vote'

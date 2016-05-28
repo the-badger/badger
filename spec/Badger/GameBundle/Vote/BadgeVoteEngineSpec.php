@@ -15,10 +15,9 @@ class BadgeVoteEngineSpec extends ObjectBehavior
 {
     function let(
         BadgeVoteRepositoryInterface $repository,
-        RemoverInterface $remover,
         SaverInterface $saver
     ) {
-        $this->beConstructedWith($repository, $remover, $saver);
+        $this->beConstructedWith($repository, $saver);
     }
 
     function it_is_initializable()
@@ -60,9 +59,9 @@ class BadgeVoteEngineSpec extends ObjectBehavior
         $this->toggleVote($user, $badgeProposal, true);
     }
 
-    function it_should_removes_the_opinion(
+    function it_should_deactivate_the_opinion(
         $repository,
-        $remover,
+        $saver,
         BadgeVoteInterface $badgeVote,
         UserInterface $user,
         BadgeProposalInterface $badgeProposal
@@ -73,7 +72,8 @@ class BadgeVoteEngineSpec extends ObjectBehavior
         ])->willReturn($badgeVote);
 
         $badgeVote->getOpinion()->willReturn(true);
-        $remover->remove($badgeVote)->shouldBeCalled();
+        $badgeVote->setOpinion(null)->shouldBeCalled();
+        $saver->save($badgeVote)->shouldBeCalled();
         $this->toggleVote($user, $badgeProposal, true);
     }
 }
