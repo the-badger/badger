@@ -3,7 +3,7 @@
 namespace Badger\GameBundle\Controller;
 
 use Badger\GameBundle\Form\BadgeProposalType;
-use Badger\GateBundle\Controller\DefaultController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,11 +16,10 @@ use Symfony\Component\HttpFoundation\Response;
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-class BadgeProposalController extends DefaultController
+class BadgeProposalController extends Controller
 {
     /**
      * Show the list of badge proposals
-     * TODO Sort it!
      *
      * @param Request $request
      *
