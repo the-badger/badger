@@ -1,9 +1,10 @@
 <?php
 
-namespace Context;
+namespace Behat\Context;
 
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Behat\Hook\Scope\BeforeScenarioScope;
+use Behat\Mink\Driver\CoreDriver;
 use Behat\Mink\Driver\ZombieDriver;
 use Behat\MinkExtension\Context\MinkContext;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
@@ -45,7 +46,8 @@ class UserContext implements SnippetAcceptingContext, KernelAwareContext
     /**
      * @param string $username
      *
-     * @Given /^I am authenticated as "(?P<username>[^"]+)"$/
+     * @Given I am authenticated as :username
+     * @Given I am logged as :username
      */
     public function iAmAuthenticatedAs($username)
     {
@@ -72,7 +74,7 @@ class UserContext implements SnippetAcceptingContext, KernelAwareContext
     }
 
     /**
-     * @return \Behat\Mink\Driver\CoreDriver
+     * @return CoreDriver
      */
     public function getDriver()
     {

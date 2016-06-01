@@ -4,8 +4,8 @@ default:
     suites:
         web_features:
             contexts:
-                - Context\NavigationContext
-                - Context\UserContext
+                - Behat\Context\NavigationContext
+                - Behat\Context\UserContext
                 - Behat\MinkExtension\Context\MinkContext
             filters:
                 tags: @web

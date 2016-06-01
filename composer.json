@@ -3,9 +3,6 @@
     "license": "proprietary",
     "type": "project",
     "autoload": {
-        "psr-0": {
-            "Context\\": "features/"
-        },
         "psr-4": {
             "": "src/"
         },

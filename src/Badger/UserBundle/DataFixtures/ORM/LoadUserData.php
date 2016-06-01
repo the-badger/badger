@@ -13,9 +13,7 @@ use Doctrine\Common\Persistence\ObjectManager;
  */
 class LoadUserData extends AbstractFixture
 {
-    /**
-     * @var ObjectManager
-     */
+    /** @var ObjectManager */
     private $manager;
 
     /**
