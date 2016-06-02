@@ -2,6 +2,7 @@
 
 namespace Badger\GameBundle\Doctrine\Repository;
 
+use Badger\GameBundle\Repository\TagSearchableRepositoryInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
@@ -15,7 +16,9 @@ use Badger\UserBundle\Entity\User;
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-class UnlockedBadgeRepository extends EntityRepository implements UnlockedBadgeRepositoryInterface
+class UnlockedBadgeRepository extends EntityRepository implements
+    UnlockedBadgeRepositoryInterface,
+    TagSearchableRepositoryInterface
 {
     /**
      * {@inheritdoc}

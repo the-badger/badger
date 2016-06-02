@@ -25,3 +25,6 @@ Badger\TagBundle\Entity\Tag:
         badges:
             targetEntity: Badger\GameBundle\Entity\Badge
             mappedBy: tags
+        quests:
+            targetEntity: Badger\GameBundle\Entity\Quest
+            mappedBy: tags

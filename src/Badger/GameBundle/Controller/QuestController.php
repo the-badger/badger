@@ -26,7 +26,7 @@ class QuestController extends Controller
     public function indexAction()
     {
         $quests = $this->get('badger.game.repository.quest')
-            ->findAll();
+            ->getQuestsOrdered('endDate');
 
         return $this->render('@Game/quests/index.html.twig', [
             'quests' => $quests,
@@ -64,12 +64,13 @@ class QuestController extends Controller
     /**
      * Finds and displays a Quest entity.
      *
-     * @param QuestInterface $quest
+     * @param string $id
      *
      * @return Response
      */
-    public function showAction(QuestInterface $quest)
+    public function showAction($id)
     {
+        $quest = $this->get('badger.game.repository.quest')->find($id);
         $deleteForm = $this->createDeleteForm($quest);
 
         return $this->render('@Game/quests/show.html.twig', [
@@ -81,13 +82,14 @@ class QuestController extends Controller
     /**
      * Displays a form to edit an existing Quest entity.
      *
-     * @param Request        $request
-     * @param QuestInterface $quest
+     * @param Request $request
+     * @param string  $quest
      *
      * @return RedirectResponse|Response
      */
-    public function editAction(Request $request, QuestInterface $quest)
+    public function editAction(Request $request, $id)
     {
+        $quest = $this->get('badger.game.repository.quest')->find($id);
         $deleteForm = $this->createDeleteForm($quest);
         $editForm = $this->createForm(new QuestType(), $quest);
         $editForm->handleRequest($request);
@@ -96,7 +98,7 @@ class QuestController extends Controller
             $questSaver = $this->get('badger.game.saver.quest');
             $questSaver->save($quest);
 
-            return $this->redirectToRoute('admin_badge_edit', ['id' => $quest->getId()]);
+            return $this->redirectToRoute('admin_quest_edit', ['id' => $quest->getId()]);
         }
 
         return $this->render('@Game/quests/edit.html.twig', [

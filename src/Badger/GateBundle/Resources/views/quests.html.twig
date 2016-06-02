@@ -1,0 +1,154 @@
+{% extends '@Gate/base.html.twig' %}
+
+{% block body %}
+    <div class="ui main container ir-quests">
+
+            <div class="ui stackable centered grid">
+                <div class="row" style="padding-top: 0;">
+                    <div class="ten wide column">
+
+                        <div class="ui pointing secondary menu">
+                            <a class="item active" data-tab="first">Available <span class="ui red circular label">{{ countAvailableQuests }}</span></a>
+                            <a class="item" data-tab="second">Completed <span class="ui circular label">{{ countCompletedQuests }}</span></a>
+                        </div>
+
+                        <div class="ui bottom attached tab basic segment active" style="border: 0; padding: 0;" data-tab="first">
+                            {% if availableQuests is empty %}
+                                <div class="ui very padded center aligned basic segment" style="color: #cecece;">
+                                    <h2><i class="calendar outline large icon"></i></h2>
+                                    <p>No quest available for now. Come back later!</p>
+                                </div>
+                            {% endif %}
+
+                            {% for quest in availableQuests %}
+                                <div class="ui segments" style="border-radius: 0; border: 0; margin-bottom: 0;">
+                                    <div class="ui segment quest" style="border-radius: 0; border: 0; margin-bottom: 0;">
+                                        {% if quest.id not in claimedQuestIds %}
+                                            <a class="ui teal right ribbon label claim" data-quest="{{ quest.id }}"><i class="check icon"></i> Mark as done</a>
+                                        {% else %}
+                                            <a class="ui blue right ribbon label"><i class="fa fa-clock-o" ></i> &nbsp; Claimed!</a>
+                                        {% endif %}
+                                        <h2>{{ quest.title }}</h2>
+                                        <div class="description">
+                                            {{ quest.description|nl2br }}
+                                        </div>
+                                    </div>
+                                    <div class="ui center aligned segment" style="border-radius: 0; border-top: 1px solid #F3F3F3;">
+                                        <div class="ui three mini statistics">
+                                            <div class="statistic">
+                                                <div class="value">
+                                                    {{ quest.reward }}
+                                                </div>
+                                                <div class="label">
+                                                    <i class="cubes icon"></i> Nuts
+                                                </div>
+                                            </div>
+                                            <div class="statistic">
+                                                {% set differenceFromNow = quest.endDate.diff(date(), true) %}
+
+                                                {% if differenceFromNow.days > 0 %}
+                                                    {% set differenceFromStart = quest.endDate.diff(quest.startDate, true) %}
+                                                    <div class="value">
+                                                        {{ differenceFromNow.days }}
+                                                    </div>
+                                                    <div class="label">
+                                                        days left
+                                                        <div class="ui indicating tiny progress" data-percent="{{ 100 - (100 * differenceFromNow.days / differenceFromStart.days) }}">
+                                                            <div class="bar"></div>
+                                                        </div>
+                                                    </div>
+                                                {% else %}
+                                                    <div class="value">
+                                                        TODAY
+                                                    </div>
+                                                    <div class="label">
+                                                        at midnight
+                                                        <div class="ui indicating tiny progress" data-percent="100">
+                                                            <div class="bar"></div>
+                                                        </div>
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                            <div class="statistic">
+                                                <div class="value">
+                                                    {{ quest.getApprovedCompletionsCount }}
+                                                </div>
+                                                <div class="label">
+                                                    Completions
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="ui bottom attached tab basic segment" style="border: 0; padding: 0;" data-tab="second">
+                            {% if questCompletions is empty %}
+                                <div class="ui very padded center aligned basic segment" style="color: #cecece;">
+                                    <h2><i class="frown large icon"></i></h2>
+                                    <p>No completed quest so far.</p>
+                                </div>
+                            {% endif %}
+
+                            {% for completion in questCompletions %}
+                                <div class="ui segments" style="border-radius: 0; border: 0; margin-bottom: 0;">
+                                    <div class="ui segment quest-completion" style="border-radius: 0; border: 0; margin-bottom: 0;">
+                                        <a class="ui green right corner label">
+                                            <i class="check icon"></i>
+                                        </a>
+                                        <h2>{{ completion.quest.title }}</h2>
+                                        <div class="description">
+                                            {{ completion.quest.description|nl2br }}
+                                        </div>
+                                    </div>
+                                    <div class="ui segment" style="border-radius: 0; border-top: 1px solid #F3F3F3;">
+                                        <div style="color: #4EAB52;">
+                                            <div class="ui green basic label">
+                                                <i class="cubes icon"></i>{{ completion.quest.reward }} nuts
+                                            </div>
+                                            <div class="ui basic label">
+                                                <i class="calendar icon"></i> {{ completion.completionDate|date('Y/m/d') }}
+                                            </div>
+                                            <div class="ui basic label">
+                                                <i class="users icon"></i>{{ completion.quest.getApprovedCompletionsCount }} completions
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $('.progress').progress();
+
+        // Auto link quests descriptions
+        $('.description').each(function () {
+            var linkedText = Autolinker.link( $(this).html() );
+            $(this).html(linkedText);
+        });
+
+        $('.menu .item').tab();
+
+        $button = $('.claim');
+        $button.click(function() {
+            var questId = $(this).data('quest');
+            if ($(this).hasClass('blue') || $(this).hasClass('loading')) {
+                return;
+            }
+
+            $(this).removeClass('red teal').addClass('loading').html('<div class="ui active mini inline loader"></div> &nbsp; Claiming...');
+
+            $.post('/claim/quest/' + questId).then(function() {
+                $(this).removeClass('loading teal').addClass('blue').html('<i class="fa fa-clock-o" ></i> &nbsp; Claimed!');
+            }.bind(this), function () {
+                $(this).removeClass('loading teal').addClass('red').html('<i class="fa fa-exclamation-triangle"></i> &nbsp; An error occurred');
+            }.bind(this));
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'GateBundle::base-admin.html.twig' %}
+
+{% block body %}
+
+    <h1 class="page-header"><i class="wait icon"></i> Pending Quest Completions</h1>
+
+    {% for flash_message in app.session.flashbag.get('notice') %}
+        <div class="ui icon positive message">
+            <i class="checkmark icon"></i>
+            <div class="content">
+                <p>{{ flash_message }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% for flash_message in app.session.flashbag.get('error') %}
+        <div class="ui icon error message">
+            <i class="warning sign icon"></i>
+            <div class="content">
+                <p>{{ flash_message }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% if pendingCompletions is not empty %}
+    <table class="ui celled padded table">
+        <thead>
+        <tr><th class="single line">User</th>
+            <th>Quest</th>
+            <th>Claimed date</th>
+            <th>Accept that claim?</th>
+        </tr></thead>
+        <tbody>
+        {% for pendingCompletion in pendingCompletions %}
+        <tr>
+            <td>
+                <img class="ui avatar image" src="{{ pendingCompletion.user.profilePicture }}">
+                <span>{{ pendingCompletion.user.username }}</span>
+            </td>
+            <td class="single line">
+                <a href="{{ path('admin_quest_show', { 'id': pendingCompletion.quest.id }) }}">{{ pendingCompletion.quest.title }}</a>
+            </td>
+            <td>
+                {{ pendingCompletion.completionDate|date("d/m/Y") }}
+            </td>
+            <td class="center aligned">
+                <div class="ui tiny buttons">
+                    <a href="{{ url('admin_claimed_quest_accept', { 'id': pendingCompletion.id }) }}" class="ui positive button">Hell yes!</a>
+                    <div class="or"></div>
+                    <a href="{{ url('admin_claimed_quest_reject', { 'id': pendingCompletion.id }) }}" class="ui red button">Nope.</a>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No claim, no pain.</p>
+    {% endif %}
+{% endblock %}

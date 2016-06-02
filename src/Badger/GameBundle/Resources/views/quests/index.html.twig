@@ -2,46 +2,73 @@
 
 {% block body %}
 
-    <h1 class="page-header"><i class="icon list layout"></i> Quest list</h1>
+    <h1 class="page-header">Quest list</h1>
 
-    <div class="ui raised segments">
-        <div class="ui secondary clearing segment">
-            <a href="{{ path('admin_quest_new') }}" class="ui right floated small green labeled icon button">
-                <i class="plus icon"></i> Create Quest
-            </a>
-        </div>
-        <div class="ui segment">
-            <div class="ui four cards">
-                {% for quest in quests %}
-                    <div class="card">
-                        <div class="content">
-                            <div class="header"><a href="{{ path('admin_quest_edit', { 'id': quest.id }) }}">{{ quest.title }}</a></div>
-                            <div class="description">
-                                {{ quest.description|nl2br }}
-                            </div>
-                        </div>
-                        <div class="extra content">
-                            <small><i class="icon code"></i> {{ quest.id }}</small>
-                        </div>
-                        {% if quest.tags|length > 0 %}
-                            <div class="extra content">
-                                {% for tag in quest.tags %}
-                                    <span class="ui teal tiny label">{{ tag.name }}</span>
-                                {% endfor %}
-                            </div>
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th class="one wide">Active</th>
+            <th class="three wide">Title</th>
+            <th class="seven wide">Description</th>
+            <th class="three wide">Tagged in</th>
+            <th class="two wide">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for quest in quests %}
+            {% set differenceFromNow = quest.endDate.diff(date('today midnight')) %}
+            {% set differenceInDays = differenceFromNow.invert == 0 and differenceFromNow.days > 0 ? -1 : differenceFromNow.days %}
+
+            <tr class="{{ differenceInDays > -1 ? 'warning' : '' }}">
+                <td class="center aligned">
+                    <small>
+                    {% if differenceInDays > -1 %}
+                        {% if differenceInDays > 0 %}
+                            <b>{{ differenceInDays }} days</b> left
+                        {% else %}
+                            <b>last day</b>
                         {% endif %}
+                    {% else %}
+                        <i class="green check circle outline icon"></i> Inactive
+                    {% endif %}
+                    </small>
+                </td>
+                <td>
+                    <h4 class="ui image header">
+                        <div class="content">
+                            <a href="{{ path('admin_quest_show', { 'id': quest.id }) }}">{{ quest.title }}</a>
+                            <div class="sub header">
+                                <small>Reward of {{ quest.reward }} nuts
+                            </div>
+                        </div>
+                    </h4>
+                </td>
+                <td style="font-size: 12px;" class="description">
+                    {{ quest.description|nl2br }}
+                </td>
+                <td class="center aligned">
+                    {% for tag in quest.tags %}
+                        <div class="ui small teal label">{{ tag.name }}</div>
+                    {% endfor %}
+                </td>
+                <td class="center aligned">
+                    <div class="ui small basic icon buttons">
+                        <a href="{{ path('admin_quest_show', { 'id': quest.id }) }}" class="ui button"><i class="eye icon"></i></a>
+                        <a href="{{ path('admin_quest_edit', { 'id': quest.id }) }}" class="ui button"><i class="pencil icon"></i></a>
                     </div>
-                {% endfor %}
-            </div>
-        </div>
-
-    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
 
 {% block javascripts %}
     <script>
-        $('.cards .image').dimmer({
-            on: 'hover'
+        // Auto link quests descriptions
+        $('.description').each(function () {
+            var linkedText = Autolinker.link( $(this).html() );
+            $(this).html(linkedText);
         });
     </script>
 {% endblock %}

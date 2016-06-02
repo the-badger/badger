@@ -34,6 +34,9 @@ class User extends BaseUser implements UserInterface, TaggableInterface
     /** @var ArrayCollection */
     protected $tags;
 
+    /** @var int */
+    protected $nuts;
+
     /**
      * {@inheritdoc}
      */
@@ -138,5 +141,29 @@ class User extends BaseUser implements UserInterface, TaggableInterface
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNuts()
+    {
+        return $this->nuts;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setNuts($nuts)
+    {
+        $this->nuts = $nuts;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addNuts($nuts)
+    {
+        $this->nuts += $nuts;
     }
 }

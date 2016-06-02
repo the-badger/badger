@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/akeneo/badger",
   "dependencies": {
+    "autolinker": "^0.26.0",
     "font-awesome": "^4.5.0",
     "jquery": "^2.1.4",
     "requirejs": "^2.1.22",
