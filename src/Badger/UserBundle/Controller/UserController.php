@@ -2,7 +2,6 @@
 
 namespace Badger\UserBundle\Controller;
 
-use Badger\UserBundle\Entity\UserInterface;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -60,12 +59,13 @@ class UserController extends Controller
     /**
      * Finds and displays a User entity.
      *
-     * @param UserInterface $user
+     * @param string $id
      *
      * @return Response
      */
-    public function showAction(UserInterface $user)
+    public function showAction($id)
     {
+        $user = $this->get('badger.user.repository.user')->find($id);
         $deleteForm = $this->createDeleteForm($user);
 
         return $this->render('@User/user/show.html.twig', [
@@ -78,12 +78,13 @@ class UserController extends Controller
      * Displays a form to edit an existing User entity.
      *
      * @param Request $request
-     * @param User    $user
+     * @param string  $id
      *
      * @return RedirectResponse|Response
      */
-    public function editAction(Request $request, User $user)
+    public function editAction(Request $request, $id)
     {
+        $user = $this->get('badger.user.repository.user')->find($id);
         $deleteForm = $this->createDeleteForm($user);
         $editForm = $this->createForm('Badger\UserBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
@@ -106,12 +107,13 @@ class UserController extends Controller
      * Deletes a User entity.
      *
      * @param Request $request
-     * @param User    $user
+     * @param string  $id
      *
      * @return RedirectResponse
      */
-    public function deleteAction(Request $request, User $user)
+    public function deleteAction(Request $request, $id)
     {
+        $user = $this->get('badger.user.repository.user')->find($id);
         $form = $this->createDeleteForm($user);
         $form->handleRequest($request);
 

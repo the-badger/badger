@@ -68,12 +68,13 @@ class BadgeController extends Controller
     /**
      * Finds and displays a Badge entity.
      *
-     * @param BadgeInterface $badge
+     * @param string $id
      *
      * @return Response
      */
-    public function showAction(BadgeInterface $badge)
+    public function showAction($id)
     {
+        $badge = $this->get('badger.game.repository.badge')->find($id);
         $deleteForm = $this->createDeleteForm($badge);
 
         return $this->render('@Game/badges/show.html.twig', [
@@ -85,13 +86,14 @@ class BadgeController extends Controller
     /**
      * Displays a form to edit an existing Badge entity.
      *
-     * @param Request        $request
-     * @param BadgeInterface $badge
+     * @param Request $request
+     * @param string  $id
      *
      * @return RedirectResponse|Response
      */
-    public function editAction(Request $request, BadgeInterface $badge)
+    public function editAction(Request $request, $id)
     {
+        $badge = $this->get('badger.game.repository.badge')->find($id);
         $deleteForm = $this->createDeleteForm($badge);
         $editForm = $this->createForm(new BadgeType(), $badge);
         $editForm->add('file');
@@ -117,13 +119,14 @@ class BadgeController extends Controller
     /**
      * Deletes a Badge entity.
      *
-     * @param Request        $request
-     * @param BadgeInterface $badge
+     * @param Request $request
+     * @param string  $id
      *
      * @return RedirectResponse
      */
-    public function deleteAction(Request $request, BadgeInterface $badge)
+    public function deleteAction(Request $request, $id)
     {
+        $badge = $this->get('badger.game.repository.badge')->find($id);
         $form = $this->createDeleteForm($badge);
         $form->handleRequest($request);
 

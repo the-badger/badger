@@ -2,7 +2,6 @@
 
 namespace Badger\GameBundle\Controller;
 
-use Badger\GameBundle\Entity\ConfigurationInterface;
 use Badger\GameBundle\Form\ConfigurationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -32,15 +31,16 @@ class ConfigurationController extends Controller
     }
 
     /**
-      * Creates or edits an Configuration entity.
-      *
-      * @param Request                $request
-      * @param ConfigurationInterface $configuration
-      *
-      * @return RedirectResponse|Response
-      */
-    public function formAction(Request $request, ConfigurationInterface $configuration = null)
+     * Creates or edits an Configuration entity.
+     *
+     * @param Request $request
+     * @param string  $id
+     *
+     * @return RedirectResponse|Response
+     */
+    public function formAction(Request $request, $id)
     {
+        $configuration = $this->get('badger.game.repository.configuration')->find($id);
         if (null === $configuration) {
             $configuration = $this->get('badger.game.configuration.factory')->create();
         }
