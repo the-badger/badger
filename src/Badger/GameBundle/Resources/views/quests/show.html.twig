@@ -1,40 +1,59 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <h1>Quest</h1>
-    <div class="ui card">
-        <div class="blurring dimmable image">
-            <div class="ui dimmer">
-                <div class="content">
-                    <div class="center">
-                        <a href="{{ path('admin_quest_edit', { 'id': quest.id }) }}" class="ui inverted button">Edit</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="content">
-            <div class="header">{{ quest.title }}</div>
-            <div class="description">
-                {{ quest.description }}
-            </div>
-        </div>
-        <div class="extra content">
-            <small><i class="icon code"></i> {{ quest.id }}</small>
-        </div>
-        {% if quest.tags|length > 0 %}
-            <div class="extra content">
+    <h1 class="page-header">Quest</h1>
+
+    <table class="ui definition table">
+        <tbody>
+        <tr>
+            <td>UUID</td>
+            <td>{{ quest.id }}</td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td>{{ quest.title }}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td class="description">{{ quest.description|nl2br }}</td>
+        </tr>
+        <tr>
+            <td>Reward</td>
+            <td>{{ quest.reward }}</td>
+        </tr>
+        <tr>
+            <td>Starts on</td>
+            <td>{{ quest.startDate|date('Y/m/d') }}</td>
+        </tr>
+        <tr>
+            <td>Ends on</td>
+            <td>{{ quest.endDate|date('Y/m/d') }}</td>
+        </tr>
+        <tr>
+            <td>Tagged in</td>
+            <td>
                 {% for tag in quest.tags %}
-                    <span class="ui teal tiny label">{{ tag.name }}</span>
+                    <div class="ui small teal label">{{ tag.name }}</div>
                 {% endfor %}
-            </div>
-        {% endif %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        {{ form_start(delete_form) }}
+        <button class="ui red right floated button" type="submit">Delete</button>
+        {{ form_end(delete_form) }}
+        <a href="{{ path('admin_quest_edit', { 'id': quest.id }) }}" class="ui right floated button">Edit</a>
     </div>
 {% endblock %}
 
 {% block javascripts %}
     <script>
-        $('.card .image').dimmer({
-            on: 'hover'
+        // Auto link quests descriptions
+        $('.description').each(function () {
+            var linkedText = Autolinker.link( $(this).html() );
+            $(this).html(linkedText);
         });
     </script>
 {% endblock %}

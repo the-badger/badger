@@ -1,0 +1,14 @@
+admin_claimed_quest_index:
+    path:     /
+    defaults: { _controller: "GameBundle:QuestCompletion:index" }
+    methods:  GET
+
+admin_claimed_quest_reject:
+    path:     /{id}/reject
+    defaults: { _controller: "GameBundle:QuestCompletion:reject" }
+    methods:  GET
+
+admin_claimed_quest_accept:
+    path:     /{id}/accept
+    defaults: { _controller: "GameBundle:QuestCompletion:accept" }
+    methods:  GET

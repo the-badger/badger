@@ -34,6 +34,9 @@ class Quest implements QuestInterface
     /** @var ArrayCollection */
     protected $tags;
 
+    /** @var ArrayCollection */
+    protected $completions;
+
     /**
      * {@inheritdoc}
      */
@@ -156,5 +159,31 @@ class Quest implements QuestInterface
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCompletions()
+    {
+        return $this->completions;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCompletions($completions)
+    {
+        $this->completions = $completions;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getApprovedCompletionsCount()
+    {
+        return $this->completions->filter(function ($completion) {
+            return !$completion->isPending();
+        })->count();
     }
 }

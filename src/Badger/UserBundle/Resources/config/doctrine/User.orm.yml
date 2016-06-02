@@ -27,6 +27,9 @@ Badger\UserBundle\Entity\User:
         profilePicture:
             type: string
             nullable: true
+        nuts:
+            type: integer
+            nullable: false
     manyToMany:
         groups:
             targetEntity: Group

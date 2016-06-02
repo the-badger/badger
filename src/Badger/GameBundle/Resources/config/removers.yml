@@ -28,3 +28,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\GameBundle\Entity\Quest'
+
+    badger.game.remover.quest_completion:
+        class: '%badger.storage_utils.remover.base.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\QuestCompletion'

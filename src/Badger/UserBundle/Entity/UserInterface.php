@@ -61,4 +61,19 @@ interface UserInterface extends BaseUserInterface, GroupableInterface
      * @param string $profilePicture
      */
     public function setProfilePicture($profilePicture);
+
+    /**
+     * @return int
+     */
+    public function getNuts();
+
+    /**
+     * @param int $nuts
+     */
+    public function setNuts($nuts);
+
+    /**
+     * @param int $nuts
+     */
+    public function addNuts($nuts);
 }

@@ -5,6 +5,7 @@ namespace Badger\GateBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
@@ -99,11 +100,11 @@ class DefaultController extends Controller
             'id' => $id
         ]);
 
-        if (!$this->get('security.authorization_checker')->isGranted('view', $badge)) {
+        if (null === $badge) {
             throw $this->createNotFoundException();
         }
 
-        if (null === $badge) {
+        if (!$this->get('security.authorization_checker')->isGranted('view', $badge)) {
             throw $this->createNotFoundException();
         }
 
@@ -138,7 +139,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/claim/{id}", name="claimbadge")
+     * @Route("/claim/badge/{id}", name="claimbadge")
      * @param int $id
      *
      * @return JsonResponse
@@ -176,6 +177,42 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/claim/quest/{id}", name="claimquest")
+     * @param int $id
+     *
+     * @return JsonResponse
+     */
+    public function claimQuestAction($id)
+    {
+        $user = $this->getUser();
+        $quest = $this->get('badger.game.repository.quest')->find($id);
+
+        if (null === $quest) {
+            return new JsonResponse('No quest with this id.', 400);
+        }
+
+        if (!$this->get('security.authorization_checker')->isGranted('view', $quest)) {
+            return new JsonResponse('No quest with this id.', 400);
+        }
+
+        $questCompletion = $this->get('badger.game.repository.quest_completion')->findOneBy([
+            'user' => $user,
+            'quest' => $quest
+        ]);
+
+        if (null !== $questCompletion) {
+            return new JsonResponse('This quest is already claimed.', 400);
+        }
+
+        $questCompletionFactory = $this->get('badger.game.quest_completion.factory');
+        $questCompletion = $questCompletionFactory->create($user, $quest);
+
+        $this->get('badger.game.saver.quest_completion')->save($questCompletion);
+
+        return new JsonResponse();
+    }
+
+    /**
      * @Route("/badges", name="badges")
      * 
      * @return Response
@@ -195,6 +232,35 @@ class DefaultController extends Controller
             'tags' => $userTags,
             'unlockedBadgesIds' => $unlockedBadgeIds,
             'claimedBadgeIds' => $claimedBadgeIds
+        ]);
+    }
+
+    /**
+     * @Route("/quests", name="quests")
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function questListAction(Request $request)
+    {
+        $user = $this->getUser();
+        $status = $request->get('status', 'available');
+
+        $questRepository = $this->get('badger.game.repository.quest');
+        $completionRepository = $this->get('badger.game.repository.quest_completion');
+
+        $availableQuests = $questRepository->getAvailableQuestsForUser($user);
+        $questCompletions = $completionRepository->findBy(['user' => $user, 'pending' => 0]);
+        $claimedQuestIds = $this->get('badger.game.repository.quest_completion')
+            ->getQuestIdsClaimedByUser($user);
+
+        return $this->render('@Gate/quests.html.twig', [
+            'availableQuests'      => $availableQuests,
+            'questCompletions'     => $questCompletions,
+            'countAvailableQuests' => count($availableQuests),
+            'countCompletedQuests' => count($questCompletions),
+            'claimedQuestIds'      => $claimedQuestIds,
+            'status'               => $status
         ]);
     }
 

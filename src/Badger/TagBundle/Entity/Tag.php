@@ -1,7 +1,9 @@
 <?php
 
 namespace Badger\TagBundle\Entity;
+
 use Badger\GameBundle\Entity\BadgeInterface;
+use Badger\GameBundle\Entity\QuestInterface;
 
 /**
  * Tag entity.
@@ -28,6 +30,9 @@ class Tag implements TagInterface
 
     /** @var BadgeInterface[] */
     protected $badges;
+
+    /** @var QuestInterface[] */
+    protected $quests;
 
     /**
      * {@inheritdoc}
@@ -124,5 +129,20 @@ class Tag implements TagInterface
     {
         $this->badges = $badges;
     }
-}
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getQuests()
+    {
+        return $this->quests;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setQuests(array $quests)
+    {
+        $this->quests = $quests;
+    }
+}

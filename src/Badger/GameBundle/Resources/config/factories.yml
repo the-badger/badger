@@ -3,6 +3,7 @@ parameters:
     badger.game.quest.factory.class: Badger\GameBundle\Factory\QuestFactory
     badger.game.unlocked_badge.factory.class: Badger\GameBundle\Factory\UnlockedBadgeFactory
     badger.game.claimed_badge.factory.class: Badger\GameBundle\Factory\ClaimedBadgeFactory
+    badger.game.quest_completion.factory.class: Badger\GameBundle\Factory\QuestCompletionFactory
     badger.game.configuration.factory.class: Badger\GameBundle\Factory\ConfigurationFactory
 
 services:
@@ -17,6 +18,9 @@ services:
 
     badger.game.claimed_badge.factory:
         class: '%badger.game.claimed_badge.factory.class%'
+
+    badger.game.quest_completion.factory:
+        class: '%badger.game.quest_completion.factory.class%'
 
     badger.game.configuration.factory:
         class: '%badger.game.configuration.factory.class%'

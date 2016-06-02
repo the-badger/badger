@@ -3,6 +3,7 @@
 namespace Badger\TagBundle\Entity;
 
 use Badger\GameBundle\Entity\BadgeInterface;
+use Badger\GameBundle\Entity\QuestInterface;
 
 /**
  * @author    Adrien Pétremann <adrien.petremann@akeneo.com>
@@ -87,4 +88,14 @@ interface TagInterface
      * @param BadgeInterface[] $badges
      */
     public function setBadges(array $badges);
+
+    /**
+     * @return QuestInterface[]
+     */
+    public function getQuests();
+
+    /**
+     * @param QuestInterface[] $quests
+     */
+    public function setQuests(array $quests);
 }

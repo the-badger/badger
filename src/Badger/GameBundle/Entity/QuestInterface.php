@@ -3,6 +3,7 @@
 namespace Badger\GameBundle\Entity;
 
 use Badger\TagBundle\Taggable\TaggableInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Quest entity interface
@@ -77,4 +78,21 @@ interface QuestInterface extends TaggableInterface
      * @return Quest
      */
     public function setEndDate($endDate);
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCompletions();
+
+    /**
+     * @param ArrayCollection $completions
+     */
+    public function setCompletions($completions);
+
+    /**
+     * Return the count of approved completions for this quest
+     *
+     * @return int
+     */
+    public function getApprovedCompletionsCount();
 }

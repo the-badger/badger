@@ -10,7 +10,7 @@ body {
   margin-top: 80px;
 }
 
-.ir-leaderboard, .ir-badges, .ir-feed, .ir-people {
+.ir-leaderboard, .ir-badges, .ir-feed, .ir-people, .ir-quests {
   margin-top: 80px;
 
   .main-title {
@@ -22,6 +22,39 @@ body {
 .ir-badges {
   .ui.tabular.menu .item {
     font-size: 20px;
+  }
+}
+
+.ir-quests {
+  .quest, .quest-completion {
+    background: #ffffff url('../bundles/gate/images/quest-background-pattern.png') repeat-y right;
+    padding: 1em 1em 0.1em 1em;
+    .remaining {
+      font-size: 12px;
+      font-weight: bold;
+      text-align: center;
+    }
+    h2 {
+      font-weight: normal;
+    }
+    .description {
+      margin: 0 0 30px 0;
+      color: #808080;
+      padding-right: 100px;
+    }
+  }
+  .quest {
+    h2 {
+      margin-top: -25px;
+    }
+  }
+  .quest-completion {
+    h2 {
+      margin-top: 0;
+    }
+  }
+  .ui.statistics>.statistic {
+    margin-bottom: 10px;
   }
 }
 

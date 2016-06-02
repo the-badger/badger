@@ -5,7 +5,7 @@ namespace Badger\GameBundle\Entity;
 use Badger\UserBundle\Entity\User;
 
 /**
- * ClaimedBadgetInterface to describe claimed badges
+ * ClaimedBadgeInterface to describe claimed badges
  *
  * @author    Pierre Allard <pierre.allard@akeneo.com>
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)

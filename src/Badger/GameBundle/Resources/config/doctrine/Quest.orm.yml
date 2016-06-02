@@ -29,7 +29,7 @@ Badger\GameBundle\Entity\Quest:
     manyToMany:
         tags:
             targetEntity: Badger\TagBundle\Entity\Tag
-            inversedBy: badges
+            inversedBy: quests
             joinTable:
                 name: quest_tags
                 joinColumns:
@@ -38,3 +38,8 @@ Badger\GameBundle\Entity\Quest:
                 inverseJoinColumns:
                     tag_id:
                         referencedColumnName: id
+    oneToMany:
+        completions:
+            targetEntity: Badger\GameBundle\Entity\QuestCompletion
+            mappedBy: quest
+            fetch: EAGER

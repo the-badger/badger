@@ -4,7 +4,7 @@ namespace Badger\GameBundle\Factory;
 
 use Badger\GameBundle\Entity\BadgeInterface;
 use Badger\GameBundle\Entity\UnlockedBadge;
-use Badger\UserBundle\Entity\User;
+use Badger\UserBundle\Entity\UserInterface;
 
 /**
  * @author    Adrien Pétremann <adrien.petremann@akeneo.com>
@@ -16,7 +16,7 @@ class UnlockedBadgeFactory implements UnlockedBadgeFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function create(User $user, BadgeInterface $badge)
+    public function create(UserInterface $user, BadgeInterface $badge)
     {
         $unlockedBadge = new UnlockedBadge();
 

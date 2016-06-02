@@ -10,6 +10,10 @@ game_admin_quest:
     resource: "@GameBundle/Resources/config/routing/quest.yml"
     prefix:   /admin/quest
 
+game_admin_claimed_quest:
+    resource: "@GameBundle/Resources/config/routing/claimed-quest.yml"
+    prefix:   /admin/claimed-quest
+
 game_admin_claimed_badge:
     resource: "@GameBundle/Resources/config/routing/claimed-badge.yml"
     prefix:   /admin/claimed-badge

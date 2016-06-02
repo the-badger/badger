@@ -26,7 +26,7 @@ interface UnlockedBadgeRepositoryInterface extends ObjectRepository
 
 
     /**
-     * Return all ClaimedBadge filtered by Badge's Tag
+     * Return all UnlockedBadge filtered by Badge's Tag
      *
      * @param TagInterface[] $tags
      *
