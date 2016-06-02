@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.5.0] - 2016-06-02
 ### Added
 - Quests. A new Badger mechanics, quests are special events created by admins. Users can complete them to gain nuts and help the community.
 - Nuts. Nuts is the virtual money on the Badger application, for now you can only gain nuts with quests. They aren't used yet, but soon!
@@ -63,7 +65,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Badge info view, with obtention percentage and user list who have it
 - Feedview with recent unlocks
 
-[Unreleased]: https://github.com/akeneo/badger/compare/v0.4.5...HEAD
+[Unreleased]: https://github.com/akeneo/badger/compare/v0.5.0...HEAD
+[0.5.0]: https://github.com/akeneo/badger/compare/v0.4.5...v0.5.0
 [0.4.5]: https://github.com/akeneo/badger/compare/v0.4.4...v0.4.5
 [0.4.4]: https://github.com/akeneo/badger/compare/v0.4.3...v0.4.4
 [0.4.3]: https://github.com/akeneo/badger/compare/v0.4.2...v0.4.3
