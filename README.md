@@ -3,6 +3,9 @@
 </p>
 
 ## Badger
+[![Travis CI](https://travis-ci.org/akeneo/badger.svg)](https://travis-ci.org/akeneo/badger/tree/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/akeneo/badger/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/akeneo/badger/?branch=master)
+
 Badger is a gamification platform initially developed as an internal project by [Akeneo](http://www.akeneo.com).
 
 ## Prerequisite
