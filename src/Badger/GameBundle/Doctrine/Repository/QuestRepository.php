@@ -59,15 +59,19 @@ class QuestRepository extends EntityRepository implements QuestRepositoryInterfa
         $today = new \DateTime('today midnight');
 
         $qb = $this->createQueryBuilder('quest');
-        $qb->leftJoin('quest.tags', 't')
-            ->leftJoin('quest.completions', 'qc')
-            ->where('t.id IN (:ids)')->setParameter('ids', $tagIds, Connection::PARAM_STR_ARRAY)
-            ->andWhere('qc.id IS NULL OR qc.pending = 1')
+        $qb->leftJoin('quest.tags', 'tags')
+            ->leftJoin('quest.completions', 'qc', 'WITH', 'qc.user = :user AND qc.pending = 0')
+            ->where('qc.id IS NULL')
+            ->andWhere('tags.id IN (:tagIds)')
             ->andWhere('quest.startDate <= :today')
-            ->andWhere('quest.endDate >= :today')->setParameter('today', $today)
+            ->andWhere('quest.endDate >= :today')
             ->setMaxResults(15)
             ->orderBy('quest.endDate')
-            ->groupBy('quest.id');
+            ->groupBy('quest.id')
+            ->setParameter('user', $user)
+            ->setParameter('tagIds', $tagIds, Connection::PARAM_STR_ARRAY)
+            ->setParameter('today', $today)
+        ;
 
         return $qb->getQuery()->getResult();
     }

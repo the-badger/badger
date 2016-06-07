@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- Quests were not available anymore if at least one user completed it ([GIT-85](https://github.com/akeneo/badger/issues/85))
 
 ## [0.5.0] - 2016-06-02
 ### Added
