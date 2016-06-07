@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.5.1] - 2016-06-07
+### Fixed
+- Quests were not available anymore if at least one user completed it ([GIT-85](https://github.com/akeneo/badger/issues/85))
+
 ## [0.5.0] - 2016-06-02
 ### Added
 - Quests. A new Badger mechanics, quests are special events created by admins. Users can complete them to gain nuts and help the community.
@@ -65,7 +69,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Badge info view, with obtention percentage and user list who have it
 - Feedview with recent unlocks
 
-[Unreleased]: https://github.com/akeneo/badger/compare/v0.5.0...HEAD
+[Unreleased]: https://github.com/akeneo/badger/compare/v0.5.1...HEAD
+[0.5.1]: https://github.com/akeneo/badger/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/akeneo/badger/compare/v0.4.5...v0.5.0
 [0.4.5]: https://github.com/akeneo/badger/compare/v0.4.4...v0.4.5
 [0.4.4]: https://github.com/akeneo/badger/compare/v0.4.3...v0.4.4
