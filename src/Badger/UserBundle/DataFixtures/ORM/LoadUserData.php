@@ -49,6 +49,10 @@ class LoadUserData extends AbstractFixture
             ->setRoles($roles)
         ;
 
+        $user->setGithubAccessToken($username);
+        $user->setGithubId($username);
+        $user->setGoogleAccessToken($username);
+        $user->setGoogleId($username);
         $user->setEmailCanonical($user->getEmail());
         $user->setUsernameCanonical($user->getUsername());
 

@@ -9,7 +9,7 @@ use Behat\Mink\Driver\ZombieDriver;
 use Behat\MinkExtension\Context\MinkContext;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Behat\Symfony2Extension\Context\KernelDictionary;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use HWI\Bundle\OAuthBundle\Security\Core\Authentication\Token\OAuthToken;
 
 /**
  * @author    Léo Benoist <leo.benoist@akeneo.com>
@@ -61,12 +61,14 @@ class UserContext implements SnippetAcceptingContext, KernelAwareContext
 
         $providerKey = $this->getContainer()->getParameter('fos_user.firewall_name');
 
-        $token = new UsernamePasswordToken($user, null, $providerKey, $user->getRoles());
+        $token = new OAuthToken($username, $user->getRoles());
+        $token->setUser($user);
+        $token->setResourceOwnerName('github');
         $session->set('_security_'.$providerKey, serialize($token));
         $session->save();
 
         if ($this->getDriver() instanceof ZombieDriver) {
-            $this->minkContext->visit($this->getContainer()->get('router')->generate('fos_user_security_login'));
+            $this->minkContext->visit($this->getContainer()->get('router')->generate('hwi_oauth_connect'));
         }
 
         $this->minkContext->getSession()->setCookie($session->getName(), $session->getId());
