@@ -72,5 +72,21 @@ php app/console fos:user:promote <username> ROLE_ADMIN
 
 Note that the promoted user will need to **logout then login again** to have full power :metal:
 
+### Running the Behat test
+To use behat test you will need a test db database with fixtures loaded.
+
+
+```bash
+php app/console doctrine:database:create -e test
+php app/console doctrine:schema:update --force -e test
+php app/console doctrine:fixture:load -e test
+```
+
+Running behat:
+
+```bash
+php bin/behat
+```
+
 ## License
 Badger is licensed under the [Open Software License v. 3.0 (OSL-3.0)](https://opensource.org/licenses/OSL-3.0)
