@@ -7,9 +7,6 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
 
 /**
  * Unlocked Badge controller for admin CRUD.
@@ -83,24 +80,14 @@ class UnlockedBadgeController extends Controller
             }
         }
 
-        $normalizer = new ObjectNormalizer();
-        $normalizer->setCircularReferenceHandler(function ($object) {
-            return $object->getId();
-        });
-        $serializer = new Serializer([$normalizer], [new JsonEncoder()]);
         $badges = $badgeRepository->findAll();
-        $badges = $serializer->serialize($badges, 'json');
 
-        $users = $this->container->get('fos_user.user_manager')->findUsers();
-        $usernames = [];
-        foreach ($users as $user) {
-            $usernames[] = $user->getUsername();
-        }
-        $usernames = $serializer->serialize($usernames, 'json');
+        $usernames = $this->container->get('badger.user.repository.user')->getAllUsernames();
+        $usernames = array_column($usernames, 'username');
 
         return $this->render('@Game/unlocked-badges/new.html.twig', [
-            'badges' => $badges,
-            'users' => $usernames
+            'badges' => json_encode($badges),
+            'users'  => json_encode($usernames)
         ]);
     }
 
@@ -141,24 +128,14 @@ class UnlockedBadgeController extends Controller
             ));
         }
 
-        $normalizer = new ObjectNormalizer();
-        $normalizer->setCircularReferenceHandler(function ($object) {
-            return $object->getId();
-        });
-        $serializer = new Serializer([$normalizer], [new JsonEncoder()]);
         $badges = $badgeRepository->findAll();
-        $badges = $serializer->serialize($badges, 'json');
 
-        $users = $this->container->get('fos_user.user_manager')->findUsers();
-        $usernames = [];
-        foreach ($users as $user) {
-            $usernames[] = $user->getUsername();
-        }
-        $usernames = $serializer->serialize($usernames, 'json');
+        $usernames = $this->container->get('badger.user.repository.user')->getAllUsernames();
+        $usernames = array_column($usernames, 'username');
 
         return $this->render('@Game/unlocked-badges/remove.html.twig', [
-            'badges' => $badges,
-            'users' => $usernames
+            'badges' => json_encode($badges),
+            'users'  => json_encode($usernames)
         ]);
     }
 }

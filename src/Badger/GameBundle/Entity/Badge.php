@@ -5,6 +5,7 @@ namespace Badger\GameBundle\Entity;
 use Badger\TagBundle\Entity\TagInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use JsonSerializable;
 
 /**
  * Badge entity.
@@ -12,7 +13,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-class Badge implements BadgeInterface
+class Badge implements BadgeInterface, JsonSerializable
 {
     /** @var string */
     protected $file;
@@ -207,5 +208,18 @@ class Badge implements BadgeInterface
     protected function getUploadDir()
     {
         return 'uploads/game';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    function jsonSerialize()
+    {
+        return [
+            'id'           => $this->id,
+            'title'        => $this->title,
+            'description'  => $this->description,
+            'imageWebPath' => $this->getImageWebPath(),
+        ];
     }
 }

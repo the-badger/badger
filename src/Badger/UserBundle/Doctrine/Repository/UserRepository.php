@@ -45,4 +45,17 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
 
         return $query->getResult();
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getAllUsernames()
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('u.username')
+            ->from('UserBundle:User', 'u')
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
 }

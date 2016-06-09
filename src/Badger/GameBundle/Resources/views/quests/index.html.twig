@@ -16,14 +16,14 @@
         </thead>
         <tbody>
         {% for quest in quests %}
-            {% set differenceFromNow = quest.endDate.diff(date('today midnight')) %}
+            {% set differenceFromNow = quest.endDate.diff(date('yesterday')) %}
             {% set differenceInDays = differenceFromNow.invert == 0 and differenceFromNow.days > 0 ? -1 : differenceFromNow.days %}
 
             <tr class="{{ differenceInDays > -1 ? 'warning' : '' }}">
                 <td class="center aligned">
                     <small>
                     {% if differenceInDays > -1 %}
-                        {% if differenceInDays > 0 %}
+                        {% if differenceInDays > 1 %}
                             <b>{{ differenceInDays }} days</b> left
                         {% else %}
                             <b>last day</b>

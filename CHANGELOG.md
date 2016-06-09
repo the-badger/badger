@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Fixed
+- Fix fatal error on new user registration
+- Fix memory consumption on "give a badge" / "remove a badge" page requests
+- Fix displayed remaining days for quests
 
 ## [0.5.1] - 2016-06-07
 ### Fixed
