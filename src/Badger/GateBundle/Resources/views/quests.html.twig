@@ -44,9 +44,9 @@
                                                 </div>
                                             </div>
                                             <div class="statistic">
-                                                {% set differenceFromNow = quest.endDate.diff(date(), true) %}
+                                                {% set differenceFromNow = quest.endDate.diff(date('yesterday')) %}
 
-                                                {% if differenceFromNow.days > 0 %}
+                                                {% if differenceFromNow.days > 1 %}
                                                     {% set differenceFromStart = quest.endDate.diff(quest.startDate, true) %}
                                                     <div class="value">
                                                         {{ differenceFromNow.days }}
@@ -59,10 +59,10 @@
                                                     </div>
                                                 {% else %}
                                                     <div class="value">
-                                                        TODAY
+                                                        LAST
                                                     </div>
                                                     <div class="label">
-                                                        at midnight
+                                                        day
                                                         <div class="ui indicating tiny progress" data-percent="100">
                                                             <div class="bar"></div>
                                                         </div>
