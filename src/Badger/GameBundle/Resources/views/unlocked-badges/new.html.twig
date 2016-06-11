@@ -1,59 +1,55 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <h1 class="page-header"><i class="icon add user"></i> Give a Badge</h1>
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> /</div>
+            <a class="section" href="{{ path('admin_badge_index') }}">Badges</a>
+            <div class="divider"> /</div>
+            <div class="active section">Give a Badge</div>
+        </div>
+    </div>
 
-    <form method="post">
-        <div class="ui grid">
-            <div class="ui eight wide column">
-                <div class="ui stacked segments">
-                    <div class="ui segment">
-                        <p>Select a badge</p>
-                    </div>
-                    <div class="ui segment">
-                        <select name="badge" id="badge" style="width: 100%;">
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="ui eight wide column">
-                <div class="ui stacked segments">
-                    <div class="ui segment">
-                        <p>Select a user</p>
-                    </div>
-                    <div class="ui segment">
-                        <select name="user" id="user" style="width: 100%;">
-                        </select>
-                    </div>
-                </div>
+    {% for flash_message in app.session.flashbag.get('notice') %}
+        <div class="ui icon positive message">
+            <i class="checkmark icon"></i>
+            <div class="content">
+                <p>{{ flash_message }}</p>
             </div>
         </div>
+    {% endfor %}
 
-        {% for flash_message in app.session.flashbag.get('notice') %}
-            <div class="ui icon positive message">
-                <i class="checkmark icon"></i>
-                <div class="content">
-                    <p>{{ flash_message }}</p>
+    {% for flash_message in app.session.flashbag.get('error') %}
+        <div class="ui icon error message">
+            <i class="warning sign icon"></i>
+            <div class="content">
+                <p>{{ flash_message }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+    <form class="ui form" method="post">
+        <div class="ui raised segments">
+            <div class="ui segment">
+                <div class="field">
+                    <label>Select a User</label>
+                    <select name="user" id="user" style="width: 100%;">
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Select a Badge</label>
+                    <select name="badge" id="badge" style="width: 100%;">
+                    </select>
                 </div>
             </div>
-        {% endfor %}
-
-        {% for flash_message in app.session.flashbag.get('error') %}
-            <div class="ui icon error message">
-                <i class="warning sign icon"></i>
-                <div class="content">
-                    <p>{{ flash_message }}</p>
-                </div>
+            <div class="ui secondary clearing segment">
+                <button type="submit" class="ui small green labeled icon button">
+                    <i class="fa fa-trophy icon"></i> Reward
+                </button>
             </div>
-        {% endfor %}
-
-        <div class="ui basic segment center aligned">
-            <button type="submit" class="ui small green labeled icon button">
-                <i class="fa fa-trophy icon"></i> Reward
-            </button>
         </div>
     </form>
-
 {% endblock %}
 
 {% block javascripts %}

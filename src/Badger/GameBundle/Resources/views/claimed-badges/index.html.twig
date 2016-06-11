@@ -1,8 +1,15 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-
-    <h1 class="page-header"><i class="wait icon"></i> Claimed Badge list</h1>
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> /</div>
+            <a class="section" href="{{ path('admin_badge_index') }}">Badges</a>
+            <div class="divider"> /</div>
+            <div class="active section">Pending claims</div>
+        </div>
+    </div>
 
     {% for flash_message in app.session.flashbag.get('notice') %}
         <div class="ui icon positive message">
@@ -56,7 +63,9 @@
         </tbody>
     </table>
     {% else %}
-        <p>No claim, no pain.</p>
+        <div class="ui center aligned padded secondary segment">
+            <p><i class="icon thumbs outline up"></i> No claim, no pain.</p>
+        </div>
     {% endif %}
 {% endblock %}
 

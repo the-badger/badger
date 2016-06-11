@@ -94,7 +94,6 @@ class BadgeController extends Controller
     public function editAction(Request $request, $id)
     {
         $badge = $this->get('badger.game.repository.badge')->find($id);
-        $deleteForm = $this->createDeleteForm($badge);
         $editForm = $this->createForm(new BadgeType(), $badge);
         $editForm->add('file');
         $editForm->remove('imagePath');
@@ -112,7 +111,6 @@ class BadgeController extends Controller
         return $this->render('@Game/badges/edit.html.twig', [
             'badge' => $badge,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ]);
     }
 

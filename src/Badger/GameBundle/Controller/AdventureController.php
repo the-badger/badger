@@ -54,7 +54,7 @@ class AdventureController extends Controller
         }
 
         return $this->render('@Game/adventures/form.html.twig', [
-            'badge' => $adventure,
+            'adventure' => $adventure,
             'form' => $form->createView()
         ]);
     }

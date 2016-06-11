@@ -1,7 +1,15 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <h1>Adventure</h1>
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> / </div>
+            <a class="section" href="{{ path('admin_adventure_index') }}">Adventures</a>
+            <div class="divider"> / </div>
+            <div class="active section">Show adventure "{{ adventure.title }}"</div>
+        </div>
+    </div>
 
     <table class="ui definition table">
         <tbody>
@@ -49,8 +57,8 @@
 
     <div>
         {{ form_start(delete_form) }}
-        <button class="ui red right floated button" type="submit">Delete</button>
+        <button class="ui red left floated labeled icon button" type="submit"><i class="icon trash"></i> Delete</button>
         {{ form_end(delete_form) }}
-        <a href="{{ path('admin_adventure_form', { 'id': adventure.id }) }}" class="ui right floated button">Edit</a>
+        <a href="{{ path('admin_adventure_form', { 'id': adventure.id }) }}" class="ui left floated labeled icon button"><i class="icon pencil"></i> Edit</a>
     </div>
 {% endblock %}

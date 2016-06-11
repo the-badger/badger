@@ -1,7 +1,15 @@
 {% extends '@Gate/base-admin.html.twig' %}
 
 {% block body %}
-    <h1 class="page-header"><i class="icon plus"></i> Tag creation</h1>
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> / </div>
+            <a class="section" href="{{ path('admin_tag_index') }}">Tags</a>
+            <div class="divider"> / </div>
+            <div class="active section">Create</div>
+        </div>
+    </div>
 
     {{ form_start(form) }}
     {{ form_errors(form) }}
@@ -11,7 +19,7 @@
             {{ form_widget(form) }}
         </div>
         <div class="ui secondary clearing segment">
-            <button class="ui right floated green button" type="submit"><i class="ui save icon"></i> Create</button>
+            <button class="ui green labeled icon button" type="submit"><i class="ui save icon"></i> Create</button>
         </div>
     </div>
     {{ form_end(form) }}

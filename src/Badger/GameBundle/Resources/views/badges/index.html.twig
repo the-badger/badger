@@ -1,50 +1,55 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-
-    <h1 class="page-header"><i class="icon list layout"></i> Badge list</h1>
-
-    <div class="ui raised segments">
-        <div class="ui secondary clearing segment">
-            <a href="{{ path('admin_badge_new') }}" class="ui right floated small green labeled icon button">
-                <i class="plus icon"></i> Create Badge
-            </a>
-        </div>
-        <div class="ui segment">
-            <div class="ui four cards">
-                {% for badge in badges %}
-                    <div class="card">
-                        <div class="blurring dimmable image" style="padding: 10px;">
-                            <div class="ui dimmer">
-                                <div class="content">
-                                    <div class="center">
-                                        <a href="{{ path('admin_badge_edit', { 'id': badge.id }) }}" class="ui inverted button">Edit</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <img src="{{ badge.imageWebPath }}">
-                        </div>
-                        <div class="content">
-                            <div class="header">{{ badge.title }}</div>
-                            <div class="description">
-                                {{ badge.description }}
-                            </div>
-                        </div>
-                        <div class="extra content">
-                            <small><i class="icon code"></i> {{ badge.id }}</small>
-                        </div>
-                        {% if badge.tags|length > 0 %}
-                            <div class="extra content">
-                                {% for tag in badge.tags %}
-                                    <span class="ui teal tiny label">{{ tag.name }}</span>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
-            </div>
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> /</div>
+            <div class="active section">Badges</div>
         </div>
     </div>
+
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th class="two wide">Picture</th>
+            <th class="three wide">Title</th>
+            <th class="five wide">Description</th>
+            <th class="four wide">Tagged in</th>
+            <th class="two wide">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for badge in badges %}
+            <tr>
+                <td>
+                    <img src="{{ badge.imageWebPath }}" class="ui small image">
+                </td>
+                <td>
+                    <h4 class="ui header">
+                        <div class="content">
+                            <a href="{{ path('admin_badge_show', { 'id': badge.id }) }}">{{ badge.title }}</a>
+                        </div>
+                    </h4>
+                </td>
+                <td class="aligned">
+                    {{ badge.description|nl2br }}
+                </td>
+                <td class="aligned">
+                    {% for tag in badge.tags %}
+                        <div class="ui small teal label">{{ tag.name }}</div>
+                    {% endfor %}
+                </td>
+                <td class="center aligned">
+                    <div class="ui small basic icon buttons">
+                        <a href="{{ path('admin_badge_show', { 'id': badge.id }) }}" class="ui button"><i class="eye icon"></i></a>
+                        <a href="{{ path('admin_badge_edit', { 'id': badge.id }) }}" class="ui button"><i class="pencil icon"></i></a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
 
 {% block javascripts %}

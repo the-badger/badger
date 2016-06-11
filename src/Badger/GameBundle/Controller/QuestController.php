@@ -90,7 +90,6 @@ class QuestController extends Controller
     public function editAction(Request $request, $id)
     {
         $quest = $this->get('badger.game.repository.quest')->find($id);
-        $deleteForm = $this->createDeleteForm($quest);
         $editForm = $this->createForm(new QuestType(), $quest);
         $editForm->handleRequest($request);
 
@@ -104,7 +103,6 @@ class QuestController extends Controller
         return $this->render('@Game/quests/edit.html.twig', [
             'quest'       => $quest,
             'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ]);
     }
 

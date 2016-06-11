@@ -1,37 +1,55 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <h1>Adventure creation</h1>
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> / </div>
+            <a class="section" href="{{ path('admin_adventure_index') }}">Adventures</a>
+            <div class="divider"> / </div>
+            <div class="active section">
+                {% if adventure.id == null %}
+                    Create
+                {% else %}
+                    Edit adventure "{{ adventure.title }}"
+                {% endif %}
+            </div>
+        </div>
+    </div>
 
     {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    <div class="two fields">
-        <div class="twelve wide field">
-            {{ form_row(form.title) }}
+    <div class="ui raised segments">
+        <div class="ui segment">
+            <div class="two fields">
+                <div class="twelve wide field">
+                    {{ form_row(form.title) }}
+                </div>
+                <div class="four wide field">
+                    {{ form_row(form.rewardPoint) }}
+                </div>
+            </div>
+
+            {{ form_row(form.description) }}
+            {{ form_row(form.badge) }}
+            {{ form_row(form.isStepLinked) }}
+
+            <div class="ui horizontal divider">
+                Steps
+            </div>
+
+            <div class="ui field adventure-steps" data-prototype="{{ form_row(form.steps.vars.prototype)|e }}">
+                {{ form_row(form.steps) }}
+            </div>
+            <a href="#" id="add-another-step" class="fluid ui centered labeled icon button"><i class="icon plus"></i> Add another step</a>
         </div>
-        <div class="four wide field">
-            {{ form_row(form.rewardPoint) }}
+        <div class="ui segment">
+
         </div>
-    </div>
-
-    {{ form_row(form.description) }}
-    {{ form_row(form.badge) }}
-    {{ form_row(form.isStepLinked) }}
-
-    <div class="ui horizontal divider">
-        Steps
-    </div>
-
-    <div class="ui field adventure-steps" data-prototype="{{ form_row(form.steps.vars.prototype)|e }}">
-        {{ form_row(form.steps) }}
-    </div>
-    <a href="#" id="add-another-step" class="ui button green">Add another step</a>
-
-    <div class="ui clearing">
-        <button class="ui right floated primary button" type="submit">
-            {{ null == form.vars.id ? 'Create' : 'Edit' }}
-        </button>
+        <div class="ui secondary clearing segment">
+            <button class="ui green labeled icon button" type="submit"><i class="ui icon save"></i> Create</button>
+        </div>
     </div>
 
     {{ form_end(form) }}
