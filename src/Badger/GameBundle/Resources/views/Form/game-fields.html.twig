@@ -34,7 +34,7 @@
     </div>
 {%- endblock radio_widget -%}
 
-{%- block step_widget -%}
+{%- block step_row -%}
     <div class="fields">
         <div class="thirteen wide field">
             <div class="field">
@@ -43,13 +43,13 @@
                 {{ form_row(form.description) }}
             </div>
             <div class="fields">
-                <div class="three wide field">
+                <div class="four wide field">
                     {{ form_row(form.rewardPoint) }}
                 </div>
                 <div class="two wide field">
                     {{ form_row(form.position) }}
                 </div>
-                <div class="eleven wide field">
+                <div class="ten wide field">
                     {{ form_row(form.badge) }}
                 </div>
             </div>
@@ -59,4 +59,4 @@
         </div>
     </div>
     <div class="ui divider"></div>
-{%- endblock step_widget -%}
+{%- endblock step_row -%}

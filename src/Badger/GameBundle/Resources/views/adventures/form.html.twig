@@ -7,10 +7,10 @@
     {{ form_errors(form) }}
 
     <div class="two fields">
-        <div class="fourteen wide field">
+        <div class="twelve wide field">
             {{ form_row(form.title) }}
         </div>
-        <div class="two wide field">
+        <div class="four wide field">
             {{ form_row(form.rewardPoint) }}
         </div>
     </div>
@@ -56,7 +56,10 @@
             });
 
             $('.remove-step').click(function(e) {
-                $(this).closest('.fields').closest('.field').remove();
+                $(this).closest('.fields').next('.divider').remove();
+                $(this).closest('.fields').remove();
+
+                return false;
             });
         })
     </script>

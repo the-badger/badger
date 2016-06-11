@@ -26,12 +26,15 @@ class StepType extends AbstractType
                 ]
             ])
             ->add('position')
-            ->add('rewardPoint')
+            ->add('rewardPoint', null, [
+                'label' => 'game.step.form.reward_point'
+            ])
             ->add('badge', 'entity', [
                 'class'      => 'GameBundle:Badge',
                 'property'   => 'title',
                 'empty_data' => '',
-                'required'   => false
+                'required'   => false,
+                'label'      => 'game.step.form.badge'
             ])
         ;
     }

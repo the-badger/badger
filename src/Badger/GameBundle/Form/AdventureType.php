@@ -25,13 +25,16 @@ class AdventureType extends AbstractType
                     'rows' => 3
                 ]
             ])
-            ->add('rewardPoint')
+            ->add('rewardPoint', null, [
+                'label' => 'game.adventure.form.reward_point'
+            ])
             ->add('isStepLinked')
             ->add('badge', 'entity', [
                 'class'      => 'GameBundle:Badge',
                 'property'   => 'title',
                 'empty_data' => '',
-                'required'   => false
+                'required'   => false,
+                'label'      => 'game.adventure.form.badge'
             ])
             ->add('steps', 'collection', [
                 'entry_type'   => new StepType(),
