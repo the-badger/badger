@@ -1,0 +1,36 @@
+{% extends 'GateBundle::base-admin.html.twig' %}
+
+{% block body %}
+    <h1 class="page-header">Adventure list</h1>
+    <a href="{{ path('admin_adventure_form') }}" class="ui right floated small primary labeled icon button">
+        <i class="plus icon"></i> Create Adventure
+    </a>
+
+    <table class="ui celled table" style="margin-top: 65px;">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Completion Badge</th>
+            <th>Count steps</th>
+            <th>Is step linked</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for adventure in adventures %}
+            <tr class="center aligned">
+                <td><a class="ui" href="{{ path('admin_adventure_form', { 'id': adventure.id }) }}">{{ adventure.title }}</a></td>
+                <td>{{ null != adventure.badge ? adventure.badge.title : '' }}</td>
+                <td>{{ adventure.steps|length }}</td>
+                <td><i class="{{ true == adventure.isStepLinked ? 'check green' : 'close red' }} icon"></i></td>
+                <td>
+                    <div class="ui small basic icon buttons">
+                        <a href="{{ path('admin_adventure_show', { 'id': adventure.id }) }}" class="ui button"><i class="eye icon"></i></a>
+                        <a href="{{ path('admin_adventure_form', { 'id': adventure.id }) }}" class="ui button"><i class="pencil icon"></i></a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

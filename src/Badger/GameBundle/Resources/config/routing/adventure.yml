@@ -1,0 +1,19 @@
+admin_adventure_index:
+    path:     /
+    defaults: { _controller: "GameBundle:Adventure:index" }
+    methods:  GET
+
+admin_adventure_form:
+    path:     /form/{id}
+    defaults: { _controller: "GameBundle:Adventure:form", id: null }
+    methods:  [GET|POST]
+
+admin_adventure_show:
+    path:     /show/{id}
+    defaults: { _controller: "GameBundle:Adventure:show" }
+    methods:  GET
+
+admin_adventure_delete:
+    path:     /delete/{id}
+    defaults: { _controller: "GameBundle:Adventure:delete" }
+    methods:  DELETE
