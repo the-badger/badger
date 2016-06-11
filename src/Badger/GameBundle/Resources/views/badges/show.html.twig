@@ -1,41 +1,49 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <h1>Badge</h1>
-    <div class="ui card">
-        <div class="blurring dimmable image">
-            <div class="ui dimmer">
-                <div class="content">
-                    <div class="center">
-                        <a href="{{ path('admin_badge_edit', { 'id': badge.id }) }}" class="ui inverted button">Edit</a>
-                    </div>
-                </div>
-            </div>
-            <img src="{{ badge.imageWebPath }}">
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> / </div>
+            <a class="section" href="{{ path('admin_badge_index') }}">Badges</a>
+            <div class="divider"> / </div>
+            <div class="active section">Show badge "{{ badge.title }}"</div>
         </div>
-        <div class="content">
-            <div class="header">{{ badge.title }}</div>
-            <div class="description">
-                {{ badge.description }}
-            </div>
-        </div>
-        <div class="extra content">
-            <small><i class="icon code"></i> {{ badge.id }}</small>
-        </div>
-        {% if badge.tags|length > 0 %}
-            <div class="extra content">
-                {% for tag in badge.tags %}
-                    <span class="ui teal tiny label">{{ tag.name }}</span>
-                {% endfor %}
-            </div>
-        {% endif %}
     </div>
-{% endblock %}
 
-{% block javascripts %}
-    <script>
-        $('.card .image').dimmer({
-            on: 'hover'
-        });
-    </script>
+    <table class="ui definition table">
+        <tbody>
+        <tr>
+            <td>UUID</td>
+            <td>{{ badge.id }}</td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td>{{ badge.title }}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td class="description">{{ badge.description|nl2br }}</td>
+        </tr>
+        <tr>
+            <td>Tagged in</td>
+            <td>
+                {% for tag in badge.tags %}
+                    <div class="ui small teal label">{{ tag.name }}</div>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
+            <td>Picture</td>
+            <td><img src="{{ badge.imageWebPath }}" class="ui small image"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        {{ form_start(delete_form) }}
+        <button class="ui red left floated labeled icon button" type="submit"><i class="icon trash"></i> Delete</button>
+        {{ form_end(delete_form) }}
+        <a href="{{ path('admin_badge_edit', { 'id': badge.id }) }}" class="ui left floated labeled icon button"><i class="icon pencil"></i> Edit</a>
+    </div>
 {% endblock %}

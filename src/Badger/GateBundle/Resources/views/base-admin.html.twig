@@ -18,68 +18,80 @@
 </head>
 <body class="{% block bodyclass %}{% endblock %} admin">
 
-<div class="ui container">
-    <div class="ui small menu">
-        <div class="ui dropdown item">
-            <i class="icon trophy"></i> Badges <i class="dropdown icon"></i>
-            <div class="menu">
-                <a href="{{ url('admin_badge_index') }}" class="item"><i class="icon list layout"></i> List</a>
-                <a href="{{ url('admin_badge_new') }}" class="item"><i class="icon plus"></i> Create</a>
-                <a href="{{ url('admin_claimed_badge_index') }}" class="item"><i class="wait icon"></i> Claimed Badges</a>
-                <a href="{{ url('admin_unlocked_badge_new') }}" class="item"><i class="icon add user"></i> Give a Badge</a>
-                <a href="{{ url('admin_unlocked_badge_delete') }}" class="item"><i class="icon remove user"></i> Remove a Badge</a>
-            </div>
-        </div>
-        <div class="ui dropdown item">
-            <i class="icon tags"></i> Tags <i class="dropdown icon"></i>
-            <div class="menu">
-                <a href="{{ url('admin_tag_index') }}" class="item"><i class="icon list layout"></i> List</a>
-                <a href="{{ url('admin_tag_new') }}" class="item"><i class="icon plus"></i> Create</a>
-            </div>
-        </div>
-        <div class="ui dropdown item">
-            <i class="icon users"></i> Users <i class="dropdown icon"></i>
-            <div class="menu">
-                <a href="{{ url('admin_user_index') }}" class="item"><i class="icon list layout"></i> List</a>
-            </div>
-        </div>
-        <div class="ui dropdown item">
-            <i class="icon calendar"></i> Quest <i class="dropdown icon"></i>
-            <div class="menu">
-                <a href="{{ url('admin_quest_index') }}" class="item"><i class="icon list layout"></i> List</a>
-                <a href="{{ url('admin_quest_new') }}" class="item"><i class="icon plus"></i> Create</a>
-                <a href="{{ url('admin_claimed_quest_index') }}" class="item"><i class="wait icon"></i> Pending Quest Completions</a>
-            </div>
-        </div>
-        <div class="ui dropdown item">
-            <i class="icon calendar"></i> Adventures <i class="dropdown icon"></i>
-            <div class="menu">
-                <a href="{{ url('admin_adventure_index') }}" class="item"><i class="icon list layout"></i> List</a>
-            </div>
-        </div>
-        <div class="ui dropdown item">
-            <i class="icon setting"></i> Configuration <i class="dropdown icon"></i>
-            <div class="menu">
-                <a href="{{ url('admin_configuration_index') }}" class="item"><i class="icon list layout"></i> List</a>
-                <a href="{{ url('admin_configuration_form') }}" class="item"><i class="icon plus"></i> Create</a>
-            </div>
-        </div>
-        <div class="right menu">
-            <div class="item">
-                <a href="{{ url('homepage') }}" class="ui button"><i class="icon home"></i> Back to Dashboard</a>
-            </div>
+<div class="ui visible sidebar vertical menu" style="overflow: visible !important;">
+    <div class="item">
+        <a class="ui logo icon image" href="{{ path('admin') }}">
+            <img src="{{ asset('bundles/gate/images/badger-logo-150.png') }}">
+            <a href="{{ path('admin') }}"> &nbsp; <b>Badger Admin</b></a>
+        </a>
+    </div>
+    <div class="ui simple dropdown item">
+        <i class="dropdown icon"></i>
+        <i class="icon trophy"></i> Badges
+        <div class="menu">
+            <a href="{{ url('admin_badge_index') }}" class="item"><i class="icon list layout"></i> List</a>
+            <a href="{{ url('admin_badge_new') }}" class="item"><i class="icon plus"></i> Create</a>
+            <a href="{{ url('admin_claimed_badge_index') }}" class="item"><i class="wait icon"></i> Pending claims</a>
+            <a href="{{ url('admin_unlocked_badge_new') }}" class="item"><i class="icon add user"></i> Give a Badge</a>
+            <a href="{{ url('admin_unlocked_badge_delete') }}" class="item"><i class="icon remove user"></i> Remove an Unlocked Badge</a>
         </div>
     </div>
-
-    <div class="ui grid">
-
-        <div class="sixteen wide column">
-            {% block body %}
-            {% endblock %}
+    <div class="ui simple dropdown item">
+        <i class="dropdown icon"></i>
+        <i class="icon calendar"></i> Quests
+        <div class="menu">
+            <a href="{{ url('admin_quest_index') }}" class="item"><i class="icon list layout"></i> List</a>
+            <a href="{{ url('admin_quest_new') }}" class="item"><i class="icon plus"></i> Create</a>
+            <a href="{{ url('admin_claimed_quest_index') }}" class="item"><i class="wait icon"></i> Pending claims</a>
         </div>
-
+    </div>
+    <div class="ui simple dropdown item">
+        <i class="dropdown icon"></i>
+        <i class="icon map"></i> Adventures
+        <div class="menu">
+            <a href="{{ url('admin_adventure_index') }}" class="item"><i class="icon list layout"></i> List</a>
+            <a href="{{ url('admin_adventure_form') }}" class="item"><i class="icon plus"></i> Create</a>
+        </div>
+    </div>
+    <div class="ui simple dropdown item">
+        <i class="dropdown icon"></i>
+        <i class="icon tags"></i> Tags
+        <div class="menu">
+            <a href="{{ url('admin_tag_index') }}" class="item"><i class="icon list layout"></i> List</a>
+            <a href="{{ url('admin_tag_new') }}" class="item"><i class="icon plus"></i> Create</a>
+        </div>
+    </div>
+    <div class="ui simple dropdown item">
+        <i class="dropdown icon"></i>
+        <i class="icon users"></i> Users
+        <div class="menu">
+            <a href="{{ url('admin_user_index') }}" class="item"><i class="icon list layout"></i> List</a>
+        </div>
+    </div>
+    <div class="ui simple dropdown item">
+        <i class="dropdown icon"></i>
+        <i class="icon setting"></i> Configuration
+        <div class="menu">
+            <a href="{{ url('admin_configuration_index') }}" class="item"><i class="icon list layout"></i> List</a>
+            <a href="{{ url('admin_configuration_form') }}" class="item"><i class="icon plus"></i> Create</a>
+        </div>
+    </div>
+    <a href="{{ url('homepage') }}" class="item">
+        <i class="icon home"></i> Back to Dashboard
+    </a>
+</div>
+<div class="pusher">
+    <div class="ui fluid container">
+        <div class="ui grid">
+            <div class="sixteen wide column">
+                {% block body %}
+                {% endblock %}
+            </div>
+        </div>
     </div>
 </div>
+
+
 
 <script src="{{ asset('vendor/dist/jquery.js') }}"></script>
 <script src="{{ asset('vendor/dist/underscore-min.js') }}"></script>
@@ -87,9 +99,6 @@
 <script src="{{ asset('vendor/dist/select2.min.js') }}"></script>
 <script src="{{ asset('vendor/dist/selectize.min.js') }}"></script>
 <script src="{{ asset('vendor/dist/Autolinker.min.js') }}"></script>
-<script>
-    $('.ui.dropdown').dropdown();
-</script>
 
 {% block javascripts %}{% endblock %}
 </body>

@@ -1,42 +1,39 @@
 {% extends '@Gate/base-admin.html.twig' %}
 
 {% block body %}
-    <h1 class="page-header"><i class="icon list layout"></i> Tag list</h1>
-
-    <div class="ui raised segments">
-        <div class="ui segment clearing secondary">
-            <a href="{{ path('admin_tag_new') }}" class="ui right floated small green labeled icon button">
-                <i class="plus icon"></i>Create Tag
-            </a>
-        </div>
-        <div class="ui segment">
-            <table class="ui celled table">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Code</th>
-                    <th>Is default</th>
-                    <th>Created at</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for tag in tags %}
-                    <tr class="center aligned">
-                        <td><a class="ui teal label" href="{{ path('admin_tag_show', { 'id': tag.id }) }}">{{ tag.name }}</a></td>
-                        <td><pre>{{ tag.code }}</pre></td>
-                        <td><i class="{{ true == tag.isDefault ? 'check green' : 'close red' }} icon"></i></td>
-                        <td>{% if tag.createdAt %}{{ tag.createdAt|date('d/m/Y H:i') }}{% endif %}</td>
-                        <td>
-                            <div class="ui small basic icon buttons">
-                                <a href="{{ path('admin_tag_show', { 'id': tag.id }) }}" class="ui button"><i class="eye icon"></i></a>
-                                <a href="{{ path('admin_tag_edit', { 'id': tag.id }) }}" class="ui button"><i class="pencil icon"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> / </div>
+            <div class="active section">Tags</div>
         </div>
     </div>
+
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Is default</th>
+            <th>Created at</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tag in tags %}
+            <tr class="center aligned">
+                <td><a class="ui teal label" href="{{ path('admin_tag_show', { 'id': tag.id }) }}">{{ tag.name }}</a></td>
+                <td><pre>{{ tag.code }}</pre></td>
+                <td><i class="{{ true == tag.isDefault ? 'check green' : 'close red' }} icon"></i></td>
+                <td>{% if tag.createdAt %}{{ tag.createdAt|date('d/m/Y H:i') }}{% endif %}</td>
+                <td>
+                    <div class="ui small basic icon buttons">
+                        <a href="{{ path('admin_tag_show', { 'id': tag.id }) }}" class="ui button"><i class="eye icon"></i></a>
+                        <a href="{{ path('admin_tag_edit', { 'id': tag.id }) }}" class="ui button"><i class="pencil icon"></i></a>
+                    </div>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

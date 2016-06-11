@@ -1,13 +1,14 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> / </div>
+            <div class="active section">Configuration</div>
+        </div>
+    </div>
 
-<h1 class="page-header">Configuration list</h1>
-<a href="{{ path('admin_configuration_form') }}" class="ui right floated small primary labeled icon button">
-    <i class="plus icon"></i> Create Configuration
-</a>
-
-<div class="ui clearing" style="margin-top: 65px;">
     <table class="ui celled table">
         <thead>
         <tr>
@@ -38,5 +39,4 @@
         {% endfor %}
         </tbody>
     </table>
-</div>
 {% endblock %}

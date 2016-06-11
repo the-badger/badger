@@ -1,32 +1,37 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <h1>Badge edit</h1>
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> / </div>
+            <a class="section" href="{{ path('admin_badge_index') }}">Badges</a>
+            <div class="divider"> / </div>
+            <div class="active section">Edit badge "{{ badge.title }}"</div>
+        </div>
+    </div>
 
     {{ form_start(edit_form) }}
     {{ form_errors(edit_form) }}
-    {{ form_row(edit_form.title) }}
-    {{ form_row(edit_form.description) }}
-    {{ form_row(edit_form.tags) }}
 
-    <div class="ui field">
-        {{ form_label(edit_form.file) }}
-        <img src="{{ badge.imageWebPath }}" alt=""/>
-        {{ form_errors(edit_form.file) }}
-        {{ form_widget(edit_form.file) }}
-    </div>
-
-    <div class="ui clearing">
-        <button class="ui right floated primary button" type="submit">Edit</button>
+    <div class="ui raised segments">
+        <div class="ui segment">
+            {{ form_row(edit_form.title) }}
+            {{ form_row(edit_form.description) }}
+            {{ form_row(edit_form.tags) }}
+            <div class="ui field">
+                {{ form_label(edit_form.file) }}
+                <img src="{{ badge.imageWebPath }}" alt=""/>
+                {{ form_errors(edit_form.file) }}
+                {{ form_widget(edit_form.file) }}
+            </div>
+        </div>
+        <div class="ui secondary clearing segment">
+            <button class="ui primary labeled icon button" type="submit"><i class="icon save"></i> Save</button>
+        </div>
     </div>
 
     {{ form_end(edit_form) }}
-
-    {{ form_start(delete_form) }}
-    <div class="ui clearing">
-        <button class="ui right floated red button" type="submit">Delete</button>
-    </div>
-    {{ form_end(delete_form) }}
 {% endblock %}
 
 {% block javascripts %}

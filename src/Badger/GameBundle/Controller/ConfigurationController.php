@@ -2,6 +2,7 @@
 
 namespace Badger\GameBundle\Controller;
 
+use Badger\GameBundle\Entity\Configuration;
 use Badger\GameBundle\Form\ConfigurationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -33,14 +34,13 @@ class ConfigurationController extends Controller
     /**
      * Creates or edits an Configuration entity.
      *
-     * @param Request $request
-     * @param string  $id
+     * @param Request       $request
+     * @param Configuration $configuration
      *
      * @return RedirectResponse|Response
      */
-    public function formAction(Request $request, $id)
+    public function formAction(Request $request, Configuration $configuration = null)
     {
-        $configuration = $this->get('badger.game.repository.configuration')->find($id);
         if (null === $configuration) {
             $configuration = $this->get('badger.game.configuration.factory')->create();
         }
@@ -55,7 +55,7 @@ class ConfigurationController extends Controller
          }
 
         return $this->render('@Game/configuration/form.html.twig', [
-            'badge' => $configuration,
+            'configuration' => $configuration,
             'form'  => $form->createView()
         ]);
      }

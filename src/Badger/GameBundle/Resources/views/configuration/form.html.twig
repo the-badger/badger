@@ -1,16 +1,32 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <h1>Configuration edit</h1>
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> / </div>
+            <a class="section" href="{{ path('admin_configuration_index') }}">Configuration</a>
+            <div class="divider"> / </div>
+            <div class="active section">
+                {% if configuration.id == null %}
+                    Create
+                {% else %}
+                    Edit configuration "{{ configuration.code }}"
+                {% endif %}
+            </div>
+        </div>
+    </div>
 
     {{ form_start(form, { 'attr': {'class': 'ui form'} }) }}
     {{ form_errors(form) }}
-    {{ form_widget(form) }}
 
-    <div class="ui clearing">
-        <button class="ui right floated primary button" type="submit">
-            {{ null == form.vars.value.id ? 'Create' : 'Edit' }}
-        </button>
+    <div class="ui segments">
+        <div class="ui segment">
+            {{ form_widget(form) }}
+        </div>
+        <div class="ui secondary clearing segment">
+            <button class="ui green labeled icon button" type="submit"><i class="save icon"></i> Save</button>
+        </div>
     </div>
 
     {{ form_end(form) }}

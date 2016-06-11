@@ -1,7 +1,13 @@
 {% extends '@Gate/base-admin.html.twig' %}
 
 {% block body %}
-    <h1 class="page-header">User list</h1>
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> / </div>
+            <div class="active section">Users</div>
+        </div>
+    </div>
 
     <table class="ui celled table">
         <thead>

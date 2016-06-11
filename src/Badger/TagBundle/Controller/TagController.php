@@ -88,7 +88,6 @@ class TagController extends Controller
      */
     public function editAction(Request $request, Tag $tag)
     {
-        $deleteForm = $this->createDeleteForm($tag);
         $editForm = $this->createForm('Badger\TagBundle\Form\TagType', $tag);
         $editForm->remove('createdAt');
         $editForm->handleRequest($request);
@@ -103,7 +102,6 @@ class TagController extends Controller
         return $this->render('@Tag/tag/edit.html.twig', [
             'tag' => $tag,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ]);
     }
 
