@@ -37,7 +37,7 @@ class AdventureType extends AbstractType
                 'label'      => 'game.adventure.form.badge'
             ])
             ->add('steps', 'collection', [
-                'entry_type'   => new StepType(),
+                'entry_type'   => new AdventureStepType(),
                 'allow_add'    => true,
                 'allow_delete' => true,
                 'by_reference' => false,

@@ -101,18 +101,18 @@ interface AdventureInterface
     public function getBadge();
 
     /**
-     * @param StepInterface $step
+     * @param AdventureStepInterface $step
      *
      * @return AdventureInterface
      */
-    public function addStep(StepInterface $step);
+    public function addStep(AdventureStepInterface $step);
 
     /**
-     * @param StepInterface $step
+     * @param AdventureStepInterface $step
      *
      * @return AdventureInterface
      */
-    public function removeStep(StepInterface $step);
+    public function removeStep(AdventureStepInterface $step);
 
     /**
      * @param array $steps

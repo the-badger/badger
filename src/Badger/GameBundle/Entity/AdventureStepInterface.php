@@ -3,13 +3,13 @@
 namespace Badger\GameBundle\Entity;
 
 /**
- * Step interface
+ * Adventure Step interface
  *
  * @author    Marie Bochu <marie.bochu@akeneo.com>
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-interface StepInterface
+interface AdventureStepInterface
 {
     /**
      * Get id
@@ -23,7 +23,7 @@ interface StepInterface
      *
      * @param string $title
      *
-     * @return StepInterface
+     * @return AdventureStepInterface
      */
     public function setTitle($title);
 
@@ -39,7 +39,7 @@ interface StepInterface
      *
      * @param string $description
      *
-     * @return AdventureInterface
+     * @return AdventureStepInterface
      */
     public function setDescription($description);
 
@@ -55,7 +55,7 @@ interface StepInterface
      *
      * @param int $position
      *
-     * @return StepInterface
+     * @return AdventureStepInterface
      */
     public function setPosition($position);
 
@@ -71,7 +71,7 @@ interface StepInterface
      *
      * @param int $rewardPoint
      *
-     * @return StepInterface
+     * @return AdventureStepInterface
      */
     public function setRewardPoint($rewardPoint);
 
@@ -87,7 +87,7 @@ interface StepInterface
      *
      * @param BadgeInterface $badge
      *
-     * @return AdventureInterface
+     * @return AdventureStepInterface
      */
     public function setBadge(BadgeInterface $badge);
 
@@ -103,7 +103,7 @@ interface StepInterface
      *
      * @param AdventureInterface $adventure
      *
-     * @return StepInterface
+     * @return AdventureStepInterface
      */
     public function setAdventure(AdventureInterface $adventure);
 

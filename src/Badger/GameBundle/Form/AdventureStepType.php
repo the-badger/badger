@@ -11,7 +11,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-class StepType extends AbstractType
+class AdventureStepType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -45,7 +45,7 @@ class StepType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Badger\GameBundle\Entity\Step'
+            'data_class' => 'Badger\GameBundle\Entity\AdventureStep'
         ]);
     }
 
@@ -54,6 +54,6 @@ class StepType extends AbstractType
      */
     public function getName()
     {
-        return 'step';
+        return 'adventure_step';
     }
 }

@@ -22,7 +22,7 @@ Badger\GameBundle\Entity\Adventure:
     oneToMany:
         steps:
             orderBy: { 'position': 'ASC' }
-            targetEntity: Badger\GameBundle\Entity\Step
+            targetEntity: Badger\GameBundle\Entity\AdventureStep
             mappedBy: adventure
             cascade:
                 - persist

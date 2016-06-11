@@ -1,7 +1,7 @@
-Badger\GameBundle\Entity\Step:
+Badger\GameBundle\Entity\AdventureStep:
     type: entity
     table: step
-    repositoryClass: Badger\GameBundle\Doctrine\Repository\StepRepository
+    repositoryClass: Badger\GameBundle\Doctrine\Repository\AdventureStepRepository
     fields:
         id:
             type: guid

@@ -140,7 +140,7 @@ class Adventure implements AdventureInterface
     /**
      * {@inheritdoc}
      */
-    public function addStep(StepInterface $step)
+    public function addStep(AdventureStepInterface $step)
     {
         $step->setAdventure($this);
         $this->steps[] = $step;
@@ -151,7 +151,7 @@ class Adventure implements AdventureInterface
     /**
      * {@inheritdoc}
      */
-    public function removeStep(StepInterface $step)
+    public function removeStep(AdventureStepInterface $step)
     {
         $this->steps->removeElement($step);
 
