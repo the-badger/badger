@@ -21,4 +21,9 @@ interface UserRepositoryInterface
      * @return int
      */
     public function getSortedUserByUnlockedBadges($order = 'DESC', $limit = 7);
+
+    /**
+     * @return array
+     */
+    public function getAllUsernames();
 }
