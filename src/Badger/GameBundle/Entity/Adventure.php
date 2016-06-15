@@ -14,25 +14,25 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Adventure implements AdventureInterface
 {
     /** @var int */
-    private $id;
+    protected $id;
 
     /** @var string */
-    private $title;
+    protected $title;
 
     /** @var string */
-    private $description;
+    protected $description;
 
     /** @var int */
-    private $rewardPoint;
+    protected $rewardPoint;
 
     /** @var bool */
-    private $isStepLinked;
+    protected $isStepLinked;
 
     /** @var Badge */
-    private $badge;
+    protected $badge;
 
     /** @var ArrayCollection */
-    private $steps;
+    protected $steps;
 
     public function __construct()
     {
