@@ -16,6 +16,7 @@
             <th class="three wide">Title</th>
             <th class="five wide">Description</th>
             <th class="four wide">Tagged in</th>
+            <th class="two wide">Need proof</th>
             <th class="two wide">Actions</th>
         </tr>
         </thead>
@@ -39,6 +40,9 @@
                     {% for tag in badge.tags %}
                         <div class="ui small teal label">{{ tag.name }}</div>
                     {% endfor %}
+                </td>
+                <td class="center aligned">
+                    <i class="{{ true == badge.needProof ? 'check green' : 'close red' }} icon"></i>
                 </td>
                 <td class="center aligned">
                     <div class="ui small basic icon buttons">

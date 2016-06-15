@@ -26,6 +26,10 @@
             <td class="description">{{ badge.description|nl2br }}</td>
         </tr>
         <tr>
+            <td>Need proof</td>
+            <td><i class="{{ true == badge.needProof ? 'check green' : 'close red' }} icon"></i></td>
+        </tr>
+        <tr>
             <td>Tagged in</td>
             <td>
                 {% for tag in badge.tags %}

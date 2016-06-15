@@ -16,6 +16,7 @@
             <th class="three wide">Title</th>
             <th class="seven wide">Description</th>
             <th class="three wide">Tagged in</th>
+            <th class="two wide">Need proof</th>
             <th class="two wide">Actions</th>
         </tr>
         </thead>
@@ -55,6 +56,9 @@
                     {% for tag in quest.tags %}
                         <div class="ui small teal label">{{ tag.name }}</div>
                     {% endfor %}
+                </td>
+                <td class="center aligned">
+                    <i class="{{ true == quest.needProof ? 'check green' : 'close red' }} icon"></i>
                 </td>
                 <td class="center aligned">
                     <div class="ui small basic icon buttons">

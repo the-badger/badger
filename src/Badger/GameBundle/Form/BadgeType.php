@@ -29,6 +29,7 @@ class BadgeType extends AbstractType
                 'class' => 'Badger\TagBundle\Entity\Tag'
             ])
             ->add('imagePath')
+            ->add('needProof')
         ;
     }
 
