@@ -80,6 +80,18 @@ interface QuestInterface extends TaggableInterface
     public function setEndDate($endDate);
 
     /**
+     * @return bool
+     */
+    public function needProof();
+
+    /**
+     * @param bool $needProof
+     *
+     * @return BadgeInterface
+     */
+    public function setNeedProof($needProof);
+
+    /**
      * @return ArrayCollection
      */
     public function getCompletions();

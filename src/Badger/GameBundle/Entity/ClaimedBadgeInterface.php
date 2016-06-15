@@ -52,4 +52,14 @@ interface ClaimedBadgeInterface
      * @param \DateTime $claimedDate
      */
     public function setClaimedDate($claimedDate);
+
+    /**
+     * @return string
+     */
+    public function getProof();
+
+    /**
+     * @param string $proof
+     */
+    public function setProof($proof);
 }

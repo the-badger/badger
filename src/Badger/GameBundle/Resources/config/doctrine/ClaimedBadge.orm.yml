@@ -11,6 +11,10 @@ Badger\GameBundle\Entity\ClaimedBadge:
         claimedDate:
             type: datetime
             nullable: false
+        proof:
+            type: string
+            length: 1024
+            nullable: true
     manyToOne:
         user:
             targetEntity: Badger\UserBundle\Entity\User

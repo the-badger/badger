@@ -28,6 +28,9 @@ class Adventure implements AdventureInterface
     /** @var bool */
     protected $isStepLinked;
 
+    /** @var bool */
+    protected $needProof;
+
     /** @var Badge */
     protected $badge;
 
@@ -117,6 +120,24 @@ class Adventure implements AdventureInterface
     public function isStepLinked()
     {
         return $this->isStepLinked;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function needProof()
+    {
+        return $this->needProof;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setNeedProof($needProof)
+    {
+        $this->needProof = $needProof;
+
+        return $this;
     }
 
     /**

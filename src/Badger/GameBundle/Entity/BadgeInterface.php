@@ -79,4 +79,16 @@ interface BadgeInterface extends TaggableInterface
      * Uploads a file
      */
     public function upload();
+
+    /**
+     * @return bool
+     */
+    public function needProof();
+
+    /**
+     * @param bool $needProof
+     *
+     * @return BadgeInterface
+     */
+    public function setNeedProof($needProof);
 }

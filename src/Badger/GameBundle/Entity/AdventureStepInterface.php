@@ -83,6 +83,18 @@ interface AdventureStepInterface
     public function getRewardPoint();
 
     /**
+     * @return bool
+     */
+    public function needProof();
+
+    /**
+     * @param bool $needProof
+     *
+     * @return BadgeInterface
+     */
+    public function setNeedProof($needProof);
+
+    /**
      * Set badge
      *
      * @param BadgeInterface $badge

@@ -85,6 +85,18 @@ interface AdventureInterface
     public function isStepLinked();
 
     /**
+     * @return bool
+     */
+    public function needProof();
+
+    /**
+     * @param bool $needProof
+     *
+     * @return BadgeInterface
+     */
+    public function setNeedProof($needProof);
+
+    /**
      * Set badge
      *
      * @param Badge $badge

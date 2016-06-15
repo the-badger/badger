@@ -26,6 +26,9 @@ class AdventureStep implements AdventureStepInterface
     /** @var int */
     protected $rewardPoint;
 
+    /** @var bool */
+    protected $needProof;
+
     /** @var Badge */
     protected $badge;
 
@@ -110,6 +113,24 @@ class AdventureStep implements AdventureStepInterface
     public function getRewardPoint()
     {
         return $this->rewardPoint;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function needProof()
+    {
+        return $this->needProof;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setNeedProof($needProof)
+    {
+        $this->needProof = $needProof;
+
+        return $this;
     }
 
     /**
