@@ -3,7 +3,7 @@
 namespace Badger\GameBundle\Factory;
 
 use Badger\GameBundle\Entity\Adventure;
-use Badger\GameBundle\Entity\Step;
+use Badger\GameBundle\Entity\AdventureStep;
 
 /**
  * @author    Marie Bochu <marie.bochu@akeneo.com>
@@ -18,7 +18,7 @@ class AdventureFactory implements SimpleFactoryInterface
     public function create()
     {
         $adventure = new Adventure();
-        $adventure->addStep(new Step());
+        $adventure->addStep(new AdventureStep());
 
         return $adventure;
     }
