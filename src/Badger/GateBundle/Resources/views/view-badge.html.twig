@@ -9,7 +9,7 @@
                 <div class="panel-body text-center">
                     <img style="width: 150px; height: 150px; margin-top: -50px; box-shadow: 0px 0px 42px -12px rgba(0,0,0,0.75);" class="img-circle img-thumbnail" src="{{ badge.imageWebPath }}" alt="">
                     <h5 class="text-semibold">{{ badge.title }}</h5>
-                    <p class="mb-15">{{ badge.description }}</p>
+                    <p class="mb-15 description">{{ badge.description }}</p>
                     <p class="text-muted"><i class="icon-checkmark position-left text-success"></i> You unlocked this badge</p>
                 </div>
             </div>
@@ -18,7 +18,7 @@
                 <div class="panel-body text-center">
                     <img style="width: 150px; height: 150px; margin-top: -50px; box-shadow: 0px 0px 42px -12px rgba(0,0,0,0.75);" class="img-circle img-thumbnail" src="{{ badge.imageWebPath }}" alt="">
                     <h5 class="text-semibold">{{ badge.title }}</h5>
-                    <p class="mb-15">{{ badge.description }}</p>
+                    <p class="mb-15 description">{{ badge.description }}</p>
                     {% if not isClaimed %}
                     <button type="button" class="ml-10 btn bg-warning-400 btn-ladda btn-ladda-spinner heading-btn claim" data-style="expand-right" data-spinner-color="#333" data-spinner-size="20">
                         <span class="ladda-label">Claim this badge</span><span class="ladda-spinner"></span>
@@ -72,6 +72,12 @@
     <script src="{{ asset('bundles/gate/js/plugins/buttons/ladda.min.js') }}"></script>
 
     <script>
+        // Auto link quests descriptions
+        $('.description').each(function () {
+            var linkedText = Autolinker.link( $(this).html() );
+            $(this).html(linkedText);
+        });
+
         {% if not isUnlocked and not isClaimed %}
             $button = $('.claim');
             $button.click(function() {

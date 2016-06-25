@@ -41,7 +41,9 @@
 
                                                 <a href="{{ url('viewbadge', {id: badge.id}) }}" class="text-default">{{ badge.title }}</a>
                                             </h6>
-                                            {{ badge.description }}
+                                            <span class="description">
+                                                {{ badge.description }}
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -57,4 +59,14 @@
             {% endfor %}
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        // Auto link quests descriptions
+        $('.description').each(function () {
+            var linkedText = Autolinker.link( $(this).html() );
+            $(this).html(linkedText);
+        });
+    </script>
 {% endblock %}

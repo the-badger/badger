@@ -13,6 +13,16 @@
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="available">
+                        {% if availableQuests is empty %}
+                            <div class="panel">
+                                <div class="panel-body text-center">
+                                    <div class="icon-object border-info-400 text-info"><i class="icon-trophy4"></i></div>
+                                    <h5 class="text-semibold">No available quest</h5>
+                                    <p class="mb-15">There is no available quest for now, come back later!</p>
+                                </div>
+                            </div>
+                        {% endif %}
+
                         {% for quest in availableQuests %}
                             <div class="row">
                                 <div class="col-md-12">
@@ -57,6 +67,16 @@
                     </div>
 
                     <div class="tab-pane" id="completed">
+                        {% if questCompletions is empty %}
+                            <div class="panel">
+                                <div class="panel-body text-center">
+                                    <div class="icon-object border-success-400 text-success"><i class="icon-stack-check"></i></div>
+                                    <h5 class="text-semibold">No completed quest</h5>
+                                    <p class="mb-15">This tab will list all the quests you have unlocked. Let's have some work!</p>
+                                </div>
+                            </div>
+                        {% endif %}
+
                         {% for completion in questCompletions %}
                             <div class="row">
                                 <div class="col-md-12">
