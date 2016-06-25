@@ -1,153 +1,124 @@
 {% extends '@Gate/base.html.twig' %}
 
 {% block body %}
-    <div class="ui main container ir-quests">
+    <!-- Grid -->
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
 
-            <div class="ui stackable centered grid">
-                <div class="row" style="padding-top: 0;">
-                    <div class="ten wide column">
+            <div class="tabbable">
+                <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                    <li class="active"><a href="#available" data-toggle="tab"><span class="badge badge-danger position-left">{{ countAvailableQuests }}</span> Available</a></li>
+                    <li><a href="#completed" data-toggle="tab"><span class="badge badge-default position-left">{{ countCompletedQuests }}</span> Completed</a></li>
+                </ul>
 
-                        <div class="ui pointing secondary menu">
-                            <a class="item active" data-tab="first">Available <span class="ui red circular label">{{ countAvailableQuests }}</span></a>
-                            <a class="item" data-tab="second">Completed <span class="ui circular label">{{ countCompletedQuests }}</span></a>
-                        </div>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="available">
+                        {% for quest in availableQuests %}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-flat {{ quest.id in claimedQuestIds ? 'border-left-xlg border-left-blue' : '' }}" style="background: #ffffff url('{{ asset('bundles/gate/images/quest-background-pattern.png') }}') repeat-y right;">
+                                        <div class="panel-heading" style="background-color: transparent;">
+                                            <h6 class="panel-title"><i class="icon-trophy4"></i> <span class="text-semibold text-uppercase">{{ quest.title }}</span></h6>
+                                        </div>
 
-                        <div class="ui bottom attached tab basic segment active" style="border: 0; padding: 0;" data-tab="first">
-                            {% if availableQuests is empty %}
-                                <div class="ui very padded center aligned basic segment" style="color: #cecece;">
-                                    <h2><i class="calendar outline large icon"></i></h2>
-                                    <p>No quest available for now. Come back later!</p>
-                                </div>
-                            {% endif %}
-
-                            {% for quest in availableQuests %}
-                                <div class="ui segments" style="border-radius: 0; border: 0; margin-bottom: 0;">
-                                    <div class="ui segment quest" style="border-radius: 0; border: 0; margin-bottom: 0;">
-                                        {% if quest.id not in claimedQuestIds %}
-                                            <a class="ui teal right ribbon label claim" data-quest="{{ quest.id }}"><i class="check icon"></i> Mark as done</a>
-                                        {% else %}
-                                            <a class="ui blue right ribbon label"><i class="fa fa-clock-o" ></i> &nbsp; Claimed!</a>
-                                        {% endif %}
-                                        <h2>{{ quest.title }}</h2>
-                                        <div class="description">
+                                        <div class="panel-body description">
                                             {{ quest.description|nl2br }}
                                         </div>
-                                    </div>
-                                    <div class="ui center aligned segment" style="border-radius: 0; border-top: 1px solid #F3F3F3;">
-                                        <div class="ui three mini statistics">
-                                            <div class="statistic">
-                                                <div class="value">
-                                                    {{ quest.reward }}
-                                                </div>
-                                                <div class="label">
-                                                    <i class="cubes icon"></i> Nuts
-                                                </div>
-                                            </div>
-                                            <div class="statistic">
-                                                {% set differenceFromNow = quest.endDate.diff(date('yesterday')) %}
 
-                                                {% if differenceFromNow.days > 1 %}
-                                                    {% set differenceFromStart = quest.endDate.diff(quest.startDate, true) %}
-                                                    <div class="value">
-                                                        {{ differenceFromNow.days }}
-                                                    </div>
-                                                    <div class="label">
-                                                        days left
-                                                        <div class="ui indicating tiny progress" data-percent="{{ 100 - (100 * differenceFromNow.days / differenceFromStart.days) }}">
-                                                            <div class="bar"></div>
-                                                        </div>
-                                                    </div>
+                                        <div class="panel-footer">
+                                            <div class="heading-elements">
+                                                {% if quest.id in claimedQuestIds %}
+                                                    <span class="heading-text text-semibold">
+                                                        <i class="icon-hour-glass"></i> Waiting for validation
+                                                    </span>
                                                 {% else %}
-                                                    <div class="value">
-                                                        LAST
-                                                    </div>
-                                                    <div class="label">
-                                                        day
-                                                        <div class="ui indicating tiny progress" data-percent="100">
-                                                            <div class="bar"></div>
+                                                    <button data-quest="{{ quest.id }}" type="button" class="ml-10 btn btn-primary btn-ladda btn-ladda-spinner heading-btn claim" data-style="expand-right" data-spinner-color="#333" data-spinner-size="20">
+                                                        <span class="ladda-label">Claim this quest</span><span class="ladda-spinner"></span>
+                                                    </button>
+                                                {% endif %}
+
+                                                <div class="pull-right">
+                                                    <span class="label label-flat border-primary text-primary-600 heading-text">+{{ quest.reward }} nuts</span>
+                                                    <div class="progress">
+                                                        {% set differenceUntilEnd = quest.endDate.diff(date('yesterday')) %}
+                                                        {% set differenceFromStart = quest.startDate.diff(date('yesterday')) %}
+                                                        {% set differenceTotal = quest.endDate.diff(quest.startDate, true) %}
+                                                        <div class="progress-bar" style="width: {{ 100 * differenceFromStart.days / differenceTotal.days }}%;">
+                                                            <span class="">{{ differenceUntilEnd.days }} days left</span>
                                                         </div>
                                                     </div>
-                                                {% endif %}
-                                            </div>
-                                            <div class="statistic">
-                                                <div class="value">
-                                                    {{ quest.getApprovedCompletionsCount }}
-                                                </div>
-                                                <div class="label">
-                                                    Completions
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            {% endfor %}
-                        </div>
-                        <div class="ui bottom attached tab basic segment" style="border: 0; padding: 0;" data-tab="second">
-                            {% if questCompletions is empty %}
-                                <div class="ui very padded center aligned basic segment" style="color: #cecece;">
-                                    <h2><i class="frown large icon"></i></h2>
-                                    <p>No completed quest so far.</p>
-                                </div>
-                            {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
 
-                            {% for completion in questCompletions %}
-                                <div class="ui segments" style="border-radius: 0; border: 0; margin-bottom: 0;">
-                                    <div class="ui segment quest-completion" style="border-radius: 0; border: 0; margin-bottom: 0;">
-                                        <a class="ui green right corner label">
-                                            <i class="check icon"></i>
-                                        </a>
-                                        <h2>{{ completion.quest.title }}</h2>
-                                        <div class="description">
+                    <div class="tab-pane" id="completed">
+                        {% for completion in questCompletions %}
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-flat border-left-xlg border-left-success" style="background: #ffffff url('{{ asset('bundles/gate/images/quest-background-pattern.png') }}') repeat-y right;">
+                                        <div class="panel-heading" style="background-color: transparent;">
+                                            <h6 class="panel-title"><i class="icon-trophy4"></i> <span class="text-semibold text-uppercase">{{ completion.quest.title }}</span></h6>
+                                        </div>
+
+                                        <div class="panel-body description">
                                             {{ completion.quest.description|nl2br }}
                                         </div>
-                                    </div>
-                                    <div class="ui segment" style="border-radius: 0; border-top: 1px solid #F3F3F3;">
-                                        <div style="color: #4EAB52;">
-                                            <div class="ui green basic label">
-                                                <i class="cubes icon"></i>{{ completion.quest.reward }} nuts
-                                            </div>
-                                            <div class="ui basic label">
-                                                <i class="calendar icon"></i> {{ completion.completionDate|date('Y/m/d') }}
-                                            </div>
-                                            <div class="ui basic label">
-                                                <i class="users icon"></i>{{ completion.quest.getApprovedCompletionsCount }} completions
+
+                                        <div class="panel-footer">
+                                            <div class="heading-elements">
+                                                <span class="label label-flat border-success text-success-600 heading-text">+{{ completion.quest.reward }} nuts</span>
+                                                <span class="text-success heading-text"><i class="icon-checkmark"></i> Completed on {{ completion.completionDate|date('Y/m/d') }}</span>
+                                                <div class="pull-right">
+                                                    <span class="heading-text">{{ completion.quest.getApprovedCompletionsCount }} users completed this quest</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            {% endfor %}
-                        </div>
+                            </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
+        </div>
     </div>
+    <!-- /grid -->
 {% endblock %}
 
 {% block javascripts %}
-    <script>
-        $('.progress').progress();
+    <script src="{{ asset('bundles/gate/js/plugins/buttons/spin.min.js') }}"></script>
+    <script src="{{ asset('bundles/gate/js/plugins/buttons/ladda.min.js') }}"></script>
 
+    <script>
         // Auto link quests descriptions
         $('.description').each(function () {
             var linkedText = Autolinker.link( $(this).html() );
             $(this).html(linkedText);
         });
 
-        $('.menu .item').tab();
-
-        $button = $('.claim');
+        var $button = $('.claim');
         $button.click(function() {
+            // Create a new instance of ladda for the specified button
+            var l = Ladda.create( $(this)[0] );
             var questId = $(this).data('quest');
-            if ($(this).hasClass('blue') || $(this).hasClass('loading')) {
+
+            if ($(this).prop('disabled')) {
                 return;
             }
 
-            $(this).removeClass('red teal').addClass('loading').html('<div class="ui active mini inline loader"></div> &nbsp; Claiming...');
+            l.start();
 
             $.post('/claim/quest/' + questId).then(function() {
-                $(this).removeClass('loading teal').addClass('blue').html('<i class="fa fa-clock-o" ></i> &nbsp; Claimed!');
+                l.stop();
+                $(this).html('<i class="icon-checkmark"></i> Claimed').prop('disabled', true);
             }.bind(this), function () {
-                $(this).removeClass('loading teal').addClass('red').html('<i class="fa fa-exclamation-triangle"></i> &nbsp; An error occurred');
+                l.stop();
+                $(this).html('<i class="icon-warning"></i> An error occured, click again to retry');
             }.bind(this));
         });
     </script>

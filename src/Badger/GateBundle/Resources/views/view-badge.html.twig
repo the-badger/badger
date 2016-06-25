@@ -1,109 +1,96 @@
 {% extends '@Gate/base.html.twig' %}
 
 {% block body %}
-<div class="ui main container ir-dashboard">
-    <div class="ui grid stackable">
-        <div class="four wide column">
-            <div class="ui card badge {{ isUnlocked ? 'unlocked' : '' }}" >
-                {% if isUnlocked %}
-                <div class="image" style="padding: 10px;">
-                    <span class="ui left corner green label">
-                        <i class="checkmark icon"></i>
-                    </span>
-                    <img src="{{ badge.imageWebPath }}">
-                </div>
-                {% else %}
-                <div class="blurring dimmable image" style="padding: 10px;">
-                    <div class="ui dimmer">
-                        <div class="content">
-                            <div class="center">
-                                {% if not isClaimed %}
-                                    <button class="ui inverted button claim"><i class="fa fa-thumbs-up"></i> Claim</button>
-                                {% endif %}
-                            </div>
-                        </div>
-                    </div>
-                    <img src="{{ badge.imageWebPath }}">
-                </div>
-                {% endif %}
-                <div class="content">
-                    <div class="header">{{ badge.title }}</div>
-                    <div class="description">
-                        {{ badge.description }}
-                    </div>
-                    {% if isClaimed %}
-                        <a style="margin-top: 7px;" class="ui blue ribbon label"><i class="fa fa-clock-o"></i>&nbsp; You claimed this badge!</a>
-                    {% endif %}
-                </div>
-                <div class="content" style="text-align: center;">
-                    <div class="ui small statistic">
-                        <div class="value">
-                            {{ percentUnlock }}%
-                        </div>
-                        <div class="label">
-                            of users
-                        </div>
-                        <div class="ui tiny indicating progress" data-percent="{{ percentUnlock }}" id="allunlocks" style="margin: 5px 0;">
-                            <div class="bar" style="min-width: 0;"></div>
-                        </div>
-                    </div>
+    <!-- Grid -->
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            {% if isUnlocked %}
+            <div class="panel border-lg border-success" style="margin-top: 50px; box-shadow: 0 0 15px -4px rgba(2,168,41,1);">
+                <div class="panel-body text-center">
+                    <img style="width: 150px; height: 150px; margin-top: -50px; box-shadow: 0px 0px 42px -12px rgba(0,0,0,0.75);" class="img-circle img-thumbnail" src="{{ badge.imageWebPath }}" alt="">
+                    <h5 class="text-semibold">{{ badge.title }}</h5>
+                    <p class="mb-15">{{ badge.description }}</p>
+                    <p class="text-muted"><i class="icon-checkmark position-left text-success"></i> You unlocked this badge</p>
                 </div>
             </div>
-        </div>
-        <div class="twelve wide column">
-            {% if unlockedBadges|length > 0 %}
-                <div class="ui segment">
-                    <h2 class="ui dividing header">People who have this badge</h2>
-                    <div class="ui stackable five cards">
-                        {% for unlockedBadge in unlockedBadges %}
-                            <div class="ui fluid card">
-                                <div class="image">
-                                    <img src="{{ unlockedBadge.user.profilePicture }}">
-                                </div>
-                                <div class="content">
-                                    <a href="{{ url('userprofile', {'username': unlockedBadge.user.username}) }}" class="header">{{ unlockedBadge.user.username }}</a>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
             {% else %}
-                <div class="ui message">
-                    <div class="content">
-                        <div class="header">
-                            No unlock
-                        </div>
-                        <p>
-                            No one unlocked this badge!
-                        </p>
-                    </div>
+            <div class="panel" style="margin-top: 50px;">
+                <div class="panel-body text-center">
+                    <img style="width: 150px; height: 150px; margin-top: -50px; box-shadow: 0px 0px 42px -12px rgba(0,0,0,0.75);" class="img-circle img-thumbnail" src="{{ badge.imageWebPath }}" alt="">
+                    <h5 class="text-semibold">{{ badge.title }}</h5>
+                    <p class="mb-15">{{ badge.description }}</p>
+                    {% if not isClaimed %}
+                    <button type="button" class="ml-10 btn bg-warning-400 btn-ladda btn-ladda-spinner heading-btn claim" data-style="expand-right" data-spinner-color="#333" data-spinner-size="20">
+                        <span class="ladda-label">Claim this badge</span><span class="ladda-spinner"></span>
+                    </button>
+                    {% else %}
+                        <span class="heading-text text-semibold text-muted">
+                            <i class="icon-hour-glass"></i> You claimed this badge, waiting for validation
+                        </span>
+                    {% endif %}
                 </div>
+            </div>
             {% endif %}
         </div>
+        <div class="col-md-12">
+            <div class="text-center content-group text-muted content-divider">
+                <span class="pt-10 pb-10"><i class="icon-users"></i> People who have this badge</span>
+            </div>
+
+            {% for row in unlockedBadges|batch(4) %}
+                <div class="row">
+
+                    {% for unlockedBadge in row %}
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-body">
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="{{ url('userprofile', {'username': unlockedBadge.user.username}) }}" data-popup="lightbox">
+                                            <img src="{{ unlockedBadge.user.profilePicture }}" class="img-circle img-lg" alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="media-body">
+                                        <h6 class="media-heading"><a class="text-default" href="{{ url('userprofile', {'username': unlockedBadge.user.username}) }}">{{ unlockedBadge.user.username }}</a></h6>
+                                        <span class="text-muted">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
+    <!-- /grid -->
 {% endblock %}
 
 {% block javascripts %}
+    <script src="{{ asset('bundles/gate/js/plugins/buttons/spin.min.js') }}"></script>
+    <script src="{{ asset('bundles/gate/js/plugins/buttons/ladda.min.js') }}"></script>
+
     <script>
-        $('#allunlocks').progress();
-
         {% if not isUnlocked and not isClaimed %}
-            $('.card.badge .image').dimmer({on: 'hover'});
-
             $button = $('.claim');
             $button.click(function() {
-                if ($button.hasClass('blue') || $button.hasClass('loading')) {
+                // Create a new instance of ladda for the specified button
+                var l = Ladda.create( $(this)[0] );
+
+                if ($(this).prop('disabled')) {
                     return;
                 }
 
-                $button.addClass('loading');
+                l.start();
 
                 $.post('{{ url('claimbadge', {'id': badge.id}) }}').then(function() {
-                    $button.removeClass('loading').addClass('blue').html('<i class="fa fa-clock-o" ></i> Claimed!');
-                }, function () {
-                    $button.removeClass('loading').addClass('red').html('<i class="fa fa-exclamation-triangle"></i> An error occurred');
-                });
+                    l.stop();
+                    $(this).html('<i class="icon-checkmark"></i> Claimed').prop('disabled', true);
+                }.bind(this), function () {
+                    l.stop();
+                    $(this).html('<i class="icon-warning"></i> An error occured, click again to retry');
+                }.bind(this));
             });
         {% endif %}
     </script>

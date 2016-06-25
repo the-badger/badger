@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login</title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/icons/icomoon/styles.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/core.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/components.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/colors.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/extras/animate.min.css') }}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/core/libraries/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/core/libraries/bootstrap.min.js') }}"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/ui/nicescroll.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/core/app.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/pages/layout_fixed_custom.js') }}"></script>
+    <!-- /theme JS files -->
+
+</head>
+
+<body class="login-container">
+
+<!-- Page container -->
+<div class="page-container" style="padding-top: 0px;">
+
+    <!-- Page content -->
+    <div class="page-content">
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <div style="background: #ffffff; padding: 60px 0 190px 0; background-image: linear-gradient(-135deg, #FFE2C8, #89FFF4); margin-bottom: -110px; margin-top: -40px;">
+            </div>
+
+            <!-- Content area -->
+            <div class="content">
+
+                <!-- Advanced login -->
+                <form action="index.html">
+                    <div class="panel panel-body login-form">
+                        <div class="text-center">
+                            <img src="{{ asset('bundles/gate/images/badger-only-128.png') }}" style="height: 70px;" alt="">
+                            <h5 class="content-group">Welcome to Badger</h5>
+                        </div>
+
+                        <div class="content-divider text-muted form-group"><span>sign in with</span></div>
+                        <ul class="list-inline form-group list-inline-condensed text-center">
+                            <li><a href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}" class="btn border-danger text-danger-700 btn-flat btn-icon btn-rounded"><i class="icon-google"></i></a></li>
+                            <li><a href="{{ path('github_connect') }}" class="btn border-slate-600 text-slate-600 btn-flat btn-icon btn-rounded"><i class="icon-github"></i></a></li>
+                        </ul>
+                    </div>
+                </form>
+                <!-- /advanced login -->
+
+
+                <!-- Footer -->
+                <div class="footer text-muted text-center">
+                    &copy; 2016. <a href="https://github.com/akeneo/badger">Badger Application</a> made with <i class="icon-heart5"></i> by <a href="http://www.akeneo.com" target="_blank">Akeneo</a> - v{{ app_version }}
+                </div>
+                <!-- /footer -->
+
+            </div>
+            <!-- /content area -->
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+
+</div>
+<!-- /page container -->
+
+</body>
+</html>

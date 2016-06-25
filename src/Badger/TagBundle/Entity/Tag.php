@@ -145,4 +145,9 @@ class Tag implements TagInterface
     {
         $this->quests = $quests;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
