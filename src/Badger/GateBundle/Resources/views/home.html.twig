@@ -1,38 +1,58 @@
 {% extends '@Gate/base.html.twig' %}
 
 {% block body %}
-    <div class="ui main container ir-feed">
-        <div class="ui segment feed" style="padding: 30px 50px;">
-            <h2 class="ui header main-title">Activity Feed</h2>
 
-            {% for unlock in unlockedBadges %}
-            <div class="event">
-                <div class="label">
-                    <img src="{{ unlock.user.profilePicture }}">
-                </div>
-                <div class="content">
-                    <div class="summary">
-                        <a href="{{ url('userprofile', {username: unlock.user.username}) }}">{{ unlock.user.username }}</a> unlocked the badge
-                        <a href="{{ url('viewbadge', {id: unlock.badge.id}) }}" class="popup" data-variation="wide" data-position="right center" data-html="<div class='ui grid'> <div class='four wide column'> <img class='ui tiny image' src='{{ unlock.badge.imageWebPath }}' /> </div> <div class='twelve wide column'> {{ unlock.badge.description }} </div> </div>">{{ unlock.badge.title }}</a>
-                        <div class="date">
-                            {{ unlock.unlockedDate|date('d/m/Y') }}
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Timeline -->
+            <div class="timeline timeline-left content-group">
+                <div class="timeline-container">
+
+                    {% for unlock in unlockedBadges %}
+                        <!-- Feed unlock -->
+                        <div class="timeline-row">
+                            <div class="timeline-icon">
+                                <div class="bg-success-400">
+                                    <i class="icon-medal2"></i>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="panel border-left-lg border-left-success invoice-grid timeline-content">
+                                        <div class="panel-body no-padding-top no-padding-bottom">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <h6 class="text-semibold">
+                                                        <a href="{{ url('userprofile', {username: unlock.user.username}) }}">
+                                                            <img src="{{ unlock.user.profilePicture }}" class="img-circle img-thumbnail hidden-xs" style="width: 60px;" alt=""> &nbsp; {{ unlock.user.username }}
+                                                        </a>
+                                                        unlocked the badge
+                                                        <a href="{{ url('viewbadge', {id: unlock.badge.id}) }}" data-popup="popover" title="" data-trigger="hover" data-content="{{ unlock.badge.description|escape }}" data-original-title="{{ unlock.badge.title|escape }}">
+                                                            {{ unlock.badge.title }}
+                                                        </a>
+                                                        <img src="{{ unlock.badge.imageWebPath }}" class="img-circle img-thumbnail pull-right hidden-xs" style="width: 60px;" alt="">
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-footer panel-footer-condensed">
+                                            <div class="heading-elements">
+                                                <span class="heading-text">
+                                                    Unlocked on <span class="text-semibold">{{ unlock.unlockedDate|date('d/m/Y') }}</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                        <!-- /feed unlock -->
+                    {% endfor %}
+
                 </div>
             </div>
-            {% endfor %}
+            <!-- /timeline -->
         </div>
-
-        {% if unlockedBadges|length == 0 %}
-            <div class="ui center aligned basic segment" style="color: #cecece;">
-                No unlock to show :)
-            </div>
-        {% endif %}
     </div>
-{% endblock %}
-
-{% block javascripts %}
-    <script>
-        $('.popup').popup();
-    </script>
 {% endblock %}

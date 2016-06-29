@@ -1,35 +1,48 @@
 {% extends '@Gate/base.html.twig' %}
 
 {% block body %}
-    <div class="ui main container ir-leaderboard">
-        <div class="ui stackable grid">
-            <div class="four wide column">
-                <div class="ui secondary vertical pointing menu">
-                    <a class="active item">
-                        <i class="trophy icon"></i>
-                        Number of Badges
-                    </a>
-                </div>
-            </div>
-            <div class="twelve wide stretched column">
-                <div class="ui segment leaderboard-users">
-                    {% for user in users %}
-                        <div class="ui grid user" style="{% if app.user.username == user.user.username %}border-left: 5px solid #D5AD6D;{% endif %}">
-                            <div class="two wide column right aligned leaderboard-index">
-                                <span>&#9839;{{ loop.index }}</span>
-                            </div>
-                            <div class="twelve wide column header leaderboard-username">
-                                <div class="ui mini circular image">
-                                    <img src="{{ user.user.profilePicture }}">
-                                </div>
-                                <a style="font-weight: normal;" href="{{ url('userprofile', {'username': user.user.username}) }}" class="header">{{ user.user.username }}</a>
-                                <span style="font-size: 20px; font-weight: bold;" class="ui right floated"></span>
-                            </div>
-                            <div class="two wide column center aligned leaderboard-unlocked">
-                                <span style="display:inline-block">{{ user.nbUnlockedBadges }}</span>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <div class="tabbable">
+                <ul class="nav nav-tabs nav-tabs-bottom">
+                    <li class="active">
+                        <a href="#number-badges" data-toggle="tab"><i class="icon-medal2"></i> Number of badges</a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="number-badges">
+                        <div class="panel panel-flat">
+                            <div class="panel-heading">
+                                <ul class="media-list media-list-linked">
+                                    {% for user in users %}
+                                        <li class="media"
+                                            style="{% if app.user.username == user.user.username %}background: #f9ffe3;{% endif %}">
+                                            <a href="{{ url('userprofile', {'username': user.user.username}) }}"
+                                               class="media-link">
+                                                <div class="media-left">
+                                                    <img style="width: 50px; height: 50px;"
+                                                         src="{{ user.user.profilePicture }}"
+                                                         class="img-circle img-thumbnail" alt="">
+                                                    <span class="badge bg-teal media-badge">{{ loop.index }}</span>
+                                                </div>
+                                                <div class="media-body">
+                                                    <div class="media-heading text-semibold">{{ user.user.username }}</div>
+                                                    <span class="text-muted"></span>
+                                                </div>
+                                                <div class="media-right media-middle text-nowrap">
+                                                    <span class="text-muted">
+                                                        <i class="icon-medal2"></i> {{ user.nbUnlockedBadges }}
+                                                    </span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
                             </div>
                         </div>
-                    {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
