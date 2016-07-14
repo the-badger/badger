@@ -29,6 +29,6 @@ parameters:
     # Slack webhook url to send message in Slack channels
     slack_webhook_url: YOU_SLACK_WEBHOOK_URL
 
-    # elasticseach conf
-    elastic_host: localhost
-    elastic_port: 9200
+    # Elastic Search Configuration
+    elastic_host: ELASTIC_SEARCH_HOST
+    elastic_port: ELASTIC_SEARCH_PORT
