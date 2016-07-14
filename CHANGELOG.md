@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+- Add search functionality
+
 ## [0.5.2] - 2016-06-09
 ### Fixed
 - Fix fatal error on new user registration

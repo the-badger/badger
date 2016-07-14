@@ -68,6 +68,18 @@ parameters:
     google_client_secret: 123456789abcd
 ```
 
+### Setup elasticsearch
+
+Bagder is working with elasticsearch in order to ease the search in the application
+
+1. Instructions for installing and deploying Elasticsearch may be found [here](https://www.elastic.co/downloads/elasticsearch).
+2. Set the correct elastic host and port in you parameters.yml file.
+3. Populate elasticsearch with the following command:
+
+```bash
+php app/console fos:elastica:populate
+```
+
 ### Create an admin user
 To manage Badger, you'll need one or several administrators. To promote a user, use this command:
 
