@@ -13,6 +13,7 @@ Badger is a gamification platform initially developed as an internal project by 
 - MySQL
 - Composer
 - NodeJS & NPM _(only used to grab front JS dependencies)_
+- Elasticsearch
 
 ## Installation
 Badger is based on the great Symfony framework. **If you encounter some installation errors**,
@@ -68,17 +69,19 @@ parameters:
     google_client_secret: 123456789abcd
 ```
 
-### Setup elasticsearch
+### Setup Elasticsearch
 
-Bagder is working with elasticsearch in order to ease the search in the application
+Bagder is working with Elasticsearch in order to ease the search in the application.
 
 1. Instructions for installing and deploying Elasticsearch may be found [here](https://www.elastic.co/downloads/elasticsearch).
 2. Set the correct elastic host and port in you parameters.yml file.
-3. Populate elasticsearch with the following command:
+3. (Optional) Populate Elasticsearch with existing users using the following command:
 
 ```bash
 php app/console fos:elastica:populate
 ```
+
+_Note that every new users will be automatically indexed by Elasticsearch, you won't need to re-run this command again._
 
 ### Create an admin user
 To manage Badger, you'll need one or several administrators. To promote a user, use this command:

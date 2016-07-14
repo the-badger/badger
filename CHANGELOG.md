@@ -4,7 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
-- Add search functionality
+- Add search functionality on users. You can now search users by their usernames!
 
 ## [0.5.2] - 2016-06-09
 ### Fixed
