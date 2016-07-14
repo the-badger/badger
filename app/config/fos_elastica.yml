@@ -27,4 +27,5 @@ fos_elastica:
                         model: Badger\UserBundle\Entity\User
                         finder: ~
                         provider: ~
-                        listener: ~
+                        listener:
+                            immediate: ~
