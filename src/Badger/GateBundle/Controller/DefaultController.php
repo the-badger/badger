@@ -287,8 +287,24 @@ class DefaultController extends Controller
         $token = $request->get('token');
         $results = $this->get('badger.user.repository.elastic.user')->findUser($token);
 
-        return $this->render('@Gate/users-search.html.twig', [
-            'users' => $results,
-        ]);
+        return new JsonResponse($results);
+    }
+
+    /**
+     * @Route("/user/search/", name="emptysearch")
+     */
+    public function emptyFindAction(Request $request)
+    {
+        $users = $this->get('badger.user.repository.user')->findAll();
+        $results = [];
+
+        foreach ($users as $user) {
+            $results[] = [
+                'username' => $user->getUsername(),
+                'profilePicture' => $user->getProfilePicture()
+            ];
+        }
+
+        return new JsonResponse($results);
     }
 }

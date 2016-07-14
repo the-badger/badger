@@ -52,9 +52,11 @@ class ElasticUserRepository implements ElasticUserRepositoryInterface
 
         $results = [];
         foreach ($users as $user) {
-            $results[$user->getData()['username'][0]]['username'] = $user->getData()['username'][0];
-            $results[$user->getData()['username'][0]]['profilePicture'] = $user->getData()['profilePicture'][0];
-            $results[$user->getData()['username'][0]]['highlights'] = $user->getHighlights()['username'][0];
+            $results[] = [
+                'username' => $user->getData()['username'][0],
+                'profilePicture' => $user->getData()['profilePicture'][0],
+                'highlights' => $user->getHighlights()['username'][0],
+            ];
         }
 
         return $results;
