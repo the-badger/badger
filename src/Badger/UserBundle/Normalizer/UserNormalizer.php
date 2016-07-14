@@ -24,10 +24,10 @@ class UserNormalizer implements NormalizerInterface
     public function normalize($user, $format = null, array $context = [])
     {
         return [
-            'id' => (int) $user->getId(),
-            'username' => (string) $user->getUsername(),
+            'id'             => (int) $user->getId(),
+            'username'       => (string) $user->getUsername(),
             'profilePicture' => (string) $user->getProfilePicture(),
-            'tags' => $this->normalizeTags($user->getTags()),
+            'tags'           => $this->normalizeTags($user->getTags()),
         ];
     }
 

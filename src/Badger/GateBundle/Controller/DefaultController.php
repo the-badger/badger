@@ -280,30 +280,30 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/user/search/{token}", name="search")
+     * @Route("/search/users", name="search_users")
+     * @param Request $request
+     *
+     * @return JsonResponse
      */
-    public function findAction(Request $request)
+    public function searchUsersAction(Request $request)
     {
         $token = $request->get('token');
-        $results = $this->get('badger.user.repository.elastic.user')->findUser($token);
 
-        return new JsonResponse($results);
-    }
+        if ('' === trim($token)) {
+            $users = $this->get('badger.user.repository.user')->findAll();
+            $results = [];
 
-    /**
-     * @Route("/user/search/", name="emptysearch")
-     */
-    public function emptyFindAction(Request $request)
-    {
-        $users = $this->get('badger.user.repository.user')->findAll();
-        $results = [];
+            foreach ($users as $user) {
+                $results[] = [
+                    'username' => $user->getUsername(),
+                    'profilePicture' => $user->getProfilePicture()
+                ];
+            }
 
-        foreach ($users as $user) {
-            $results[] = [
-                'username' => $user->getUsername(),
-                'profilePicture' => $user->getProfilePicture()
-            ];
+            return new JsonResponse($results);
         }
+
+        $results = $this->get('badger.user.repository.elastic.user')->findUser($token);
 
         return new JsonResponse($results);
     }

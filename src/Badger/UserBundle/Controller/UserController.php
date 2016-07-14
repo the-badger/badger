@@ -2,9 +2,7 @@
 
 namespace Badger\UserBundle\Controller;
 
-use Elastica\Query\Match;
 use Symfony\Component\Form\Form;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;

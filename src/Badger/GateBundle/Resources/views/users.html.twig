@@ -3,7 +3,7 @@
 {% block body %}
     <div class="panel panel-flat">
         <div class="panel-body">
-            <form action="#" class="main-search">
+            <form class="main-search">
                 <div class="no-margin-bottom">
                     <div class="has-feedback has-feedback-left">
                         <input id="search_user" type="text" class="form-control input-xlg" placeholder="Search for a user">
@@ -53,6 +53,10 @@
     <script>
         var timer = 0;
 
+        $('.main-search').on('submit', function () {
+            return false;
+        });
+
         $('#search_user').on('input', function () {
             var token = $(this).val();
 
@@ -76,7 +80,11 @@
 
             $('.users').html('');
 
-            $.ajax('/user/search/' + encodeURI(token)).then(function (data) {
+            $.ajax('/search/users', {
+                data: {
+                    token: token
+                }
+            }).then(function (data) {
                 var rows = _.chunk(data, 4);
                 rows.forEach(function (row) {
                     $('.users').append(Mustache.render(userTemplate, { users: row }));
@@ -99,13 +107,13 @@
                 <div class="panel panel-body">
                     <div class="media">
                         <div class="media-left">
-                            <a href="#" data-popup="lightbox">
+                            <a href="/user/[[ username ]]" data-popup="lightbox">
                                 <img src="[[ profilePicture ]]" class="img-circle img-thumbnail img-lg" alt="">
                             </a>
                         </div>
 
                         <div class="media-body">
-                            <h6 class="media-heading"><a class="text-default" href="#">[[ username ]]</a></h6>
+                            <h6 class="media-heading"><a class="text-default" href="/user/[[ username ]]">[[ username ]]</a></h6>
                         </div>
                     </div>
                 </div>
@@ -116,7 +124,7 @@
 
     <script id="emptyTemplate" type="x-tmpl-mustache">
         <div class="row">
-            <div class="col-md-offset-3 col-md-6">
+            <div class="col-md-12">
                 <div class="alert bg-warning alert-styled-left">
                     <span class="text-semibold">No result!</span> We can't find any user with this search
                 </div>
