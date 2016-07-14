@@ -2,6 +2,7 @@
 
 namespace Badger\UserBundle\Doctrine\Repository;
 
+use Badger\UserBundle\Repository\ElasticUserRepositoryInterface;
 use Elastica\SearchableInterface;
 
 /**
@@ -9,7 +10,7 @@ use Elastica\SearchableInterface;
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-class ElasticUserRepository
+class ElasticUserRepository implements ElasticUserRepositoryInterface
 {
     /** @var SearchableInterface */
     protected $finder;
