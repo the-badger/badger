@@ -1,0 +1,67 @@
+{% extends 'GateBundle::base-admin.html.twig' %}
+
+{% block body %}
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> / </div>
+            <a class="section" href="{{ path('admin_quest_index') }}">Quests</a>
+            <div class="divider"> / </div>
+            <div class="active section">Show quest "{{ quest.title }}"</div>
+        </div>
+    </div>
+
+    <table class="ui definition table">
+        <tbody>
+        <tr>
+            <td>UUID</td>
+            <td>{{ quest.id }}</td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td>{{ quest.title }}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td class="description">{{ quest.description|nl2br }}</td>
+        </tr>
+        <tr>
+            <td>Reward</td>
+            <td>{{ quest.reward }}</td>
+        </tr>
+        <tr>
+            <td>Starts on</td>
+            <td>{{ quest.startDate|date('Y/m/d') }}</td>
+        </tr>
+        <tr>
+            <td>Ends on</td>
+            <td>{{ quest.endDate|date('Y/m/d') }}</td>
+        </tr>
+        <tr>
+            <td>Tagged in</td>
+            <td>
+                {% for tag in quest.tags %}
+                    <div class="ui small teal label">{{ tag.name }}</div>
+                {% endfor %}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        {{ form_start(delete_form) }}
+        <button class="ui red left floated labeled icon button" type="submit"><i class="icon trash"></i> Delete</button>
+        {{ form_end(delete_form) }}
+        <a href="{{ path('admin_quest_edit', { 'id': quest.id }) }}" class="ui left floated labeled icon button"><i class="icon pencil"></i> Edit</a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        // Auto link quests descriptions
+        $('.description').each(function () {
+            var linkedText = Autolinker.link( $(this).html() );
+            $(this).html(linkedText);
+        });
+    </script>
+{% endblock %}

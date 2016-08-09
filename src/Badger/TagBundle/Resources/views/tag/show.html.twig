@@ -1,0 +1,45 @@
+{% extends '@Gate/base-admin.html.twig' %}
+
+{% block body %}
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> / </div>
+            <a class="section" href="{{ path('admin_tag_index') }}">Tags</a>
+            <div class="divider"> / </div>
+            <div class="active section">Show tag "{{ tag.name }}"</div>
+        </div>
+    </div>
+
+    <table class="ui definition table">
+        <tbody>
+            <tr>
+                <td>UUID</td>
+                <td><pre>{{ tag.id }}</pre></td>
+            </tr>
+            <tr>
+                <td>Name</td>
+                <td>{{ tag.name }}</td>
+            </tr>
+            <tr>
+                <td>Code</td>
+                <td><pre>{{ tag.code }}</pre></td>
+            </tr>
+            <tr>
+                <td>Is default</td>
+                <td><i class="{{ true == tag.isDefault ? 'check green' : 'close red' }} icon"></i></td>
+            </tr>
+            <tr>
+                <td>Created at</td>
+                <td>{% if tag.createdAt %}{{ tag.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        {{ form_start(delete_form) }}
+        <button class="ui red left floated labeled icon button" type="submit"><i class="icon trash"></i> Delete</button>
+        {{ form_end(delete_form) }}
+        <a href="{{ path('admin_tag_edit', { 'id': tag.id }) }}" class="ui left floated labeled icon button"><i class="icon pencil"></i> Edit</a>
+    </div>
+{% endblock %}

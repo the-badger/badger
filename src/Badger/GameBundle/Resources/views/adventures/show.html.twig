@@ -1,0 +1,64 @@
+{% extends 'GateBundle::base-admin.html.twig' %}
+
+{% block body %}
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> / </div>
+            <a class="section" href="{{ path('admin_adventure_index') }}">Adventures</a>
+            <div class="divider"> / </div>
+            <div class="active section">Show adventure "{{ adventure.title }}"</div>
+        </div>
+    </div>
+
+    <table class="ui definition table">
+        <tbody>
+        <tr>
+            <td>UUID</td>
+            <td>{{ adventure.id }}</td>
+        </tr>
+        <tr>
+            <td>Title</td>
+            <td>{{ adventure.title}}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{ adventure.description|nl2br }}</td>
+        </tr>
+        <tr>
+            <td>Is step linked</td>
+            <td><i class="{{ true == adventure.isStepLinked ? 'check green' : 'close red' }} icon"></i></td>
+        </tr>
+        <tr>
+            <td>Completion badge</td>
+            <td>{{ null != adventure.badge ? adventure.badge.title : '' }}</td>
+        </tr>
+        <tr>
+            <td>Nuts</td>
+            <td>{{ adventure.rewardPoint }}</td>
+        </tr>
+        <tr>
+            <td>Steps</td>
+            <td>
+                <div class="ui steps adventure{{ 0 == adventure.isStepLinked ? ' not-linked' : '' }}">
+                    {% for step in adventure.steps %}
+                        <div class="step">
+                            <div class="content">
+                                <div class="title">{{ step.title }}</div>
+                                <div class="description">{{ step.description }}</div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div>
+        {{ form_start(delete_form) }}
+        <button class="ui red left floated labeled icon button" type="submit"><i class="icon trash"></i> Delete</button>
+        {{ form_end(delete_form) }}
+        <a href="{{ path('admin_adventure_form', { 'id': adventure.id }) }}" class="ui left floated labeled icon button"><i class="icon pencil"></i> Edit</a>
+    </div>
+{% endblock %}

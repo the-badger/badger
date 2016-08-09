@@ -1,0 +1,42 @@
+services:
+    badger.game.remover.badge:
+        class: '%badger.storage_utils.remover.base.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\Badge'
+
+    badger.game.remover.unlocked_badge:
+        class: '%badger.storage_utils.remover.base.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\UnlockedBadge'
+
+    badger.game.remover.claimed_badge:
+        class: '%badger.storage_utils.remover.base.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\ClaimedBadge'
+
+    badger.game.remover.configuration:
+        class: '%badger.storage_utils.remover.base.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\Configuration'
+
+    badger.game.remover.quest:
+        class: '%badger.storage_utils.remover.base.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\Quest'
+
+    badger.game.remover.quest_completion:
+        class: '%badger.storage_utils.remover.base.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\QuestCompletion'
+
+    badger.game.remover.adventure:
+        class: %badger.storage_utils.remover.base.class%
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\Adventure'

@@ -1,0 +1,10 @@
+Badger\GameBundle\Entity\Adventure:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: title
+    properties:
+        steps:
+            - Valid: ~
+            - Count:
+                min: 1
+                minMessage: 'adventure.min_step'

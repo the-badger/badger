@@ -1,0 +1,24 @@
+Badger\GameBundle\Entity\UnlockedBadge:
+    type: entity
+    table: unlocked_badges
+    repositoryClass: Badger\GameBundle\Doctrine\Repository\UnlockedBadgeRepository
+    fields:
+        id:
+            id: true
+            type: guid
+            generator:
+                strategy: UUID
+        unlockedDate:
+            type: datetime
+            nullable: false
+    manyToOne:
+        user:
+            targetEntity: Badger\UserBundle\Entity\User
+            joinColumn:
+                user_id:
+                    referencedColumnName: id
+        badge:
+            targetEntity: Badger\GameBundle\Entity\Badge
+            joinColumn:
+                badge_id:
+                    referencedColumnName: id

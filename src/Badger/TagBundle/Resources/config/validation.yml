@@ -1,0 +1,6 @@
+Badger\TagBundle\Entity\Tag:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: isDefault
+            repositoryMethod: findByUniqueIsDefault
+            message: tag.unique_is_default

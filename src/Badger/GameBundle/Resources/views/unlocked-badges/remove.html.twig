@@ -1,0 +1,106 @@
+{% extends 'GateBundle::base-admin.html.twig' %}
+
+{% block body %}
+    <div class="ui basic segment">
+        <div class="ui large breadcrumb">
+            <a class="section" href="{{ path('admin') }}">Admin</a>
+            <div class="divider"> /</div>
+            <a class="section" href="{{ path('admin_badge_index') }}">Badges</a>
+            <div class="divider"> /</div>
+            <div class="active section">Remove an Unlocked Badge</div>
+        </div>
+    </div>
+
+    {% for flash_message in app.session.flashbag.get('notice') %}
+        <div class="ui icon positive message">
+            <i class="checkmark icon"></i>
+            <div class="content">
+                <p>{{ flash_message }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% for flash_message in app.session.flashbag.get('error') %}
+        <div class="ui icon error message">
+            <i class="warning sign icon"></i>
+            <div class="content">
+                <p>{{ flash_message }}</p>
+            </div>
+        </div>
+    {% endfor %}
+
+    <form class="ui form" method="post">
+        <div class="ui raised segments">
+            <div class="ui segment">
+                <div class="field">
+                    <label>Select a User</label>
+                    <select name="user" id="user" style="width: 100%;">
+                    </select>
+                </div>
+                <div class="field">
+                    <label>Select a Badge</label>
+                    <select name="badge" id="badge" style="width: 100%;">
+                    </select>
+                </div>
+            </div>
+            <div class="ui secondary clearing segment">
+                <button type="submit" class="ui small red labeled icon button">
+                    <i class="fa fa-trophy icon"></i> Remove
+                </button>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var badgesJSON = '{{ badges|e('js') }}';
+        var badges = JSON.parse(badgesJSON);
+
+        var usersJSON = '{{ users|e('js') }}';
+        var users = JSON.parse(usersJSON);
+
+        badges = _.map(badges, function (badge) {
+            badge.text = badge.title;
+
+            return badge;
+        });
+
+        users = _.map(users, function (user) {
+            user.text = user;
+            user.id = user;
+
+            return user;
+        });
+
+        $('#badge').select2({
+            escapeMarkup: function (markup) { return markup; },
+            data: badges, // let our custom formatter work
+            templateResult: formatBadge // omitted for brevity, see the source of this page
+        });
+
+        $('#user').select2({
+            data: users
+        });
+
+        function formatBadge (badge) {
+            console.log(badge);
+            var markup = "<div class='select2-result-repository clearfix'>";
+
+            if (badge.imageWebPath) {
+                markup += "<div class='select2-result-repository__avatar'><img src='" + badge.imageWebPath + "' /></div>";
+            }
+
+            markup += "<div class='select2-result-repository__meta'>" +
+            "<div class='select2-result-repository__title'>" + badge.title+ "</div>";
+
+            if (badge.description) {
+                markup += "<div class='select2-result-repository__description'>" + badge.description + "</div>";
+            }
+
+            markup += "</div></div>";
+
+            return markup;
+        }
+    </script>
+{% endblock %}

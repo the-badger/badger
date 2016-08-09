@@ -1,0 +1,10 @@
+Badger\GameBundle\Entity\QuestCompletion:
+    properties:
+        user:
+            - NotNull: ~
+        quest:
+            - NotNull: ~
+        completionDate:
+            - NotNull: ~
+        pending:
+            - NotNull: ~
