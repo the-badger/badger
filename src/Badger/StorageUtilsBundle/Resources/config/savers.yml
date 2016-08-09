@@ -1,2 +1,0 @@
-parameters:
-    badger.storage_utils.saver.base.class: Badger\StorageUtilsBundle\Doctrine\Saver\BaseSaver

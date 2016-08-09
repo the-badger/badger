@@ -1,6 +1,0 @@
-services:
-    badger.user.remover.user:
-        class: '%badger.storage_utils.remover.base.class%'
-        arguments:
-            - '@doctrine.orm.entity_manager'
-            - 'Badger\UserBundle\Entity\User'

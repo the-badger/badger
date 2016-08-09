@@ -1,0 +1,178 @@
+[2016-08-08 10:19:36,667][INFO ][node                     ] [Karl Mordo] version[1.3.9], pid[8961], build[0915c73/2015-02-19T12:34:48Z]
+[2016-08-08 10:19:36,668][INFO ][node                     ] [Karl Mordo] initializing ...
+[2016-08-08 10:19:36,672][INFO ][plugins                  ] [Karl Mordo] loaded [], sites []
+[2016-08-08 10:19:38,567][INFO ][node                     ] [Karl Mordo] initialized
+[2016-08-08 10:19:38,567][INFO ][node                     ] [Karl Mordo] starting ...
+[2016-08-08 10:19:38,711][INFO ][transport                ] [Karl Mordo] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/192.168.8.128:9300]}
+[2016-08-08 10:19:38,733][INFO ][discovery                ] [Karl Mordo] elasticsearch/5xotgCuDRXS531egriJ9qQ
+[2016-08-08 10:19:41,768][INFO ][cluster.service          ] [Karl Mordo] new_master [Karl Mordo][5xotgCuDRXS531egriJ9qQ][olivier-laptop][inet[/192.168.8.128:9300]], reason: zen-disco-join (elected_as_master)
+[2016-08-08 10:19:41,789][INFO ][http                     ] [Karl Mordo] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/192.168.8.128:9200]}
+[2016-08-08 10:19:41,789][INFO ][node                     ] [Karl Mordo] started
+[2016-08-08 10:19:42,263][INFO ][gateway                  ] [Karl Mordo] recovered [1] indices into cluster_state
+[2016-08-08 16:38:27,572][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 16:38:27,722][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 16:38:27,774][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 16:38:27,884][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 16:48:31,444][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 16:48:31,482][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 16:48:31,539][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 16:48:31,581][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 16:48:31,619][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 16:48:31,670][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 16:51:34,860][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 16:51:35,004][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 16:51:35,104][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 16:51:35,118][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 16:51:35,147][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 16:51:35,189][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 16:57:17,793][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 16:57:17,906][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 16:57:18,007][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 16:57:18,015][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 16:57:18,048][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 16:57:18,131][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:06:17,585][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 17:06:17,616][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:06:17,701][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:06:17,708][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 17:06:17,735][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:06:17,817][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:15:16,815][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 17:15:16,836][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:15:16,935][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:15:16,942][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 17:15:16,964][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:15:17,047][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:42:18,411][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 17:42:18,478][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:42:18,616][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:42:18,624][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 17:42:18,659][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:42:18,802][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:46:27,022][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 17:46:27,075][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:46:27,178][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:46:27,189][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 17:46:27,294][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:46:27,402][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:48:04,977][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 17:48:05,000][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:48:05,049][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:48:05,088][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 17:48:05,113][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:48:05,200][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:49:28,582][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 17:49:28,654][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:49:28,699][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:49:28,720][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 17:49:28,758][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:49:28,893][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:50:50,776][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 17:50:50,794][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:50:50,822][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:50:50,859][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 17:50:50,895][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:50:50,972][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:51:13,016][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-08 17:51:24,462][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-08 17:51:25,624][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-08 17:51:25,730][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-08 17:51:25,815][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-08 17:51:25,897][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-08 17:51:25,961][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-08 17:51:26,017][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-08 17:51:26,092][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-08 17:51:26,161][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-08 17:51:26,297][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-08 17:51:26,989][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-08 17:51:27,249][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-08 17:55:00,402][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 17:55:00,439][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:55:00,474][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:55:00,513][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 17:55:00,533][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:55:00,563][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:57:43,598][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 17:57:43,641][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:57:43,705][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:57:43,732][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 17:57:43,775][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:57:43,816][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:59:58,128][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 17:59:58,166][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:59:58,214][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 17:59:58,249][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 17:59:58,280][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 17:59:58,325][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:03:56,031][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 18:03:56,076][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:03:56,157][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:03:56,168][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 18:03:56,195][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:03:56,291][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:06:31,192][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 18:06:31,212][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:06:31,243][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:06:31,278][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 18:06:31,308][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:06:31,348][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:08:35,823][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 18:08:35,838][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:08:35,866][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:08:35,908][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 18:08:35,920][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:08:35,945][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:18:46,391][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 18:18:46,409][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:18:46,436][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:18:46,461][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 18:18:46,502][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:18:46,532][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:23:46,022][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 18:23:46,039][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:23:46,060][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:23:46,070][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 18:23:46,158][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:23:46,194][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:26:03,641][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 18:26:03,653][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:26:03,680][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:26:03,693][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 18:26:03,748][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:26:03,842][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:27:42,569][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 18:27:42,586][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:27:42,613][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:27:42,645][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 18:27:42,678][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:27:42,709][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:28:50,429][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 18:28:50,453][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:28:50,483][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:28:50,521][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 18:28:50,536][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:28:50,555][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:30:22,991][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 18:30:23,009][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:30:23,119][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:30:23,143][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 18:30:23,177][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:30:23,210][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:32:03,599][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 18:32:03,621][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:32:03,651][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:32:03,668][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 18:32:03,709][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:32:03,737][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:33:29,535][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 18:33:29,555][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:33:29,578][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:33:29,606][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 18:33:29,631][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:33:29,655][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:34:52,182][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-08 18:34:52,197][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:34:52,222][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-08 18:34:52,251][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-08 18:34:52,277][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-08 18:34:52,303][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]

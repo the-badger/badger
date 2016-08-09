@@ -1,9 +1,0 @@
-game:
-    adventure:
-        form:
-            reward_point: Nuts earned when the adventure is over
-            badge: Badge earned when the adventure is over
-    step:
-        form:
-            reward_point: Nuts earned when the step is over
-            badge: Badge earned when the step is over

@@ -1,2 +1,0 @@
-parameters:
-    badger.storage_utils.remover.base.class: Badger\StorageUtilsBundle\Doctrine\Remover\BaseRemover

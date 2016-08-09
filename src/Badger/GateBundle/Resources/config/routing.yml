@@ -1,3 +1,0 @@
-gate:
-    resource: "@GateBundle/Controller/"
-    type:     annotation
