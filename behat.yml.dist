@@ -1,0 +1,28 @@
+default:
+    calls:
+        error_reporting: 16383
+    suites:
+        web_features:
+            contexts:
+                - Behat\Context\NavigationContext
+                - Behat\Context\UserContext
+                - Behat\MinkExtension\Context\MinkContext
+            filters:
+                tags: @web
+    extensions:
+        Behat\Symfony2Extension:
+            kernel:
+                bootstrap: app/autoload.php
+        Behat\MinkExtension:
+            base_url: http://badger.behat/
+            files_path: './features/'
+            show_auto: true
+            show_cmd: 'echo %s'
+            default_session: browserkit
+            javascript_session: zombie
+            sessions:
+                browserkit:
+                    symfony2: ~
+                zombie:
+                    zombie:
+                        node_modules_path: '%paths.base%/node_modules/'
