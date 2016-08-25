@@ -15,7 +15,9 @@ gulp.task('install', function() {
         './node_modules/selectize/dist/js/standalone/selectize.min.js',
         './node_modules/selectize/dist/css/selectize.css',
         './node_modules/selectize/dist/css/selectize.default.css',
-        './node_modules/underscore/underscore-min.js'
+        './node_modules/underscore/underscore-min.js',
+        './node_modules/mustache/mustache.min.js',
+        './node_modules/lodash/lodash.min.js'
     ]).pipe(gulp.dest('./web/vendor/dist/'));
 
     gulp.src(

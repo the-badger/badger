@@ -1,0 +1,8 @@
+parameters:
+    badger.user_bundle.normalizer.user_normalizer.class: Badger\UserBundle\Normalizer\UserNormalizer
+
+services:
+    badger.user_bundle.normalizer.user_normalizer:
+        class: "%badger.user_bundle.normalizer.user_normalizer.class%"
+        tags:
+            - { name: serializer.normalizer }

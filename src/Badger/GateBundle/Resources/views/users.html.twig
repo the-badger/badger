@@ -1,32 +1,134 @@
 {% extends '@Gate/base.html.twig' %}
 
 {% block body %}
+    <div class="panel panel-flat">
+        <div class="panel-body">
+            <form class="main-search">
+                <div class="no-margin-bottom">
+                    <div class="has-feedback has-feedback-left">
+                        <input id="search_user" type="text" class="form-control input-xlg" placeholder="Search for a user">
+                        <div class="form-control-feedback search-icon">
+                            <i class="icon-search4 text-muted text-size-base"></i>
+                            <i class="icon-spinner2 text-muted spinner" style="display: none;"></i>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- Grid -->
-    {% for row in users|batch(4) %}
-    <div class="row">
+    <div class="loader"></div>
+    <div class="users">
+        {% for row in users|batch(4) %}
+        <div class="row">
 
-        {% for user in row %}
-        <div class="col-lg-3 col-md-6">
-            <div class="panel panel-body">
-                <div class="media">
-                    <div class="media-left">
-                        <a href="{{ url('userprofile', {'username': user.username}) }}" data-popup="lightbox">
-                            <img src="{{ user.profilePicture }}" class="img-circle img-lg" alt="">
-                        </a>
-                    </div>
+            {% for user in row %}
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-body">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="{{ url('userprofile', {'username': user.username}) }}" data-popup="lightbox">
+                                <img src="{{ user.profilePicture }}" class="img-circle img-thumbnail img-lg" alt="">
+                            </a>
+                        </div>
 
-                    <div class="media-body">
-                        <h6 class="media-heading"><a class="text-default" href="{{ url('userprofile', {'username': user.username}) }}">{{ user.username }}</a></h6>
-                        <span class="text-muted">
-                        </span>
+                        <div class="media-body">
+                            <h6 class="media-heading"><a class="text-default" href="{{ url('userprofile', {'username': user.username}) }}">{{ user.username }}</a></h6>
+                            <span class="text-muted">
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
+            {% endfor %}
+
         </div>
         {% endfor %}
-
     </div>
-    {% endfor %}
     <!-- /grid -->
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var timer = 0;
+
+        $('.main-search').on('submit', function () {
+            return false;
+        });
+
+        $('#search_user').on('input', function () {
+            var token = $(this).val();
+
+            clearTimeout(timer);
+            timer = setTimeout(function() {
+                searchUser(token);
+            }, 200);
+        });
+
+        var searchUser = function (token) {
+            $('.search-icon i.icon-search4').hide();
+            $('.search-icon i.icon-spinner2').show();
+
+            var userTemplate = $('#userTemplate').html();
+            var emptyTemplate = $('#emptyTemplate').html();
+            var parseTags = [];
+            parseTags.push("[[");
+            parseTags.push("]]");
+            Mustache.parse(userTemplate, parseTags);
+            Mustache.parse(emptyTemplate, parseTags);
+
+            $('.users').html('');
+
+            $.ajax('/search/users', {
+                data: {
+                    token: token
+                }
+            }).then(function (data) {
+                var rows = _.chunk(data, 4);
+                rows.forEach(function (row) {
+                    $('.users').append(Mustache.render(userTemplate, { users: row }));
+                });
+
+                if (0 === rows.length) {
+                    $('.users').append(Mustache.render(emptyTemplate))
+                }
+
+                $('.search-icon i.icon-search4').show();
+                $('.search-icon i.icon-spinner2').hide();
+            });
+        };
+    </script>
+
+    <script id="userTemplate" type="x-tmpl-mustache">
+        <div class="row">
+            [[ #users ]]
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-body">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="/user/[[ username ]]" data-popup="lightbox">
+                                <img src="[[ profilePicture ]]" class="img-circle img-thumbnail img-lg" alt="">
+                            </a>
+                        </div>
+
+                        <div class="media-body">
+                            <h6 class="media-heading"><a class="text-default" href="/user/[[ username ]]">[[ username ]]</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            [[ /users ]]
+        </div>
+    </script>
+
+    <script id="emptyTemplate" type="x-tmpl-mustache">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert bg-warning alert-styled-left">
+                    <span class="text-semibold">No result!</span> We can't find any user with this search
+                </div>
+            </div>
+        </div>
+    </script>
 {% endblock %}
