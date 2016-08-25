@@ -3,7 +3,6 @@
 namespace Badger\UserBundle\Normalizer;
 
 use Badger\UserBundle\Entity\UserInterface;
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\PersistentCollection;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
@@ -44,11 +43,11 @@ class UserNormalizer implements NormalizerInterface
      *
      * @return array
      */
-    private function normalizeTags(PersistentCollection $tags)
+    private function normalizeTags(array $tags)
     {
         $normalizedTags = [];
         foreach ($tags as $tag) {
-            $normalizedTags[] = [(string) $tag->getName()];
+            $normalizedTags[] = (string) $tag->getName();
         }
 
         return $normalizedTags;
