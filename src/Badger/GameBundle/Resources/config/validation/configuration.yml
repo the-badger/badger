@@ -1,4 +1,0 @@
-Badger\GameBundle\Entity\Configuration:
-    constraints:
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
-            fields: code
