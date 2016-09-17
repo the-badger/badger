@@ -41,8 +41,7 @@ services:
 
     badger.game.repository.adventure:
         class: '%badger.game.repository.adventure.class%'
-        factory_service: doctrine.orm.entity_manager
-        factory_method: getRepository
+        factory: ['@doctrine.orm.entity_manager', 'getRepository']
         arguments:
             - Badger\GameBundle\Entity\Adventure
 
