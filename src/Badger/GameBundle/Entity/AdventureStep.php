@@ -12,25 +12,28 @@ namespace Badger\GameBundle\Entity;
 class AdventureStep implements AdventureStepInterface
 {
     /** @var int */
-    private $id;
+    protected $id;
 
     /** @var string */
-    private $title;
+    protected $title;
 
     /** @var string */
-    private $description;
+    protected $description;
 
     /** @var int */
-    private $position;
+    protected $position;
 
     /** @var int */
-    private $rewardPoint;
+    protected $rewardPoint;
+
+    /** @var bool */
+    protected $needProof;
 
     /** @var Badge */
-    private $badge;
+    protected $badge;
 
     /** @var Adventure */
-    private $adventure;
+    protected $adventure;
 
     /**
      * {@inheritdoc}
@@ -110,6 +113,24 @@ class AdventureStep implements AdventureStepInterface
     public function getRewardPoint()
     {
         return $this->rewardPoint;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function needProof()
+    {
+        return $this->needProof;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setNeedProof($needProof)
+    {
+        $this->needProof = $needProof;
+
+        return $this;
     }
 
     /**

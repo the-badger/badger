@@ -33,6 +33,9 @@ class Badge implements BadgeInterface, JsonSerializable
     /** @var ArrayCollection */
     protected $tags;
 
+    /** @var bool */
+    protected $needProof;
+
     /**
      * {@inheritdoc}
      */
@@ -136,6 +139,24 @@ class Badge implements BadgeInterface, JsonSerializable
 
         // clean up the file property as you won't need it anymore
         $this->file = null;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function needProof()
+    {
+        return $this->needProof;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setNeedProof($needProof)
+    {
+        $this->needProof = $needProof;
+
+        return $this;
     }
 
     /**

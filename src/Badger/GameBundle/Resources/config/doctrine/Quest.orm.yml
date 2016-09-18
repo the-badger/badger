@@ -26,6 +26,10 @@ Badger\GameBundle\Entity\Quest:
         endDate:
             type: date
             nullable: false
+        needProof:
+            type: boolean
+            nullable: false
+            name: need_proof
     manyToMany:
         tags:
             targetEntity: Badger\TagBundle\Entity\Tag

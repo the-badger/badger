@@ -25,6 +25,9 @@ class ClaimedBadge implements ClaimedBadgeInterface
     /** @var \DateTime */
     protected $claimedDate;
 
+    /** @var string */
+    protected $proof;
+
     /**
      * {@inheritdoc}
      */
@@ -87,5 +90,21 @@ class ClaimedBadge implements ClaimedBadgeInterface
     public function setClaimedDate($claimedDate)
     {
         $this->claimedDate = $claimedDate;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getProof()
+    {
+        return $this->proof;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setProof($proof)
+    {
+        $this->proof = $proof;
     }
 }

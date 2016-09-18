@@ -35,6 +35,7 @@
         <tr><th class="single line">User</th>
             <th>Badge</th>
             <th>Claimed date</th>
+            <th>Proof</th>
             <th>Accept that claim?</th>
         </tr></thead>
         <tbody>
@@ -50,6 +51,9 @@
             </td>
             <td>
                 {{ claimedBadge.claimedDate|date("d/m/Y") }}
+            </td>
+            <td>
+                <p>{{ claimedBadge.proof|nl2br }}</p>
             </td>
             <td class="center aligned">
                 <div class="ui tiny buttons">

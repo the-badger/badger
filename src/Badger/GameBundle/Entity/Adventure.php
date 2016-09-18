@@ -14,25 +14,28 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Adventure implements AdventureInterface
 {
     /** @var int */
-    private $id;
+    protected $id;
 
     /** @var string */
-    private $title;
+    protected $title;
 
     /** @var string */
-    private $description;
+    protected $description;
 
     /** @var int */
-    private $rewardPoint;
+    protected $rewardPoint;
 
     /** @var bool */
-    private $isStepLinked;
+    protected $isStepLinked;
+
+    /** @var bool */
+    protected $needProof;
 
     /** @var Badge */
-    private $badge;
+    protected $badge;
 
     /** @var ArrayCollection */
-    private $steps;
+    protected $steps;
 
     public function __construct()
     {
@@ -117,6 +120,24 @@ class Adventure implements AdventureInterface
     public function isStepLinked()
     {
         return $this->isStepLinked;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function needProof()
+    {
+        return $this->needProof;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setNeedProof($needProof)
+    {
+        $this->needProof = $needProof;
+
+        return $this;
     }
 
     /**

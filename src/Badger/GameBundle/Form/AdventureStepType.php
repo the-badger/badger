@@ -29,6 +29,7 @@ class AdventureStepType extends AbstractType
             ->add('rewardPoint', null, [
                 'label' => 'game.step.form.reward_point'
             ])
+            ->add('needProof')
             ->add('badge', 'entity', [
                 'class'      => 'GameBundle:Badge',
                 'property'   => 'title',

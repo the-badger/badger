@@ -31,6 +31,9 @@ class Quest implements QuestInterface
     /** @var \DateTime */
     protected $endDate;
 
+    /** @var bool */
+    protected $needProof;
+
     /** @var ArrayCollection */
     protected $tags;
 
@@ -131,6 +134,24 @@ class Quest implements QuestInterface
     public function setEndDate($endDate)
     {
         $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function needProof()
+    {
+        return $this->needProof;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setNeedProof($needProof)
+    {
+        $this->needProof = $needProof;
 
         return $this;
     }

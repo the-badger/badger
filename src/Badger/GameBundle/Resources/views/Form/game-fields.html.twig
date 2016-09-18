@@ -46,13 +46,14 @@
                 <div class="four wide field">
                     {{ form_row(form.rewardPoint) }}
                 </div>
-                <div class="two wide field">
-                    {{ form_row(form.position) }}
-                </div>
                 <div class="ten wide field">
                     {{ form_row(form.badge) }}
                 </div>
+                <div class="two wide field">
+                    {{ form_row(form.position) }}
+                </div>
             </div>
+            {{ form_row(form.needProof) }}
         </div>
         <div class="three wide field">
             <a href="#" class="ui button red mini right floated remove-step"><i class="close icon"></i> Delete step</a>

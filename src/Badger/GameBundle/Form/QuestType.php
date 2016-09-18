@@ -23,6 +23,7 @@ class QuestType extends AbstractType
             ->add('reward', 'integer')
             ->add('startDate', 'date', ['widget' => 'single_text', 'format' => 'yyyy/MM/dd'])
             ->add('endDate', 'date', ['widget' => 'single_text', 'format' => 'yyyy/MM/dd'])
+            ->add('needProof')
             ->add('tags', 'entity', [
                 'label'    => 'Tagged in',
                 'multiple' => true,

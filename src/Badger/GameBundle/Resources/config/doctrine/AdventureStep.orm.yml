@@ -19,6 +19,10 @@ Badger\GameBundle\Entity\AdventureStep:
             nullable: true
         rewardPoint:
             type: integer
+        needProof:
+            type: boolean
+            nullable: false
+            name: need_proof
     manyToOne:
         adventure:
             targetEntity: Badger\GameBundle\Entity\Adventure

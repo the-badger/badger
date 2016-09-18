@@ -20,6 +20,10 @@ Badger\GameBundle\Entity\Badge:
             type: string
             length: 1024
             nullable: true
+        needProof:
+            type: boolean
+            nullable: false
+            name: need_proof
     manyToMany:
         tags:
             targetEntity: Badger\TagBundle\Entity\Tag
