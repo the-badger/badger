@@ -3,7 +3,10 @@
 namespace Badger\GameBundle\Notifier;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Slack implementation of the NotifierInterface.
@@ -18,12 +21,17 @@ class SlackNotifier implements NotifierInterface
     /** @var string */
     private $webhookUrl;
 
+    /** @var LoggerInterface */
+    private $logger;
+
     /**
-     * @param string $webhookUrl
+     * @param string          $webhookUrl
+     * @param LoggerInterface $logger
      */
-    public function __construct($webhookUrl)
+    public function __construct($webhookUrl, LoggerInterface $logger)
     {
         $this->webhookUrl = $webhookUrl;
+        $this->logger = $logger;
     }
 
     /**
@@ -39,6 +47,28 @@ class SlackNotifier implements NotifierInterface
             json_encode($data)
         );
 
-        $client->sendAsync($request, ['timeout' => 2]);
+        $promise = $client->sendAsync($request, ['timeout' => 10]);
+
+        $promise->then(
+            function (ResponseInterface $res) use ($data) {
+                $this->logger->info(
+                    sprintf(
+                        'Request to SLACK webhook OK [%s] with data: %s',
+                        $res->getStatusCode(),
+                        json_encode($data)
+                    )
+                );
+            },
+            function (RequestException $e) {
+                $this->logger->error(
+                    sprintf(
+                        'Request to SLACK webhook FAILED with message: %s',
+                        $e->getMessage()
+                    )
+                );
+            }
+        );
+
+        $promise->wait(false);
     }
 }
