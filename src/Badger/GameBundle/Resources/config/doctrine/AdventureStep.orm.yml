@@ -21,16 +21,16 @@ Badger\GameBundle\Entity\AdventureStep:
             type: integer
     manyToOne:
         adventure:
-            targetEntity: Badger\GameBundle\Entity\Adventure
+            targetEntity:  Badger\GameBundle\Entity\Adventure
             inversedBy: steps
-            joinTable:
-                name: adventure_badge
-                joinColumns:
-                    adventure_id:
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    badge_id:
-                        referencedColumnName: id
+            joinColumn:
+                name: adventure_id
+                referencedColumnName: id
+        badge:
+            targetEntity:  Badger\GameBundle\Entity\Badge
+            joinColumn:
+                name: badge_id
+                referencedColumnName: id
     oneToMany:
         completions:
             targetEntity: Badger\GameBundle\Entity\AdventureStepCompletion
