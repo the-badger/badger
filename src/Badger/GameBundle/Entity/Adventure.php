@@ -126,7 +126,7 @@ class Adventure implements AdventureInterface
     /**
      * {@inheritdoc}
      */
-    public function setBadge(Badge $badge)
+    public function setBadge(BadgeInterface $badge)
     {
         $this->badge = $badge;
 

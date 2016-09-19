@@ -30,7 +30,7 @@ services:
             - 'Badger\GameBundle\Entity\QuestCompletion'
 
     badger.game.remover.adventure:
-        class: %badger.storage_utils.remover.base.class%
+        class: '%badger.storage_utils.remover.base.class%'
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\GameBundle\Entity\Adventure'

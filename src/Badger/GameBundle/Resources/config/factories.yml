@@ -24,7 +24,7 @@ services:
         class: '%badger.game.quest_completion.factory.class%'
 
     badger.game.adventure.factory:
-        class: %badger.game.adventure.factory.class%
+        class: '%badger.game.adventure.factory.class%'
 
     badger.game.adventure_step_completion.factory:
         class: '%badger.game.adventure_step_completion.factory.class%'

@@ -40,7 +40,7 @@ services:
             - Badger\GameBundle\Entity\QuestCompletion
 
     badger.game.repository.adventure:
-        class: %badger.game.repository.adventure.class%
+        class: '%badger.game.repository.adventure.class%'
         factory_service: doctrine.orm.entity_manager
         factory_method: getRepository
         arguments:

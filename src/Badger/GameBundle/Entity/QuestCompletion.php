@@ -17,7 +17,7 @@ class QuestCompletion implements QuestCompletionInterface
     /** @var UserInterface */
     protected $user;
 
-    /** @var BadgeInterface */
+    /** @var QuestInterface */
     protected $quest;
 
     /** @var \DateTime */

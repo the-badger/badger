@@ -31,8 +31,7 @@ class UnlockedBadgeRepository extends EntityRepository implements
         $qb->select('b.id')
             ->from('GameBundle:UnlockedBadge', 'ub')
             ->leftJoin('ub.badge', 'b')
-            ->where($qb->expr()->eq('ub.user', '?1'))
-            ->setParameter(1, $user);
+            ->where('ub.user = :user')->setParameter(':user', $user);
 
         $queryResult = $qb->getQuery()->getScalarResult();
 
