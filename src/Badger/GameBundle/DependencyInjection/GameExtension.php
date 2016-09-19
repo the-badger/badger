@@ -25,5 +25,6 @@ class GameExtension extends Extension
         $loader->load('repositories.yml');
         $loader->load('savers.yml');
         $loader->load('services.yml');
+        $loader->load('unlockers.yml');
     }
 }
