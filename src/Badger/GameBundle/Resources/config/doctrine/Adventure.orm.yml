@@ -1,6 +1,6 @@
 Badger\GameBundle\Entity\Adventure:
     type: entity
-    table: adventure
+    table: adventures
     repositoryClass: Badger\GameBundle\Doctrine\Repository\AdventureRepository
     fields:
         id:

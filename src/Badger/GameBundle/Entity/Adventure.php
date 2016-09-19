@@ -207,5 +207,33 @@ class Adventure implements AdventureInterface
 
         return $this;
     }
+
+    /**
+     * @return int
+     */
+    public function countAllNuts()
+    {
+        $nuts = $this->getRewardPoint();
+
+        foreach ($this->steps as $step) {
+            $nuts += $step->getRewardPoint();
+        }
+
+        return $nuts;
+    }
+
+    /**
+     * @return int
+     */
+    public function countAllBadges()
+    {
+        $badgesCount = (null === $this->getBadge()) ? 0 : 1;
+
+        foreach ($this->steps as $step) {
+            $badgesCount += (null === $step->getBadge()) ? 0 : 1;
+        }
+
+        return $badgesCount;
+    }
 }
 
