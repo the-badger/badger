@@ -31,3 +31,8 @@ Badger\GameBundle\Entity\AdventureStep:
                 inverseJoinColumns:
                     badge_id:
                         referencedColumnName: id
+    oneToMany:
+        completions:
+            targetEntity: Badger\GameBundle\Entity\AdventureStepCompletion
+            mappedBy: step
+            fetch: EAGER
