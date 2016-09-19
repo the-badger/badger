@@ -43,6 +43,13 @@ class AdventureType extends AbstractType
                 'by_reference' => false,
                 'label'        => false
             ])
+            ->add('tags', EntityType::class, [
+                'label'        => 'Tagged in',
+                'multiple'     => true,
+                'choice_label' => 'name',
+                'required'     => false,
+                'class'        => 'Badger\TagBundle\Entity\Tag'
+            ])
         ;
     }
 

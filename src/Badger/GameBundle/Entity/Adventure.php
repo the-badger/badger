@@ -2,6 +2,7 @@
 
 namespace Badger\GameBundle\Entity;
 
+use Badger\TagBundle\Entity\TagInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -33,6 +34,9 @@ class Adventure implements AdventureInterface
 
     /** @var ArrayCollection */
     private $steps;
+
+    /** @var ArrayCollection */
+    private $tags;
 
     public function __construct()
     {
@@ -176,6 +180,32 @@ class Adventure implements AdventureInterface
     public function getSteps()
     {
         return $this->steps;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTags(ArrayCollection $tags)
+    {
+        $this->tags = $tags;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addTag(TagInterface $tag)
+    {
+        $this->tags[] = $tag;
+
+        return $this;
     }
 }
 

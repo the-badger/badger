@@ -2,6 +2,7 @@
 
 namespace Badger\TagBundle\Entity;
 
+use Badger\GameBundle\Entity\AdventureInterface;
 use Badger\GameBundle\Entity\BadgeInterface;
 use Badger\GameBundle\Entity\QuestInterface;
 
@@ -98,4 +99,14 @@ interface TagInterface
      * @param QuestInterface[] $quests
      */
     public function setQuests(array $quests);
+
+    /**
+     * @return AdventureInterface[]
+     */
+    public function getAdventures();
+
+    /**
+     * @param AdventureInterface[] $adventures
+     */
+    public function setAdventures($adventures);
 }
