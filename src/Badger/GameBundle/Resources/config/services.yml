@@ -16,3 +16,4 @@ services:
         class: '%badger.notifier.slack.class%'
         arguments:
             - '%slack_webhook_url%'
+            - '@logger'
