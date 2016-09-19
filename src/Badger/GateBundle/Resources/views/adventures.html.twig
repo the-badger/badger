@@ -1,0 +1,119 @@
+{% extends '@Gate/base.html.twig' %}
+
+{% block body %}
+    <!-- Grid -->
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+            <div class="tabbable">
+                <ul class="nav nav-tabs nav-tabs-bottom nav-justified">
+                    <li class="active"><a href="#available" data-toggle="tab">Available</a></li>
+                    <li><a href="#completed" data-toggle="tab">Completed</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="available">
+                        {% if availableAdventures is empty %}
+                            <div class="panel">
+                                <div class="panel-body text-center">
+                                    <div class="icon-object border-info-400 text-info"><i class="icon-trophy3"></i></div>
+                                    <h5 class="text-semibold">No adventure available</h5>
+                                    <p class="mb-15">There is no adventure available for now, come back later!</p>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <div class="panel panel-flat">
+                            <ul class="media-list media-list-linked media-list-bordered">
+
+                                {% for adventure in availableAdventures %}
+                                <li class="media">
+                                    <a href="{{ url('viewadventure', {id: adventure.id}) }}" class="media-link">
+                                        <div class="media-left">
+                                            <span class="btn border-primary text-primary btn-flat btn-icon btn-rounded btn-sm"><i class="icon-trophy3"></i></span>
+                                        </div>
+
+                                        <div class="media-body">
+                                            <h6 class="media-heading text-semibold">{{ adventure.title }}</h6>
+
+                                            <div class="media-annotation mt-5">
+                                                <span class="mr-10">
+                                                    <i class="icon-medal2"></i> <b>{{ adventure.countAllBadges }}</b> <small>badges to unlock</small>
+                                                </span>
+                                                <span class="mr-10">
+                                                    <i class="icon-piggy-bank"></i> <b>{{ adventure.countAllNuts }}</b> <small>nuts to win</small>
+                                                </span>
+                                                <span class="mr-10">
+                                                    {% if adventure.isStepLinked %}
+                                                        <i class="icon-link"></i> <small>steps are <b>ordered</b></small>
+                                                    {% else %}
+                                                        <i class="icon-link"></i> <small>steps are <b>not ordered</b></small>
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="media-right media-middle">
+                                            <span class="badge badge-primary">{{ adventure.completed }} / {{ adventure.steps|length }}</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" id="completed">
+                        {% if completedAdventures is empty %}
+                            <div class="panel">
+                                <div class="panel-body text-center">
+                                    <div class="icon-object border-success-400 text-success"><i class="icon-stack-check"></i></div>
+                                    <h5 class="text-semibold">No completed adventure</h5>
+                                    <p class="mb-15">This tab will list all the adventures you have completed. Let's have some work!</p>
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        <div class="panel panel-flat">
+                            <ul class="media-list media-list-linked media-list-bordered">
+
+                                {% for adventure in completedAdventures %}
+                                    <li class="media">
+                                        <a href="{{ url('viewadventure', {id: adventure.id}) }}" class="media-link">
+                                            <div class="media-left">
+                                                <span class="btn border-success text-success btn-flat btn-icon btn-rounded btn-sm"><i class="icon-trophy3"></i></span>
+                                            </div>
+
+                                            <div class="media-body">
+                                                <h6 class="media-heading text-semibold">{{ adventure.title }}</h6>
+
+                                                <div class="media-annotation mt-5">
+                                                <span class="mr-10">
+                                                    <i class="icon-medal2"></i> <b>{{ adventure.countAllBadges }}</b> <small>badges unlocked</small>
+                                                </span>
+                                                <span class="mr-10">
+                                                    <i class="icon-piggy-bank"></i> <b>{{ adventure.countAllNuts }}</b> <small>nuts won</small>
+                                                </span>
+                                                <span class="mr-10">
+                                                    {% if adventure.isStepLinked %}
+                                                        <i class="icon-link"></i> <small>steps are <b>ordered</b></small>
+                                                    {% else %}
+                                                        <i class="icon-link"></i> <small>steps are <b>not ordered</b></small>
+                                                    {% endif %}
+                                                </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /grid -->
+{% endblock %}

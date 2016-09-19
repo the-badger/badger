@@ -2,6 +2,8 @@
 
 namespace Badger\GameBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Adventure Step
  *
@@ -31,6 +33,9 @@ class AdventureStep implements AdventureStepInterface
 
     /** @var Adventure */
     private $adventure;
+
+    /** @var ArrayCollection */
+    private $completions;
 
     /**
      * {@inheritdoc}
@@ -146,6 +151,22 @@ class AdventureStep implements AdventureStepInterface
     public function getAdventure()
     {
         return $this->adventure;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCompletions()
+    {
+        return $this->completions;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCompletions($completions)
+    {
+        $this->completions = $completions;
     }
 }
 

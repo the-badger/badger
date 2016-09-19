@@ -28,3 +28,6 @@ Badger\TagBundle\Entity\Tag:
         quests:
             targetEntity: Badger\GameBundle\Entity\Quest
             mappedBy: tags
+        adventures:
+            targetEntity: Badger\GameBundle\Entity\Adventure
+            mappedBy: tags

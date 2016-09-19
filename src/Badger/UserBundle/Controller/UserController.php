@@ -2,13 +2,12 @@
 
 namespace Badger\UserBundle\Controller;
 
+use Badger\UserBundle\Entity\User;
+use Badger\UserBundle\Form\UserType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-use Badger\UserBundle\Entity\User;
-use Badger\UserBundle\Form\UserType;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

@@ -2,6 +2,8 @@
 
 namespace Badger\GameBundle\Repository;
 
+use Badger\GameBundle\Entity\BadgeInterface;
+use Badger\UserBundle\Entity\UserInterface;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Badger\TagBundle\Entity\TagInterface;
 use Badger\UserBundle\Entity\User;
@@ -23,6 +25,16 @@ interface UnlockedBadgeRepositoryInterface extends ObjectRepository
      * @return array
      */
     public function getUnlockedBadgeIdsByUser(User $user);
+
+    /**
+     * Return whether the given $user has the given $badge.
+     *
+     * @param UserInterface  $user
+     * @param BadgeInterface $badge
+     *
+     * @return bool
+     */
+    public function userHasBadge(UserInterface $user, BadgeInterface $badge);
 
 
     /**

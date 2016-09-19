@@ -9,7 +9,7 @@ use Badger\UserBundle\Entity\UserInterface;
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-class QuestCompletion implements QuestCompletionInterface
+class AdventureStepCompletion implements AdventureStepCompletionInterface
 {
     /** @var string */
     protected $id;
@@ -17,8 +17,8 @@ class QuestCompletion implements QuestCompletionInterface
     /** @var UserInterface */
     protected $user;
 
-    /** @var QuestInterface */
-    protected $quest;
+    /** @var AdventureStepInterface */
+    protected $step;
 
     /** @var \DateTime */
     protected $completionDate;
@@ -61,17 +61,17 @@ class QuestCompletion implements QuestCompletionInterface
     /**
      * {@inheritdoc}
      */
-    public function getQuest()
+    public function getAdventureStep()
     {
-        return $this->quest;
+        return $this->step;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setQuest($quest)
+    public function setAdventureStep(AdventureStepInterface $step)
     {
-        $this->quest = $quest;
+        $this->step = $step;
     }
 
     /**

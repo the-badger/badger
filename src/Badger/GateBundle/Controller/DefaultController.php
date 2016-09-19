@@ -5,7 +5,6 @@ namespace Badger\GateBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -117,7 +116,7 @@ class DefaultController extends Controller
             'badge' => $badge
         ]);
 
-        $isUnlocked = array_filter($unlockedBadges, function ($unlock) use ($user) {
+        $isUnlocked = array_filter($unlockedBadges, function($unlock) use ($user) {
             return $unlock->getUser()->getId() === $user->getId();
         });
 
@@ -173,6 +172,42 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->persist($claimedBadge);
         $em->flush();
+
+        return new JsonResponse();
+    }
+
+    /**
+     * @Route("/claim/step/{id}", name="claimstep")
+     * @param int $id
+     *
+     * @return JsonResponse
+     */
+    public function claimStepAction($id)
+    {
+        $user = $this->getUser();
+        $step = $this->get('badger.game.repository.adventure_step')->find($id);
+
+        if (null === $step) {
+            return new JsonResponse('No step with this id.', 404);
+        }
+
+        if (!$this->get('security.authorization_checker')->isGranted('view', $step->getAdventure())) {
+            return new JsonResponse('No step with this id.', 404);
+        }
+
+        $stepCompletion = $this->get('badger.game.repository.adventure_step_completion')->findOneBy([
+            'user' => $user,
+            'step' => $step
+        ]);
+
+        if (null !== $stepCompletion) {
+            return new JsonResponse('This step is already claimed.', 400);
+        }
+
+        $stepCompletionFactory = $this->get('badger.game.adventure_step_completion.factory');
+        $stepCompletion = $stepCompletionFactory->create($user, $step);
+
+        $this->get('badger.game.saver.adventure_step_completion')->save($stepCompletion);
 
         return new JsonResponse();
     }
@@ -262,6 +297,73 @@ class DefaultController extends Controller
             'countCompletedQuests' => count($questCompletions),
             'claimedQuestIds'      => $claimedQuestIds,
             'status'               => $status
+        ]);
+    }
+
+    /**
+     * @Route("/adventures", name="adventures")
+     *
+     * @return Response
+     */
+    public function adventureListAction()
+    {
+        $user = $this->getUser();
+
+        $availableAdventures = $this->get('badger.game.repository.adventure')
+            ->getAvailableAdventuresForUser($user);
+
+        $completedAdventures = $this->get('badger.game.repository.adventure')
+            ->getCompletedAdventuresForUser($user);
+
+        $completedStepsByAdventure = $this->get('badger.game.repository.adventure_step_completion')
+            ->userCompletedSteps($user);
+
+        foreach ($availableAdventures as $adventure) {
+            $adventure->completed = '0';
+
+            foreach ($completedStepsByAdventure as $data) {
+                if ($adventure->getId() === $data['adventure']->getId()) {
+                    $adventure->completed = $data['completions'];
+                }
+            }
+        }
+
+        return $this->render('@Gate/adventures.html.twig', [
+            'availableAdventures' => $availableAdventures,
+            'completedAdventures' => $completedAdventures
+        ]);
+    }
+
+    /**
+     * @Route("/adventures/{id}", name="viewadventure")
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function adventureViewAction($id)
+    {
+        $user = $this->getUser();
+        $adventure = $this->get('badger.game.repository.adventure')
+            ->find($id);
+
+        $completedSteps = $this->get('badger.game.repository.adventure_step_completion')
+            ->userAdventureCompletedSteps($user, $adventure);
+
+        $claimedSteps = $this->get('badger.game.repository.adventure_step_completion')
+            ->userAdventureClaimedSteps($user, $adventure);
+
+        $progression = count($completedSteps) * 100 / count($adventure->getSteps());
+
+        $totalStep = count($adventure->getSteps());
+        $isAdventureComplete = count($completedSteps) === $totalStep;
+
+        return $this->render('@Gate/view-adventure.html.twig', [
+            'adventure' => $adventure,
+            'completedSteps' => $completedSteps,
+            'claimedSteps' => $claimedSteps,
+            'progression' => $progression,
+            'isAdventureComplete' => $isAdventureComplete
         ]);
     }
 

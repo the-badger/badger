@@ -1,6 +1,6 @@
 Badger\GameBundle\Entity\Adventure:
     type: entity
-    table: adventure
+    table: adventures
     repositoryClass: Badger\GameBundle\Doctrine\Repository\AdventureRepository
     fields:
         id:
@@ -19,6 +19,18 @@ Badger\GameBundle\Entity\Adventure:
             type: integer
         isStepLinked:
             type: boolean
+    manyToMany:
+        tags:
+            targetEntity: Badger\TagBundle\Entity\Tag
+            inversedBy: adventures
+            joinTable:
+                name: adventure_tags
+                joinColumns:
+                    adventure_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    tag_id:
+                        referencedColumnName: id
     oneToMany:
         steps:
             orderBy: { 'position': 'ASC' }

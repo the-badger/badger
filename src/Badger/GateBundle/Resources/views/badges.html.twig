@@ -15,11 +15,11 @@
                 {% if tag.badges is not empty %}
                 <div class="tab-pane {{ 1 == loop.index ? 'active' : ''}}" id="{{ tag.code }}">
                     <!-- Latest added -->
-                    {% for row in tag.badges|batch(3) %}
+                    {% for row in tag.badges|batch(2) %}
                     <div class="row">
 
                         {% for badge in row %}
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             {% if badge.id in unlockedBadgesIds %}
                             <div class="panel border-lg border-success" style="box-shadow: 0 0 15px -4px rgba(2,168,41,1);">
                             {% else %}

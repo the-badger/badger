@@ -2,6 +2,8 @@
 
 namespace Badger\GameBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Adventure Step interface
  *
@@ -113,4 +115,14 @@ interface AdventureStepInterface
      * @return AdventureInterface
      */
     public function getAdventure();
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCompletions();
+
+    /**
+     * @param ArrayCollection $completions
+     */
+    public function setCompletions($completions);
 }

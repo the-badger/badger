@@ -83,7 +83,7 @@ class QuestController extends Controller
      * Displays a form to edit an existing Quest entity.
      *
      * @param Request $request
-     * @param string  $quest
+     * @param int     $id
      *
      * @return RedirectResponse|Response
      */

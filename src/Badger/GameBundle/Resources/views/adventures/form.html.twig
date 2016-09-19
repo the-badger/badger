@@ -33,6 +33,7 @@
 
             {{ form_row(form.description) }}
             {{ form_row(form.badge) }}
+            {{ form_row(form.tags) }}
             {{ form_row(form.isStepLinked) }}
 
             <div class="ui horizontal divider">
@@ -60,6 +61,10 @@
         var stepCount = '{{ form.steps|length }}';
 
         $(document).ready(function() {
+            $('#adventure_tags').selectize({
+                plugins: ['remove_button'],
+            });
+
             $('#add-another-step').click(function(e) {
                 e.preventDefault();
 

@@ -29,7 +29,7 @@ interface QuestRepositoryInterface extends ObjectRepository
      * @param string $field
      * @param string $order
      *
-     * @return ArrayCollection
+     * @return array
      */
     public function getQuestsOrdered($field, $order = 'DESC');
 

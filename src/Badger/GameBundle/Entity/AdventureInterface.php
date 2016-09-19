@@ -2,6 +2,7 @@
 
 namespace Badger\GameBundle\Entity;
 
+use Badger\TagBundle\Taggable\TaggableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -11,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
  */
-interface AdventureInterface
+interface AdventureInterface extends TaggableInterface
 {
     /**
      * Get id
@@ -87,16 +88,16 @@ interface AdventureInterface
     /**
      * Set badge
      *
-     * @param Badge $badge
+     * @param BadgeInterface $badge
      *
      * @return AdventureInterface
      */
-    public function setBadge(Badge $badge);
+    public function setBadge(BadgeInterface $badge);
 
     /**
      * Get badge
      *
-     * @return Badge
+     * @return BadgeInterface|null
      */
     public function getBadge();
 

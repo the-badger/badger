@@ -2,6 +2,7 @@
 
 namespace Badger\GameBundle\Entity;
 
+use Badger\TagBundle\Entity\TagInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -33,6 +34,9 @@ class Adventure implements AdventureInterface
 
     /** @var ArrayCollection */
     private $steps;
+
+    /** @var ArrayCollection */
+    private $tags;
 
     public function __construct()
     {
@@ -122,7 +126,7 @@ class Adventure implements AdventureInterface
     /**
      * {@inheritdoc}
      */
-    public function setBadge(Badge $badge)
+    public function setBadge(BadgeInterface $badge)
     {
         $this->badge = $badge;
 
@@ -176,6 +180,60 @@ class Adventure implements AdventureInterface
     public function getSteps()
     {
         return $this->steps;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTags(ArrayCollection $tags)
+    {
+        $this->tags = $tags;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addTag(TagInterface $tag)
+    {
+        $this->tags[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function countAllNuts()
+    {
+        $nuts = $this->getRewardPoint();
+
+        foreach ($this->steps as $step) {
+            $nuts += $step->getRewardPoint();
+        }
+
+        return $nuts;
+    }
+
+    /**
+     * @return int
+     */
+    public function countAllBadges()
+    {
+        $badgesCount = (null === $this->getBadge()) ? 0 : 1;
+
+        foreach ($this->steps as $step) {
+            $badgesCount += (null === $step->getBadge()) ? 0 : 1;
+        }
+
+        return $badgesCount;
     }
 }
 

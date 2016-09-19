@@ -34,7 +34,13 @@ services:
             - 'Badger\GameBundle\Entity\QuestCompletion'
 
     badger.game.saver.adventure:
-        class: %badger.storage_utils.saver.base.class%
+        class: '%badger.storage_utils.saver.base.class%'
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\GameBundle\Entity\Adventure'
+
+    badger.game.saver.adventure_step_completion:
+        class: '%badger.storage_utils.saver.base.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\GameBundle\Entity\AdventureStepCompletion'
