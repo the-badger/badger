@@ -22,3 +22,6 @@ Badger\GameBundle\Entity\UnlockedBadge:
             joinColumn:
                 badge_id:
                     referencedColumnName: id
+    uniqueConstraints:
+        only_one_unlock_idx:
+            columns: [ user_id, badge_id ]
