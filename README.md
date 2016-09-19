@@ -9,11 +9,11 @@
 Badger is a gamification platform initially developed as an internal project by [Akeneo](http://www.akeneo.com).
 
 ## Prerequisite
-- PHP 5.5+
+- PHP 5.6+
 - MySQL
 - Composer
 - NodeJS & NPM _(only used to grab front JS dependencies)_
-- Elasticsearch
+- Elasticsearch 1.7.x (**not compatible with 2.x**)
 
 ## Installation
 Badger is based on the great Symfony framework. **If you encounter some installation errors**,
