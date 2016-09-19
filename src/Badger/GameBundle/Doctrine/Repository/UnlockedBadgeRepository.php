@@ -2,7 +2,9 @@
 
 namespace Badger\GameBundle\Doctrine\Repository;
 
+use Badger\GameBundle\Entity\BadgeInterface;
 use Badger\GameBundle\Repository\TagSearchableRepositoryInterface;
+use Badger\UserBundle\Entity\UserInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
@@ -35,6 +37,20 @@ class UnlockedBadgeRepository extends EntityRepository implements
         $queryResult = $qb->getQuery()->getScalarResult();
 
         return array_column($queryResult, 'id');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function userHasBadge(UserInterface $user, BadgeInterface $badge)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('COUNT(ub.id)')
+            ->from('GameBundle:UnlockedBadge', 'ub')
+            ->where('ub.user = :user')->setParameter(':user', $user)
+            ->andWhere('ub.badge = :badge')->setParameter(':badge', $badge);
+
+        return $qb->getQuery()->getSingleScalarResult() > 0;
     }
 
     /**
