@@ -8,6 +8,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - New Adventures feature! Adventures are step by step journey to unlock rewards & badges.
 - Add search functionality on users. You can now search users by their usernames!
 
+### Removed
+- Configuration. (Introduced in 0.4.3)
+
 ## [0.5.3] - 2016-09-19
 ### Fixed
 - Fix the Slack notifier to correctly send the request to the Slack webhook
