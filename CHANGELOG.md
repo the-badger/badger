@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 
 ### Added
+- New Adventures feature! Adventures are step by step journey to unlock rewards & badges.
 - Add search functionality on users. You can now search users by their usernames!
 
 ## [0.5.2] - 2016-06-09
