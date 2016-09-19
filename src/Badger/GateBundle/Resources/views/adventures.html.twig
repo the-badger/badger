@@ -21,22 +21,21 @@
                                     <p class="mb-15">There is no adventure available for now, come back later!</p>
                                 </div>
                             </div>
-                        {% endif %}
+                        {% else %}
+                            <div class="panel panel-flat">
+                                <ul class="media-list media-list-linked media-list-bordered">
 
-                        <div class="panel panel-flat">
-                            <ul class="media-list media-list-linked media-list-bordered">
+                                    {% for adventure in availableAdventures %}
+                                        <li class="media">
+                                            <a href="{{ url('viewadventure', {id: adventure.id}) }}" class="media-link">
+                                                <div class="media-left">
+                                                    <span class="btn border-primary text-primary btn-flat btn-icon btn-rounded btn-sm"><i class="icon-trophy3"></i></span>
+                                                </div>
 
-                                {% for adventure in availableAdventures %}
-                                <li class="media">
-                                    <a href="{{ url('viewadventure', {id: adventure.id}) }}" class="media-link">
-                                        <div class="media-left">
-                                            <span class="btn border-primary text-primary btn-flat btn-icon btn-rounded btn-sm"><i class="icon-trophy3"></i></span>
-                                        </div>
+                                                <div class="media-body">
+                                                    <h6 class="media-heading text-semibold">{{ adventure.title }}</h6>
 
-                                        <div class="media-body">
-                                            <h6 class="media-heading text-semibold">{{ adventure.title }}</h6>
-
-                                            <div class="media-annotation mt-5">
+                                                    <div class="media-annotation mt-5">
                                                 <span class="mr-10">
                                                     <i class="icon-medal2"></i> <b>{{ adventure.countAllBadges }}</b> <small>badges to unlock</small>
                                                 </span>
@@ -50,18 +49,19 @@
                                                         <i class="icon-link"></i> <small>steps are <b>not ordered</b></small>
                                                     {% endif %}
                                                 </span>
-                                            </div>
-                                        </div>
+                                                    </div>
+                                                </div>
 
-                                        <div class="media-right media-middle">
-                                            <span class="badge badge-primary">{{ adventure.completed }} / {{ adventure.steps|length }}</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                {% endfor %}
+                                                <div class="media-right media-middle">
+                                                    <span class="badge badge-primary">{{ adventure.completed }} / {{ adventure.steps|length }}</span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
 
-                            </ul>
-                        </div>
+                                </ul>
+                            </div>
+                        {% endif %}
                     </div>
 
                     <div class="tab-pane" id="completed">
@@ -73,22 +73,21 @@
                                     <p class="mb-15">This tab will list all the adventures you have completed. Let's have some work!</p>
                                 </div>
                             </div>
-                        {% endif %}
+                        {% else %}
+                            <div class="panel panel-flat">
+                                <ul class="media-list media-list-linked media-list-bordered">
 
-                        <div class="panel panel-flat">
-                            <ul class="media-list media-list-linked media-list-bordered">
+                                    {% for adventure in completedAdventures %}
+                                        <li class="media">
+                                            <a href="{{ url('viewadventure', {id: adventure.id}) }}" class="media-link">
+                                                <div class="media-left">
+                                                    <span class="btn border-success text-success btn-flat btn-icon btn-rounded btn-sm"><i class="icon-trophy3"></i></span>
+                                                </div>
 
-                                {% for adventure in completedAdventures %}
-                                    <li class="media">
-                                        <a href="{{ url('viewadventure', {id: adventure.id}) }}" class="media-link">
-                                            <div class="media-left">
-                                                <span class="btn border-success text-success btn-flat btn-icon btn-rounded btn-sm"><i class="icon-trophy3"></i></span>
-                                            </div>
+                                                <div class="media-body">
+                                                    <h6 class="media-heading text-semibold">{{ adventure.title }}</h6>
 
-                                            <div class="media-body">
-                                                <h6 class="media-heading text-semibold">{{ adventure.title }}</h6>
-
-                                                <div class="media-annotation mt-5">
+                                                    <div class="media-annotation mt-5">
                                                 <span class="mr-10">
                                                     <i class="icon-medal2"></i> <b>{{ adventure.countAllBadges }}</b> <small>badges unlocked</small>
                                                 </span>
@@ -102,14 +101,15 @@
                                                         <i class="icon-link"></i> <small>steps are <b>not ordered</b></small>
                                                     {% endif %}
                                                 </span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                {% endfor %}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
 
-                            </ul>
-                        </div>
+                                </ul>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
