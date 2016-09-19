@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+- Fix the Slack notifier to correctly send the request to the Slack webhook
+
 ## [0.5.2] - 2016-06-09
 ### Fixed
 - Fix fatal error on new user registration
