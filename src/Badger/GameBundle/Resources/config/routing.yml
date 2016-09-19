@@ -25,3 +25,7 @@ game_admin_unlocked_badge:
 game_admin_adventure:
     resource: "@GameBundle/Resources/config/routing/adventure.yml"
     prefix:   /admin/adventure
+
+game_admin_claimed_adventure_step:
+    resource: "@GameBundle/Resources/config/routing/claimed-adventure-step.yml"
+    prefix:   /admin/claimed-adventure-step

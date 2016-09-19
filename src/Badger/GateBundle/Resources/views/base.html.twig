@@ -16,6 +16,7 @@
     <link href="{{ asset('bundles/gate/css/components.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('bundles/gate/css/colors.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('bundles/gate/css/extras/animate.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/badger.css') }}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
 
     <!-- Core JS files -->
@@ -76,7 +77,7 @@
 <div class="page-container">
 
     <!-- Page content -->
-    <div class="page-content">
+    <div class="page-content {% block pagecontentclass %}{% endblock %}">
 
         <!-- Main sidebar -->
         <div class="sidebar sidebar-main sidebar-fixed">
@@ -96,6 +97,9 @@
                             </li>
                             <li class="{{ app.request.attributes.get('_route')  == 'quests' ? 'active' : '' }}">
                                 <a href="{{ url('quests') }}"><i class="icon-trophy4"></i> <span>Quests</span></a>
+                            </li>
+                            <li class="{{ app.request.attributes.get('_route')  == 'adventures' ? 'active' : '' }}">
+                                <a href="{{ url('adventures') }}"><i class="icon-trophy3"></i> <span>Adventures</span></a>
                             </li>
                             <li class="{{ app.request.attributes.get('_route')  == 'users' ? 'active' : '' }}">
                                 <a href="{{ url('users') }}"><i class="icon-users"></i> <span>People</span></a>

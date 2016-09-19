@@ -2,7 +2,11 @@
 
 namespace Badger\GameBundle\Form;
 
+use Badger\TagBundle\Form\TagType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,7 +24,7 @@ class AdventureType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('description', 'textarea', [
+            ->add('description', TextareaType::class, [
                 'attr' => [
                     'rows' => 3
                 ]
@@ -29,15 +33,15 @@ class AdventureType extends AbstractType
                 'label' => 'game.adventure.form.reward_point'
             ])
             ->add('isStepLinked')
-            ->add('badge', 'entity', [
-                'class'      => 'GameBundle:Badge',
-                'property'   => 'title',
-                'empty_data' => '',
-                'required'   => false,
-                'label'      => 'game.adventure.form.badge'
+            ->add('badge', EntityType::class, [
+                'class'        => 'GameBundle:Badge',
+                'choice_label' => 'title',
+                'empty_data'   => '',
+                'required'     => false,
+                'label'        => 'game.adventure.form.badge'
             ])
-            ->add('steps', 'collection', [
-                'entry_type'   => new AdventureStepType(),
+            ->add('steps', CollectionType::class, [
+                'entry_type'   => AdventureStepType::class,
                 'allow_add'    => true,
                 'allow_delete' => true,
                 'by_reference' => false,

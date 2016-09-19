@@ -1,0 +1,14 @@
+admin_claimed_adventure_step_index:
+    path:     /
+    defaults: { _controller: "GameBundle:AdventureStepCompletion:index" }
+    methods:  GET
+
+admin_claimed_adventure_step_reject:
+    path:     /{id}/reject
+    defaults: { _controller: "GameBundle:AdventureStepCompletion:reject" }
+    methods:  GET
+
+admin_claimed_adventure_step_accept:
+    path:     /{id}/accept
+    defaults: { _controller: "GameBundle:AdventureStepCompletion:accept" }
+    methods:  GET

@@ -26,6 +26,14 @@
             <td>{{ adventure.description|nl2br }}</td>
         </tr>
         <tr>
+            <td>Tagged in</td>
+            <td>
+                {% for tag in adventure.tags %}
+                    <div class="ui small teal label">{{ tag.name }}</div>
+                {% endfor %}
+            </td>
+        </tr>
+        <tr>
             <td>Is step linked</td>
             <td><i class="{{ true == adventure.isStepLinked ? 'check green' : 'close red' }} icon"></i></td>
         </tr>
