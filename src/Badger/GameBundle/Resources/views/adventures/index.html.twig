@@ -1,45 +1,65 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <div class="ui basic segment">
-        <div class="ui large breadcrumb">
-            <a class="section" href="{{ path('admin') }}">Admin</a>
-            <div class="divider"> / </div>
-            <div class="active section">Adventures</div>
+    <div class="page-header page-header-default">
+        <div class="breadcrumb-line" style="border-bottom: 0; z-index: 5;"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="{{ path('admin') }}"><i class="icon-home2 position-left"></i> Admin</a></li>
+                <li class="active"><i class="icon-trophy3"></i> Adventures</li>
+            </ul>
         </div>
     </div>
 
-    <table class="ui celled table">
-        <thead>
-        <tr>
-            <th>Title</th>
-            <th>Tagged in</th>
-            <th>Completion Badge</th>
-            <th>Count steps</th>
-            <th>Is step linked</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for adventure in adventures %}
-            <tr class="center aligned">
-                <td><a class="ui" href="{{ path('admin_adventure_show', { 'id': adventure.id }) }}">{{ adventure.title }}</a></td>
-                <td class="aligned">
-                    {% for tag in adventure.tags %}
-                        <div class="ui small teal label">{{ tag.name }}</div>
-                    {% endfor %}
-                </td>
-                <td>{{ null != adventure.badge ? adventure.badge.title : '' }}</td>
-                <td>{{ adventure.steps|length }}</td>
-                <td><i class="{{ true == adventure.isStepLinked ? 'check green' : 'close red' }} icon"></i></td>
-                <td>
-                    <div class="ui small basic icon buttons">
-                        <a href="{{ path('admin_adventure_show', { 'id': adventure.id }) }}" class="ui button"><i class="eye icon"></i></a>
-                        <a href="{{ path('admin_adventure_form', { 'id': adventure.id }) }}" class="ui button"><i class="pencil icon"></i></a>
-                    </div>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="panel panel-flat m-15">
+        <div class="table-responsive">
+            <table class="table datatable-basic">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Tagged in</th>
+                    <th>Completion Badge</th>
+                    <th>Count steps</th>
+                    <th>Is step linked</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for adventure in adventures %}
+                    <tr class="center aligned">
+                        <td>
+                            <h4>
+                                <a href="{{ path('admin_adventure_show', { 'id': adventure.id }) }}">{{ adventure.title }}</a>
+                            </h4>
+                        </td>
+                        <td class="aligned">
+                            {% for tag in adventure.tags %}
+                                <span class="label label-default position-right">{{ tag.name }}</span>
+                            {% endfor %}
+                        </td>
+                        <td>
+                            {{ null != adventure.badge ? adventure.badge.title : '' }}
+                        </td>
+                        <td>
+                            <h4>{{ adventure.steps|length }}</h4>
+                        </td>
+                        <td>
+                            <i class="{{ true == adventure.isStepLinked ? 'icon-checkmark4 text-success' : 'icon-cross2 text-danger' }} icon"></i>
+                        </td>
+                        <td>
+                            <ul class="icons-list">
+                                <li class="text-primary-600"><a href="{{ path('admin_adventure_form', { 'id': adventure.id }) }}"><i class="icon-pencil7"></i></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/tables/datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/tables/datatables_basic.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/forms/selects/select2.min.js') }}"></script>
 {% endblock %}

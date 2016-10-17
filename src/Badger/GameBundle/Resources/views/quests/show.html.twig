@@ -1,59 +1,61 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <div class="ui basic segment">
-        <div class="ui large breadcrumb">
-            <a class="section" href="{{ path('admin') }}">Admin</a>
-            <div class="divider"> / </div>
-            <a class="section" href="{{ path('admin_quest_index') }}">Quests</a>
-            <div class="divider"> / </div>
-            <div class="active section">Show quest "{{ quest.title }}"</div>
+    <div class="page-header page-header-default no-margin-bottom">
+        <div class="breadcrumb-line" style="border-bottom: 0; z-index: 5;">
+            <ul class="breadcrumb">
+                <li><a href="{{ path('admin') }}"><i class="icon-home2 position-left"></i> Admin</a></li>
+                <li><a href="{{ path('admin_quest_index') }}"><i class="icon-trophy4"></i> Quests</a></li>
+                <li class="active">"{{ quest.title }}"</li>
+            </ul>
+
+            <ul class="breadcrumb-elements">
+                <li><a href="{{ path('admin_quest_edit', { 'id': quest.id }) }}"><i class="icon-pencil5"></i> Edit</a></li>
+                <li>
+                    {{ form_start(delete_form) }}
+                    <button style="margin-top: 4px;" type="submit" class="btn btn-xs bg-danger btn-labeled"><b><i class="icon-trash"></i></b> Delete</button>
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
         </div>
     </div>
 
-    <table class="ui definition table">
+    <table class="table">
         <tbody>
         <tr>
-            <td>UUID</td>
-            <td>{{ quest.id }}</td>
+            <td class="text-bold">UUID</td>
+            <td><code>{{ quest.id }}</code></td>
         </tr>
         <tr>
-            <td>Title</td>
+            <td class="text-bold">Title</td>
             <td>{{ quest.title }}</td>
         </tr>
         <tr>
-            <td>Description</td>
+            <td class="text-bold">Description</td>
             <td class="description">{{ quest.description|nl2br }}</td>
         </tr>
         <tr>
-            <td>Reward</td>
+            <td class="text-bold">Reward</td>
             <td>{{ quest.reward }}</td>
         </tr>
         <tr>
-            <td>Starts on</td>
+            <td class="text-bold">Starts on</td>
             <td>{{ quest.startDate|date('Y/m/d') }}</td>
         </tr>
         <tr>
-            <td>Ends on</td>
+            <td class="text-bold">Ends on</td>
             <td>{{ quest.endDate|date('Y/m/d') }}</td>
         </tr>
         <tr>
-            <td>Tagged in</td>
+            <td class="text-bold">Tagged in</td>
             <td>
                 {% for tag in quest.tags %}
-                    <div class="ui small teal label">{{ tag.name }}</div>
+                    <span class="label label-default">{{ tag.name }}</span>
                 {% endfor %}
             </td>
         </tr>
         </tbody>
     </table>
-
-    <div>
-        {{ form_start(delete_form) }}
-        <button class="ui red left floated labeled icon button" type="submit"><i class="icon trash"></i> Delete</button>
-        {{ form_end(delete_form) }}
-        <a href="{{ path('admin_quest_edit', { 'id': quest.id }) }}" class="ui left floated labeled icon button"><i class="icon pencil"></i> Edit</a>
-    </div>
 {% endblock %}
 
 {% block javascripts %}

@@ -1,76 +1,85 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <div class="ui basic segment">
-        <div class="ui large breadcrumb">
-            <a class="section" href="{{ path('admin') }}">Admin</a>
-            <div class="divider"> /</div>
-            <a class="section" href="{{ path('admin_badge_index') }}">Badges</a>
-            <div class="divider"> /</div>
-            <div class="active section">Pending claims</div>
+    <div class="page-header page-header-default">
+        <div class="breadcrumb-line" style="border-bottom: 0; z-index: 5;"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="{{ path('admin') }}"><i class="icon-home2 position-left"></i> Admin</a></li>
+                <li><a href="{{ path('admin_badge_index') }}"><i class="icon-medal2"></i> Badges</a></li>
+                <li class="active"><i class="icon-hour-glass2"></i> Pending</li>
+            </ul>
         </div>
     </div>
 
     {% for flash_message in app.session.flashbag.get('notice') %}
-        <div class="ui icon positive message">
-            <i class="checkmark icon"></i>
-            <div class="content">
-                <p>{{ flash_message }}</p>
-            </div>
+        <div class="alert alert-success alert-styled-left alert-arrow-left alert-bordered ml-15 mr-15">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            {{ flash_message }}
         </div>
     {% endfor %}
 
     {% for flash_message in app.session.flashbag.get('error') %}
-        <div class="ui icon error message">
-            <i class="warning sign icon"></i>
-            <div class="content">
-                <p>{{ flash_message }}</p>
-            </div>
+        <div class="alert alert-warning alert-styled-left ml-15 mr-15">
+            <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
+            {{ flash_message }}
         </div>
     {% endfor %}
 
     {% if claimedBadges is not empty %}
-    <table class="ui celled padded table">
-        <thead>
-        <tr><th class="single line">User</th>
-            <th>Badge</th>
-            <th>Claimed date</th>
-            <th>Accept that claim?</th>
-        </tr></thead>
-        <tbody>
-        {% for claimedBadge in claimedBadges %}
-        <tr>
-            <td>
-                <img class="ui avatar image" src="{{ claimedBadge.user.profilePicture }}">
-                <span>{{ claimedBadge.user.username }}</span>
-            </td>
-            <td class="single line">
-                <img class="ui avatar image" src="{{ claimedBadge.badge.imageWebPath }}">
-                <span class="popup" data-title="{{ claimedBadge.badge.title }}" data-content="{{ claimedBadge.badge.description }}">{{ claimedBadge.badge.title }}</span>
-            </td>
-            <td>
-                {{ claimedBadge.claimedDate|date("d/m/Y") }}
-            </td>
-            <td class="center aligned">
-                <div class="ui tiny buttons">
-                    <a href="{{ url('admin_claimed_badge_accept', { 'id': claimedBadge.id }) }}" class="ui positive button">Hell yes!</a>
-                    <div class="or"></div>
-                    <a href="{{ url('admin_claimed_badge_reject', { 'id': claimedBadge.id }) }}" class="ui red button">Nope.</a>
-                </div>
-            </td>
-        </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="panel panel-flat m-15">
+        <div class="table-responsive">
+            <table class="table datatable-basic">
+                <thead>
+                    <tr>
+                        <th class="single line">User</th>
+                        <th>Badge</th>
+                        <th>Claimed date</th>
+                        <th>Accept that claim?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for claimedBadge in claimedBadges %}
+                    <tr>
+                        <td>
+                            <img class="img-circle img-thumbnail" style="width: 60px;" src="{{ claimedBadge.user.profilePicture }}">
+                            <span class="ml-10">{{ claimedBadge.user.username }}</span>
+                        </td>
+                        <td class="single line">
+                            <img class="img-rounded media-preview" src="{{ claimedBadge.badge.imageWebPath }}">
+                            <span class="ml-10">
+                                <span class="text-bold">{{ claimedBadge.badge.title }}</span>
+                                <span class="text-muted">{{ claimedBadge.badge.description|nl2br }}</span>
+                            </span>
+                        </td>
+                        <td>
+                            {{ claimedBadge.claimedDate|date("d/m/Y") }}
+                        </td>
+                        <td class="center aligned">
+                            <div class="ui tiny buttons">
+                                <a href="{{ url('admin_claimed_badge_accept', { 'id': claimedBadge.id }) }}" class="btn btn-success btn-icon btn-rounded">
+                                    <i class="icon-thumbs-up2"></i>
+                                </a>
+                                <a href="{{ url('admin_claimed_badge_reject', { 'id': claimedBadge.id }) }}" class="btn btn-danger btn-icon btn-rounded ml-10">
+                                    <i class="icon-thumbs-down2"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
     {% else %}
-        <div class="ui center aligned padded secondary segment">
-            <p><i class="icon thumbs outline up"></i> No claim, no pain.</p>
+        <div class="text-center">
+            <i class="icon-thumbs-up2 mb-10"></i> <br>
+            <mark class="p-5">No claim, no pain.</mark>
         </div>
     {% endif %}
 {% endblock %}
 
 {% block javascripts %}
-    <script>
-        $('.popup').popup();
-    </script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/tables/datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/tables/datatables_basic.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/forms/selects/select2.min.js') }}"></script>
 {% endblock %}

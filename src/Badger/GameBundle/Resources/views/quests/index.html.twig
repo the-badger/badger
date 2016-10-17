@@ -1,74 +1,80 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <div class="ui basic segment">
-        <div class="ui large breadcrumb">
-            <a class="section" href="{{ path('admin') }}">Admin</a>
-            <div class="divider"> /</div>
-            <div class="active section">Quests</div>
+    <div class="page-header page-header-default">
+        <div class="breadcrumb-line" style="border-bottom: 0; z-index: 5;"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="{{ path('admin') }}"><i class="icon-home2 position-left"></i> Admin</a></li>
+                <li class="active"><i class="icon-trophy4"></i> Quests</li>
+            </ul>
         </div>
     </div>
 
-    <table class="ui celled table">
-        <thead>
-        <tr>
-            <th class="one wide">Active</th>
-            <th class="three wide">Title</th>
-            <th class="seven wide">Description</th>
-            <th class="three wide">Tagged in</th>
-            <th class="two wide">Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for quest in quests %}
-            {% set differenceFromNow = quest.endDate.diff(date('yesterday')) %}
-            {% set differenceInDays = differenceFromNow.invert == 0 and differenceFromNow.days > 0 ? -1 : differenceFromNow.days %}
+    <div class="panel panel-flat m-15">
+        <div class="table-responsive">
+            <table class="table datatable-basic">
+                <thead>
+                <tr>
+                    <th class="one wide">Active</th>
+                    <th class="three wide">Title</th>
+                    <th class="seven wide">Description</th>
+                    <th class="three wide">Tagged in</th>
+                    <th class="two wide">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for quest in quests %}
+                    {% set differenceFromNow = quest.endDate.diff(date('yesterday')) %}
+                    {% set differenceInDays = differenceFromNow.invert == 0 and differenceFromNow.days > 0 ? -1 : differenceFromNow.days %}
 
-            <tr class="{{ differenceInDays > -1 ? 'warning' : '' }}">
-                <td class="center aligned">
-                    <small>
-                    {% if differenceInDays > -1 %}
-                        {% if differenceInDays > 1 %}
-                            <b>{{ differenceInDays }} days</b> left
-                        {% else %}
-                            <b>last day</b>
-                        {% endif %}
-                    {% else %}
-                        <i class="green check circle outline icon"></i> Inactive
-                    {% endif %}
-                    </small>
-                </td>
-                <td>
-                    <h4 class="ui image header">
-                        <div class="content">
-                            <a href="{{ path('admin_quest_show', { 'id': quest.id }) }}">{{ quest.title }}</a>
-                            <div class="sub header">
-                                <small>Reward of {{ quest.reward }} nuts
-                            </div>
-                        </div>
-                    </h4>
-                </td>
-                <td style="font-size: 12px;" class="description">
-                    {{ quest.description|nl2br }}
-                </td>
-                <td class="aligned">
-                    {% for tag in quest.tags %}
-                        <div class="ui small teal label">{{ tag.name }}</div>
-                    {% endfor %}
-                </td>
-                <td class="center aligned">
-                    <div class="ui small basic icon buttons">
-                        <a href="{{ path('admin_quest_show', { 'id': quest.id }) }}" class="ui button"><i class="eye icon"></i></a>
-                        <a href="{{ path('admin_quest_edit', { 'id': quest.id }) }}" class="ui button"><i class="pencil icon"></i></a>
-                    </div>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    <tr class="{{ differenceInDays > -1 ? 'warning' : '' }}">
+                        <td class="center aligned">
+                            <small>
+                            {% if differenceInDays > -1 %}
+                                {% if differenceInDays > 1 %}
+                                    <b>{{ differenceInDays }} days</b> left
+                                {% else %}
+                                    <b>last day</b>
+                                {% endif %}
+                            {% else %}
+                                <i class="green check circle outline icon"></i> Inactive
+                            {% endif %}
+                            </small>
+                        </td>
+                        <td>
+                            <h4>
+                                <a href="{{ path('admin_quest_show', { 'id': quest.id }) }}">{{ quest.title }}</a>
+                                <div>
+                                    <small>Reward of {{ quest.reward }} nuts
+                                </div>
+                            </h4>
+                        </td>
+                        <td style="font-size: 12px;" class="description">
+                            {{ quest.description|nl2br }}
+                        </td>
+                        <td class="aligned">
+                            {% for tag in quest.tags %}
+                                <span class="label label-default position-right">{{ tag.name }}</span>
+                            {% endfor %}
+                        </td>
+                        <td class="center aligned">
+                            <ul class="icons-list">
+                                <li class="text-primary-600"><a href="{{ path('admin_quest_edit', { 'id': quest.id }) }}"><i class="icon-pencil7"></i></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/tables/datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/tables/datatables_basic.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/forms/selects/select2.min.js') }}"></script>
+
     <script>
         // Auto link quests descriptions
         $('.description').each(function () {

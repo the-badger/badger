@@ -5,94 +5,160 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{% block title %}Welcome!{% endblock %}</title>
-    <link rel="stylesheet" href="{{ asset('vendor/semantic-ui-css/semantic.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/dist/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/dist/select2.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/dist/selectize.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/dist/selectize.default.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/all.css') }}">
+    <title>{% block title %}Badger{% endblock %}</title>
     <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-    {% block stylesheets %}{% endblock %}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-</head>
-<body class="{% block bodyclass %}{% endblock %} admin">
 
-<div class="ui visible sidebar vertical menu" style="overflow: visible !important;">
-    <div class="item">
-        <a class="ui logo icon image" href="{{ path('admin') }}">
-            <img src="{{ asset('bundles/gate/images/badger-logo-150.png') }}">
-            <a href="{{ path('admin') }}"> &nbsp; <b>Badger Admin</b></a>
-        </a>
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/icons/icomoon/styles.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/core.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/components.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/colors.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/extras/animate.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/badger.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/gate/css/extras/selectize.bootstrap3.css') }}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/core/libraries/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/core/libraries/bootstrap.min.js') }}"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/ui/nicescroll.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/core/app.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/pages/layout_fixed_custom.js') }}"></script>
+    <!-- /theme JS files -->
+
+    <!-- Lib JS files -->
+    <script type="text/javascript" src="{{ asset('vendor/dist/mustache.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/dist/lodash.min.js') }}"></script>
+    <!-- /lib JS files -->
+
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="16x16 32x32 48x48 64x64" type="image/vnd.microsoft.icon">
+</head>
+<body class="{% block bodyclass %}{% endblock %} sidebar-xs">
+
+<!-- Main navbar -->
+<div class="navbar navbar-inverse">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="{{ url('admin') }}"><img src="{{ asset('bundles/gate/images/badger-white-300.png') }}" alt="" style="margin-top: -6px; height: 30px;"></a>
+
+        <ul class="nav navbar-nav pull-right visible-xs-block">
+            <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+        </ul>
     </div>
-    <div class="ui simple dropdown item">
-        <i class="dropdown icon"></i>
-        <i class="icon trophy"></i> Badges
-        <div class="menu">
-            <a href="{{ url('admin_badge_index') }}" class="item"><i class="icon list layout"></i> List</a>
-            <a href="{{ url('admin_badge_new') }}" class="item"><i class="icon plus"></i> Create</a>
-            <a href="{{ url('admin_claimed_badge_index') }}" class="item"><i class="wait icon"></i> Pending claims</a>
-            <a href="{{ url('admin_unlocked_badge_new') }}" class="item"><i class="icon add user"></i> Give a Badge</a>
-            <a href="{{ url('admin_unlocked_badge_delete') }}" class="item"><i class="icon remove user"></i> Remove an Unlocked Badge</a>
-        </div>
-    </div>
-    <div class="ui simple dropdown item">
-        <i class="dropdown icon"></i>
-        <i class="icon calendar"></i> Quests
-        <div class="menu">
-            <a href="{{ url('admin_quest_index') }}" class="item"><i class="icon list layout"></i> List</a>
-            <a href="{{ url('admin_quest_new') }}" class="item"><i class="icon plus"></i> Create</a>
-            <a href="{{ url('admin_claimed_quest_index') }}" class="item"><i class="wait icon"></i> Pending claims</a>
-        </div>
-    </div>
-    <div class="ui simple dropdown item">
-        <i class="dropdown icon"></i>
-        <i class="icon map"></i> Adventures
-        <div class="menu">
-            <a href="{{ url('admin_adventure_index') }}" class="item"><i class="icon list layout"></i> List</a>
-            <a href="{{ url('admin_adventure_form') }}" class="item"><i class="icon plus"></i> Create</a>
-            <a href="{{ url('admin_claimed_adventure_step_index') }}" class="item"><i class="wait icon"></i> Pending claims</a>
-        </div>
-    </div>
-    <div class="ui simple dropdown item">
-        <i class="dropdown icon"></i>
-        <i class="icon tags"></i> Tags
-        <div class="menu">
-            <a href="{{ url('admin_tag_index') }}" class="item"><i class="icon list layout"></i> List</a>
-            <a href="{{ url('admin_tag_new') }}" class="item"><i class="icon plus"></i> Create</a>
-        </div>
-    </div>
-    <div class="ui simple dropdown item">
-        <i class="dropdown icon"></i>
-        <i class="icon users"></i> Users
-        <div class="menu">
-            <a href="{{ url('admin_user_index') }}" class="item"><i class="icon list layout"></i> List</a>
-        </div>
-    </div>
-    <a href="{{ url('homepage') }}" class="item">
-        <i class="icon home"></i> Back to Dashboard
-    </a>
 </div>
-<div class="pusher">
-    <div class="ui fluid container">
-        <div class="ui grid">
-            <div class="sixteen wide column">
-                {% block body %}
-                {% endblock %}
+<!-- /main navbar -->
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content {% block pagecontentclass %}{% endblock %}">
+
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main sidebar-default">
+            <div class="sidebar-content">
+
+                <!-- Main navigation -->
+                <div class="sidebar-category sidebar-category-visible">
+                    <div class="category-content no-padding">
+                        <ul class="navigation navigation-main navigation-accordion">
+
+                            <!-- Main -->
+                            <li class="has-ul">
+                                <a href="#"><i class="icon-medal2"></i> <span>Badges</span></a>
+
+                                <ul class="hidden-ul">
+                                    <li><a href="{{ url('admin_badge_index') }}"><i class="icon-list"></i> List</a></li>
+                                    <li><a href="{{ url('admin_badge_new') }}"><i class="icon-plus2"></i> Create</a></li>
+                                    <li><a href="{{ url('admin_claimed_badge_index') }}"><i class="icon-hour-glass2"></i> Pending</a></li>
+                                    <li><a href="{{ url('admin_unlocked_badge_new') }}"><i class="icon-user-plus"></i> Give</a></li>
+                                    <li><a href="{{ url('admin_unlocked_badge_delete') }}"><i class="icon-user-cancel"></i> Remove</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-ul">
+                                <a href="#"><i class="icon-trophy4"></i> <span>Quests</span></a>
+
+                                <ul class="hidden-ul">
+                                    <li><a href="{{ url('admin_quest_index') }}"><i class="icon-list"></i> List</a></li>
+                                    <li><a href="{{ url('admin_quest_new') }}"><i class="icon-plus2"></i> Create</a></li>
+                                    <li><a href="{{ url('admin_claimed_quest_index') }}"><i class="icon-hour-glass2"></i> Pending</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-ul">
+                                <a href="#"><i class="icon-trophy3"></i> <span>Adventures</span></a>
+
+                                <ul class="hidden-ul">
+                                    <li><a href="{{ url('admin_adventure_index') }}"><i class="icon-list"></i> List</a></li>
+                                    <li><a href="{{ url('admin_adventure_form') }}"><i class="icon-plus2"></i> Create</a></li>
+                                    <li><a href="{{ url('admin_claimed_adventure_step_index') }}"><i class="icon-hour-glass2"></i> Pending</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-ul">
+                                <a href="#"><i class="icon-price-tag2"></i> <span>Tags</span></a>
+
+                                <ul class="hidden-ul">
+                                    <li><a href="{{ url('admin_tag_index') }}"><i class="icon-list"></i> List</a></li>
+                                    <li><a href="{{ url('admin_tag_new') }}"><i class="icon-plus2"></i> Create</a></li>
+                                </ul>
+                            </li>
+                            <li class="has-ul">
+                                <a href="#"><i class="icon-users"></i> <span>People</span></a>
+
+                                <ul class="hidden-ul">
+                                    <li><a href="{{ url('admin_user_index') }}"><i class="icon-list"></i> List</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{ url('homepage') }}"><i class="icon-home2"></i> <span>Dashboard</span></a>
+                            </li>
+                            <!-- /main -->
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- /main navigation -->
+
             </div>
         </div>
+        <!-- /main sidebar -->
+
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Content area -->
+            <div>
+
+
+                <!-- Grid -->
+                <div class="row">
+                    <div class="col-md-12">
+                        {% block body %}
+
+                        {% endblock %}
+                    </div>
+                </div>
+                <!-- /grid -->
+
+            </div>
+            <!-- /content area -->
+
+        </div>
+        <!-- /main content -->
+
     </div>
+    <!-- /page content -->
 </div>
+<!-- /page container -->
 
-
-
-<script src="{{ asset('vendor/dist/jquery.js') }}"></script>
-<script src="{{ asset('vendor/dist/underscore-min.js') }}"></script>
-<script src="{{ asset('vendor/semantic-ui-css/semantic.min.js') }}"></script>
-<script src="{{ asset('vendor/dist/select2.min.js') }}"></script>
-<script src="{{ asset('vendor/dist/selectize.min.js') }}"></script>
 <script src="{{ asset('vendor/dist/Autolinker.min.js') }}"></script>
 
-{% block javascripts %}{% endblock %}
+{% block javascripts %}
+{% endblock %}
 </body>
 </html>
