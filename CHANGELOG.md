@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- Drop Semantic UI on admin side. (#107)
+
 ## [0.6.0] - 2016-09-19
 ### Added
 - New Adventures feature! Adventures are step by step journey to unlock rewards & badges.
