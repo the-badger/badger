@@ -33,6 +33,6 @@ gulp.task('install', function() {
 gulp.task('less', function () {
     return gulp.src('./src/**/Resources/public/css/*.less')
         .pipe(less())
-        .pipe(concat('all.css'))
+        .pipe(concat('badger.css'))
         .pipe(gulp.dest('./web/css'));
 });
