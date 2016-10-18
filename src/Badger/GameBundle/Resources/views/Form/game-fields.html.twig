@@ -1,27 +1,34 @@
 {% extends 'form_div_layout.html.twig' %}
 
 {%- block form_start -%}
-    {% set class = 'ui form' ~ (errors.count >= 1 ? ' error' : '') %}
+    {% set class = 'form-horizontal' ~ (errors.count >= 1 ? ' error' : '') %}
     {% set attr = attr|merge({'class': (attr.class|default('') ~ class)|trim}) %}
     {{ parent() }}
 {%- endblock form_start -%}
 
 {%- block form_row -%}
-    <div class="ui field">
+    <div {% if 'collection' not in block_prefixes %}class="form-group"{% endif %}>
         {% if 'checkbox' not in block_prefixes and 'radio' not in block_prefixes %}
-            {{- form_label(form) -}}
+            {{- form_label(form, null, {'label_attr': {'class': 'control-label col-lg-2'}}) -}}
         {% endif %}
         {{- form_errors(form) -}}
-        {{- form_widget(form) -}}
+        <div {% if 'collection' not in block_prefixes %}class="col-lg-10"{% endif %}>
+
+            {% if 'collection' not in block_prefixes and 'checkbox' not in block_prefixes %}
+                {{- form_widget(form, {'attr': {'class': 'form-control'}}) -}}
+            {% else %}
+                {{- form_widget(form) -}}
+            {% endif %}
+        </div>
     </div>
 {%- endblock form_row -%}
 
 {%- block checkbox_widget -%}
-    <div class="inline field">
-        <div class="ui toggle checkbox">
-            <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+    <div class="form-group">
+        <label class="checkbox-inline checkbox-right">
+            <input type="checkbox" {{ block('widget_attributes') }} {% if value is defined %} value="{{ value }}"{% endif %} {% if checked %}checked="checked"{% endif %} />
             {{- form_label(form) -}}
-        </div>
+        </label>
     </div>
 {%- endblock checkbox_widget -%}
 
@@ -35,28 +42,22 @@
 {%- endblock radio_widget -%}
 
 {%- block adventure_step_row -%}
-    <div class="fields">
-        <div class="thirteen wide field">
-            <div class="field">
-                {{ form_errors(form) }}
-                {{ form_row(form.title) }}
-                {{ form_row(form.description) }}
-            </div>
-            <div class="fields">
-                <div class="four wide field">
-                    {{ form_row(form.rewardPoint) }}
-                </div>
-                <div class="two wide field">
-                    {{ form_row(form.position) }}
-                </div>
-                <div class="ten wide field">
-                    {{ form_row(form.badge) }}
-                </div>
+    <div class="panel panel-white m-15">
+        <div class="panel-heading">
+            <h6 class="panel-title">Step<a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="close" data-popup="tooltip" title="Remove step" class="remove-step"></a></li>
+                </ul>
             </div>
         </div>
-        <div class="three wide field">
-            <a href="#" class="ui button red mini right floated remove-step"><i class="close icon"></i> Delete step</a>
+        <div class="panel-body">
+            {{ form_errors(form) }}
+            {{ form_row(form.title) }}
+            {{ form_row(form.description) }}
+            {{ form_row(form.rewardPoint) }}
+            {{ form_row(form.position) }}
+            {{ form_row(form.badge) }}
         </div>
     </div>
-    <div class="ui divider"></div>
 {%- endblock adventure_step_row -%}

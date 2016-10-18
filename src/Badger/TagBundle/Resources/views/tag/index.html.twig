@@ -1,39 +1,55 @@
 {% extends '@Gate/base-admin.html.twig' %}
 
 {% block body %}
-    <div class="ui basic segment">
-        <div class="ui large breadcrumb">
-            <a class="section" href="{{ path('admin') }}">Admin</a>
-            <div class="divider"> / </div>
-            <div class="active section">Tags</div>
+    <div class="page-header page-header-default">
+        <div class="breadcrumb-line" style="border-bottom: 0; z-index: 5;"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="{{ path('admin') }}"><i class="icon-home2 position-left"></i> Admin</a></li>
+                <li class="active"><i class="icon-price-tag2"></i> Tags</li>
+            </ul>
         </div>
     </div>
 
-    <table class="ui celled table">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Code</th>
-            <th>Is default</th>
-            <th>Created at</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for tag in tags %}
-            <tr class="center aligned">
-                <td><a class="ui teal label" href="{{ path('admin_tag_show', { 'id': tag.id }) }}">{{ tag.name }}</a></td>
-                <td><pre>{{ tag.code }}</pre></td>
-                <td><i class="{{ true == tag.isDefault ? 'check green' : 'close red' }} icon"></i></td>
-                <td>{% if tag.createdAt %}{{ tag.createdAt|date('d/m/Y H:i') }}{% endif %}</td>
-                <td>
-                    <div class="ui small basic icon buttons">
-                        <a href="{{ path('admin_tag_show', { 'id': tag.id }) }}" class="ui button"><i class="eye icon"></i></a>
-                        <a href="{{ path('admin_tag_edit', { 'id': tag.id }) }}" class="ui button"><i class="pencil icon"></i></a>
-                    </div>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="panel panel-flat m-15">
+        <div class="table-responsive">
+            <table class="table datatable-basic">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Is default</th>
+                    <th>Created at</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for tag in tags %}
+                    <tr class="center aligned">
+                        <td>
+                            <h4>
+                                <a href="{{ path('admin_tag_show', { 'id': tag.id }) }}">{{ tag.name }}</a>
+                            </h4>
+                        </td>
+                        <td><code>{{ tag.code }}</code></td>
+                        <td>
+                            <i class="{{ true == tag.isDefault ? 'icon-checkmark4 text-success' : 'icon-cross2 text-danger' }} icon"></i>
+                        </td>
+                        <td>{% if tag.createdAt %}{{ tag.createdAt|date('d/m/Y H:i') }}{% endif %}</td>
+                        <td>
+                            <ul class="icons-list">
+                                <li class="text-primary-600"><a href="{{ path('admin_tag_edit', { 'id': tag.id }) }}"><i class="icon-pencil7"></i></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/tables/datatables/datatables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/tables/datatables_basic.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/forms/selects/select2.min.js') }}"></script>
 {% endblock %}

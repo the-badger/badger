@@ -1,33 +1,32 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <div class="ui basic segment">
-        <div class="ui large breadcrumb">
-            <a class="section" href="{{ path('admin') }}">Admin</a>
-            <div class="divider"> / </div>
-            <a class="section" href="{{ path('admin_badge_index') }}">Badges</a>
-            <div class="divider"> / </div>
-            <div class="active section">Edit badge "{{ badge.title }}"</div>
+    <div class="page-header page-header-default no-margin-bottom">
+        <div class="breadcrumb-line" style="border-bottom: 0; z-index: 5;"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="{{ path('admin') }}"><i class="icon-home2 position-left"></i> Admin</a></li>
+                <li><a href="{{ path('admin_badge_index') }}"><i class="icon-medal2"></i> Badges</a></li>
+                <li class="active"><i class="icon-pencil7"></i> Edit badge "{{ badge.title }}"</li>
+            </ul>
         </div>
     </div>
 
     {{ form_start(edit_form) }}
     {{ form_errors(edit_form) }}
 
-    <div class="ui raised segments">
-        <div class="ui segment">
-            {{ form_row(edit_form.title) }}
-            {{ form_row(edit_form.description) }}
-            {{ form_row(edit_form.tags) }}
-            <div class="ui field">
-                {{ form_label(edit_form.file) }}
-                <img src="{{ badge.imageWebPath }}" alt=""/>
-                {{ form_errors(edit_form.file) }}
-                {{ form_widget(edit_form.file) }}
+    <div class="panel panel-flat m-15">
+        <div class="panel-body">
+            {{ form_widget(edit_form) }}
+
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-2">
+                    <img class="img-responsive img-rounded media-preview" src="{{ badge.imageWebPath }}" alt=""/>
+                </div>
             </div>
-        </div>
-        <div class="ui secondary clearing segment">
-            <button class="ui primary labeled icon button" type="submit"><i class="icon save"></i> Save</button>
+
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary">Edit <i class="icon-arrow-right14 position-right"></i></button>
+            </div>
         </div>
     </div>
 
@@ -35,6 +34,8 @@
 {% endblock %}
 
 {% block javascripts %}
+    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/forms/tags/selectize/selectize.min.js') }}"></script>
+
     <script>
         $('#badge_tags').selectize({
             plugins: ['remove_button'],

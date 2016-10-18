@@ -1,13 +1,22 @@
 {% extends '@Gate/base-admin.html.twig' %}
 
 {% block body %}
-    <div class="ui basic segment">
-        <div class="ui large breadcrumb">
-            <a class="section" href="{{ path('admin') }}">Admin</a>
-            <div class="divider"> / </div>
-            <a class="section" href="{{ path('admin_user_index') }}">Users</a>
-            <div class="divider"> / </div>
-            <div class="active section">Show user "{{ user.username }}"</div>
+    <div class="page-header page-header-default no-margin-bottom">
+        <div class="breadcrumb-line" style="border-bottom: 0; z-index: 5;">
+            <ul class="breadcrumb">
+                <li><a href="{{ path('admin') }}"><i class="icon-home2 position-left"></i> Admin</a></li>
+                <li><a href="{{ path('admin_user_index') }}"><i class="icon-users"></i> Users</a></li>
+                <li class="active">{{ user.username }}</li>
+            </ul>
+
+            <ul class="breadcrumb-elements">
+                <li><a href="{{ path('admin_user_edit', { 'id': user.id }) }}"><i class="icon-pencil5"></i> Edit</a></li>
+                <li>
+                    {{ form_start(delete_form) }}
+                    <button style="margin-top: 4px;" type="submit" class="btn btn-xs bg-danger btn-labeled"><b><i class="icon-trash"></i></b> Delete</button>
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
         </div>
     </div>
 
@@ -15,15 +24,17 @@
         <tbody>
             <tr>
                 <td>UUID</td>
-                <td>{{ user.id }}</td>
+                <td><code>{{ user.id }}</code></td>
             </tr>
             <tr>
                 <td>Enabled</td>
-                <td>{{ user.enabled ? '<i class="fa fa-check"></i>' : '<i class="fa fa-times"></i>' }}</td>
+                <td>
+                    <i class="{{ true == user.enabled ? 'icon-checkmark4 text-success' : 'icon-cross2 text-danger' }} icon"></i>
+                </td>
             </tr>
             <tr>
                 <td>Username</td>
-                <td>{{ user.username }}</td>
+                <td><span class="text-bold">{{ user.username }}</span></td>
             </tr>
             <tr>
                 <td>Email</td>
@@ -33,7 +44,7 @@
                 <td>Roles</td>
                 <td>
                     {% for role in user.roles %}
-                        <div class="ui small label">{{ role }}</div>
+                        <code>{{ role }}</code>
                     {% endfor %}
                 </td>
             </tr>
@@ -41,7 +52,7 @@
                 <td>Tagged in</td>
                 <td>
                     {% for tag in user.tags %}
-                        <div class="ui small teal label">{{ tag.name }}</div>
+                        <span class="label label-default">{{ tag.name }}</span>
                     {% endfor %}
                 </td>
             </tr>
@@ -51,7 +62,7 @@
             </tr>
             <tr>
                 <td>Github access token</td>
-                <td>{{ user.githubaccesstoken }}</td>
+                <td><code>{{ user.githubaccesstoken }}</code></td>
             </tr>
             <tr>
                 <td>Google Id</td>
@@ -59,26 +70,15 @@
             </tr>
             <tr>
                 <td>Google access token</td>
-                <td>{{ user.googleaccesstoken }}</td>
+                <td><code>{{ user.googleaccesstoken }}</code></td>
             </tr>
             <tr>
                 <td>Profile picture</td>
                 <td>
-                    <h4 class="ui image header">
-                        <img src="{{ user.profilePicture }}" class="ui mini rounded image">
-                        <div class="content" style="font-weight: normal;">
-                            {{ user.profilePicture }}
-                        </div>
-                    </h4>
+                    <img class="img-circle img-thumbnail" style="width: 60px;" src="{{ user.profilePicture }}">
+                    <span class="ml-10 text-light">{{ user.profilePicture }}</span>
                 </td>
             </tr>
         </tbody>
     </table>
-
-    <div>
-        {{ form_start(delete_form) }}
-        <button class="ui red left floated labeled icon button" type="submit"><i class="icon trash"></i> Delete</button>
-        {{ form_end(delete_form) }}
-        <a href="{{ path('admin_user_edit', { 'id': user.id }) }}" class="ui left floated labeled icon button"><i class="icon pencil"></i> Edit</a>
-    </div>
 {% endblock %}

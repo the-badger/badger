@@ -1,27 +1,29 @@
 {% extends '@Gate/base-admin.html.twig' %}
 
 {% block body %}
-    <div class="ui basic segment">
-        <div class="ui large breadcrumb">
-            <a class="section" href="{{ path('admin') }}">Admin</a>
-            <div class="divider"> / </div>
-            <a class="section" href="{{ path('admin_tag_index') }}">Tags</a>
-            <div class="divider"> / </div>
-            <div class="active section">Create</div>
+    <div class="page-header page-header-default">
+        <div class="breadcrumb-line" style="border-bottom: 0; z-index: 5;"><a class="breadcrumb-elements-toggle"><i class="icon-menu-open"></i></a>
+            <ul class="breadcrumb">
+                <li><a href="{{ path('admin') }}"><i class="icon-home2 position-left"></i> Admin</a></li>
+                <li><a href="{{ path('admin_tag_index') }}"><i class="icon-price-tag2"></i> Tags</a></li>
+                <li class="active"><i class="icon-plus2"></i> Create</li>
+            </ul>
         </div>
     </div>
 
     {{ form_start(form) }}
     {{ form_errors(form) }}
 
-    <div class="ui segments">
-        <div class="ui segment">
+    <div class="panel panel-flat m-15">
+        <div class="panel-body">
             {{ form_widget(form) }}
-        </div>
-        <div class="ui secondary clearing segment">
-            <button class="ui green labeled icon button" type="submit"><i class="ui save icon"></i> Create</button>
+
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary">Create <i class="icon-arrow-right14 position-right"></i></button>
+            </div>
         </div>
     </div>
+
     {{ form_end(form) }}
 {% endblock %}
 

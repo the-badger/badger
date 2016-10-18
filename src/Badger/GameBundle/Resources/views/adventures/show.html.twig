@@ -1,13 +1,22 @@
 {% extends 'GateBundle::base-admin.html.twig' %}
 
 {% block body %}
-    <div class="ui basic segment">
-        <div class="ui large breadcrumb">
-            <a class="section" href="{{ path('admin') }}">Admin</a>
-            <div class="divider"> / </div>
-            <a class="section" href="{{ path('admin_adventure_index') }}">Adventures</a>
-            <div class="divider"> / </div>
-            <div class="active section">Show adventure "{{ adventure.title }}"</div>
+    <div class="page-header page-header-default no-margin-bottom">
+        <div class="breadcrumb-line" style="border-bottom: 0; z-index: 5;">
+            <ul class="breadcrumb">
+                <li><a href="{{ path('admin') }}"><i class="icon-home2 position-left"></i> Admin</a></li>
+                <li><a href="{{ path('admin_adventure_index') }}"><i class="icon-trophy3"></i> Adventures</a></li>
+                <li class="active">"{{ adventure.title }}"</li>
+            </ul>
+
+            <ul class="breadcrumb-elements">
+                <li><a href="{{ path('admin_adventure_form', { 'id': adventure.id }) }}"><i class="icon-pencil5"></i> Edit</a></li>
+                <li>
+                    {{ form_start(delete_form) }}
+                    <button style="margin-top: 4px;" type="submit" class="btn btn-xs bg-danger btn-labeled"><b><i class="icon-trash"></i></b> Delete</button>
+                    {{ form_end(delete_form) }}
+                </li>
+            </ul>
         </div>
     </div>
 
@@ -15,7 +24,7 @@
         <tbody>
         <tr>
             <td>UUID</td>
-            <td>{{ adventure.id }}</td>
+            <td><code>{{ adventure.id }}</code></td>
         </tr>
         <tr>
             <td>Title</td>
@@ -23,19 +32,19 @@
         </tr>
         <tr>
             <td>Description</td>
-            <td>{{ adventure.description|nl2br }}</td>
+            <td class="description">{{ adventure.description|nl2br }}</td>
         </tr>
         <tr>
             <td>Tagged in</td>
             <td>
                 {% for tag in adventure.tags %}
-                    <div class="ui small teal label">{{ tag.name }}</div>
+                    <span class="label label-default">{{ tag.name }}</span>
                 {% endfor %}
             </td>
         </tr>
         <tr>
             <td>Is step linked</td>
-            <td><i class="{{ true == adventure.isStepLinked ? 'check green' : 'close red' }} icon"></i></td>
+            <td><i class="{{ true == adventure.isStepLinked ? 'icon-checkmark4 text-success' : 'icon-cross2 text-danger' }} icon"></i></td>
         </tr>
         <tr>
             <td>Completion badge</td>
@@ -48,25 +57,24 @@
         <tr>
             <td>Steps</td>
             <td>
-                <div class="ui steps adventure{{ 0 == adventure.isStepLinked ? ' not-linked' : '' }}">
-                    {% for step in adventure.steps %}
-                        <div class="step">
-                            <div class="content">
-                                <div class="title">{{ step.title }}</div>
-                                <div class="description">{{ step.description }}</div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
+                {% for step in adventure.steps %}
+                    <div class="mb-10">
+                        <div class="title"><mark>{{ step.title }}</mark></div>
+                        <div class="description text-size-mini">{{ step.description|nl2br }}</div>
+                    </div>
+                {% endfor %}
             </td>
         </tr>
         </tbody>
     </table>
+{% endblock %}
 
-    <div>
-        {{ form_start(delete_form) }}
-        <button class="ui red left floated labeled icon button" type="submit"><i class="icon trash"></i> Delete</button>
-        {{ form_end(delete_form) }}
-        <a href="{{ path('admin_adventure_form', { 'id': adventure.id }) }}" class="ui left floated labeled icon button"><i class="icon pencil"></i> Edit</a>
-    </div>
+{% block javascripts %}
+    <script>
+        // Auto link quests descriptions
+        $('.description').each(function () {
+            var linkedText = Autolinker.link( $(this).html() );
+            $(this).html(linkedText);
+        });
+    </script>
 {% endblock %}
