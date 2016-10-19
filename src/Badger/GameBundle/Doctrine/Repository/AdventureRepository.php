@@ -29,7 +29,8 @@ class AdventureRepository extends EntityRepository implements AdventureRepositor
         $qb = $this->createQueryBuilder('adventure');
         $qb->leftJoin('adventure.tags', 'tags')
             ->leftJoin('adventure.steps', 's')
-            ->leftJoin('s.completions', 'sc')
+            ->leftJoin('s.completions', 'sc', 'WITH', 'sc.user = :user AND sc.pending = 0')
+            ->setParameter('user', $user)
             ->having('COUNT(sc) < COUNT(s)')
             ->andWhere('tags.id IN (:tagIds)')
             ->setMaxResults(15)
@@ -53,7 +54,8 @@ class AdventureRepository extends EntityRepository implements AdventureRepositor
         $qb = $this->createQueryBuilder('adventure');
         $qb->leftJoin('adventure.tags', 'tags')
             ->leftJoin('adventure.steps', 's')
-            ->leftJoin('s.completions', 'sc')
+            ->leftJoin('s.completions', 'sc', 'WITH', 'sc.user = :user AND sc.pending = 0')
+            ->setParameter('user', $user)
             ->having('COUNT(sc) = COUNT(s)')
             ->andWhere('tags.id IN (:tagIds)')
             ->setMaxResults(15)
