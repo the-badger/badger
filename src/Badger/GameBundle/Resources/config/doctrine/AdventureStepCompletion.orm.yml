@@ -25,6 +25,7 @@ Badger\GameBundle\Entity\AdventureStepCompletion:
             targetEntity: Badger\GameBundle\Entity\AdventureStep
             inversedBy: completions
             joinColumn:
+                onDelete: cascade
                 step_id:
                     referencedColumnName: id
     uniqueConstraints:

@@ -47,3 +47,4 @@ Badger\GameBundle\Entity\Adventure:
             joinColumn:
                 name: badge_id
                 referencedColumnName: id
+                onDelete: SET NULL
