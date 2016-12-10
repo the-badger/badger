@@ -1,0 +1,6 @@
+Badger\GameBundle\Entity\AdventureStepCompletion:
+    adventure_completion_1:
+        user: '@user_5'
+        step: '@adventure_step_ass_2016'
+        pending: 0
+        completionDate: 2016-09-01

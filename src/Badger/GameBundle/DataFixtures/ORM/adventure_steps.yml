@@ -1,0 +1,29 @@
+Badger\GameBundle\Entity\AdventureStep:
+    adventure_step_ass_2013:
+        title: ASS 2013
+        position: 1
+        rewardPoint: 0
+        badge: '@badge_ass'
+    adventure_step_ass_2014:
+        title: ASS 2014
+        position: 2
+        rewardPoint: 0
+        badge: '@badge_ass'
+    adventure_step_ass_2015:
+        title: ASS 2015
+        position: 3
+        rewardPoint: 0
+        badge: '@badge_ass'
+    adventure_step_ass_2016:
+        title: ASS 2016
+        position: 4
+        rewardPoint: 0
+        badge: '@badge_ass'
+    adventure_step_community_contributor:
+        title: Core contributor
+        position: 1
+        rewardPoint: 5
+    adventure_step_community_bug:
+        title: Fix a bug
+        position: 2
+        rewardPoint: 5
