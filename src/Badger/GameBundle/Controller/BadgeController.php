@@ -5,6 +5,7 @@ namespace Badger\GameBundle\Controller;
 use Badger\GameBundle\Entity\BadgeInterface;
 use Badger\GameBundle\Form\BadgeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -43,8 +44,8 @@ class BadgeController extends Controller
         $badgeFactory = $this->get('badger.game.badge.factory');
         $badge = $badgeFactory->create();
 
-        $form = $this->createForm(new BadgeType(), $badge);
-        $form->add('file', 'file', ['label' => 'Badge image']);
+        $form = $this->createForm(BadgeType::class, $badge);
+        $form->add('file', FileType::class, ['label' => 'Badge image']);
         $form->remove('imagePath');
         $form->handleRequest($request);
 
