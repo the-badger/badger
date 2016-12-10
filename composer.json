@@ -3,6 +3,9 @@
     "license": "proprietary",
     "type": "project",
     "autoload": {
+        "psr-0": {
+            "Badger": "test/"
+        },
         "psr-4": {
             "": "src/"
         },
