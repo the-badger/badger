@@ -28,7 +28,9 @@
     "require-dev": {
         "sensio/generator-bundle": "@stable",
         "symfony/phpunit-bridge": "@stable",
-        "phpspec/phpspec": "@stable"
+        "phpspec/phpspec": "@stable",
+        "hautelook/alice-bundle": "^1.4",
+        "doctrine/data-fixtures": "^1.2"
     },
     "scripts": {
         "post-install-cmd": [
