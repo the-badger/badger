@@ -18,7 +18,7 @@ Badger\UserBundle\Entity\User:
     # USER
     user_{1..10}:
         githubId: <randomDigitNotNull()>
-        username: <name()>
+        username: user_<current()>
         email: <safeEmail()>
         password: <password()>
         roles: [ROLE_USER]
