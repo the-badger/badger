@@ -30,5 +30,5 @@ parameters:
     slack_webhook_url: YOU_SLACK_WEBHOOK_URL
 
     # Elastic Search Configuration
-    elastic_host: ELASTICSEARCH_HOST
-    elastic_port: ELASTICSEARCH_PORT
+    elastic_host: localhost
+    elastic_port: null
