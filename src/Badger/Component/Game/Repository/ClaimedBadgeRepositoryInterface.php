@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Repository;
+namespace Badger\Component\Game\Repository;
 
 use Doctrine\Common\Persistence\ObjectRepository;
 use Badger\UserBundle\Entity\User;

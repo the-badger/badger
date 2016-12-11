@@ -2,7 +2,7 @@
 
 namespace Badger\GameBundle\Doctrine\Repository;
 
-use Badger\GameBundle\Repository\AdventureRepositoryInterface;
+use Badger\Component\Game\Repository\AdventureRepositoryInterface;
 use Badger\TagBundle\Taggable\TaggableInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;

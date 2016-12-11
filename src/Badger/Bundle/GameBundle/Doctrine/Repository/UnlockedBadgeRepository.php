@@ -3,12 +3,12 @@
 namespace Badger\GameBundle\Doctrine\Repository;
 
 use Badger\GameBundle\Entity\BadgeInterface;
-use Badger\GameBundle\Repository\TagSearchableRepositoryInterface;
+use Badger\Component\Game\Repository\TagSearchableRepositoryInterface;
 use Badger\UserBundle\Entity\UserInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
-use Badger\GameBundle\Repository\UnlockedBadgeRepositoryInterface;
+use Badger\Component\Game\Repository\UnlockedBadgeRepositoryInterface;
 use Badger\UserBundle\Entity\User;
 
 /**

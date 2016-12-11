@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Repository;
+namespace Badger\Component\Game\Repository;
 
 use Badger\TagBundle\Taggable\TaggableInterface;
 

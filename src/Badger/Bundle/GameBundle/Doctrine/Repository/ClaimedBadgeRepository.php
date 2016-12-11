@@ -3,7 +3,7 @@
 namespace Badger\GameBundle\Doctrine\Repository;
 
 use Doctrine\ORM\EntityRepository;
-use Badger\GameBundle\Repository\ClaimedBadgeRepositoryInterface;
+use Badger\Component\Game\Repository\ClaimedBadgeRepositoryInterface;
 use Badger\UserBundle\Entity\User;
 
 /**
