@@ -3,7 +3,7 @@
 namespace Badger\GameBundle\Factory;
 
 use Badger\GameBundle\Entity\QuestCompletion;
-use Badger\GameBundle\Entity\QuestInterface;
+use Badger\Component\Game\Model\QuestInterface;
 use Badger\UserBundle\Entity\UserInterface;
 
 /**

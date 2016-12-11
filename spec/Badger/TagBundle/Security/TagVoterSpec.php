@@ -2,7 +2,7 @@
 
 namespace spec\Badger\TagBundle\Security;
 
-use Badger\GameBundle\Entity\BadgeInterface;
+use Badger\Component\Game\Model\BadgeInterface;
 use Badger\TagBundle\Entity\TagInterface;
 use Badger\TagBundle\Security\TagVoter;
 use Badger\TagBundle\Taggable\TaggableInterface;

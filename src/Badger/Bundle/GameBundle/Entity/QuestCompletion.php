@@ -2,6 +2,8 @@
 
 namespace Badger\GameBundle\Entity;
 
+use Badger\Component\Game\Model\QuestCompletionInterface;
+use Badger\Component\Game\Model\QuestInterface;
 use Badger\UserBundle\Entity\UserInterface;
 
 /**

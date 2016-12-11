@@ -2,7 +2,7 @@
 
 namespace Badger\Component\Game\Repository;
 
-use Badger\GameBundle\Entity\AdventureInterface;
+use Badger\Component\Game\Model\AdventureInterface;
 use Badger\UserBundle\Entity\UserInterface;
 
 /**

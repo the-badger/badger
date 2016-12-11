@@ -2,7 +2,7 @@
 
 namespace spec\Badger\StorageUtilsBundle\Doctrine\Saver;
 
-use Badger\GameBundle\Entity\BadgeInterface;
+use Badger\Component\Game\Model\BadgeInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use PhpSpec\ObjectBehavior;
 
@@ -10,7 +10,7 @@ class BaseSaverSpec extends ObjectBehavior
 {
     function let(ObjectManager $objectManager)
     {
-        $this->beConstructedWith($objectManager, 'Badger\GameBundle\Entity\BadgeInterface');
+        $this->beConstructedWith($objectManager, 'Badger\Component\Game\Model\BadgeInterface');
     }
 
     function it_is_a_saver()
@@ -31,7 +31,7 @@ class BaseSaverSpec extends ObjectBehavior
         $anythingElse = new \stdClass();
         $exception = new \InvalidArgumentException(
             sprintf(
-                'Expects a "Badger\GameBundle\Entity\BadgeInterface", "%s" provided.',
+                'Expects a "Badger\Component\Game\Model\BadgeInterface", "%s" provided.',
                 get_class($anythingElse)
             )
         );

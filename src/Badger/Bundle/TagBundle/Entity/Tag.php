@@ -2,9 +2,9 @@
 
 namespace Badger\TagBundle\Entity;
 
-use Badger\GameBundle\Entity\AdventureInterface;
-use Badger\GameBundle\Entity\BadgeInterface;
-use Badger\GameBundle\Entity\QuestInterface;
+use Badger\Component\Game\Model\AdventureInterface;
+use Badger\Component\Game\Model\BadgeInterface;
+use Badger\Component\Game\Model\QuestInterface;
 
 /**
  * Tag entity.

@@ -2,7 +2,7 @@
 
 namespace Badger\GameBundle\Event;
 
-use Badger\GameBundle\Entity\UnlockedBadgeInterface;
+use Badger\Component\Game\Model\UnlockedBadgeInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 /**

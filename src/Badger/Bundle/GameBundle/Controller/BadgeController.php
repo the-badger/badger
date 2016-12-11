@@ -2,7 +2,7 @@
 
 namespace Badger\GameBundle\Controller;
 
-use Badger\GameBundle\Entity\BadgeInterface;
+use Badger\Component\Game\Model\BadgeInterface;
 use Badger\GameBundle\Form\BadgeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FileType;

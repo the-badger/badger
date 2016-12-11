@@ -2,8 +2,8 @@
 
 namespace spec\Badger\GameBundle\EventListener;
 
-use Badger\GameBundle\Entity\BadgeInterface;
-use Badger\GameBundle\Entity\UnlockedBadgeInterface;
+use Badger\Component\Game\Model\BadgeInterface;
+use Badger\Component\Game\Model\UnlockedBadgeInterface;
 use Badger\GameBundle\Event\BadgeUnlockEvent;
 use Badger\Component\Game\Notifier\NotifierInterface;
 use Badger\UserBundle\Entity\UserInterface;

@@ -2,8 +2,8 @@
 
 namespace Badger\Component\Game\Factory;
 
-use Badger\GameBundle\Entity\BadgeInterface;
-use Badger\GameBundle\Entity\UnlockedBadge;
+use Badger\Component\Game\Model\BadgeInterface;
+use Badger\Component\Game\Model\UnlockedBadgeInterface;
 use Badger\UserBundle\Entity\UserInterface;
 
 /**
@@ -18,7 +18,7 @@ interface UnlockedBadgeFactoryInterface
      * @param UserInterface  $user
      * @param BadgeInterface $badge
      *
-     * @return UnlockedBadge
+     * @return UnlockedBadgeInterface
      */
     public function create(UserInterface $user, BadgeInterface $badge);
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Entity;
+namespace Badger\Component\Game\Model;
 
 use Badger\UserBundle\Entity\UserInterface;
 

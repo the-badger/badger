@@ -2,6 +2,7 @@
 
 namespace Badger\GameBundle\Notifier;
 
+use Badger\Component\Game\Notifier\NotifierInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;

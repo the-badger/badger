@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Notifier;
+namespace Badger\Component\Game\Notifier;
 
 /**
  * Simple Notifier interface to notify data somewhere.

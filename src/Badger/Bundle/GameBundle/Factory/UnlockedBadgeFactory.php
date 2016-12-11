@@ -3,7 +3,7 @@
 namespace Badger\GameBundle\Factory;
 
 use Badger\Component\Game\Factory\UnlockedBadgeFactoryInterface;
-use Badger\GameBundle\Entity\BadgeInterface;
+use Badger\Component\Game\Model\BadgeInterface;
 use Badger\GameBundle\Entity\UnlockedBadge;
 use Badger\UserBundle\Entity\UserInterface;
 

@@ -2,6 +2,8 @@
 
 namespace Badger\GameBundle\Entity;
 
+use Badger\Component\Game\Model\AdventureStepCompletionInterface;
+use Badger\Component\Game\Model\AdventureStepInterface;
 use Badger\UserBundle\Entity\UserInterface;
 
 /**

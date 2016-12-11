@@ -2,6 +2,9 @@
 
 namespace Badger\GameBundle\Entity;
 
+use Badger\Component\Game\Model\AdventureInterface;
+use Badger\Component\Game\Model\AdventureStepInterface;
+use Badger\Component\Game\Model\BadgeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**

@@ -1,16 +1,17 @@
 <?php
 
-namespace Badger\GameBundle\Entity;
+namespace Badger\Component\Game\Model;
 
+use Badger\TagBundle\Taggable\TaggableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Adventure Step interface
+ * Adventure interface
  *
  * @author  Marie Bochu <marie.bochu@akeneo.com>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
-interface AdventureStepInterface
+interface AdventureInterface extends TaggableInterface
 {
     /**
      * Get id
@@ -24,7 +25,7 @@ interface AdventureStepInterface
      *
      * @param string $title
      *
-     * @return AdventureStepInterface
+     * @return AdventureInterface
      */
     public function setTitle($title);
 
@@ -40,7 +41,7 @@ interface AdventureStepInterface
      *
      * @param string $description
      *
-     * @return AdventureStepInterface
+     * @return AdventureInterface
      */
     public function setDescription($description);
 
@@ -52,27 +53,11 @@ interface AdventureStepInterface
     public function getDescription();
 
     /**
-     * Set position
-     *
-     * @param int $position
-     *
-     * @return AdventureStepInterface
-     */
-    public function setPosition($position);
-
-    /**
-     * Get position
-     *
-     * @return int
-     */
-    public function getPosition();
-
-    /**
      * Set rewardPoint
      *
      * @param int $rewardPoint
      *
-     * @return AdventureStepInterface
+     * @return AdventureInterface
      */
     public function setRewardPoint($rewardPoint);
 
@@ -84,44 +69,61 @@ interface AdventureStepInterface
     public function getRewardPoint();
 
     /**
+     * Set isStepLinked
+     *
+     * @param bool $isStepLinked
+     *
+     * @return AdventureInterface
+     */
+    public function setIsStepLinked($isStepLinked);
+
+    /**
+     * Get isStepLinked
+     *
+     * @return bool
+     */
+    public function isStepLinked();
+
+    /**
      * Set badge
      *
      * @param BadgeInterface $badge
      *
-     * @return AdventureStepInterface
+     * @return AdventureInterface
      */
     public function setBadge(BadgeInterface $badge);
 
     /**
      * Get badge
      *
-     * @return BadgeInterface
+     * @return BadgeInterface|null
      */
     public function getBadge();
 
     /**
-     * Set adventure
-     *
-     * @param AdventureInterface $adventure
-     *
-     * @return AdventureStepInterface
-     */
-    public function setAdventure(AdventureInterface $adventure);
-
-    /**
-     * Get adventure
+     * @param AdventureStepInterface $step
      *
      * @return AdventureInterface
      */
-    public function getAdventure();
+    public function addStep(AdventureStepInterface $step);
+
+    /**
+     * @param AdventureStepInterface $step
+     *
+     * @return AdventureInterface
+     */
+    public function removeStep(AdventureStepInterface $step);
+
+    /**
+     * @param array $steps
+     *
+     * @return AdventureInterface
+     */
+    public function setSteps($steps);
 
     /**
      * @return ArrayCollection
      */
-    public function getCompletions();
-
-    /**
-     * @param ArrayCollection $completions
-     */
-    public function setCompletions($completions);
+    public function getSteps();
 }
+

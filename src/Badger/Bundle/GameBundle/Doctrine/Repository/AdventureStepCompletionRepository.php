@@ -2,7 +2,7 @@
 
 namespace Badger\GameBundle\Doctrine\Repository;
 
-use Badger\GameBundle\Entity\AdventureInterface;
+use Badger\Component\Game\Model\AdventureInterface;
 use Badger\Component\Game\Repository\AdventureStepCompletionRepositoryInterface;
 use Badger\UserBundle\Entity\UserInterface;
 use Doctrine\ORM\EntityRepository;

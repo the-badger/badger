@@ -3,7 +3,7 @@
 namespace Badger\GameBundle\Factory;
 
 use Badger\GameBundle\Entity\AdventureStepCompletion;
-use Badger\GameBundle\Entity\AdventureStepInterface;
+use Badger\Component\Game\Model\AdventureStepInterface;
 use Badger\UserBundle\Entity\UserInterface;
 
 /**

@@ -2,6 +2,8 @@
 
 namespace Badger\GameBundle\Entity;
 
+use Badger\Component\Game\Model\BadgeInterface;
+use Badger\Component\Game\Model\UnlockedBadgeInterface;
 use Badger\UserBundle\Entity\User;
 
 /**
