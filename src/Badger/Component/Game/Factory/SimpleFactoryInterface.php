@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Factory;
+namespace Badger\Component\Game\Factory;
 
 /**
 * Factory interface

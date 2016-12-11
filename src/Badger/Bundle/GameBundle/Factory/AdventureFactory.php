@@ -2,6 +2,7 @@
 
 namespace Badger\GameBundle\Factory;
 
+use Badger\Component\Game\Factory\SimpleFactoryInterface;
 use Badger\GameBundle\Entity\Adventure;
 use Badger\GameBundle\Entity\AdventureStep;
 

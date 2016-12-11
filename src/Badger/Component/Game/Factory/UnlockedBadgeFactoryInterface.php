@@ -1,24 +1,24 @@
 <?php
 
-namespace Badger\GameBundle\Factory;
+namespace Badger\Component\Game\Factory;
 
 use Badger\GameBundle\Entity\BadgeInterface;
-use Badger\GameBundle\Entity\ClaimedBadgeInterface;
+use Badger\GameBundle\Entity\UnlockedBadge;
 use Badger\UserBundle\Entity\UserInterface;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
-interface ClaimedBadgeFactoryInterface
+interface UnlockedBadgeFactoryInterface
 {
     /**
-     * Create a ClaimedBadge instance from a given $user and $badge.
+     * Create an UnlockedBadge instance from a given $user and $badge.
      *
      * @param UserInterface  $user
      * @param BadgeInterface $badge
      *
-     * @return ClaimedBadgeInterface
+     * @return UnlockedBadge
      */
     public function create(UserInterface $user, BadgeInterface $badge);
 }

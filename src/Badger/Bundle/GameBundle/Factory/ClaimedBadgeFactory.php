@@ -2,6 +2,7 @@
 
 namespace Badger\GameBundle\Factory;
 
+use Badger\Component\Game\Factory\ClaimedBadgeFactoryInterface;
 use Badger\GameBundle\Entity\BadgeInterface;
 use Badger\GameBundle\Entity\ClaimedBadge;
 use Badger\UserBundle\Entity\UserInterface;

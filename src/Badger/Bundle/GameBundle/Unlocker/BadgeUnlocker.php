@@ -4,7 +4,7 @@ namespace Badger\GameBundle\Unlocker;
 
 use Badger\GameBundle\Entity\BadgeInterface;
 use Badger\GameBundle\Entity\ClaimedBadgeInterface;
-use Badger\GameBundle\Factory\UnlockedBadgeFactoryInterface;
+use Badger\Component\Game\Factory\UnlockedBadgeFactoryInterface;
 use Badger\Component\Game\Repository\UnlockedBadgeRepositoryInterface;
 use Badger\StorageUtilsBundle\Remover\RemoverInterface;
 use Badger\StorageUtilsBundle\Saver\SaverInterface;

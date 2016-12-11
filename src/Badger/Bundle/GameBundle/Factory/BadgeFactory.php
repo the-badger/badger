@@ -2,6 +2,7 @@
 
 namespace Badger\GameBundle\Factory;
 
+use Badger\Component\Game\Factory\SimpleFactoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Badger\GameBundle\Entity\Badge;
 
