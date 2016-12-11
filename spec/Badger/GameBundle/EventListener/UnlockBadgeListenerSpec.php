@@ -5,7 +5,7 @@ namespace spec\Badger\GameBundle\EventListener;
 use Badger\GameBundle\Entity\BadgeInterface;
 use Badger\GameBundle\Entity\UnlockedBadgeInterface;
 use Badger\GameBundle\Event\BadgeUnlockEvent;
-use Badger\GameBundle\Notifier\NotifierInterface;
+use Badger\Component\Game\Notifier\NotifierInterface;
 use Badger\UserBundle\Entity\UserInterface;
 use PhpSpec\ObjectBehavior;
 use Symfony\Bridge\Monolog\Logger;

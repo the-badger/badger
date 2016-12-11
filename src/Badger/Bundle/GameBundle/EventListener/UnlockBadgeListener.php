@@ -3,7 +3,7 @@
 namespace Badger\GameBundle\EventListener;
 
 use Badger\GameBundle\Event\BadgeUnlockEvent;
-use Badger\GameBundle\Notifier\NotifierInterface;
+use Badger\Component\Game\Notifier\NotifierInterface;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
