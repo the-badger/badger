@@ -22,6 +22,7 @@ Badger\GameBundle\Entity\UnlockedBadge:
             joinColumn:
                 badge_id:
                     referencedColumnName: id
+                onDelete: cascade
     uniqueConstraints:
         only_one_unlock_idx:
             columns: [ user_id, badge_id ]

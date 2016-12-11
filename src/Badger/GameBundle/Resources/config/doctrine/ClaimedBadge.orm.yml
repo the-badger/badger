@@ -22,3 +22,4 @@ Badger\GameBundle\Entity\ClaimedBadge:
             joinColumn:
                 badge_id:
                     referencedColumnName: id
+                onDelete: cascade
