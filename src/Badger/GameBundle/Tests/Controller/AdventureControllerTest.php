@@ -166,7 +166,7 @@ class AdventureControllerTest extends BadgerTestCase
 
         $this->assertCount($adventureCount-=1, $this->adventureRepository->findAll(), 'Adventure is removed');
         $this->assertCount($adventureStepCount-=4, $this->adventureStepRepository->findAll(), 'Steps of adventure are removed');
-        $this->assertCount($adventureComplRepoCount-=1, $this->adventureComplRepo->findAll(), 'Completions steps of adventure are removed');
+        $this->assertCount($adventureComplRepoCount-=2, $this->adventureComplRepo->findAll(), 'Completions steps of adventure are removed');
         $this->assertCount($badgeCount, $this->badgeRepository->findAll(), 'Badge are not removed when an adventure is removed');
     }
 }
