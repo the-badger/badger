@@ -2,7 +2,7 @@
 
 namespace Badger\UserBundle\Entity;
 
-use Badger\TagBundle\Entity\TagInterface;
+use Badger\Component\Tag\Model\TagInterface;
 use Badger\TagBundle\Taggable\TaggableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;

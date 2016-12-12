@@ -5,7 +5,7 @@ namespace Badger\Component\Game\Repository;
 use Badger\Component\Game\Model\BadgeInterface;
 use Badger\UserBundle\Entity\UserInterface;
 use Doctrine\Common\Persistence\ObjectRepository;
-use Badger\TagBundle\Entity\TagInterface;
+use Badger\Component\Tag\Model\TagInterface;
 use Badger\UserBundle\Entity\User;
 
 /**

@@ -5,6 +5,7 @@ namespace Badger\TagBundle\Entity;
 use Badger\Component\Game\Model\AdventureInterface;
 use Badger\Component\Game\Model\BadgeInterface;
 use Badger\Component\Game\Model\QuestInterface;
+use Badger\Component\Tag\Model\TagInterface;
 
 /**
  * Tag entity.

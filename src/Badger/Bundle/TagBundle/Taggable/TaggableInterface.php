@@ -2,7 +2,7 @@
 
 namespace Badger\TagBundle\Taggable;
 
-use Badger\TagBundle\Entity\TagInterface;
+use Badger\Component\Tag\Model\TagInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**

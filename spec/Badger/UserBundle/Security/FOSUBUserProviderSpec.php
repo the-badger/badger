@@ -2,7 +2,7 @@
 
 namespace spec\Badger\UserBundle\Security;
 
-use Badger\TagBundle\Entity\TagInterface;
+use Badger\Component\Tag\Model\TagInterface;
 use Badger\TagBundle\Repository\TagRepositoryInterface;
 use Badger\UserBundle\Entity\User;
 use Badger\UserBundle\Entity\UserInterface;
