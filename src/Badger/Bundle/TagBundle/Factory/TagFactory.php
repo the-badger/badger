@@ -2,6 +2,7 @@
 
 namespace Badger\TagBundle\Factory;
 
+use Badger\Component\Tag\Factory\TagFactoryInterface;
 use Badger\TagBundle\Entity\Tag;
 
 /**

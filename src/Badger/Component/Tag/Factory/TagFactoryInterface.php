@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\TagBundle\Factory;
+namespace Badger\Component\Tag\Factory;
 
 use Badger\TagBundle\Entity\Tag;
 
