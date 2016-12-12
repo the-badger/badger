@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\StorageUtilsBundle\Remover;
+namespace Badger\Component\StorageUtils\Remover;
 
 /**
  * Remover interface, provides a minimal contract to remove a single business object

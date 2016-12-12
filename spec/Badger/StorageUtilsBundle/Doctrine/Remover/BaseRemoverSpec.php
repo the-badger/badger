@@ -15,7 +15,7 @@ class BaseRemoverSpec extends ObjectBehavior
 
     function it_is_a_remover()
     {
-        $this->shouldHaveType('Badger\StorageUtilsBundle\Remover\RemoverInterface');
+        $this->shouldHaveType('Badger\Component\StorageUtils\Remover\RemoverInterface');
     }
 
     function it_removes_the_object_and_flushes_the_unit_of_work($objectManager, BadgeInterface $type)

@@ -15,7 +15,7 @@ class BaseSaverSpec extends ObjectBehavior
 
     function it_is_a_saver()
     {
-        $this->shouldHaveType('Badger\StorageUtilsBundle\Saver\SaverInterface');
+        $this->shouldHaveType('Badger\Component\StorageUtils\Saver\SaverInterface');
     }
 
     function it_persists_the_object_and_flushes_the_unit_of_work($objectManager, BadgeInterface $type)

@@ -5,7 +5,7 @@ namespace Badger\GameBundle\Doctrine\Saver;
 use Doctrine\Common\Persistence\ObjectManager;
 use Badger\GameBundle\GameEvents;
 use Badger\GameBundle\Event\BadgeUnlockEvent;
-use Badger\StorageUtilsBundle\Saver\SaverInterface;
+use Badger\Component\StorageUtils\Saver\SaverInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Acl\Util\ClassUtils;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\StorageUtilsBundle\Saver;
+namespace Badger\Component\StorageUtils\Saver;
 
 /**
  * Saver interface, provides a minimal contract to save a single business object
