@@ -9,7 +9,7 @@ use Badger\Component\Game\Factory\UnlockedBadgeFactoryInterface;
 use Badger\Component\Game\Repository\UnlockedBadgeRepositoryInterface;
 use Badger\StorageUtilsBundle\Remover\RemoverInterface;
 use Badger\StorageUtilsBundle\Saver\SaverInterface;
-use Badger\UserBundle\Entity\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

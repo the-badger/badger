@@ -4,7 +4,7 @@ namespace Badger\GameBundle\Doctrine\Repository;
 
 use Badger\Component\Game\Model\BadgeInterface;
 use Badger\Component\Game\Repository\TagSearchableRepositoryInterface;
-use Badger\UserBundle\Entity\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;

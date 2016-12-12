@@ -2,7 +2,7 @@
 
 namespace Badger\Component\Game\Repository;
 
-use Badger\UserBundle\Entity\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 use Doctrine\Common\Persistence\ObjectRepository;
 
 /**

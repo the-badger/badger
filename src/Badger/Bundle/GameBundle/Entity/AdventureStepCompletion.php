@@ -4,7 +4,7 @@ namespace Badger\GameBundle\Entity;
 
 use Badger\Component\Game\Model\AdventureStepCompletionInterface;
 use Badger\Component\Game\Model\AdventureStepInterface;
-use Badger\UserBundle\Entity\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

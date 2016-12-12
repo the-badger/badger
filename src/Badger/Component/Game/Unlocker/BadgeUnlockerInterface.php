@@ -4,7 +4,7 @@ namespace Badger\Component\Game\Unlocker;
 
 use Badger\Component\Game\Model\BadgeInterface;
 use Badger\Component\Game\Model\ClaimedBadgeInterface;
-use Badger\UserBundle\Entity\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

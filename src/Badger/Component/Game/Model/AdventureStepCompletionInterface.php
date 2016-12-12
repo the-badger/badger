@@ -2,7 +2,7 @@
 
 namespace Badger\Component\Game\Model;
 
-use Badger\UserBundle\Entity\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

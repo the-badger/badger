@@ -6,7 +6,7 @@ use Badger\Component\Game\Model\BadgeInterface;
 use Badger\Component\Tag\Model\TagInterface;
 use Badger\TagBundle\Security\TagVoter;
 use Badger\Component\Tag\Taggable\TaggableInterface;
-use Badger\UserBundle\Entity\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;

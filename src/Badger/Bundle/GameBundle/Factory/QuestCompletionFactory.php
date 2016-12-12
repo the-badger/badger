@@ -4,7 +4,7 @@ namespace Badger\GameBundle\Factory;
 
 use Badger\GameBundle\Entity\QuestCompletion;
 use Badger\Component\Game\Model\QuestInterface;
-use Badger\UserBundle\Entity\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

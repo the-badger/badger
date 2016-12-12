@@ -5,7 +5,7 @@ namespace spec\Badger\UserBundle\Security;
 use Badger\Component\Tag\Model\TagInterface;
 use Badger\TagBundle\Repository\TagRepositoryInterface;
 use Badger\UserBundle\Entity\User;
-use Badger\UserBundle\Entity\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\ResourceOwnerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;

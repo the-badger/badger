@@ -5,7 +5,7 @@ namespace Badger\GameBundle\Factory;
 use Badger\Component\Game\Factory\ClaimedBadgeFactoryInterface;
 use Badger\Component\Game\Model\BadgeInterface;
 use Badger\GameBundle\Entity\ClaimedBadge;
-use Badger\UserBundle\Entity\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

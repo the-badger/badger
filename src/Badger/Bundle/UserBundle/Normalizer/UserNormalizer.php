@@ -2,7 +2,7 @@
 
 namespace Badger\UserBundle\Normalizer;
 
-use Badger\UserBundle\Entity\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 use Doctrine\ORM\PersistentCollection;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 

@@ -6,7 +6,7 @@ use Badger\Component\Game\Model\BadgeInterface;
 use Badger\Component\Game\Model\UnlockedBadgeInterface;
 use Badger\GameBundle\Event\BadgeUnlockEvent;
 use Badger\Component\Game\Notifier\NotifierInterface;
-use Badger\UserBundle\Entity\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 use PhpSpec\ObjectBehavior;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;

@@ -4,6 +4,7 @@ namespace Badger\UserBundle\Entity;
 
 use Badger\Component\Tag\Model\TagInterface;
 use Badger\Component\Tag\Taggable\TaggableInterface;
+use Badger\Component\User\Model\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 
