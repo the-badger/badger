@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\TagBundle\Taggable;
+namespace Badger\Component\Tag\Taggable;
 
 use Badger\Component\Tag\Model\TagInterface;
 use Doctrine\Common\Collections\ArrayCollection;

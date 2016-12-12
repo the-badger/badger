@@ -2,7 +2,7 @@
 
 namespace Badger\Component\Game\Repository;
 
-use Badger\TagBundle\Taggable\TaggableInterface;
+use Badger\Component\Tag\Taggable\TaggableInterface;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

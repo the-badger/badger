@@ -5,7 +5,7 @@ namespace spec\Badger\TagBundle\Security;
 use Badger\Component\Game\Model\BadgeInterface;
 use Badger\Component\Tag\Model\TagInterface;
 use Badger\TagBundle\Security\TagVoter;
-use Badger\TagBundle\Taggable\TaggableInterface;
+use Badger\Component\Tag\Taggable\TaggableInterface;
 use Badger\UserBundle\Entity\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;

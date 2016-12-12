@@ -3,7 +3,7 @@
 namespace Badger\TagBundle\Security;
 
 use Badger\Component\Tag\Model\TagInterface;
-use Badger\TagBundle\Taggable\TaggableInterface;
+use Badger\Component\Tag\Taggable\TaggableInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 

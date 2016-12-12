@@ -2,7 +2,7 @@
 
 namespace Badger\Component\Game\Repository;
 
-use Badger\TagBundle\Taggable\TaggableInterface;
+use Badger\Component\Tag\Taggable\TaggableInterface;
 use Badger\UserBundle\Entity\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Persistence\ObjectRepository;

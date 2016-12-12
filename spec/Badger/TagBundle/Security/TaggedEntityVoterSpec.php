@@ -4,7 +4,7 @@ namespace spec\Badger\TagBundle\Security;
 
 use Badger\Component\Tag\Model\TagInterface;
 use Badger\TagBundle\Security\TaggedEntityVoter;
-use Badger\TagBundle\Taggable\TaggableInterface;
+use Badger\Component\Tag\Taggable\TaggableInterface;
 use Badger\UserBundle\Entity\User;
 use Badger\UserBundle\Entity\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;

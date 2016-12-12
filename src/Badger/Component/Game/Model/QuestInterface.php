@@ -3,7 +3,7 @@
 namespace Badger\Component\Game\Model;
 
 use Badger\GameBundle\Entity\Quest;
-use Badger\TagBundle\Taggable\TaggableInterface;
+use Badger\Component\Tag\Taggable\TaggableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
