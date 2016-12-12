@@ -3,7 +3,7 @@
 namespace Badger\Component\Game\Repository;
 
 use Doctrine\Common\Persistence\ObjectRepository;
-use Badger\UserBundle\Entity\User;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Repository interface for ClaimedBadge entities.
@@ -16,9 +16,9 @@ interface ClaimedBadgeRepositoryInterface extends ObjectRepository
     /**
      * Get all Badge ids claimed by the given $user.
      *
-     * @param User $user
+     * @param UserInterface $user
      *
      * @return array
      */
-    public function getBadgeIdsClaimedByUser(User $user);
+    public function getBadgeIdsClaimedByUser(UserInterface $user);
 }

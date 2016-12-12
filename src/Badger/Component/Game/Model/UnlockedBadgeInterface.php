@@ -2,7 +2,7 @@
 
 namespace Badger\Component\Game\Model;
 
-use Badger\UserBundle\Entity\User;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Unlocked badges entity interface
@@ -23,12 +23,12 @@ interface UnlockedBadgeInterface
     public function setId($id);
 
     /**
-     * @return User
+     * @return UserInterface
      */
     public function getUser();
 
     /**
-     * @param User $user
+     * @param UserInterface $user
      */
     public function setUser($user);
 

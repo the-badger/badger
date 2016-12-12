@@ -4,7 +4,7 @@ namespace Badger\GameBundle\Entity;
 
 use Badger\Component\Game\Model\BadgeInterface;
 use Badger\Component\Game\Model\ClaimedBadgeInterface;
-use Badger\UserBundle\Entity\User;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * An ClaimedBadge is the entity that represents the user wanting a badge.
@@ -17,7 +17,7 @@ class ClaimedBadge implements ClaimedBadgeInterface
     /** @var string */
     protected $id;
 
-    /** @var User */
+    /** @var UserInterface */
     protected $user;
 
     /** @var BadgeInterface */

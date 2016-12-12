@@ -4,7 +4,7 @@ namespace Badger\GameBundle\Doctrine\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Badger\Component\Game\Repository\ClaimedBadgeRepositoryInterface;
-use Badger\UserBundle\Entity\User;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Doctrine implementation of repository for ClaimedBadge entities.
@@ -17,7 +17,7 @@ class ClaimedBadgeRepository extends EntityRepository implements ClaimedBadgeRep
     /**
      * {@inheritdoc}
      */
-    public function getBadgeIdsClaimedByUser(User $user)
+    public function getBadgeIdsClaimedByUser(UserInterface $user)
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('b.id')

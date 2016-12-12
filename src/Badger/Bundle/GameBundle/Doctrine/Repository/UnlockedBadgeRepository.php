@@ -4,12 +4,11 @@ namespace Badger\GameBundle\Doctrine\Repository;
 
 use Badger\Component\Game\Model\BadgeInterface;
 use Badger\Component\Game\Repository\TagSearchableRepositoryInterface;
-use Badger\Component\User\Model\UserInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
 use Badger\Component\Game\Repository\UnlockedBadgeRepositoryInterface;
-use Badger\UserBundle\Entity\User;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Doctrine implementation of repository for UnlockedBadge entities.
@@ -24,7 +23,7 @@ class UnlockedBadgeRepository extends EntityRepository implements
     /**
      * {@inheritdoc}
      */
-    public function getUnlockedBadgeIdsByUser(User $user)
+    public function getUnlockedBadgeIdsByUser(UserInterface $user)
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
         $qb->select('b.id')

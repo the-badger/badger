@@ -2,7 +2,6 @@
 
 namespace Badger\Component\Game\Model;
 
-use Badger\GameBundle\Entity\Quest;
 use Badger\Component\Tag\Taggable\TaggableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -27,7 +26,7 @@ interface QuestInterface extends TaggableInterface
     /**
      * @param string $title
      *
-     * @return $this
+     * @return QuestInterface
      */
     public function setTitle($title);
 
@@ -39,7 +38,7 @@ interface QuestInterface extends TaggableInterface
     /**
      * @param string $description
      *
-     * @return $this
+     * @return QuestInterface
      */
     public function setDescription($description);
 
@@ -51,7 +50,7 @@ interface QuestInterface extends TaggableInterface
     /**
      * @param int $reward
      *
-     * @return Quest
+     * @return QuestInterface
      */
     public function setReward($reward);
 
@@ -63,7 +62,7 @@ interface QuestInterface extends TaggableInterface
     /**
      * @param \DateTime $startDate
      *
-     * @return Quest
+     * @return QuestInterface
      */
     public function setStartDate($startDate);
 
@@ -75,7 +74,7 @@ interface QuestInterface extends TaggableInterface
     /**
      * @param \DateTime $endDate
      *
-     * @return Quest
+     * @return QuestInterface
      */
     public function setEndDate($endDate);
 

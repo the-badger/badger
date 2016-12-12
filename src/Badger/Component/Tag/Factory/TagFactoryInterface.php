@@ -2,7 +2,7 @@
 
 namespace Badger\Component\Tag\Factory;
 
-use Badger\TagBundle\Entity\Tag;
+use Badger\Component\Tag\Model\TagInterface;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>
@@ -13,7 +13,7 @@ interface TagFactoryInterface
     /**
      * Create a Tag instance.
      *
-     * @return Tag
+     * @return TagInterface
      */
     public function create();
 }
