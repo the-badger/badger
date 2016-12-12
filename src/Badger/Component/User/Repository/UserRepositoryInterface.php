@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\UserBundle\Repository;
+namespace Badger\Component\User\Repository;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

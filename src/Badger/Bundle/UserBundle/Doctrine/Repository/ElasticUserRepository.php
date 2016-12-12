@@ -2,7 +2,7 @@
 
 namespace Badger\UserBundle\Doctrine\Repository;
 
-use Badger\UserBundle\Repository\ElasticUserRepositoryInterface;
+use Badger\Component\User\Repository\ElasticUserRepositoryInterface;
 use Elastica\SearchableInterface;
 
 /**

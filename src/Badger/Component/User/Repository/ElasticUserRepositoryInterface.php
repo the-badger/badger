@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\UserBundle\Repository;
+namespace Badger\Component\User\Repository;
 
 /**
  * @author  Olivier Soulet <olivier.soulet@akeneo.com>
