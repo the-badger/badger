@@ -93,7 +93,7 @@ class BadgeController extends Controller
     public function editAction(Request $request, $id)
     {
         $badge = $this->get('badger.game.repository.badge')->find($id);
-        $editForm = $this->createForm(new BadgeType(), $badge);
+        $editForm = $this->createForm(BadgeType::class, $badge);
         $editForm->add('file');
         $editForm->remove('imagePath');
         $editForm->handleRequest($request);

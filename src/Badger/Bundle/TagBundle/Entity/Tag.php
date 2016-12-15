@@ -166,6 +166,9 @@ class Tag implements TagInterface
         $this->adventures = $adventures;
     }
 
+    /**
+     * @return string
+     */
     public function __toString()
     {
         return $this->name;

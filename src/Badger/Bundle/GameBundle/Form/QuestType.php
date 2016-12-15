@@ -2,7 +2,13 @@
 
 namespace Badger\Bundle\GameBundle\Form;
 
+use Badger\Bundle\GameBundle\Entity\Quest;
+use Badger\Bundle\TagBundle\Entity\Tag;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,16 +24,15 @@ class QuestType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('description', 'textarea')
-            ->add('reward', 'integer')
-            ->add('startDate', 'date', ['widget' => 'single_text', 'format' => 'yyyy/MM/dd'])
-            ->add('endDate', 'date', ['widget' => 'single_text', 'format' => 'yyyy/MM/dd'])
-            ->add('tags', 'entity', [
+            ->add('description', TextareaType::class)
+            ->add('reward', IntegerType::class)
+            ->add('startDate', DateType::class, ['widget' => 'single_text', 'format' => 'yyyy/MM/dd'])
+            ->add('endDate', DateType::class, ['widget' => 'single_text', 'format' => 'yyyy/MM/dd'])
+            ->add('tags', EntityType::class, [
                 'label'    => 'Tagged in',
                 'multiple' => true,
-                'property' => 'name',
                 'required' => false,
-                'class'    => 'Badger\Bundle\TagBundle\Entity\Tag'
+                'class'    => Tag::class
             ])
         ;
     }
@@ -38,7 +43,7 @@ class QuestType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Badger\Bundle\GameBundle\Entity\Quest'
+            'data_class' => Quest::class
         ]);
     }
 }

@@ -44,7 +44,7 @@ class QuestController extends Controller
         $questFactory = $this->get('badger.game.quest.factory');
         $quest = $questFactory->create();
 
-        $form = $this->createForm(new QuestType(), $quest);
+        $form = $this->createForm(QuestType::class, $quest);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -89,7 +89,7 @@ class QuestController extends Controller
     public function editAction(Request $request, $id)
     {
         $quest = $this->get('badger.game.repository.quest')->find($id);
-        $editForm = $this->createForm(new QuestType(), $quest);
+        $editForm = $this->createForm(QuestType::class, $quest);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

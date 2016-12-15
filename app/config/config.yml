@@ -77,6 +77,9 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
+    from_email:
+        address: you@example.com
+        sender_name: You
     user_class: Badger\Bundle\UserBundle\Entity\User
     group:
         group_class: Badger\Bundle\UserBundle\Entity\Group
