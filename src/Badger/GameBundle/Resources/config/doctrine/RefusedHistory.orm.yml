@@ -1,0 +1,25 @@
+Badger\GameBundle\Entity\RefusedHistory:
+    type: entity
+    table: refused_history
+    repositoryClass: Badger\GameBundle\Doctrine\Repository\RefusedHistoryRepository
+    fields:
+        id:
+            id: true
+            type: guid
+            generator:
+                strategy: UUID
+        entityType:
+            type: string
+            length: 255
+            nullable: false
+        entityId:
+            type: string
+            length: 255
+            nullable: false
+    manyToOne:
+        user:
+            targetEntity: Badger\UserBundle\Entity\User
+            inversedBy: id
+            joinColumn:
+                name: user_id
+                referencedColumnName: id

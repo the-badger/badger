@@ -41,8 +41,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         app_version: "%version%"
-    form:
-        resources:
+    form_theme:
             - 'GameBundle:Form:game-fields.html.twig'
 
 # Doctrine Configuration

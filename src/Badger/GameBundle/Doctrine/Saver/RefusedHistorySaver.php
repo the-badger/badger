@@ -3,17 +3,15 @@
 namespace Badger\GameBundle\Doctrine\Saver;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Badger\GameBundle\GameEvents;
-use Badger\GameBundle\Event\BadgeUnlockEvent;
 use Badger\StorageUtilsBundle\Saver\SaverInterface;
 use Doctrine\Common\Util\ClassUtils;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Olivier Soulet <olivier.soulet@akeneo.com>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
-class UnlockedBadgeSaver implements SaverInterface
+class RefusedHistorySaver implements SaverInterface
 {
     /** @var ObjectManager */
     protected $objectManager;
@@ -42,22 +40,19 @@ class UnlockedBadgeSaver implements SaverInterface
     /**
      * {@inheritdoc}
      */
-    public function save($unlockedBadge, array $options = [])
+    public function save($refusedHistory, array $options = [])
     {
-        if (false === ($unlockedBadge instanceof $this->savedClass)) {
+        if (false === ($refusedHistory instanceof $this->savedClass)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     'Expects a "%s", "%s" provided.',
                     $this->savedClass,
-                    ClassUtils::getRealClass($unlockedBadge)
+                    ClassUtils::getRealClass($refusedHistory)
                 )
             );
         }
 
-        $this->objectManager->persist($unlockedBadge);
+        $this->objectManager->persist($refusedHistory);
         $this->objectManager->flush();
-
-        $event = new BadgeUnlockEvent($unlockedBadge);
-        $this->eventDispatcher->dispatch(GameEvents::USER_UNLOCKS_BADGE, $event);
     }
 }

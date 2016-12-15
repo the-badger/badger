@@ -7,6 +7,7 @@ parameters:
     badger.game.repository.adventure.class: Badger\GameBundle\Doctrine\Repository\AdventureRepository
     badger.game.repository.adventure_step.class: Badger\GameBundle\Doctrine\Repository\AdventureStepRepository
     badger.game.repository.adventure_step_completion.class: Badger\GameBundle\Doctrine\Repository\AdventureStepCompletionRepository
+    badger.game.repository.refused_history.class: Badger\GameBundle\Doctrine\Repository\RefusedHistoryRepository
 
 services:
     badger.game.repository.badge:
@@ -26,6 +27,12 @@ services:
         factory: ['@doctrine.orm.entity_manager', 'getRepository']
         arguments:
             - Badger\GameBundle\Entity\ClaimedBadge
+
+    badger.game.repository.refused_history:
+        class: '%badger.game.repository.refused_history.class%'
+        factory: ['@doctrine.orm.entity_manager', 'getRepository']
+        arguments:
+            - Badger\GameBundle\Entity\RefusedHistory
 
     badger.game.repository.unlocked_badge:
         class: '%badger.game.repository.unlocked_badge.class%'

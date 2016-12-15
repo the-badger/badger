@@ -2,6 +2,7 @@
 
 namespace Badger\GameBundle\Controller;
 
+use Badger\GameBundle\Entity\BadgeInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,7 +31,7 @@ class ClaimedBadgeController extends Controller
     /**
      * Reject a claimed badge by removing it from the database.
      *
-     * @param $id
+     * @param int $id
      *
      * @return RedirectResponse
      */
@@ -47,7 +48,13 @@ class ClaimedBadgeController extends Controller
         $username = $claimedBadge->getUser()->getUsername();
 
         $claimedBadgeRemover = $this->get('badger.game.remover.claimed_badge');
+        $refusedBadgeFactory = $this->get('badger.game.refused_history.factory');
+        $refusedBadgeSaver = $this->get('badger.game.saver.refused_history');
+
         $claimedBadgeRemover->remove($claimedBadge);
+        $refusedBadge = $refusedBadgeFactory
+            ->create($claimedBadge->getUser(), BadgeInterface::class, $claimedBadge->getBadge()->getId());
+        $refusedBadgeSaver->save($refusedBadge);
 
         $this->addFlash('notice', sprintf(
             'Successfully rejected the badge "%s" for %s!',
@@ -61,7 +68,7 @@ class ClaimedBadgeController extends Controller
     /**
      * Accept a claimed badge by creating a new unlocked badge.
      *
-     * @param $id
+     * @param int $id
      *
      * @return RedirectResponse
      */
@@ -84,10 +91,10 @@ class ClaimedBadgeController extends Controller
             ]);
 
         if ($isUnlocked) {
-            $this->addFlash('error', sprintf('%s already has the badge "%s"',
-                $user->getUsername(),
-                $badge->getTitle()
-            ));
+            $this->addFlash(
+                'error',
+                sprintf('%s already has the badge "%s"', $user->getUsername(), $badge->getTitle())
+            );
 
             return $this->redirectToRoute('admin_claimed_badge_index');
         }
@@ -106,11 +113,10 @@ class ClaimedBadgeController extends Controller
             $unlockedBadgeSaver->save($unlockedBadge);
             $claimedBadgeRemover->remove($claimedBadge);
 
-            $this->addFlash('notice', sprintf(
-                '%s successfully received the badge "%s"!',
-                $user->getUsername(),
-                $badge->getTitle()
-            ));
+            $this->addFlash(
+                'notice',
+                sprintf('%s successfully received the badge "%s"!', $user->getUsername(), $badge->getTitle())
+            );
         } else {
             $this->addFlash('error', (string) $errors);
         }
