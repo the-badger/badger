@@ -3,6 +3,7 @@
 namespace Badger\TagBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,7 +21,7 @@ class TagType extends AbstractType
         $builder
             ->add('name')
             ->add('code')
-            ->add('createdAt', 'datetime')
+            ->add('createdAt', DateTimeType::class)
             ->add('isDefault')
         ;
     }

@@ -37,10 +37,10 @@ class UnlockedBadgeController extends Controller
             $isUnlockable = $this->get('security.access.decision_manager')->decide($token, ['view'], $badge);
 
             if (!$isUnlockable) {
-                $this->addFlash('error', sprintf('%s does not have access to badge "%s"',
-                    $user->getUsername(),
-                    $badge->getTitle()
-                ));
+                $this->addFlash(
+                    'error',
+                    sprintf('%s does not have access to badge "%s"', $user->getUsername(), $badge->getTitle())
+                );
 
                 return $this->redirectToRoute('admin_unlocked_badge_new');
             }
@@ -52,10 +52,10 @@ class UnlockedBadgeController extends Controller
                 ]);
 
             if ($isUnlocked) {
-                $this->addFlash('error', sprintf('%s already has the badge "%s"',
-                    $user->getUsername(),
-                    $badge->getTitle()
-                ));
+                $this->addFlash(
+                    'error',
+                    sprintf('%s already has the badge "%s"', $user->getUsername(), $badge->getTitle())
+                );
 
                 return $this->redirectToRoute('admin_unlocked_badge_new');
             }
@@ -112,7 +112,10 @@ class UnlockedBadgeController extends Controller
                 ]);
 
             if (null === $unlockedBadge) {
-                $this->addFlash('error', sprintf('%s has no badge named "%s"', $user->getUsername(), $badge->getTitle()));
+                $this->addFlash(
+                    'error',
+                    sprintf('%s has no badge named "%s"', $user->getUsername(), $badge->getTitle())
+                );
 
                 return $this->redirectToRoute('admin_unlocked_badge_delete');
             }
@@ -120,11 +123,14 @@ class UnlockedBadgeController extends Controller
             $unlockedBadgeRemover = $this->get('badger.game.remover.unlocked_badge');
             $unlockedBadgeRemover->remove($unlockedBadge);
 
-            $this->addFlash('notice', sprintf(
-                'Successfully removed the badge "%s" to the user "%s"!',
-                $badge->getTitle(),
-                $user->getUsername()
-            ));
+            $this->addFlash(
+                'notice',
+                sprintf(
+                    'Successfully removed the badge "%s" to the user "%s"!',
+                    $badge->getTitle(),
+                    $user->getUsername()
+                )
+            );
         }
 
         $badges = $badgeRepository->findAll();

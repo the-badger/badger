@@ -2,6 +2,7 @@
 
 namespace Badger\UserBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -24,10 +25,9 @@ class UserType extends AbstractType
 //            ->add('google_access_token')
 //            ->add('profilePicture')
             ->add('username')
-            ->add('tags', 'entity', [
+            ->add('tags', EntityType::class, [
                 'label' => 'Tagged in',
                 'multiple' => true,
-                'property' => 'name',
                 'required' => false,
                 'class' => 'Badger\TagBundle\Entity\Tag'
             ])

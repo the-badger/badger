@@ -1,5 +1,6 @@
 parameters:
     badger.game.saver.unlocked_badge.class: Badger\GameBundle\Doctrine\Saver\UnlockedBadgeSaver
+    badger.game.saver.refused_history.class: Badger\GameBundle\Doctrine\Saver\RefusedHistorySaver
 
 services:
     badger.game.saver.badge:
@@ -20,6 +21,13 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@event_dispatcher'
             - 'Badger\GameBundle\Entity\UnlockedBadge'
+
+    badger.game.saver.refused_history:
+        class: '%badger.game.saver.refused_history.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@event_dispatcher'
+            - 'Badger\GameBundle\Entity\RefusedHistory'
 
     badger.game.saver.claimed_badge:
         class: '%badger.storage_utils.saver.base.class%'

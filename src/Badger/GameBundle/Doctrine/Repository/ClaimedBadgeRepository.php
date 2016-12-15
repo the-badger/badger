@@ -24,7 +24,9 @@ class ClaimedBadgeRepository extends EntityRepository implements ClaimedBadgeRep
             ->from('GameBundle:ClaimedBadge', 'cb')
             ->leftJoin('cb.badge', 'b')
             ->where($qb->expr()->eq('cb.user', '?1'))
-            ->setParameter(1, $user);
+            ->andWhere($qb->expr()->eq('cb.refused', ':refused'))
+            ->setParameter(1, $user)
+            ->setParameter('refused', false);
 
         $queryResult = $qb->getQuery()->getScalarResult();
 

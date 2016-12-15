@@ -6,6 +6,7 @@ parameters:
     badger.game.quest_completion.factory.class: Badger\GameBundle\Factory\QuestCompletionFactory
     badger.game.adventure.factory.class: Badger\GameBundle\Factory\AdventureFactory
     badger.game.adventure_step_completion.factory.class: Badger\GameBundle\Factory\AdventureStepCompletionFactory
+    badger.game.refused_history.factory.class: Badger\GameBundle\Factory\RefusedHistoryFactory
 
 services:
     badger.game.badge.factory:
@@ -13,6 +14,9 @@ services:
 
     badger.game.quest.factory:
         class: '%badger.game.quest.factory.class%'
+
+    badger.game.refused_history.factory:
+        class: '%badger.game.refused_history.factory.class%'
 
     badger.game.unlocked_badge.factory:
         class: '%badger.game.unlocked_badge.factory.class%'

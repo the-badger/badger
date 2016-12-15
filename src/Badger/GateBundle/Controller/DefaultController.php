@@ -115,7 +115,7 @@ class DefaultController extends Controller
             'badge' => $badge
         ]);
 
-        $isUnlocked = array_filter($unlockedBadges, function($unlock) use ($user) {
+        $isUnlocked = array_filter($unlockedBadges, function ($unlock) use ($user) {
             return $unlock->getUser()->getId() === $user->getId();
         });
 

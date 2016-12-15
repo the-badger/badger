@@ -3,9 +3,11 @@
 namespace Badger\UserBundle\Controller;
 
 use Badger\UserBundle\Entity\User;
+use Badger\UserBundle\Entity\UserInterface;
 use Badger\UserBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -121,6 +123,16 @@ class UserController extends Controller
         }
 
         return $this->redirectToRoute('admin_user_index');
+    }
+
+    /**
+     * Returns the number of users
+     *
+     * @return JsonResponse
+     */
+    public function numberUserAction()
+    {
+        return new JsonResponse(['totalNumberOfUsers' => $this->get('badger.user.repository.user')->countAll()]);
     }
 
     /**
