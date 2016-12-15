@@ -13,9 +13,8 @@ use Doctrine\ORM\EntityRepository;
 /**
  * Doctrine implementation of repository for Quest entities.
  *
- * @author    Olivier Soulet <olivier.soulet@akeneo.com>
- * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @author  Olivier Soulet <olivier.soulet@akeneo.com>
+ * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class QuestRepository extends EntityRepository implements QuestRepositoryInterface, TagSearchableRepositoryInterface
 {
