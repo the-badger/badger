@@ -8,6 +8,7 @@ use Badger\TagBundle\Entity\TagInterface;
  * Repository interface for tag searchable entities.
  *
  * @author Olivier Soulet <olivier.soulet@akeneo.com>
+ * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 interface TagSearchableRepositoryInterface
 {

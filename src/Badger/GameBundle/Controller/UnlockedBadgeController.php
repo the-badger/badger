@@ -11,9 +11,8 @@ use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 /**
  * Unlocked Badge controller for admin CRUD.
  *
- * @author    Adrien Pétremann <adrien.petremann@akeneo.com>
- * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class UnlockedBadgeController extends Controller
 {

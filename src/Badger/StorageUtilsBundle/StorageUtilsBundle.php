@@ -5,8 +5,7 @@ namespace Badger\StorageUtilsBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
- * @license   http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
+ * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class StorageUtilsBundle extends Bundle
 {
