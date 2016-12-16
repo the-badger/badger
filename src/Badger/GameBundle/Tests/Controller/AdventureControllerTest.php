@@ -11,7 +11,6 @@ use Symfony\Component\Validator\Validator;
 
 /**
  * @author    Marie Bochu <marie.bochu@akeneo.com>
- * @copyright 2016 Akeneo SAS (http://www.akeneo.com)
  * @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 class AdventureControllerTest extends BadgerTestCase
@@ -48,7 +47,7 @@ class AdventureControllerTest extends BadgerTestCase
         $client->request('POST', 'admin/adventure/form', [
             'adventure' => [
                 'title' => 'title',
-                'description' => 'Akeneo Summer Session',
+                'description' => 'Summer Session',
                 'rewardPoint' => 0,
                 'isStepLinked' => false,
                 'badge' => null,
@@ -56,13 +55,13 @@ class AdventureControllerTest extends BadgerTestCase
                     [
                         'title' => 2013,
                         'position' => 1,
-                        'description' => 'Akeneo Summer Session 2013',
+                        'description' => 'Summer Session 2013',
                         'rewardPoint' => 0
                     ],
                     [
                         'title' => 2014,
                         'position' => 2,
-                        'description' => 'Akeneo Summer Session 2014',
+                        'description' => 'Summer Session 2014',
                         'rewardPoint' => 0
                     ]
                 ]
