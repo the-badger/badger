@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/akeneo/badger.git"
+    "url": "https://github.com/the-badger/badger.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/akeneo/badger/issues"
+    "url": "https://github.com/the-badger/badger/issues"
   },
-  "homepage": "https://github.com/akeneo/badger",
+  "homepage": "https://github.com/the-badger/badger",
   "dependencies": {
     "autolinker": "^1.2.0",
     "lodash": "^4.16.4",

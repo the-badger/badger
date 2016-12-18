@@ -12,7 +12,7 @@ use Psr\Log\LoggerInterface;
  * Slack implementation of the NotifierInterface.
  * It makes a CURL call to the slack api to send a message to a given channel.
  *
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class SlackNotifier implements NotifierInterface

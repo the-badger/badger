@@ -8,7 +8,7 @@ use Symfony\Component\EventDispatcher\Event;
 /**
  * This event is dispatched when a User unlocked a Badge.
  *
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class BadgeUnlockEvent extends Event

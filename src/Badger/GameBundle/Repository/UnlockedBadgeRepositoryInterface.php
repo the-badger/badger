@@ -11,7 +11,7 @@ use Badger\UserBundle\Entity\User;
 /**
  * Repository interface for UnlockedBadge entities.
  *
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 interface UnlockedBadgeRepositoryInterface extends ObjectRepository

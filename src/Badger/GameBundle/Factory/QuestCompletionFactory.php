@@ -7,7 +7,7 @@ use Badger\GameBundle\Entity\QuestInterface;
 use Badger\UserBundle\Entity\UserInterface;
 
 /**
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class QuestCompletionFactory

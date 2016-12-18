@@ -13,7 +13,7 @@ install:
     - ./app/console doctrine:schema:create -e=test
 
 script:
-    - bin/phpspec run
+    - ./bin/phpspec run
     - ./bin/simple-phpunit -c app/phpunit.xml.dist
 
 services:

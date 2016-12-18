@@ -6,7 +6,7 @@ use Doctrine\ORM\EntityRepository;
 use Badger\UserBundle\Repository\UserRepositoryInterface;
 
 /**
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class UserRepository extends EntityRepository implements UserRepositoryInterface

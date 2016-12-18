@@ -5,7 +5,7 @@ namespace Badger\GameBundle\Repository;
 use Badger\TagBundle\Taggable\TaggableInterface;
 
 /**
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 interface AdventureRepositoryInterface

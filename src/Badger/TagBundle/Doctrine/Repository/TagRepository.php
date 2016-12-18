@@ -9,7 +9,7 @@ use Doctrine\ORM\NoResultException;
 /**
  * Doctrine implementation of repository for Tag entities.
  *
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class TagRepository extends EntityRepository implements TagRepositoryInterface
