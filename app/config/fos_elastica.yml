@@ -29,3 +29,14 @@ fos_elastica:
                         provider: ~
                         listener:
                             immediate: ~
+                badge:
+                    mappings:
+                        title: { boost: 8, analyzer: my_analyzer }
+                        description: { boost: 3, analyzer: my_analyzer }
+                    persistence:
+                        driver: orm
+                        model: Badger\GameBundle\Entity\Badge
+                        finder: ~
+                        provider: ~
+                        listener:
+                            immediate: ~

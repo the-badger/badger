@@ -1,0 +1,17 @@
+[2016-07-14 16:05:39,589][INFO ][node                     ] [Advisor] version[1.3.9], pid[7124], build[0915c73/2015-02-19T12:34:48Z]
+[2016-07-14 16:05:39,589][INFO ][node                     ] [Advisor] initializing ...
+[2016-07-14 16:05:39,596][INFO ][plugins                  ] [Advisor] loaded [], sites []
+[2016-07-14 16:05:42,159][INFO ][node                     ] [Advisor] initialized
+[2016-07-14 16:05:42,159][INFO ][node                     ] [Advisor] starting ...
+[2016-07-14 16:05:42,308][INFO ][transport                ] [Advisor] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/192.168.8.128:9300]}
+[2016-07-14 16:05:42,374][INFO ][discovery                ] [Advisor] elasticsearch/WmCXshx4RrGb9WiGnlFfNA
+[2016-07-14 16:05:45,432][INFO ][cluster.service          ] [Advisor] new_master [Advisor][WmCXshx4RrGb9WiGnlFfNA][olivier-laptop][inet[/192.168.8.128:9300]], reason: zen-disco-join (elected_as_master)
+[2016-07-14 16:05:45,539][INFO ][http                     ] [Advisor] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/192.168.8.128:9200]}
+[2016-07-14 16:05:45,540][INFO ][node                     ] [Advisor] started
+[2016-07-14 16:05:45,562][INFO ][gateway                  ] [Advisor] recovered [0] indices into cluster_state
+[2016-07-14 16:10:20,417][INFO ][cluster.metadata         ] [Advisor] [badger] creating index, cause [api], shards [5]/[1], mappings [user]
+[2016-07-14 16:10:21,048][INFO ][cluster.metadata         ] [Advisor] [badger] update_mapping [user] (dynamic)
+[2016-07-14 17:26:44,612][INFO ][node                     ] [Advisor] stopping ...
+[2016-07-14 17:26:44,669][INFO ][node                     ] [Advisor] stopped
+[2016-07-14 17:26:44,670][INFO ][node                     ] [Advisor] closing ...
+[2016-07-14 17:26:44,678][INFO ][node                     ] [Advisor] closed

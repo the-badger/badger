@@ -1,0 +1,193 @@
+[2016-08-09 09:35:16,948][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-09 09:35:16,966][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:35:16,987][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:35:17,010][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-09 09:35:17,066][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:35:17,455][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:36:31,295][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-09 09:36:31,314][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:36:31,337][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:36:31,362][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-09 09:36:31,383][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:36:31,410][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:36:38,469][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:37:02,120][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-09 09:37:02,137][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:37:02,161][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:37:02,184][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-09 09:37:02,225][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:37:02,288][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:38:21,799][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] deleting index
+[2016-08-09 09:38:21,814][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:38:21,840][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:38:21,856][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] deleting index
+[2016-08-09 09:38:21,949][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:38:22,043][INFO ][cluster.metadata         ] [Karl Mordo] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:38:43,409][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:38:52,159][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:38:53,186][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:38:53,267][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:38:53,316][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:38:53,360][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:38:53,402][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:38:53,455][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:38:53,511][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:38:53,558][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:38:53,690][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:38:54,143][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:38:54,294][INFO ][cluster.metadata         ] [Karl Mordo] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:43:12,156][INFO ][node                     ] [Karl Mordo] stopping ...
+[2016-08-09 09:43:12,238][INFO ][node                     ] [Karl Mordo] stopped
+[2016-08-09 09:43:12,238][INFO ][node                     ] [Karl Mordo] closing ...
+[2016-08-09 09:43:12,244][INFO ][node                     ] [Karl Mordo] closed
+[2016-08-09 09:44:25,809][INFO ][node                     ] [Gremlin] version[1.3.9], pid[6351], build[0915c73/2015-02-19T12:34:48Z]
+[2016-08-09 09:44:25,809][INFO ][node                     ] [Gremlin] initializing ...
+[2016-08-09 09:44:25,812][INFO ][plugins                  ] [Gremlin] loaded [], sites []
+[2016-08-09 09:44:27,922][INFO ][node                     ] [Gremlin] initialized
+[2016-08-09 09:44:27,922][INFO ][node                     ] [Gremlin] starting ...
+[2016-08-09 09:44:28,005][INFO ][transport                ] [Gremlin] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/192.168.8.128:9300]}
+[2016-08-09 09:44:28,022][INFO ][discovery                ] [Gremlin] elasticsearch/IgkTz5UqT7a2oCzld_fqKg
+[2016-08-09 09:44:31,045][INFO ][cluster.service          ] [Gremlin] new_master [Gremlin][IgkTz5UqT7a2oCzld_fqKg][olivier-laptop][inet[/192.168.8.128:9300]], reason: zen-disco-join (elected_as_master)
+[2016-08-09 09:44:31,092][INFO ][http                     ] [Gremlin] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/192.168.8.128:9200]}
+[2016-08-09 09:44:31,092][INFO ][node                     ] [Gremlin] started
+[2016-08-09 09:44:31,521][INFO ][gateway                  ] [Gremlin] recovered [3] indices into cluster_state
+[2016-08-09 09:45:08,094][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] deleting index
+[2016-08-09 09:45:08,172][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:45:08,295][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:45:08,306][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] deleting index
+[2016-08-09 09:45:08,348][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:45:08,466][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:45:29,715][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:45:40,074][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:45:41,235][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:45:41,325][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:45:41,381][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:45:41,437][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:45:41,518][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:45:41,594][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:45:41,670][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:45:41,732][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:45:41,860][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:45:42,463][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:45:42,625][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:47:20,925][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] deleting index
+[2016-08-09 09:47:20,962][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:47:21,141][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:47:21,154][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] deleting index
+[2016-08-09 09:47:21,258][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:47:21,313][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:47:42,346][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:49:22,856][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] deleting index
+[2016-08-09 09:49:22,897][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:49:22,937][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:49:22,961][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] deleting index
+[2016-08-09 09:49:23,015][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:49:23,115][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:51:00,177][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] deleting index
+[2016-08-09 09:51:00,210][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:51:00,243][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:51:00,259][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] deleting index
+[2016-08-09 09:51:00,295][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:51:00,374][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:51:22,372][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:52:49,878][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] deleting index
+[2016-08-09 09:52:49,901][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:52:49,940][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:52:49,974][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] deleting index
+[2016-08-09 09:52:50,002][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:52:50,037][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:53:11,703][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:53:20,632][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:53:21,733][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:53:21,830][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:53:21,881][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:53:21,928][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:53:22,009][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:53:22,059][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:53:22,138][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:53:22,184][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:53:22,383][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:53:22,871][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:53:23,050][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:54:05,721][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] deleting index
+[2016-08-09 09:54:05,748][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:54:05,778][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:54:05,804][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] deleting index
+[2016-08-09 09:54:05,830][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 09:54:05,878][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 09:54:29,319][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:54:38,720][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:54:39,843][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:54:39,916][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:54:39,962][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:54:40,005][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:54:40,042][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:54:40,083][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:54:40,127][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:54:40,172][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:54:40,279][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:54:40,736][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 09:54:40,883][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:19:07,583][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] deleting index
+[2016-08-09 11:19:07,626][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 11:19:07,672][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 11:19:07,699][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] deleting index
+[2016-08-09 11:19:07,733][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 11:19:07,990][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 11:21:10,643][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] deleting index
+[2016-08-09 11:21:10,672][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 11:21:10,706][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 11:21:10,727][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] deleting index
+[2016-08-09 11:21:10,771][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 11:21:10,805][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 11:22:19,416][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] deleting index
+[2016-08-09 11:22:19,436][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 11:22:19,473][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 11:22:19,508][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] deleting index
+[2016-08-09 11:22:19,532][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 11:22:19,561][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 11:24:08,146][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] deleting index
+[2016-08-09 11:24:08,163][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 11:24:08,187][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 11:24:08,222][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] deleting index
+[2016-08-09 11:24:08,276][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 11:24:08,310][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 11:24:29,585][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:24:37,875][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:24:38,766][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:24:38,837][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:24:38,875][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:24:38,920][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:24:38,956][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:24:39,008][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:24:39,048][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:24:39,087][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:24:39,190][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:24:39,631][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:24:39,789][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 11:44:02,744][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] deleting index
+[2016-08-09 11:44:02,774][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 11:44:02,812][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 11:44:02,845][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] deleting index
+[2016-08-09 11:44:02,873][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 11:44:02,909][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 15:35:06,509][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] deleting index
+[2016-08-09 15:35:06,557][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 15:35:06,640][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 15:35:06,647][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] deleting index
+[2016-08-09 15:35:06,660][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] creating index, cause [api], shards [5]/[1], mappings []
+[2016-08-09 15:35:06,700][INFO ][cluster.metadata         ] [Gremlin] [my_other_index_name] create_mapping [pim_catalog_product]
+[2016-08-09 15:35:29,120][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 15:35:37,330][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 15:35:38,274][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 15:35:38,352][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 15:35:38,395][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 15:35:38,448][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 15:35:38,496][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 15:35:38,539][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 15:35:38,585][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 15:35:38,624][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 15:35:38,740][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 15:35:39,133][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 15:35:39,246][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
+[2016-08-09 15:38:50,199][INFO ][cluster.metadata         ] [Gremlin] [my_index_name] update_mapping [pim_catalog_product] (dynamic)
