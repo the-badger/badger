@@ -8,7 +8,7 @@ use Badger\GameBundle\Repository\BadgeRepositoryInterface;
 /**
  * Doctrine implementation of repository for Badge entities.
  *
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class BadgeRepository extends EntityRepository implements BadgeRepositoryInterface

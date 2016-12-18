@@ -5,7 +5,7 @@ namespace Badger\GameBundle\Notifier;
 /**
  * Simple Notifier interface to notify data somewhere.
  *
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 interface NotifierInterface

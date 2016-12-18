@@ -5,7 +5,7 @@ namespace Badger\UserBundle\Entity;
 use FOS\UserBundle\Model\GroupInterface;
 
 /**
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class Group implements GroupInterface

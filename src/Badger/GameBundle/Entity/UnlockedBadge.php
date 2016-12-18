@@ -7,7 +7,7 @@ use Badger\UserBundle\Entity\User;
 /**
  * An UnlockedBadge is the entity that represents the user having a badge.
  *
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class UnlockedBadge implements UnlockedBadgeInterface

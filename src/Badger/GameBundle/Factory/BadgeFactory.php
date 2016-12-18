@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Badger\GameBundle\Entity\Badge;
 
 /**
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class BadgeFactory implements SimpleFactoryInterface

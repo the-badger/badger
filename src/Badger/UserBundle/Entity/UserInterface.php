@@ -6,7 +6,7 @@ use FOS\UserBundle\Model\UserInterface as BaseUserInterface;
 use FOS\UserBundle\Model\GroupableInterface;
 
 /**
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 interface UserInterface extends BaseUserInterface, GroupableInterface

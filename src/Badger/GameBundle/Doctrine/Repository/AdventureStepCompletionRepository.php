@@ -8,7 +8,7 @@ use Badger\UserBundle\Entity\UserInterface;
 use Doctrine\ORM\EntityRepository;
 
 /**
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class AdventureStepCompletionRepository extends EntityRepository implements AdventureStepCompletionRepositoryInterface

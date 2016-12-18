@@ -6,7 +6,7 @@ use Badger\GameBundle\Entity\AdventureInterface;
 use Badger\UserBundle\Entity\UserInterface;
 
 /**
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 interface AdventureStepCompletionRepositoryInterface

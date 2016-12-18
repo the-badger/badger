@@ -9,7 +9,7 @@ use Badger\UserBundle\Entity\User;
 /**
  * Doctrine implementation of repository for ClaimedBadge entities.
  *
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 class ClaimedBadgeRepository extends EntityRepository implements ClaimedBadgeRepositoryInterface

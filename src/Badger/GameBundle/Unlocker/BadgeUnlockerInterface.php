@@ -7,7 +7,7 @@ use Badger\GameBundle\Entity\ClaimedBadgeInterface;
 use Badger\UserBundle\Entity\UserInterface;
 
 /**
- * @author  Adrien Pétremann <adrien.petremann@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 interface BadgeUnlockerInterface
