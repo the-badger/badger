@@ -3,10 +3,11 @@
 </p>
 
 ## Badger
-[![Travis CI](https://travis-ci.org/akeneo/badger.svg)](https://travis-ci.org/akeneo/badger/tree/master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/akeneo/badger/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/akeneo/badger/?branch=master)
+[![Travis CI](https://travis-ci.org/the-badger/badger.svg)](https://travis-ci.org/the-badger/badger/tree/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/the-badger/badger/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/the-badger/badger/?branch=master)
 
 Badger is a gamification platform initially developed as an internal project by [Akeneo](http://www.akeneo.com).
+Badger is still under development, but is working! If you want to try the project, please install [the last release](https://github.com/the-badger/badger/releases).
 
 ## Prerequisite
 - PHP 5.6+
