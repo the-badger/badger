@@ -32,7 +32,7 @@ class BadgeControllerTest extends BadgerTestCase
         $badge = $this->get('badger.game.repository.badge')->findOneBy(['title' => 'Master Contributor']);
         $this->deleteBadge($client, $badge->getId());
 
-        $this->assertCount($count-=1, $this->get('badger.game.repository.badge')->findAll());
+        $this->assertCount($count -= 1, $this->get('badger.game.repository.badge')->findAll());
     }
 
     public function testDeleteWhenBadgeHasBeenClaimed()
@@ -45,8 +45,8 @@ class BadgeControllerTest extends BadgerTestCase
         $badge = $this->get('badger.game.repository.badge')->findOneBy(['title' => 'Bug Hunter']);
         $this->deleteBadge($client, $badge->getId());
 
-        $this->assertCount($countBadge-=1, $this->get('badger.game.repository.badge')->findAll(), 'Badge is removed');
-        $this->assertCount($countClaimedBadge-=1, $this->get('badger.game.repository.claimed_badge')->findAll(), 'Claimed badge is removed');
+        $this->assertCount($countBadge -= 1, $this->get('badger.game.repository.badge')->findAll(), 'Badge is removed');
+        $this->assertCount($countClaimedBadge -= 1, $this->get('badger.game.repository.claimed_badge')->findAll(), 'Claimed badge is removed');
     }
 
     public function testDeleteWhenBadgeHasBeenUnlocked()
@@ -59,8 +59,8 @@ class BadgeControllerTest extends BadgerTestCase
         $badge = $this->get('badger.game.repository.badge')->findOneBy(['title' => 'ASS Disruptor']);
         $this->deleteBadge($client, $badge->getId());
 
-        $this->assertCount($countBadge-=1, $this->get('badger.game.repository.badge')->findAll(), 'Badge is removed');
-        $this->assertCount($countUnlockedBadge-=1, $this->get('badger.game.repository.unlocked_badge')->findAll(), 'Unlocked badge is removed');
+        $this->assertCount($countBadge -= 1, $this->get('badger.game.repository.badge')->findAll(), 'Badge is removed');
+        $this->assertCount($countUnlockedBadge -= 1, $this->get('badger.game.repository.unlocked_badge')->findAll(), 'Unlocked badge is removed');
     }
 
     /**

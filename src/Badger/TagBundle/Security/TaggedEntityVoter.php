@@ -45,7 +45,7 @@ class TaggedEntityVoter extends Voter
             return false;
         }
 
-        switch($attribute) {
+        switch ($attribute) {
             case self::VIEW:
                 return $this->canView($subject, $user);
         }
@@ -65,13 +65,13 @@ class TaggedEntityVoter extends Voter
     private function canView(TaggableInterface $entity, TaggableInterface $user)
     {
         $badgeTagIds = $entity->getTags()
-            ->map(function (TagInterface $tag) {
+            ->map(function(TagInterface $tag) {
                 return $tag->getId();
             })
             ->toArray();
 
         $userTagIds = $user->getTags()
-            ->map(function (TagInterface $tag) {
+            ->map(function(TagInterface $tag) {
                 return $tag->getId();
             })
             ->toArray();
