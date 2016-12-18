@@ -17,7 +17,7 @@ interface UserRepositoryInterface
      * @param string $order
      * @param int    $limit
      *
-     * @return int
+     * @return array
      */
     public function getSortedUserByUnlockedBadges($order = 'DESC', $limit = 7);
 

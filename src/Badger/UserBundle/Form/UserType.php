@@ -18,11 +18,6 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-//            ->add('github_id')
-//            ->add('github_access_token')
-//            ->add('google_id')
-//            ->add('google_access_token')
-//            ->add('profilePicture')
             ->add('username')
             ->add('tags', 'entity', [
                 'label' => 'Tagged in',
@@ -33,7 +28,7 @@ class UserType extends AbstractType
             ])
         ;
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */

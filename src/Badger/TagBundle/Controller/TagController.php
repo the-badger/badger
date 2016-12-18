@@ -2,13 +2,12 @@
 
 namespace Badger\TagBundle\Controller;
 
+use Badger\TagBundle\Entity\Tag;
+use Badger\TagBundle\Form\TagType;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
-use Badger\TagBundle\Entity\Tag;
-use Badger\TagBundle\Form\TagType;
 use Symfony\Component\HttpFoundation\Response;
 
 /**

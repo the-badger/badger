@@ -7,7 +7,6 @@ use Badger\GameBundle\Repository\TagSearchableRepositoryInterface;
 use Badger\TagBundle\Taggable\TaggableInterface;
 use Badger\UserBundle\Entity\UserInterface;
 use Doctrine\DBAL\Connection;
-use Doctrine\ORM\Query;
 use Doctrine\ORM\EntityRepository;
 
 /**

@@ -35,14 +35,14 @@ interface QuestRepositoryInterface extends ObjectRepository
     /**
      * @param TaggableInterface $user
      *
-     * @return ArrayCollection
+     * @return array
      */
     public function getAvailableQuestsForUser(TaggableInterface $user);
 
     /**
      * @param UserInterface $user
      *
-     * @return ArrayCollection
+     * @return array
      */
     public function getCompletedQuestsForUser(UserInterface $user);
 
