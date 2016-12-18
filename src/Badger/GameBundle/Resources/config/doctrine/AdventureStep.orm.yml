@@ -26,13 +26,17 @@ Badger\GameBundle\Entity\AdventureStep:
             joinColumn:
                 name: adventure_id
                 referencedColumnName: id
+                onDelete: cascade
         badge:
             targetEntity:  Badger\GameBundle\Entity\Badge
             joinColumn:
                 name: badge_id
                 referencedColumnName: id
+                onDelete: SET NULL
     oneToMany:
         completions:
             targetEntity: Badger\GameBundle\Entity\AdventureStepCompletion
             mappedBy: step
             fetch: EAGER
+            cascade:
+              - remove

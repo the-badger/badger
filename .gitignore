@@ -2,6 +2,7 @@
 /web/uploads/
 /web/vendor/
 /web/css/
+/web/phpunit-coverage/
 /app/bootstrap.php.cache
 /app/cache/*
 /app/config/parameters.yml

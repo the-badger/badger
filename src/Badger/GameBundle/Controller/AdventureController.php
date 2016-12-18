@@ -44,7 +44,7 @@ class AdventureController extends Controller
             $adventure = $this->get('badger.game.adventure.factory')->create();
         }
 
-        $form = $this->createForm(new AdventureType(), $adventure);
+        $form = $this->createForm(AdventureType::class, $adventure);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

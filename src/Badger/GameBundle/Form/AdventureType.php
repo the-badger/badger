@@ -2,7 +2,6 @@
 
 namespace Badger\GameBundle\Form;
 
-use Badger\TagBundle\Form\TagType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -64,13 +63,5 @@ class AdventureType extends AbstractType
         $resolver->setDefaults([
             'data_class' => 'Badger\GameBundle\Entity\Adventure'
         ]);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'adventure';
     }
 }

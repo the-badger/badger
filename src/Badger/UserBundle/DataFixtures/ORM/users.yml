@@ -1,0 +1,25 @@
+Badger\UserBundle\Entity\User:
+    # SUPER_ADMIN
+    user_pipou:
+        githubId: 123
+        username: Pipou
+        email: pipou@example.net
+        password: maisouicestclair
+        roles: [ROLE_SUPER_ADMIN]
+        nuts: 120
+    user_general:
+        githubId: 124
+        username: Général
+        email: general@example.net
+        password: general_desolation
+        roles: [ROLE_SUPER_ADMIN]
+        nuts: 125
+
+    # USER
+    user_{1..10}:
+        githubId: <randomDigitNotNull()>
+        username: user_<current()>
+        email: <safeEmail()>
+        password: <password()>
+        roles: [ROLE_USER]
+        nuts: <randomDigitNotNull()>

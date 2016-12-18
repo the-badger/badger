@@ -5,9 +5,17 @@ php:
 
 before_install:
     - composer self-update --no-interaction
+    - mysql -e 'CREATE DATABASE badger_test;'
+    - echo 'date.timezone = "Europe/Paris"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
 install:
     - composer install --prefer-dist --no-interaction
+    - ./app/console doctrine:schema:create -e=test
 
 script:
     - bin/phpspec run
+    - ./bin/simple-phpunit -c app/phpunit.xml.dist
+
+services:
+  - mysql
+  - elasticsearch

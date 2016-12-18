@@ -1,0 +1,19 @@
+Badger\GameBundle\Entity\Adventure:
+    adventure_ass:
+        title: ASS
+        rewardPoint: 0
+        isStepLinked: false
+        badge: '@badge_ass'
+        steps:
+            - '@adventure_step_ass_2013'
+            - '@adventure_step_ass_2014'
+            - '@adventure_step_ass_2015'
+            - '@adventure_step_ass_2016'
+    adventure_community:
+        title: Community
+        rewardPoint: 10
+        isStepLinked: true
+        badge: '@badge_master_contributor'
+        steps:
+            - '@adventure_step_community_contributor'
+            - '@adventure_step_community_bug'

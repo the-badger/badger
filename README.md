@@ -92,5 +92,15 @@ php app/console fos:user:promote <username> ROLE_ADMIN
 
 Note that the promoted user will need to **logout then login again** to have full power :metal:
 
+## Running Tests
+
+```bash
+./bin/simple-phpunit -c app
+```
+
+```bash
+./bin/simple-phpunit -c app --coverage-html=web/phpunit-coverage
+```
+
 ## License
 Badger is licensed under the [Open Software License v. 3.0 (OSL-3.0)](https://opensource.org/licenses/OSL-3.0)
