@@ -47,7 +47,7 @@ class TagVoter extends Voter
 
         $tag = $subject;
 
-        switch($attribute) {
+        switch ($attribute) {
             case self::VIEW:
                 return $this->canView($tag, $user);
         }

@@ -188,6 +188,19 @@ class Badge implements BadgeInterface, JsonSerializable
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function jsonSerialize()
+    {
+        return [
+            'id'           => $this->id,
+            'title'        => $this->title,
+            'description'  => $this->description,
+            'imageWebPath' => $this->getImageWebPath(),
+        ];
+    }
+
+    /**
      * Returns the absolute directory path where uploaded documents should be saved
      *
      * @return string
@@ -207,18 +220,5 @@ class Badge implements BadgeInterface, JsonSerializable
     protected function getUploadDir()
     {
         return 'uploads/game';
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    function jsonSerialize()
-    {
-        return [
-            'id'           => $this->id,
-            'title'        => $this->title,
-            'description'  => $this->description,
-            'imageWebPath' => $this->getImageWebPath(),
-        ];
     }
 }

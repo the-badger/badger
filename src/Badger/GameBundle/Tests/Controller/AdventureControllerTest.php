@@ -68,8 +68,8 @@ class AdventureControllerTest extends BadgerTestCase
             ]
         ]);
 
-        $this->assertCount($adventureCount+=1, $this->adventureRepository->findAll());
-        $this->assertCount($adventureStepsCount+=2, $this->adventureStepRepository->findAll());
+        $this->assertCount($adventureCount += 1, $this->adventureRepository->findAll());
+        $this->assertCount($adventureStepsCount += 2, $this->adventureStepRepository->findAll());
     }
 
     public function testContraintsFormAction()
@@ -108,9 +108,9 @@ class AdventureControllerTest extends BadgerTestCase
             'form'    => []
         ]);
 
-        $this->assertCount($adventureCount-=1, $this->adventureRepository->findAll(), 'Adventure is removed');
-        $this->assertCount($adventureStepCount-=2, $this->adventureStepRepository->findAll(), 'Steps of adventure are removed');
-        $this->assertCount($adventureComplRepoCount-=1, $this->adventureComplRepo->findAll(), 'Completions steps of adventure are removed');
+        $this->assertCount($adventureCount -= 1, $this->adventureRepository->findAll(), 'Adventure is removed');
+        $this->assertCount($adventureStepCount -= 2, $this->adventureStepRepository->findAll(), 'Steps of adventure are removed');
+        $this->assertCount($adventureComplRepoCount -= 1, $this->adventureComplRepo->findAll(), 'Completions steps of adventure are removed');
         $this->assertCount($badgeCount, $this->badgeRepository->findAll(), 'Badge are not removed when an adventure is removed');
     }
 
@@ -144,8 +144,8 @@ class AdventureControllerTest extends BadgerTestCase
         ]);
 
         $this->assertCount($adventureCount, $this->adventureRepository->findAll(), 'No adventure added or removed');
-        $this->assertCount($adventureStepsCount-=1, $this->adventureStepRepository->findAll(), 'Step deleted');
-        $this->assertCount($adventureCompletionCount-=1, $this->adventureComplRepo->findAll(), 'Adventure Completion linked to deleted step is removed');
+        $this->assertCount($adventureStepsCount -= 1, $this->adventureStepRepository->findAll(), 'Step deleted');
+        $this->assertCount($adventureCompletionCount -= 1, $this->adventureComplRepo->findAll(), 'Adventure Completion linked to deleted step is removed');
     }
 
     public function testDeleteWhenStepsAreLinkedToBadges()
@@ -163,9 +163,9 @@ class AdventureControllerTest extends BadgerTestCase
             'form'    => []
         ]);
 
-        $this->assertCount($adventureCount-=1, $this->adventureRepository->findAll(), 'Adventure is removed');
-        $this->assertCount($adventureStepCount-=4, $this->adventureStepRepository->findAll(), 'Steps of adventure are removed');
-        $this->assertCount($adventureComplRepoCount-=2, $this->adventureComplRepo->findAll(), 'Completions steps of adventure are removed');
+        $this->assertCount($adventureCount -= 1, $this->adventureRepository->findAll(), 'Adventure is removed');
+        $this->assertCount($adventureStepCount -= 4, $this->adventureStepRepository->findAll(), 'Steps of adventure are removed');
+        $this->assertCount($adventureComplRepoCount -= 2, $this->adventureComplRepo->findAll(), 'Completions steps of adventure are removed');
         $this->assertCount($badgeCount, $this->badgeRepository->findAll(), 'Badge are not removed when an adventure is removed');
     }
 }

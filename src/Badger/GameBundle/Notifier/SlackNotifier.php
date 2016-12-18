@@ -49,7 +49,7 @@ class SlackNotifier implements NotifierInterface
         $promise = $client->sendAsync($request, ['timeout' => 10]);
 
         $promise->then(
-            function (ResponseInterface $res) use ($data) {
+            function(ResponseInterface $res) use ($data) {
                 $this->logger->info(
                     sprintf(
                         'Request to SLACK webhook OK [%s] with data: %s',
@@ -58,7 +58,7 @@ class SlackNotifier implements NotifierInterface
                     )
                 );
             },
-            function (RequestException $e) {
+            function(RequestException $e) {
                 $this->logger->error(
                     sprintf(
                         'Request to SLACK webhook FAILED with message: %s',

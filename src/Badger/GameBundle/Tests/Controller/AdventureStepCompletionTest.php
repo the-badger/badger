@@ -20,7 +20,7 @@ class AdventureStepCompletionTest extends BadgerTestCase
         $adventureStepCompletion = $adventureStepCompletionRepo->findOneBy(['pending' => 1])->getId();
         $client->request('GET', sprintf('admin/claimed-adventure-step/%s/reject', $adventureStepCompletion));
 
-        $this->assertCount($count-=1, $adventureStepCompletionRepo->findAll(), 'Adventure step has been rejected and deleted');
+        $this->assertCount($count -= 1, $adventureStepCompletionRepo->findAll(), 'Adventure step has been rejected and deleted');
     }
 
     public function testAcceptAction()
@@ -33,7 +33,7 @@ class AdventureStepCompletionTest extends BadgerTestCase
         $countAccepted = count($adventureStepCompletionRepo->findBy(['pending' => 0]));
         $client->request('GET', sprintf('admin/claimed-adventure-step/%s/accept', current($adventureStepCompletions)->getId()));
 
-        $this->assertCount($countPending-=1, $adventureStepCompletionRepo->findBy(['pending' => 1]), 'Adventure step has been accepted');
-        $this->assertCount($countAccepted+=1, $adventureStepCompletionRepo->findBy(['pending' => 0]), 'Adventure step has been accepted');
+        $this->assertCount($countPending -= 1, $adventureStepCompletionRepo->findBy(['pending' => 1]), 'Adventure step has been accepted');
+        $this->assertCount($countAccepted += 1, $adventureStepCompletionRepo->findBy(['pending' => 0]), 'Adventure step has been accepted');
     }
 }

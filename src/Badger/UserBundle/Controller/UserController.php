@@ -30,30 +30,6 @@ class UserController extends Controller
         ]);
     }
 
-//    /**
-//     * Creates a new User entity.
-//     *
-//     */
-//    public function newAction(Request $request)
-//    {
-//        $user = new User();
-//        $form = $this->createForm('Badger\UserBundle\Form\UserType', $user);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $em = $this->getDoctrine()->getManager();
-//            $em->persist($user);
-//            $em->flush();
-//
-//            return $this->redirectToRoute('admin_user_show', array('id' => $user->getId()));
-//        }
-//
-//        return $this->render('@User/user/new.html.twig', array(
-//            'user' => $user,
-//            'form' => $form->createView(),
-//        ));
-//    }
-
     /**
      * Finds and displays a User entity.
      *

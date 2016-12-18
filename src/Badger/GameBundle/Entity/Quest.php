@@ -181,7 +181,7 @@ class Quest implements QuestInterface
      */
     public function getApprovedCompletionsCount()
     {
-        return $this->completions->filter(function ($completion) {
+        return $this->completions->filter(function($completion) {
             return !$completion->isPending();
         })->count();
     }

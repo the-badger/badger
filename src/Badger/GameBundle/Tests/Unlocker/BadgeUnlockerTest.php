@@ -19,7 +19,7 @@ class BadgeUnlockerTest extends BadgerTestCase
 
         $this->get('badger.game.unlocker.badge')->unlockBadge($user, $badge);
 
-        $this->assertCount($count+=1, $this->get('badger.game.repository.unlocked_badge')->getUnlockedBadgeIdsByUser($user));
+        $this->assertCount($count += 1, $this->get('badger.game.repository.unlocked_badge')->getUnlockedBadgeIdsByUser($user));
     }
 
     public function testUnlockBadgeWhenUserHasAlreadyTheBadge()
@@ -44,7 +44,7 @@ class BadgeUnlockerTest extends BadgerTestCase
 
         $this->get('badger.game.unlocker.badge')->unlockBadgeFromClaim(current($claimedBadges));
 
-        $this->assertCount($count-=1, $this->get('badger.game.repository.claimed_badge')->findAll(), 'Claimed badge has been removed');
-        $this->assertCount($countBadges+=1, $this->get('badger.game.repository.unlocked_badge')->getUnlockedBadgeIdsByUser($user), 'Badge has been added');
+        $this->assertCount($count -= 1, $this->get('badger.game.repository.claimed_badge')->findAll(), 'Claimed badge has been removed');
+        $this->assertCount($countBadges += 1, $this->get('badger.game.repository.unlocked_badge')->getUnlockedBadgeIdsByUser($user), 'Badge has been added');
     }
 }
