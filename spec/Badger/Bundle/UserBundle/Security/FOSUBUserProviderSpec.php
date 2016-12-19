@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\Badger\UserBundle\Security;
+namespace spec\Badger\Bundle\UserBundle\Security;
 
 use Badger\Component\Tag\Model\TagInterface;
-use Badger\TagBundle\Repository\TagRepositoryInterface;
-use Badger\UserBundle\Entity\User;
+use Badger\Bundle\TagBundle\Repository\TagRepositoryInterface;
+use Badger\Bundle\UserBundle\Entity\User;
 use Badger\Component\User\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\ResourceOwnerInterface;

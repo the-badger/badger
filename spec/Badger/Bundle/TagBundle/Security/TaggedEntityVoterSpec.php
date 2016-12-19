@@ -1,11 +1,11 @@
 <?php
 
-namespace spec\Badger\TagBundle\Security;
+namespace spec\Badger\Bundle\TagBundle\Security;
 
 use Badger\Component\Tag\Model\TagInterface;
-use Badger\TagBundle\Security\TaggedEntityVoter;
+use Badger\Bundle\TagBundle\Security\TaggedEntityVoter;
 use Badger\Component\Tag\Taggable\TaggableInterface;
-use Badger\UserBundle\Entity\User;
+use Badger\Bundle\UserBundle\Entity\User;
 use Badger\Component\User\Model\UserInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;

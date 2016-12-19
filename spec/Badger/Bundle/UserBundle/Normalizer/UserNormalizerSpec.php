@@ -1,9 +1,9 @@
 <?php
 
-namespace spec\Badger\UserBundle\Normalizer;
+namespace spec\Badger\Bundle\UserBundle\Normalizer;
 
 use Badger\Component\Tag\Model\TagInterface;
-use Badger\UserBundle\Entity\User;
+use Badger\Bundle\UserBundle\Entity\User;
 use PhpSpec\ObjectBehavior;
 
 class UserNormalizerSpec extends ObjectBehavior

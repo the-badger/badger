@@ -1,10 +1,10 @@
 <?php
 
-namespace spec\Badger\GameBundle\EventListener;
+namespace spec\Badger\Bundle\GameBundle\EventListener;
 
 use Badger\Component\Game\Model\BadgeInterface;
 use Badger\Component\Game\Model\UnlockedBadgeInterface;
-use Badger\GameBundle\Event\BadgeUnlockEvent;
+use Badger\Bundle\GameBundle\Event\BadgeUnlockEvent;
 use Badger\Component\Game\Notifier\NotifierInterface;
 use Badger\Component\User\Model\UserInterface;
 use PhpSpec\ObjectBehavior;
