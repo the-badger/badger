@@ -1,4 +1,4 @@
-Badger\GameBundle\Entity\Badge:
+Badger\Bundle\GameBundle\Entity\Badge:
     properties:
         file:
             - File:

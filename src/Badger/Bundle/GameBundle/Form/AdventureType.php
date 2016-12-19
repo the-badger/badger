@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Form;
+namespace Badger\Bundle\GameBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -50,7 +50,7 @@ class AdventureType extends AbstractType
                 'multiple'     => true,
                 'choice_label' => 'name',
                 'required'     => false,
-                'class'        => 'Badger\TagBundle\Entity\Tag'
+                'class'        => 'Badger\Bundle\TagBundle\Entity\Tag'
             ])
         ;
     }
@@ -61,7 +61,7 @@ class AdventureType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Badger\GameBundle\Entity\Adventure'
+            'data_class' => 'Badger\Bundle\GameBundle\Entity\Adventure'
         ]);
     }
 }

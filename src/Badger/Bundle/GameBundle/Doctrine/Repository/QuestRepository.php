@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Doctrine\Repository;
+namespace Badger\Bundle\GameBundle\Doctrine\Repository;
 
 use Badger\Component\Game\Repository\QuestRepositoryInterface;
 use Badger\Component\Game\Repository\TagSearchableRepositoryInterface;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\UserBundle\Entity;
+namespace Badger\Bundle\UserBundle\Entity;
 
 use Badger\Component\Tag\Model\TagInterface;
 use Badger\Component\Tag\Taggable\TaggableInterface;

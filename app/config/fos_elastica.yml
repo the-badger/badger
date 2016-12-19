@@ -24,7 +24,7 @@ fos_elastica:
                         profilePicture: ~
                     persistence:
                         driver: orm
-                        model: Badger\UserBundle\Entity\User
+                        model: Badger\Bundle\UserBundle\Entity\User
                         finder: ~
                         provider: ~
                         listener:

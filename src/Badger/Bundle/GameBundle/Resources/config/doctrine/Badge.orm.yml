@@ -1,7 +1,7 @@
-Badger\GameBundle\Entity\Badge:
+Badger\Bundle\GameBundle\Entity\Badge:
     type: entity
     table: badges
-    repositoryClass: Badger\GameBundle\Doctrine\Repository\BadgeRepository
+    repositoryClass: Badger\Bundle\GameBundle\Doctrine\Repository\BadgeRepository
     fields:
         id:
             type: guid
@@ -22,7 +22,7 @@ Badger\GameBundle\Entity\Badge:
             nullable: true
     manyToMany:
         tags:
-            targetEntity: Badger\TagBundle\Entity\Tag
+            targetEntity: Badger\Bundle\TagBundle\Entity\Tag
             inversedBy: badges
             joinTable:
                 name: badges_tags

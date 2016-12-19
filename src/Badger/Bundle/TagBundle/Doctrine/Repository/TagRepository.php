@@ -1,8 +1,8 @@
 <?php
 
-namespace Badger\TagBundle\Doctrine\Repository;
+namespace Badger\Bundle\TagBundle\Doctrine\Repository;
 
-use Badger\TagBundle\Repository\TagRepositoryInterface;
+use Badger\Bundle\TagBundle\Repository\TagRepositoryInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\NoResultException;
 

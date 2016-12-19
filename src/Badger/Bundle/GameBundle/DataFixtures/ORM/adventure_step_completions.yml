@@ -1,4 +1,4 @@
-Badger\GameBundle\Entity\AdventureStepCompletion:
+Badger\Bundle\GameBundle\Entity\AdventureStepCompletion:
     adventure_completion_1:
         user: '@user_5'
         step: '@adventure_step_ass_2016'

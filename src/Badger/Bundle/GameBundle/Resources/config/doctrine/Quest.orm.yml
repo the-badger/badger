@@ -1,7 +1,7 @@
-Badger\GameBundle\Entity\Quest:
+Badger\Bundle\GameBundle\Entity\Quest:
     type: entity
     table: quests
-    repositoryClass: Badger\GameBundle\Doctrine\Repository\QuestRepository
+    repositoryClass: Badger\Bundle\GameBundle\Doctrine\Repository\QuestRepository
     fields:
         id:
             type: guid
@@ -28,7 +28,7 @@ Badger\GameBundle\Entity\Quest:
             nullable: false
     manyToMany:
         tags:
-            targetEntity: Badger\TagBundle\Entity\Tag
+            targetEntity: Badger\Bundle\TagBundle\Entity\Tag
             inversedBy: quests
             joinTable:
                 name: quest_tags
@@ -40,6 +40,6 @@ Badger\GameBundle\Entity\Quest:
                         referencedColumnName: id
     oneToMany:
         completions:
-            targetEntity: Badger\GameBundle\Entity\QuestCompletion
+            targetEntity: Badger\Bundle\GameBundle\Entity\QuestCompletion
             mappedBy: quest
             fetch: EAGER

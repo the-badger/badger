@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\UserBundle\Doctrine\Repository;
+namespace Badger\Bundle\UserBundle\Doctrine\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Badger\Component\User\Repository\UserRepositoryInterface;

@@ -1,5 +1,5 @@
 parameters:
-    badger.user_bundle.normalizer.user_normalizer.class: Badger\UserBundle\Normalizer\UserNormalizer
+    badger.user_bundle.normalizer.user_normalizer.class: Badger\Bundle\UserBundle\Normalizer\UserNormalizer
 
 services:
     badger.user_bundle.normalizer.user_normalizer:

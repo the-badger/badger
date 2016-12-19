@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\StorageUtilsBundle;
+namespace Badger\Bundle\StorageUtilsBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

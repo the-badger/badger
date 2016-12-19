@@ -1,9 +1,9 @@
 <?php
 
-namespace Badger\GameBundle\Controller;
+namespace Badger\Bundle\GameBundle\Controller;
 
 use Badger\Component\Game\Model\BadgeInterface;
-use Badger\GameBundle\Form\BadgeType;
+use Badger\Bundle\GameBundle\Form\BadgeType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Form;

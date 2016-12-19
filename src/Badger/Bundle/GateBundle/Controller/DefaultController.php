@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GateBundle\Controller;
+namespace Badger\Bundle\GateBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -249,7 +249,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/badges", name="badges")
-     * 
+     *
      * @return Response
      */
     public function badgeListAction()
@@ -368,7 +368,7 @@ class DefaultController extends Controller
 
     /**
      * @Route("/leaderboard", name="leaderboard")
-     * 
+     *
      * @return Response
      */
     public function leaderboardAction()

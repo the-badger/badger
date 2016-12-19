@@ -1,4 +1,4 @@
-Badger\GameBundle\Entity\UnlockedBadge:
+Badger\Bundle\GameBundle\Entity\UnlockedBadge:
     properties:
         user:
             - NotNull: ~

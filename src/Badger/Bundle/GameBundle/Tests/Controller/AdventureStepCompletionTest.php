@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Tests\Controller;
+namespace Badger\Bundle\GameBundle\Tests\Controller;
 
 use Badger\BadgerTestCase;
 

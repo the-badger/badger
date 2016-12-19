@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\TagBundle\Security;
+namespace Badger\Bundle\TagBundle\Security;
 
 use Badger\Component\Tag\Model\TagInterface;
 use Badger\Component\Tag\Taggable\TaggableInterface;

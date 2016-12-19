@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\UserBundle\Form;
+namespace Badger\Bundle\UserBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +24,7 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'property' => 'name',
                 'required' => false,
-                'class' => 'Badger\TagBundle\Entity\Tag'
+                'class' => 'Badger\Bundle\TagBundle\Entity\Tag'
             ])
         ;
     }
@@ -35,7 +35,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Badger\UserBundle\Entity\User'
+            'data_class' => 'Badger\Bundle\UserBundle\Entity\User'
         ]);
     }
 }

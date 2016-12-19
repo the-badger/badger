@@ -1,5 +1,5 @@
 parameters:
-    badger.game.unlocker.badge.class: Badger\GameBundle\Unlocker\BadgeUnlocker
+    badger.game.unlocker.badge.class: Badger\Bundle\GameBundle\Unlocker\BadgeUnlocker
 
 services:
     badger.game.unlocker.badge:

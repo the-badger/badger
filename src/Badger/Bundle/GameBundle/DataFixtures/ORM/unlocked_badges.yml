@@ -1,4 +1,4 @@
-Badger\GameBundle\Entity\UnlockedBadge:
+Badger\Bundle\GameBundle\Entity\UnlockedBadge:
     unlocked_badges_1:
         user: '@user_1'
         badge: '@badge_ass'

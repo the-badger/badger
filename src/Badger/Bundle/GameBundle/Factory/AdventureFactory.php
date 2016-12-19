@@ -1,10 +1,10 @@
 <?php
 
-namespace Badger\GameBundle\Factory;
+namespace Badger\Bundle\GameBundle\Factory;
 
 use Badger\Component\Game\Factory\SimpleFactoryInterface;
-use Badger\GameBundle\Entity\Adventure;
-use Badger\GameBundle\Entity\AdventureStep;
+use Badger\Bundle\GameBundle\Entity\Adventure;
+use Badger\Bundle\GameBundle\Entity\AdventureStep;
 
 /**
  * @author  Marie Bochu <marie.bochu@akeneo.com>

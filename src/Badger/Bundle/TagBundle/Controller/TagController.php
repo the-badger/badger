@@ -1,9 +1,9 @@
 <?php
 
-namespace Badger\TagBundle\Controller;
+namespace Badger\Bundle\TagBundle\Controller;
 
-use Badger\TagBundle\Entity\Tag;
-use Badger\TagBundle\Form\TagType;
+use Badger\Bundle\TagBundle\Entity\Tag;
+use Badger\Bundle\TagBundle\Form\TagType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -42,7 +42,7 @@ class TagController extends Controller
         $tagFactory = $this->get('badger.tags.tag.factory');
         $tag = $tagFactory->create();
 
-        $form = $this->createForm('Badger\TagBundle\Form\TagType', $tag);
+        $form = $this->createForm('Badger\Bundle\TagBundle\Form\TagType', $tag);
         $form->remove('createdAt');
         $form->handleRequest($request);
 
@@ -86,7 +86,7 @@ class TagController extends Controller
      */
     public function editAction(Request $request, Tag $tag)
     {
-        $editForm = $this->createForm('Badger\TagBundle\Form\TagType', $tag);
+        $editForm = $this->createForm('Badger\Bundle\TagBundle\Form\TagType', $tag);
         $editForm->remove('createdAt');
         $editForm->handleRequest($request);
 

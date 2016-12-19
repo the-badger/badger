@@ -1,8 +1,8 @@
 <?php
 
-namespace Badger\GameBundle\Factory;
+namespace Badger\Bundle\GameBundle\Factory;
 
-use Badger\GameBundle\Entity\AdventureStepCompletion;
+use Badger\Bundle\GameBundle\Entity\AdventureStepCompletion;
 use Badger\Component\Game\Model\AdventureStepInterface;
 use Badger\Component\User\Model\UserInterface;
 

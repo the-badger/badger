@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\TagBundle\Form;
+namespace Badger\Bundle\TagBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -31,7 +31,7 @@ class TagType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Badger\TagBundle\Entity\Tag'
+            'data_class' => 'Badger\Bundle\TagBundle\Entity\Tag'
         ]);
     }
 }

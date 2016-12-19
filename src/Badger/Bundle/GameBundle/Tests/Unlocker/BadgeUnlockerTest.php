@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Tests\Unlocker;
+namespace Badger\Bundle\GameBundle\Tests\Unlocker;
 
 use Badger\BadgerTestCase;
 

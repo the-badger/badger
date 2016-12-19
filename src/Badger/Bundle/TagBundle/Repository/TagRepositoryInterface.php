@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\TagBundle\Repository;
+namespace Badger\Bundle\TagBundle\Repository;
 
 use Doctrine\Common\Persistence\ObjectRepository;
 

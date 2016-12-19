@@ -1,10 +1,10 @@
 <?php
 
-namespace Badger\GameBundle\Doctrine\Repository;
+namespace Badger\Bundle\GameBundle\Doctrine\Repository;
 
 use Badger\Component\Game\Repository\QuestCompletionRepositoryInterface;
 use Badger\Component\Game\Repository\TagSearchableRepositoryInterface;
-use Badger\UserBundle\Entity\User;
+use Badger\Bundle\UserBundle\Entity\User;
 use Badger\Component\User\Model\UserInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;

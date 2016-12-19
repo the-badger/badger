@@ -1,5 +1,5 @@
 parameters:
-    badger.tags.tag.factory.class: Badger\TagBundle\Factory\TagFactory
+    badger.tags.tag.factory.class: Badger\Bundle\TagBundle\Factory\TagFactory
 
 services:
     badger.tags.tag.factory:

@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Notifier;
+namespace Badger\Bundle\GameBundle\Notifier;
 
 use Badger\Component\Game\Notifier\NotifierInterface;
 use GuzzleHttp\Client;

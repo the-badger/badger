@@ -1,9 +1,9 @@
 parameters:
-    badger.tag.repository.tag.class: Badger\TagBundle\Doctrine\Repository\TagRepository
+    badger.tag.repository.tag.class: Badger\Bundle\TagBundle\Doctrine\Repository\TagRepository
 
 services:
     badger.tag.repository.tag:
         class: '%badger.tag.repository.tag.class%'
         factory: ['@doctrine.orm.entity_manager', 'getRepository']
         arguments:
-            - Badger\TagBundle\Entity\Tag
+            - Badger\Bundle\TagBundle\Entity\Tag

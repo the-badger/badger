@@ -1,7 +1,7 @@
-Badger\GameBundle\Entity\Adventure:
+Badger\Bundle\GameBundle\Entity\Adventure:
     type: entity
     table: adventures
-    repositoryClass: Badger\GameBundle\Doctrine\Repository\AdventureRepository
+    repositoryClass: Badger\Bundle\GameBundle\Doctrine\Repository\AdventureRepository
     fields:
         id:
             type: guid
@@ -21,7 +21,7 @@ Badger\GameBundle\Entity\Adventure:
             type: boolean
     manyToMany:
         tags:
-            targetEntity: Badger\TagBundle\Entity\Tag
+            targetEntity: Badger\Bundle\TagBundle\Entity\Tag
             inversedBy: adventures
             joinTable:
                 name: adventure_tags
@@ -34,7 +34,7 @@ Badger\GameBundle\Entity\Adventure:
     oneToMany:
         steps:
             orderBy: { 'position': 'ASC' }
-            targetEntity: Badger\GameBundle\Entity\AdventureStep
+            targetEntity: Badger\Bundle\GameBundle\Entity\AdventureStep
             mappedBy: adventure
             cascade:
                 - persist
@@ -43,7 +43,7 @@ Badger\GameBundle\Entity\Adventure:
             orphanRemoval: true
     manyToOne:
         badge:
-            targetEntity: Badger\GameBundle\Entity\Badge
+            targetEntity: Badger\Bundle\GameBundle\Entity\Badge
             joinColumn:
                 name: badge_id
                 referencedColumnName: id

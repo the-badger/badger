@@ -1,4 +1,4 @@
-Badger\UserBundle\Entity\Group:
+Badger\Bundle\UserBundle\Entity\Group:
     type:  entity
     table: fos_group
     fields:

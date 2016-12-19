@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle;
+namespace Badger\Bundle\GameBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

@@ -1,4 +1,4 @@
-Badger\TagBundle\Entity\Tag:
+Badger\Bundle\TagBundle\Entity\Tag:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: isDefault

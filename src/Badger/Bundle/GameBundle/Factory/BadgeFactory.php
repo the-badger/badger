@@ -1,10 +1,10 @@
 <?php
 
-namespace Badger\GameBundle\Factory;
+namespace Badger\Bundle\GameBundle\Factory;
 
 use Badger\Component\Game\Factory\SimpleFactoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Badger\GameBundle\Entity\Badge;
+use Badger\Bundle\GameBundle\Entity\Badge;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

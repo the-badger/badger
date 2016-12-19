@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GateBundle;
+namespace Badger\Bundle\GateBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

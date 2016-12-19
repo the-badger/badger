@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\DependencyInjection;
+namespace Badger\Bundle\GameBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

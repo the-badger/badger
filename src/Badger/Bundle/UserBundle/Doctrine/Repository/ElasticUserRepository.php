@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\UserBundle\Doctrine\Repository;
+namespace Badger\Bundle\UserBundle\Doctrine\Repository;
 
 use Badger\Component\User\Repository\ElasticUserRepositoryInterface;
 use Elastica\SearchableInterface;

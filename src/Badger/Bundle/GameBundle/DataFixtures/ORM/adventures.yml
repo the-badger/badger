@@ -1,4 +1,4 @@
-Badger\GameBundle\Entity\Adventure:
+Badger\Bundle\GameBundle\Entity\Adventure:
     adventure_ass:
         title: ASS
         rewardPoint: 0

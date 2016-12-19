@@ -1,8 +1,8 @@
 <?php
 
-namespace Badger\GameBundle\Factory;
+namespace Badger\Bundle\GameBundle\Factory;
 
-use Badger\GameBundle\Entity\QuestCompletion;
+use Badger\Bundle\GameBundle\Entity\QuestCompletion;
 use Badger\Component\Game\Model\QuestInterface;
 use Badger\Component\User\Model\UserInterface;
 

@@ -1,7 +1,7 @@
-Badger\UserBundle\Entity\User:
+Badger\Bundle\UserBundle\Entity\User:
     type:  entity
     table: fos_user
-    repositoryClass: Badger\UserBundle\Doctrine\Repository\UserRepository
+    repositoryClass: Badger\Bundle\UserBundle\Doctrine\Repository\UserRepository
     fields:
         id:
             id: true
@@ -42,7 +42,7 @@ Badger\UserBundle\Entity\User:
                     group_id:
                         referencedColumnName: id
         tags:
-            targetEntity: Badger\TagBundle\Entity\Tag
+            targetEntity: Badger\Bundle\TagBundle\Entity\Tag
             joinTable:
                 name: users_tags
                 joinColumns:

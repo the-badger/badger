@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Entity;
+namespace Badger\Bundle\GameBundle\Entity;
 
 use Badger\Component\Game\Model\QuestCompletionInterface;
 use Badger\Component\Game\Model\QuestInterface;

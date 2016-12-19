@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\StorageUtilsBundle\Doctrine\Saver;
+namespace Badger\Bundle\StorageUtilsBundle\Doctrine\Saver;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Util\ClassUtils;

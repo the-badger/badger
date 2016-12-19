@@ -1,8 +1,8 @@
 <?php
 
-namespace Badger\GameBundle\EventListener;
+namespace Badger\Bundle\GameBundle\EventListener;
 
-use Badger\GameBundle\Event\BadgeUnlockEvent;
+use Badger\Bundle\GameBundle\Event\BadgeUnlockEvent;
 use Badger\Component\Game\Notifier\NotifierInterface;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;

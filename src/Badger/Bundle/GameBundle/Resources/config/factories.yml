@@ -1,11 +1,11 @@
 parameters:
-    badger.game.badge.factory.class: Badger\GameBundle\Factory\BadgeFactory
-    badger.game.quest.factory.class: Badger\GameBundle\Factory\QuestFactory
-    badger.game.unlocked_badge.factory.class: Badger\GameBundle\Factory\UnlockedBadgeFactory
-    badger.game.claimed_badge.factory.class: Badger\GameBundle\Factory\ClaimedBadgeFactory
-    badger.game.quest_completion.factory.class: Badger\GameBundle\Factory\QuestCompletionFactory
-    badger.game.adventure.factory.class: Badger\GameBundle\Factory\AdventureFactory
-    badger.game.adventure_step_completion.factory.class: Badger\GameBundle\Factory\AdventureStepCompletionFactory
+    badger.game.badge.factory.class: Badger\Bundle\GameBundle\Factory\BadgeFactory
+    badger.game.quest.factory.class: Badger\Bundle\GameBundle\Factory\QuestFactory
+    badger.game.unlocked_badge.factory.class: Badger\Bundle\GameBundle\Factory\UnlockedBadgeFactory
+    badger.game.claimed_badge.factory.class: Badger\Bundle\GameBundle\Factory\ClaimedBadgeFactory
+    badger.game.quest_completion.factory.class: Badger\Bundle\GameBundle\Factory\QuestCompletionFactory
+    badger.game.adventure.factory.class: Badger\Bundle\GameBundle\Factory\AdventureFactory
+    badger.game.adventure_step_completion.factory.class: Badger\Bundle\GameBundle\Factory\AdventureStepCompletionFactory
 
 services:
     badger.game.badge.factory:

@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\TagBundle\Entity;
+namespace Badger\Bundle\TagBundle\Entity;
 
 use Badger\Component\Game\Model\AdventureInterface;
 use Badger\Component\Game\Model\BadgeInterface;

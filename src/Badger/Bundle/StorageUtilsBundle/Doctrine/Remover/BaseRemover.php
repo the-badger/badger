@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\StorageUtilsBundle\Doctrine\Remover;
+namespace Badger\Bundle\StorageUtilsBundle\Doctrine\Remover;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Util\ClassUtils;

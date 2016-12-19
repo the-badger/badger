@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\UserBundle\Entity;
+namespace Badger\Bundle\UserBundle\Entity;
 
 use FOS\UserBundle\Model\GroupInterface;
 

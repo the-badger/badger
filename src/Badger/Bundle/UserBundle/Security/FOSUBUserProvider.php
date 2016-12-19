@@ -1,8 +1,8 @@
 <?php
 
-namespace Badger\UserBundle\Security;
+namespace Badger\Bundle\UserBundle\Security;
 
-use Badger\TagBundle\Repository\TagRepositoryInterface;
+use Badger\Bundle\TagBundle\Repository\TagRepositoryInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider as BaseClass;

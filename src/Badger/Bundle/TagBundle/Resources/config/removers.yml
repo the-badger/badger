@@ -3,4 +3,4 @@ services:
         class: '%badger.storage_utils.remover.base.class%'
         arguments:
             - '@doctrine.orm.entity_manager'
-            - 'Badger\TagBundle\Entity\Tag'
+            - 'Badger\Bundle\TagBundle\Entity\Tag'

@@ -1,9 +1,9 @@
 <?php
 
-namespace Badger\TagBundle\Factory;
+namespace Badger\Bundle\TagBundle\Factory;
 
 use Badger\Component\Tag\Factory\TagFactoryInterface;
-use Badger\TagBundle\Entity\Tag;
+use Badger\Bundle\TagBundle\Entity\Tag;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

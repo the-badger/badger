@@ -1,4 +1,4 @@
-Badger\GameBundle\Entity\AdventureStep:
+Badger\Bundle\GameBundle\Entity\AdventureStep:
     adventure_step_ass_2013:
         title: ASS 2013
         position: 1

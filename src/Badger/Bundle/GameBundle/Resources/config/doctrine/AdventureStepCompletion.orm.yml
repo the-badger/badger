@@ -1,7 +1,7 @@
-Badger\GameBundle\Entity\AdventureStepCompletion:
+Badger\Bundle\GameBundle\Entity\AdventureStepCompletion:
     type: entity
     table: adventure_step_completions
-    repositoryClass: Badger\GameBundle\Doctrine\Repository\AdventureStepCompletionRepository
+    repositoryClass: Badger\Bundle\GameBundle\Doctrine\Repository\AdventureStepCompletionRepository
     fields:
         id:
             id: true
@@ -16,13 +16,13 @@ Badger\GameBundle\Entity\AdventureStepCompletion:
             nullable: false
     manyToOne:
         user:
-            targetEntity: Badger\UserBundle\Entity\User
+            targetEntity: Badger\Bundle\UserBundle\Entity\User
             cascade: ['persist']
             joinColumn:
                 user_id:
                     referencedColumnName: id
         step:
-            targetEntity: Badger\GameBundle\Entity\AdventureStep
+            targetEntity: Badger\Bundle\GameBundle\Entity\AdventureStep
             inversedBy: completions
             joinColumn:
                 onDelete: cascade

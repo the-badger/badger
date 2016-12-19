@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Unlocker;
+namespace Badger\Bundle\GameBundle\Unlocker;
 
 use Badger\Component\Game\Unlocker\BadgeUnlockerInterface;
 use Badger\Component\Game\Model\BadgeInterface;

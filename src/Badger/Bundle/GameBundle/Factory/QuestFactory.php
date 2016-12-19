@@ -1,9 +1,9 @@
 <?php
 
-namespace Badger\GameBundle\Factory;
+namespace Badger\Bundle\GameBundle\Factory;
 
 use Badger\Component\Game\Factory\SimpleFactoryInterface;
-use Badger\GameBundle\Entity\Quest;
+use Badger\Bundle\GameBundle\Entity\Quest;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**

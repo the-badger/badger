@@ -1,4 +1,4 @@
-Badger\GameBundle\Entity\Badge:
+Badger\Bundle\GameBundle\Entity\Badge:
     badge_ass:
         title: ASS Disruptor
         description: You & your liver participated to an Summer Session.

@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\UserBundle\DependencyInjection;
+namespace Badger\Bundle\UserBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

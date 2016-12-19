@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Controller;
+namespace Badger\Bundle\GameBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Form;
+namespace Badger\Bundle\GameBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -27,7 +27,7 @@ class BadgeType extends AbstractType
                 'multiple' => true,
                 'choice_label' => 'name',
                 'required' => false,
-                'class' => 'Badger\TagBundle\Entity\Tag'
+                'class' => 'Badger\Bundle\TagBundle\Entity\Tag'
             ])
             ->add('imagePath')
         ;
@@ -39,7 +39,7 @@ class BadgeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Badger\GameBundle\Entity\Badge'
+            'data_class' => 'Badger\Bundle\GameBundle\Entity\Badge'
         ]);
     }
 }

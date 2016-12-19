@@ -17,11 +17,11 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
-            new Badger\UserBundle\UserBundle(),
-            new Badger\GameBundle\GameBundle(),
-            new Badger\GateBundle\GateBundle(),
-            new Badger\StorageUtilsBundle\StorageUtilsBundle(),
-            new Badger\TagBundle\TagBundle(),
+            new Badger\Bundle\UserBundle\UserBundle(),
+            new Badger\Bundle\GameBundle\GameBundle(),
+            new Badger\Bundle\GateBundle\GateBundle(),
+            new Badger\Bundle\StorageUtilsBundle\StorageUtilsBundle(),
+            new Badger\Bundle\TagBundle\TagBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
         );
 

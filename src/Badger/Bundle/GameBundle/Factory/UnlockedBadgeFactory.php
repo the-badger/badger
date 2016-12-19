@@ -1,10 +1,10 @@
 <?php
 
-namespace Badger\GameBundle\Factory;
+namespace Badger\Bundle\GameBundle\Factory;
 
 use Badger\Component\Game\Factory\UnlockedBadgeFactoryInterface;
 use Badger\Component\Game\Model\BadgeInterface;
-use Badger\GameBundle\Entity\UnlockedBadge;
+use Badger\Bundle\GameBundle\Entity\UnlockedBadge;
 use Badger\Component\User\Model\UserInterface;
 
 /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\UserBundle;
+namespace Badger\Bundle\UserBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

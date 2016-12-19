@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\TagBundle;
+namespace Badger\Bundle\TagBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

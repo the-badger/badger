@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle;
+namespace Badger\Bundle\GameBundle;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>
@@ -13,7 +13,7 @@ class GameEvents
      * a new badge.
      *
      * The event listener receives a
-     * Badger\GameBundle\Event\BadgeUnlockEvent
+     * Badger\Bundle\GameBundle\Event\BadgeUnlockEvent
      *
      * @var string
      */

@@ -1,9 +1,9 @@
 <?php
 
-namespace Badger\UserBundle\Controller;
+namespace Badger\Bundle\UserBundle\Controller;
 
-use Badger\UserBundle\Entity\User;
-use Badger\UserBundle\Form\UserType;
+use Badger\Bundle\UserBundle\Entity\User;
+use Badger\Bundle\UserBundle\Form\UserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -60,7 +60,7 @@ class UserController extends Controller
     {
         $user = $this->get('badger.user.repository.user')->find($id);
         $deleteForm = $this->createDeleteForm($user);
-        $editForm = $this->createForm('Badger\UserBundle\Form\UserType', $user);
+        $editForm = $this->createForm('Badger\Bundle\UserBundle\Form\UserType', $user);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {

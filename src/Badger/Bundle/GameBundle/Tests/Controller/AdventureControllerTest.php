@@ -1,11 +1,11 @@
 <?php
 
-namespace Badger\GameBundle\Tests\Controller;
+namespace Badger\Bundle\GameBundle\Tests\Controller;
 
 use Badger\BadgerTestCase;
-use Badger\GameBundle\Repository\AdventureRepositoryInterface;
-use Badger\GameBundle\Repository\AdventureStepCompletionRepositoryInterface;
-use Badger\GameBundle\Repository\BadgeRepositoryInterface;
+use Badger\Bundle\GameBundle\Repository\AdventureRepositoryInterface;
+use Badger\Bundle\GameBundle\Repository\AdventureStepCompletionRepositoryInterface;
+use Badger\Bundle\GameBundle\Repository\BadgeRepositoryInterface;
 use Doctrine\Common\Persistence\ObjectRepository;
 use Symfony\Component\Validator\Validator;
 

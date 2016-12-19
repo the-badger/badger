@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Entity;
+namespace Badger\Bundle\GameBundle\Entity;
 
 use Badger\Component\Game\Model\AdventureStepCompletionInterface;
 use Badger\Component\Game\Model\AdventureStepInterface;

@@ -1,7 +1,7 @@
-Badger\GameBundle\Entity\ClaimedBadge:
+Badger\Bundle\GameBundle\Entity\ClaimedBadge:
     type: entity
     table: claimed_badges
-    repositoryClass: Badger\GameBundle\Doctrine\Repository\ClaimedBadgeRepository
+    repositoryClass: Badger\Bundle\GameBundle\Doctrine\Repository\ClaimedBadgeRepository
     fields:
         id:
             id: true
@@ -13,12 +13,12 @@ Badger\GameBundle\Entity\ClaimedBadge:
             nullable: false
     manyToOne:
         user:
-            targetEntity: Badger\UserBundle\Entity\User
+            targetEntity: Badger\Bundle\UserBundle\Entity\User
             joinColumn:
                 user_id:
                     referencedColumnName: id
         badge:
-            targetEntity: Badger\GameBundle\Entity\Badge
+            targetEntity: Badger\Bundle\GameBundle\Entity\Badge
             joinColumn:
                 badge_id:
                     referencedColumnName: id

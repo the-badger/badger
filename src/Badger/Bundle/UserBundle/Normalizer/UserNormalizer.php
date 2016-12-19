@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\UserBundle\Normalizer;
+namespace Badger\Bundle\UserBundle\Normalizer;
 
 use Badger\Component\User\Model\UserInterface;
 use Doctrine\ORM\PersistentCollection;

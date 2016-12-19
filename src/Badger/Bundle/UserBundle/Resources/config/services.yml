@@ -1,5 +1,5 @@
 parameters:
-    badger.user_bundle.security.user_provider.class: Badger\UserBundle\Security\FOSUBUserProvider
+    badger.user_bundle.security.user_provider.class: Badger\Bundle\UserBundle\Security\FOSUBUserProvider
 
 services:
     badger.user_bundle.security.user_provider:

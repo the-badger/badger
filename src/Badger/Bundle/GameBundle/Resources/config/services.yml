@@ -1,6 +1,6 @@
 parameters:
-    badger.game.listener.class: Badger\GameBundle\EventListener\UnlockBadgeListener
-    badger.notifier.slack.class: Badger\GameBundle\Notifier\SlackNotifier
+    badger.game.listener.class: Badger\Bundle\GameBundle\EventListener\UnlockBadgeListener
+    badger.notifier.slack.class: Badger\Bundle\GameBundle\Notifier\SlackNotifier
 
 services:
     badger.game.listener:

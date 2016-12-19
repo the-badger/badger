@@ -1,7 +1,7 @@
-Badger\GameBundle\Entity\AdventureStep:
+Badger\Bundle\GameBundle\Entity\AdventureStep:
     type: entity
     table: adventure_steps
-    repositoryClass: Badger\GameBundle\Doctrine\Repository\AdventureStepRepository
+    repositoryClass: Badger\Bundle\GameBundle\Doctrine\Repository\AdventureStepRepository
     fields:
         id:
             type: guid
@@ -21,21 +21,21 @@ Badger\GameBundle\Entity\AdventureStep:
             type: integer
     manyToOne:
         adventure:
-            targetEntity:  Badger\GameBundle\Entity\Adventure
+            targetEntity:  Badger\Bundle\GameBundle\Entity\Adventure
             inversedBy: steps
             joinColumn:
                 name: adventure_id
                 referencedColumnName: id
                 onDelete: cascade
         badge:
-            targetEntity:  Badger\GameBundle\Entity\Badge
+            targetEntity:  Badger\Bundle\GameBundle\Entity\Badge
             joinColumn:
                 name: badge_id
                 referencedColumnName: id
                 onDelete: SET NULL
     oneToMany:
         completions:
-            targetEntity: Badger\GameBundle\Entity\AdventureStepCompletion
+            targetEntity: Badger\Bundle\GameBundle\Entity\AdventureStepCompletion
             mappedBy: step
             fetch: EAGER
             cascade:

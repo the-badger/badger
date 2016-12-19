@@ -1,6 +1,6 @@
 <?php
 
-namespace Badger\GameBundle\Form;
+namespace Badger\Bundle\GameBundle\Form;
 
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -46,7 +46,7 @@ class AdventureStepType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Badger\GameBundle\Entity\AdventureStep'
+            'data_class' => 'Badger\Bundle\GameBundle\Entity\AdventureStep'
         ]);
     }
 }

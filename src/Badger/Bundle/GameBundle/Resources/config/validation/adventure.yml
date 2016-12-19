@@ -1,4 +1,4 @@
-Badger\GameBundle\Entity\Adventure:
+Badger\Bundle\GameBundle\Entity\Adventure:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
             fields: title

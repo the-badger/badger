@@ -1,4 +1,4 @@
-Badger\GameBundle\Entity\QuestCompletion:
+Badger\Bundle\GameBundle\Entity\QuestCompletion:
     properties:
         user:
             - NotNull: ~

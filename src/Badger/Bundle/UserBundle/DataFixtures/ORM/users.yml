@@ -1,4 +1,4 @@
-Badger\UserBundle\Entity\User:
+Badger\Bundle\UserBundle\Entity\User:
     # SUPER_ADMIN
     user_pipou:
         githubId: 123
