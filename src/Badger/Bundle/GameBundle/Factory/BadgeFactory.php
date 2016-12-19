@@ -2,9 +2,9 @@
 
 namespace Badger\Bundle\GameBundle\Factory;
 
+use Badger\Bundle\GameBundle\Entity\Badge;
 use Badger\Component\Game\Factory\SimpleFactoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Badger\Bundle\GameBundle\Entity\Badge;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

@@ -2,9 +2,9 @@
 
 namespace Badger\Bundle\StorageUtilsBundle\Doctrine\Remover;
 
+use Badger\Component\StorageUtils\Remover\RemoverInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Util\ClassUtils;
-use Badger\Component\StorageUtils\Remover\RemoverInterface;
 
 /**
  * Base remover, declared as different services for different classes

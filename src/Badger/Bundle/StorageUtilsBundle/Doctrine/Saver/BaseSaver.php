@@ -2,9 +2,9 @@
 
 namespace Badger\Bundle\StorageUtilsBundle\Doctrine\Saver;
 
+use Badger\Component\StorageUtils\Saver\SaverInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\Util\ClassUtils;
-use Badger\Component\StorageUtils\Saver\SaverInterface;
 
 /**
  * Base saver, declared as different services for different classes

@@ -2,8 +2,8 @@
 
 namespace Badger\Component\User\Model;
 
-use FOS\UserBundle\Model\UserInterface as BaseUserInterface;
 use FOS\UserBundle\Model\GroupableInterface;
+use FOS\UserBundle\Model\UserInterface as BaseUserInterface;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

@@ -2,8 +2,8 @@
 
 namespace Badger\Bundle\GameBundle\Doctrine\Repository;
 
-use Doctrine\ORM\EntityRepository;
 use Badger\Component\Game\Repository\BadgeRepositoryInterface;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * Doctrine implementation of repository for Badge entities.

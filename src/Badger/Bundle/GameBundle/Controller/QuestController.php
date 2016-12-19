@@ -2,8 +2,8 @@
 
 namespace Badger\Bundle\GameBundle\Controller;
 
-use Badger\Component\Game\Model\QuestInterface;
 use Badger\Bundle\GameBundle\Form\QuestType;
+use Badger\Component\Game\Model\QuestInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\RedirectResponse;

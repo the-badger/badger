@@ -2,8 +2,8 @@
 
 namespace Badger\Bundle\TagBundle\Factory;
 
-use Badger\Component\Tag\Factory\TagFactoryInterface;
 use Badger\Bundle\TagBundle\Entity\Tag;
+use Badger\Component\Tag\Factory\TagFactoryInterface;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

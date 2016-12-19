@@ -2,8 +2,8 @@
 
 namespace Badger\Bundle\GameBundle\Doctrine\Repository;
 
-use Doctrine\ORM\EntityRepository;
 use Badger\Component\Game\Repository\ClaimedBadgeRepositoryInterface;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**

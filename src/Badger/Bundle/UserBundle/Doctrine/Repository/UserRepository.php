@@ -2,8 +2,8 @@
 
 namespace Badger\Bundle\UserBundle\Doctrine\Repository;
 
-use Doctrine\ORM\EntityRepository;
 use Badger\Component\User\Repository\UserRepositoryInterface;
+use Doctrine\ORM\EntityRepository;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>

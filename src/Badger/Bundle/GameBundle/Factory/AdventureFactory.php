@@ -2,9 +2,9 @@
 
 namespace Badger\Bundle\GameBundle\Factory;
 
-use Badger\Component\Game\Factory\SimpleFactoryInterface;
 use Badger\Bundle\GameBundle\Entity\Adventure;
 use Badger\Bundle\GameBundle\Entity\AdventureStep;
+use Badger\Component\Game\Factory\SimpleFactoryInterface;
 
 /**
  * @author  Marie Bochu <marie.bochu@akeneo.com>

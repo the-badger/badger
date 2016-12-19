@@ -2,9 +2,9 @@
 
 namespace Badger\Bundle\GameBundle\Doctrine\Repository;
 
+use Badger\Bundle\UserBundle\Entity\User;
 use Badger\Component\Game\Repository\QuestCompletionRepositoryInterface;
 use Badger\Component\Game\Repository\TagSearchableRepositoryInterface;
-use Badger\Bundle\UserBundle\Entity\User;
 use Badger\Component\User\Model\UserInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;

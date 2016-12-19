@@ -2,11 +2,11 @@
 
 namespace Badger\Bundle\GameBundle\Unlocker;
 
-use Badger\Component\Game\Unlocker\BadgeUnlockerInterface;
+use Badger\Component\Game\Factory\UnlockedBadgeFactoryInterface;
 use Badger\Component\Game\Model\BadgeInterface;
 use Badger\Component\Game\Model\ClaimedBadgeInterface;
-use Badger\Component\Game\Factory\UnlockedBadgeFactoryInterface;
 use Badger\Component\Game\Repository\UnlockedBadgeRepositoryInterface;
+use Badger\Component\Game\Unlocker\BadgeUnlockerInterface;
 use Badger\Component\StorageUtils\Remover\RemoverInterface;
 use Badger\Component\StorageUtils\Saver\SaverInterface;
 use Badger\Component\User\Model\UserInterface;

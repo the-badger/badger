@@ -4,10 +4,10 @@ namespace Badger\Bundle\GameBundle\Doctrine\Repository;
 
 use Badger\Component\Game\Model\BadgeInterface;
 use Badger\Component\Game\Repository\TagSearchableRepositoryInterface;
+use Badger\Component\Game\Repository\UnlockedBadgeRepositoryInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
-use Badger\Component\Game\Repository\UnlockedBadgeRepositoryInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**

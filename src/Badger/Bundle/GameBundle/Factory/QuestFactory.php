@@ -2,8 +2,8 @@
 
 namespace Badger\Bundle\GameBundle\Factory;
 
-use Badger\Component\Game\Factory\SimpleFactoryInterface;
 use Badger\Bundle\GameBundle\Entity\Quest;
+use Badger\Component\Game\Factory\SimpleFactoryInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
