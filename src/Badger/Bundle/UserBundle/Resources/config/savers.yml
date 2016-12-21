@@ -1,0 +1,6 @@
+services:
+    badger.user.saver.user:
+        class: '%badger.storage_utils.saver.base.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\Bundle\UserBundle\Entity\User'

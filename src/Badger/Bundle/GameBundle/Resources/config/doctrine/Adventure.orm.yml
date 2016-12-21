@@ -1,0 +1,50 @@
+Badger\Bundle\GameBundle\Entity\Adventure:
+    type: entity
+    table: adventures
+    repositoryClass: Badger\Bundle\GameBundle\Doctrine\Repository\AdventureRepository
+    fields:
+        id:
+            type: guid
+            id: true
+            generator:
+                strategy: UUID
+        title:
+            type: string
+            length: 255
+            unique: true
+        description:
+            type: text
+            nullable: true
+        rewardPoint:
+            type: integer
+        isStepLinked:
+            type: boolean
+    manyToMany:
+        tags:
+            targetEntity: Badger\Bundle\TagBundle\Entity\Tag
+            inversedBy: adventures
+            joinTable:
+                name: adventure_tags
+                joinColumns:
+                    adventure_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    tag_id:
+                        referencedColumnName: id
+    oneToMany:
+        steps:
+            orderBy: { 'position': 'ASC' }
+            targetEntity: Badger\Bundle\GameBundle\Entity\AdventureStep
+            mappedBy: adventure
+            cascade:
+                - persist
+                - detach
+                - remove
+            orphanRemoval: true
+    manyToOne:
+        badge:
+            targetEntity: Badger\Bundle\GameBundle\Entity\Badge
+            joinColumn:
+                name: badge_id
+                referencedColumnName: id
+                onDelete: SET NULL

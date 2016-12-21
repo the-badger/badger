@@ -1,0 +1,16 @@
+parameters:
+    badger.tag.tagged_entity_voter.class: Badger\Bundle\TagBundle\Security\TaggedEntityVoter
+    badger.tag.tag_voter.class: Badger\Bundle\TagBundle\Security\TagVoter
+
+services:
+    badger.tag.tagged_entity_voter:
+        class: '%badger.tag.tagged_entity_voter.class%'
+        tags:
+            - { name: security.voter }
+        public: false
+
+    badger.tag.tag_voter:
+        class: '%badger.tag.tag_voter.class%'
+        tags:
+            - { name: security.voter }
+        public: false

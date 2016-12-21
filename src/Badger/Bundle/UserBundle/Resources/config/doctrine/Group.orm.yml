@@ -1,0 +1,13 @@
+Badger\Bundle\UserBundle\Entity\Group:
+    type:  entity
+    table: fos_group
+    fields:
+        id:
+            id: true
+            type: guid
+            generator:
+                strategy: UUID
+        name:
+            type: string
+            length: 255
+            nullable: false

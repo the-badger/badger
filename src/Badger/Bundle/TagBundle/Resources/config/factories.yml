@@ -1,0 +1,6 @@
+parameters:
+    badger.tags.tag.factory.class: Badger\Bundle\TagBundle\Factory\TagFactory
+
+services:
+    badger.tags.tag.factory:
+        class: '%badger.tags.tag.factory.class%'

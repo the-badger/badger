@@ -1,5 +1,0 @@
-Badger\GameBundle\Entity\ClaimedBadge:
-    claimed_badges_1:
-        user: '@user_2'
-        badge: '@badge_bug'
-        claimedDate: <dateTime()>

@@ -77,9 +77,9 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: Badger\UserBundle\Entity\User
+    user_class: Badger\Bundle\UserBundle\Entity\User
     group:
-        group_class: Badger\UserBundle\Entity\Group
+        group_class: Badger\Bundle\UserBundle\Entity\Group
 
 hwi_oauth:
     # list of names of the firewalls in which this bundle is active, this setting MUST be set

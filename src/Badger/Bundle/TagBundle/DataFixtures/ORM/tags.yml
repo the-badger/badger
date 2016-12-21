@@ -1,0 +1,16 @@
+Badger\Bundle\TagBundle\Entity\Tag:
+    tag_community:
+        name: Community
+        code: community
+        isDefault: true
+        createdAt: 2016-12-10
+    tag_company:
+        name: Company
+        code: company
+        isDefault: false
+        createdAt: 2016-12-10
+    tag_nantes:
+        name: Nantes
+        code: nantes
+        isDefault: false
+        createdAt: 2016-12-10

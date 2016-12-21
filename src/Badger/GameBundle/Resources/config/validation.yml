@@ -1,5 +1,0 @@
-Badger\GameBundle\Entity\Badge:
-    properties:
-        file:
-            - File:
-                maxSize: 6000000
