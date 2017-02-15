@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.7.1] - 2017-02-15
+### Fixed
+- Bump FOSUserBundle to version `2.0.0-beta2` to fix field "salt", which is now null by default.
+
 ## [0.7.0] - 2016-12-20
 ### Changed
 - Drop Semantic UI on admin side. (#107)
@@ -95,7 +99,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Badge info view, with obtention percentage and user list who have it
 - Feedview with recent unlocks
 
-[Unreleased]: https://github.com/the-badger/badger/compare/v0.7.0...HEAD
+[Unreleased]: https://github.com/the-badger/badger/compare/v0.7.1...HEAD
+[0.7.1]: https://github.com/the-badger/badger/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/the-badger/badger/compare/v0.6.1...v0.7.0
 [0.6.1]: https://github.com/the-badger/badger/compare/v0.6.0...v0.6.1
 [0.6.0]: https://github.com/the-badger/badger/compare/v0.5.3...v0.6.0
