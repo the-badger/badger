@@ -2,6 +2,8 @@
 
 namespace Badger\Bundle\GameBundle\Form;
 
+use Badger\Bundle\GameBundle\Entity\AdventureStep;
+use Badger\Bundle\GameBundle\Entity\Badge;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -31,11 +33,10 @@ class AdventureStepType extends AbstractType
                 'label' => 'game.step.form.reward_point'
             ])
             ->add('badge', EntityType::class, [
-                'class'        => 'GameBundle:Badge',
-                'choice_label' => 'title',
-                'empty_data'   => '',
-                'required'     => false,
-                'label'        => 'game.step.form.badge'
+                'class'      => Badge::class,
+                'empty_data' => '',
+                'required'   => false,
+                'label'      => 'game.step.form.badge'
             ])
         ;
     }
@@ -46,7 +47,7 @@ class AdventureStepType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Badger\Bundle\GameBundle\Entity\AdventureStep'
+            'data_class' => AdventureStep::class
         ]);
     }
 }

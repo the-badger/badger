@@ -2,6 +2,9 @@
 
 namespace Badger\Bundle\GameBundle\Form;
 
+use Badger\Bundle\GameBundle\Entity\Adventure;
+use Badger\Bundle\GameBundle\Entity\Badge;
+use Badger\Bundle\TagBundle\Entity\Tag;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -32,7 +35,7 @@ class AdventureType extends AbstractType
             ])
             ->add('isStepLinked')
             ->add('badge', EntityType::class, [
-                'class'        => 'GameBundle:Badge',
+                'class'        => Badge::class,
                 'choice_label' => 'title',
                 'empty_data'   => '',
                 'required'     => false,
@@ -50,7 +53,7 @@ class AdventureType extends AbstractType
                 'multiple'     => true,
                 'choice_label' => 'name',
                 'required'     => false,
-                'class'        => 'Badger\Bundle\TagBundle\Entity\Tag'
+                'class'        => Tag::class
             ])
         ;
     }
@@ -61,7 +64,7 @@ class AdventureType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Badger\Bundle\GameBundle\Entity\Adventure'
+            'data_class' => Adventure::class
         ]);
     }
 }

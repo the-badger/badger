@@ -2,6 +2,9 @@
 
 namespace Badger\Bundle\UserBundle\Form;
 
+use Badger\Bundle\TagBundle\Entity\Tag;
+use Badger\Bundle\UserBundle\Entity\User;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,12 +22,11 @@ class UserType extends AbstractType
     {
         $builder
             ->add('username')
-            ->add('tags', 'entity', [
+            ->add('tags', EntityType::class, [
                 'label' => 'Tagged in',
                 'multiple' => true,
-                'property' => 'name',
                 'required' => false,
-                'class' => 'Badger\Bundle\TagBundle\Entity\Tag'
+                'class' => Tag::class
             ])
         ;
     }
@@ -35,7 +37,7 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => 'Badger\Bundle\UserBundle\Entity\User'
+            'data_class' => User::class
         ]);
     }
 }

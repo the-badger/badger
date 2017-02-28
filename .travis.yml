@@ -10,7 +10,7 @@ before_install:
 
 install:
     - composer install --prefer-dist --no-interaction
-    - ./app/console doctrine:schema:create -e=test
+    - ./bin/console doctrine:schema:create -e=test
 
 script:
     - ./bin/phpspec run

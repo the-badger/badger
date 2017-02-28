@@ -84,10 +84,14 @@ class ClaimedBadgeController extends Controller
             ]);
 
         if ($isUnlocked) {
-            $this->addFlash('error', sprintf('%s already has the badge "%s"',
-                $user->getUsername(),
-                $badge->getTitle()
-            ));
+            $this->addFlash(
+                'error',
+                sprintf(
+                    '%s already has the badge "%s"',
+                    $user->getUsername(),
+                    $badge->getTitle()
+                )
+            );
 
             return $this->redirectToRoute('admin_claimed_badge_index');
         }

@@ -222,4 +222,12 @@ class Badge implements BadgeInterface, JsonSerializable
     {
         return 'uploads/game';
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->title;
+    }
 }
