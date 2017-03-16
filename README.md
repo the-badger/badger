@@ -41,7 +41,7 @@ php app/console doctrine:schema:update --force
 #### 3) Install frontend assets
 ```bash
 npm install # Install frontend dependencies, like Bootstrap
-php app/console assets:install # Move bundle assets to web/ directory
+php bin/console assets:install # Move bundle assets to web/ directory
 nodejs node_modules/gulp/bin/gulp.js less # Compile bundle .less files to .css
 nodejs node_modules/gulp/bin/gulp.js install # Move downloaded assets to web/ directory
 ```
@@ -62,7 +62,7 @@ parameters:
 
 ### Setup Google oAuth login
 1. Create a Google application with your Google account by following this link: https://console.developers.google.com/
-2. Fill in needed informations. Put your Badger index page (eg. `http://badger.example.com/`) as a **valid redirect domain**
+2. Fill in needed informations. Put your Badger Google Login page (eg. `http://badger.example.com/login/check-google`) as a **valid redirect domain**
 3. Once the application created, put your **Client ID** & **Client Secret** tokens in the parameters file of your Badger app:
 ```yml
 # ./app/config/parameters.yml
@@ -80,7 +80,7 @@ Bagder is working with Elasticsearch in order to ease the search in the applicat
 3. (Optional) Populate Elasticsearch with existing users using the following command:
 
 ```bash
-php app/console fos:elastica:populate
+php bin/console fos:elastica:populate
 ```
 
 _Note that every new users will be automatically indexed by Elasticsearch, you won't need to re-run this command again._
@@ -89,7 +89,7 @@ _Note that every new users will be automatically indexed by Elasticsearch, you w
 To manage Badger, you'll need one or several administrators. To promote a user, use this command:
 
 ```bash
-php app/console fos:user:promote <username> ROLE_ADMIN
+php bin/console fos:user:promote <username> ROLE_ADMIN
 ```
 
 Note that the promoted user will need to **logout then login again** to have full power :metal:
