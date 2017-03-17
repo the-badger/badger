@@ -208,7 +208,7 @@ class Badge implements BadgeInterface, JsonSerializable
      */
     protected function getUploadRootDir()
     {
-        return __DIR__ . '/../../../../web/' . $this->getUploadDir();
+        return __DIR__ . '/../../../../../web/' . $this->getUploadDir();
     }
 
     /**
