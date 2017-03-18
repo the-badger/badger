@@ -18,11 +18,5 @@ google_login:
 user_bundle:
     resource: '@UserBundle/Resources/config/routing.yml'
 
-gate_bundle:
-    resource: '@GateBundle/Resources/config/routing.yml'
-
 game_bundle:
     resource: '@GameBundle/Resources/config/routing.yml'
-
-tag_bundle:
-    resource: "@TagBundle/Resources/config/routing.yml"

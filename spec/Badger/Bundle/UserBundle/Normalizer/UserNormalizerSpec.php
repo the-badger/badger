@@ -2,7 +2,7 @@
 
 namespace spec\Badger\Bundle\UserBundle\Normalizer;
 
-use Badger\Component\Tag\Model\TagInterface;
+use Badger\Component\Game\Model\TagInterface;
 use Badger\Bundle\UserBundle\Entity\User;
 use PhpSpec\ObjectBehavior;
 

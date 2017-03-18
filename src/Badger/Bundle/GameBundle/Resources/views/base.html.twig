@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Badger{% endblock %}</title>
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/game/css/icons/icomoon/styles.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/game/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/game/css/core.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/game/css/components.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/game/css/colors.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('bundles/game/css/extras/animate.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('css/badger.css') }}" rel="stylesheet" type="text/css">
+    <!-- /global stylesheets -->
+
+    <!-- Core JS files -->
+    <script type="text/javascript" src="{{ asset('bundles/game/js/core/libraries/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/game/js/core/libraries/bootstrap.min.js') }}"></script>
+    <!-- /core JS files -->
+
+    <!-- Theme JS files -->
+    <script type="text/javascript" src="{{ asset('bundles/game/js/plugins/ui/nicescroll.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/game/js/core/app.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/game/js/pages/layout_fixed_custom.js') }}"></script>
+    <!-- /theme JS files -->
+
+    <!-- Lib JS files -->
+    <script type="text/javascript" src="{{ asset('vendor/dist/mustache.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('vendor/dist/lodash.min.js') }}"></script>
+    <!-- /lib JS files -->
+
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" href="{{ asset('favicon.ico') }}" sizes="16x16 32x32 48x48 64x64" type="image/vnd.microsoft.icon">
+</head>
+<body class="{% block bodyclass %}{% endblock %} navbar-top">
+
+<!-- Main navbar -->
+<div class="navbar navbar-default navbar-fixed-top header-highlight">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="{{ url('homepage') }}"><img src="{{ asset('bundles/game/images/badger-white-300.png') }}" alt="" style="margin-top: -6px; height: 30px;"></a>
+
+        <ul class="nav navbar-nav pull-right visible-xs-block">
+            <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+            <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar-mobile">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><i class="icon-piggy-bank"></i> {{ app.user.nuts }}</a></li>
+
+            <li class="dropdown dropdown-user">
+                <a class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="{{ app.user.profilePicture }}" alt="">
+                    <span>{{ app.user.username }}</span>
+                    <i class="caret"></i>
+                </a>
+
+                <ul class="dropdown-menu dropdown-menu-right">
+                    <li><a href="{{ url('userprofile', {'username': app.user.username}) }}"><i class="icon-user"></i> My profile</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{{ url('fos_user_security_logout') }}"><i class="icon-switch2"></i> Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /main navbar -->
+
+<!-- Page container -->
+<div class="page-container">
+
+    <!-- Page content -->
+    <div class="page-content {% block pagecontentclass %}{% endblock %}">
+
+        <!-- Main sidebar -->
+        <div class="sidebar sidebar-main sidebar-fixed">
+            <div class="sidebar-content">
+
+                <!-- Main navigation -->
+                <div class="sidebar-category sidebar-category-visible">
+                    <div class="category-content no-padding">
+                        <ul class="navigation navigation-main navigation-accordion">
+
+                            <!-- Main -->
+                            <li class="{{ app.request.attributes.get('_route')  == 'homepage' ? 'active' : '' }}">
+                                <a href="{{ url('homepage') }}"><i class="icon-feed"></i> <span>Feed</span></a>
+                            </li>
+                            <li class="{{ app.request.attributes.get('_route')  == 'badges' ? 'active' : '' }}">
+                                <a href="{{ url('badges') }}"><i class="icon-medal2"></i> <span>Badges</span></a>
+                            </li>
+                            <li class="{{ app.request.attributes.get('_route')  == 'quests' ? 'active' : '' }}">
+                                <a href="{{ url('quests') }}"><i class="icon-trophy4"></i> <span>Quests</span></a>
+                            </li>
+                            <li class="{{ app.request.attributes.get('_route')  == 'adventures' ? 'active' : '' }}">
+                                <a href="{{ url('adventures') }}"><i class="icon-trophy3"></i> <span>Adventures</span></a>
+                            </li>
+                            <li class="{{ app.request.attributes.get('_route')  == 'users' ? 'active' : '' }}">
+                                <a href="{{ url('users') }}"><i class="icon-users"></i> <span>People</span></a>
+                            </li>
+                            <li class="{{ app.request.attributes.get('_route')  == 'leaderboard' ? 'active' : '' }}">
+                                <a href="{{ url('leaderboard') }}"><i class="icon-podium"></i> <span>Leaderboard</span></a>
+                            </li>
+                            <!-- /main -->
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- /main navigation -->
+
+            </div>
+        </div>
+        <!-- /main sidebar -->
+
+
+        <!-- Main content -->
+        <div class="content-wrapper">
+
+            <!-- Content area -->
+            <div class="content">
+
+
+                <!-- Grid -->
+                <div class="row">
+                    <div class="col-md-12">
+
+                        {% block body %}
+
+                        {% endblock %}
+
+                    </div>
+                </div>
+                <!-- /grid -->
+
+                <!-- Footer -->
+                <div class="footer text-muted hidden-xs">
+                    <i class="icon-github"></i> <a href="https://github.com/the-badger/badger">Badger, open-source project</a> - v{{ app_version }}
+                </div>
+                <!-- /footer -->
+
+            </div>
+            <!-- /content area -->
+
+        </div>
+        <!-- /main content -->
+
+    </div>
+    <!-- /page content -->
+</div>
+<!-- /page container -->
+
+<script src="{{ asset('vendor/dist/Autolinker.min.js') }}"></script>
+
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>

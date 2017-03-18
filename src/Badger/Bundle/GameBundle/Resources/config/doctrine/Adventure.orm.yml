@@ -21,7 +21,7 @@ Badger\Bundle\GameBundle\Entity\Adventure:
             type: boolean
     manyToMany:
         tags:
-            targetEntity: Badger\Bundle\TagBundle\Entity\Tag
+            targetEntity: Badger\Bundle\GameBundle\Entity\Tag
             inversedBy: adventures
             joinTable:
                 name: adventure_tags

@@ -6,6 +6,7 @@ parameters:
     badger.game.quest_completion.factory.class: Badger\Bundle\GameBundle\Factory\QuestCompletionFactory
     badger.game.adventure.factory.class: Badger\Bundle\GameBundle\Factory\AdventureFactory
     badger.game.adventure_step_completion.factory.class: Badger\Bundle\GameBundle\Factory\AdventureStepCompletionFactory
+    badger.game.tag.factory.class: Badger\Bundle\GameBundle\Factory\TagFactory
 
 services:
     badger.game.badge.factory:
@@ -28,3 +29,6 @@ services:
 
     badger.game.adventure_step_completion.factory:
         class: '%badger.game.adventure_step_completion.factory.class%'
+
+    badger.game.tag.factory:
+        class: '%badger.game.tag.factory.class%'

@@ -1,0 +1,16 @@
+parameters:
+    badger.game.tagged_entity_voter.class: Badger\Bundle\GameBundle\Security\TaggedEntityVoter
+    badger.game.tag_voter.class: Badger\Bundle\GameBundle\Security\TagVoter
+
+services:
+    badger.game.tagged_entity_voter:
+        class: '%badger.game.tagged_entity_voter.class%'
+        tags:
+            - { name: security.voter }
+        public: false
+
+    badger.game.tag_voter:
+        class: '%badger.game.tag_voter.class%'
+        tags:
+            - { name: security.voter }
+        public: false

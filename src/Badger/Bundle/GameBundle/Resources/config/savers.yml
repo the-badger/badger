@@ -44,3 +44,9 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\Bundle\GameBundle\Entity\AdventureStepCompletion'
+
+    badger.game.saver.tag:
+        class: '%badger.storage_utils.saver.base.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\Bundle\GameBundle\Entity\Tag'

@@ -19,9 +19,7 @@ class AppKernel extends Kernel
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Badger\Bundle\UserBundle\UserBundle(),
             new Badger\Bundle\GameBundle\GameBundle(),
-            new Badger\Bundle\GateBundle\GateBundle(),
             new Badger\Bundle\StorageUtilsBundle\StorageUtilsBundle(),
-            new Badger\Bundle\TagBundle\TagBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
         );
 

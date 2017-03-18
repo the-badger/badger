@@ -28,7 +28,7 @@ Badger\Bundle\GameBundle\Entity\Quest:
             nullable: false
     manyToMany:
         tags:
-            targetEntity: Badger\Bundle\TagBundle\Entity\Tag
+            targetEntity: Badger\Bundle\GameBundle\Entity\Tag
             inversedBy: quests
             joinTable:
                 name: quest_tags

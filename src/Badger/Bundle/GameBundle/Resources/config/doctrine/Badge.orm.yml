@@ -22,7 +22,7 @@ Badger\Bundle\GameBundle\Entity\Badge:
             nullable: true
     manyToMany:
         tags:
-            targetEntity: Badger\Bundle\TagBundle\Entity\Tag
+            targetEntity: Badger\Bundle\GameBundle\Entity\Tag
             inversedBy: badges
             joinTable:
                 name: badges_tags

@@ -5,7 +5,7 @@ namespace Badger\Bundle\GameBundle\Entity;
 use Badger\Component\Game\Model\AdventureInterface;
 use Badger\Component\Game\Model\AdventureStepInterface;
 use Badger\Component\Game\Model\BadgeInterface;
-use Badger\Component\Tag\Model\TagInterface;
+use Badger\Component\Game\Model\TagInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**

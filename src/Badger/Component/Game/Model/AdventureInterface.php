@@ -2,7 +2,7 @@
 
 namespace Badger\Component\Game\Model;
 
-use Badger\Component\Tag\Taggable\TaggableInterface;
+use Badger\Component\Game\Taggable\TaggableInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**

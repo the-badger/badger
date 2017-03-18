@@ -4,7 +4,7 @@ namespace Badger\Bundle\GameBundle\Doctrine\Repository;
 
 use Badger\Component\Game\Repository\QuestRepositoryInterface;
 use Badger\Component\Game\Repository\TagSearchableRepositoryInterface;
-use Badger\Component\Tag\Taggable\TaggableInterface;
+use Badger\Component\Game\Taggable\TaggableInterface;
 use Badger\Component\User\Model\UserInterface;
 use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;
