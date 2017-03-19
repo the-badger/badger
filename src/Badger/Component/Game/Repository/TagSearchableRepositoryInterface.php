@@ -2,7 +2,7 @@
 
 namespace Badger\Component\Game\Repository;
 
-use Badger\Component\Tag\Model\TagInterface;
+use Badger\Component\Game\Model\TagInterface;
 
 /**
  * Repository interface for tag searchable entities.

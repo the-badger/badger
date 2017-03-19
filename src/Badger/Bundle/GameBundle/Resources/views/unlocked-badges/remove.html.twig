@@ -1,4 +1,4 @@
-{% extends 'GateBundle::base-admin.html.twig' %}
+{% extends 'GameBundle::base-admin.html.twig' %}
 
 {% block body %}
     <div class="page-header page-header-default">
@@ -45,7 +45,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/forms/selects/select2.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/game/js/plugins/forms/selects/select2.min.js') }}"></script>
 
     <script>
         var badgesJSON = '{{ badges|e('js') }}';

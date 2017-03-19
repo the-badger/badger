@@ -68,7 +68,7 @@ class BadgeControllerTest extends BadgerTestCase
      */
     private function createBadge(Client $client)
     {
-        $tag = $this->get('badger.tag.repository.tag')->findOneBy(['code' => 'company']);
+        $tag = $this->get('badger.game.repository.tag')->findOneBy(['code' => 'company']);
 
         $client->request('POST', 'admin/badge/new', [
             'badge' => [

@@ -1,4 +1,4 @@
-{% extends 'GateBundle::base-admin.html.twig' %}
+{% extends 'GameBundle::base-admin.html.twig' %}
 
 {% block body %}
     <div class="page-header page-header-default no-margin-bottom">
@@ -28,9 +28,9 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/forms/tags/selectize/selectize.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/pickers/pickadate/picker.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('bundles/gate/js/plugins/pickers/pickadate/picker.date.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/game/js/plugins/forms/tags/selectize/selectize.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/game/js/plugins/pickers/pickadate/picker.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/game/js/plugins/pickers/pickadate/picker.date.js') }}"></script>
 
     <script>
         $('#quest_startDate').pickadate({

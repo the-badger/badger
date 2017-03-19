@@ -4,7 +4,7 @@ namespace Badger\Bundle\GameBundle\Form;
 
 use Badger\Bundle\GameBundle\Entity\Adventure;
 use Badger\Bundle\GameBundle\Entity\Badge;
-use Badger\Bundle\TagBundle\Entity\Tag;
+use Badger\Bundle\GameBundle\Entity\Tag;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;

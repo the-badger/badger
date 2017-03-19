@@ -2,8 +2,8 @@
 
 namespace spec\Badger\Bundle\UserBundle\Security;
 
-use Badger\Component\Tag\Model\TagInterface;
-use Badger\Bundle\TagBundle\Repository\TagRepositoryInterface;
+use Badger\Component\Game\Model\TagInterface;
+use Badger\Component\Game\Repository\TagRepositoryInterface;
 use Badger\Bundle\UserBundle\Entity\User;
 use Badger\Component\User\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;

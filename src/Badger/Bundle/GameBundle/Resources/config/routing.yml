@@ -29,3 +29,7 @@ game_admin_adventure:
 game_admin_claimed_adventure_step:
     resource: "@GameBundle/Resources/config/routing/claimed-adventure-step.yml"
     prefix:   /admin/claimed-adventure-step
+
+tag_admin_tag:
+    resource: "@GameBundle/Resources/config/routing/tag.yml"
+    prefix:   /admin/tag

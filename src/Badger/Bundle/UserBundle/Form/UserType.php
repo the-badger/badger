@@ -2,7 +2,7 @@
 
 namespace Badger\Bundle\UserBundle\Form;
 
-use Badger\Bundle\TagBundle\Entity\Tag;
+use Badger\Bundle\GameBundle\Entity\Tag;
 use Badger\Bundle\UserBundle\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;

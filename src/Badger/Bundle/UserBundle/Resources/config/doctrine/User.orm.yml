@@ -42,7 +42,7 @@ Badger\Bundle\UserBundle\Entity\User:
                     group_id:
                         referencedColumnName: id
         tags:
-            targetEntity: Badger\Bundle\TagBundle\Entity\Tag
+            targetEntity: Badger\Bundle\GameBundle\Entity\Tag
             joinTable:
                 name: users_tags
                 joinColumns:
