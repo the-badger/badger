@@ -15,3 +15,8 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/bin/
+/composer.phar
+/node_modules/
+/web/uploads/
+/web/vendor/
