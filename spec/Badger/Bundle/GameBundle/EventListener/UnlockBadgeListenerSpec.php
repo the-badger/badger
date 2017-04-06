@@ -2,8 +2,8 @@
 
 namespace spec\Badger\Bundle\GameBundle\EventListener;
 
+use Badger\Component\Game\Model\BadgeCompletionInterface;
 use Badger\Component\Game\Model\BadgeInterface;
-use Badger\Component\Game\Model\UnlockedBadgeInterface;
 use Badger\Bundle\GameBundle\Event\BadgeUnlockEvent;
 use Badger\Component\Game\Notifier\NotifierInterface;
 use Badger\Component\User\Model\UserInterface;
@@ -22,7 +22,7 @@ class UnlockBadgeListenerSpec extends ObjectBehavior
         $router,
         $notifier,
         BadgeUnlockEvent $event,
-        UnlockedBadgeInterface $unlockedBadge,
+        BadgeCompletionInterface $badgeCompletion,
         BadgeInterface $badge,
         UserInterface $user
     ) {
@@ -33,10 +33,10 @@ class UnlockBadgeListenerSpec extends ObjectBehavior
         $badge->getDescription()->willReturn('You are, indeed, the best robot.');
         $badge->getImageWebPath()->willReturn('uploads/game/image.png');
 
-        $unlockedBadge->getUser()->willReturn($user);
-        $unlockedBadge->getBadge()->willReturn($badge);
+        $badgeCompletion->getUser()->willReturn($user);
+        $badgeCompletion->getBadge()->willReturn($badge);
 
-        $event->getUnlockedBadge()->willReturn($unlockedBadge);
+        $event->getBadgeCompletion()->willReturn($badgeCompletion);
 
         $router->generate('userprofile', ['username' => 'Bender'], 0)->willReturn(
             'http://mybadger.example/user/Bender'

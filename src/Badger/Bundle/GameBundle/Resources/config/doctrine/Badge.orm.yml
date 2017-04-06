@@ -32,3 +32,8 @@ Badger\Bundle\GameBundle\Entity\Badge:
                 inverseJoinColumns:
                     tag_id:
                         referencedColumnName: id
+    oneToMany:
+        completions:
+            targetEntity: Badger\Bundle\GameBundle\Entity\BadgeCompletion
+            mappedBy: badge
+            fetch: EAGER

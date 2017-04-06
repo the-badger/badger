@@ -25,7 +25,7 @@
         </div>
     {% endfor %}
 
-    {% if claimedBadges is not empty %}
+    {% if pendingCompletions is not empty %}
     <div class="panel panel-flat m-15">
         <div class="table-responsive">
             <table class="table datatable-basic">
@@ -38,28 +38,28 @@
                     </tr>
                 </thead>
                 <tbody>
-                {% for claimedBadge in claimedBadges %}
+                {% for pendingCompletion in pendingCompletions %}
                     <tr>
                         <td>
-                            <img class="img-circle img-thumbnail" style="width: 60px;" src="{{ claimedBadge.user.profilePicture }}">
-                            <span class="ml-10">{{ claimedBadge.user.username }}</span>
+                            <img class="img-circle img-thumbnail" style="width: 60px;" src="{{ pendingCompletion.user.profilePicture }}">
+                            <span class="ml-10">{{ pendingCompletion.user.username }}</span>
                         </td>
                         <td class="single line">
-                            <img class="img-rounded media-preview" src="{{ claimedBadge.badge.imageWebPath }}">
+                            <img class="img-rounded media-preview" src="{{ pendingCompletion.badge.imageWebPath }}">
                             <span class="ml-10">
-                                <span class="text-bold">{{ claimedBadge.badge.title }}</span>
-                                <span class="text-muted">{{ claimedBadge.badge.description|nl2br }}</span>
+                                <span class="text-bold">{{ pendingCompletion.badge.title }}</span>
+                                <span class="text-muted">{{ pendingCompletion.badge.description|nl2br }}</span>
                             </span>
                         </td>
                         <td>
-                            {{ claimedBadge.claimedDate|date("d/m/Y") }}
+                            {{ pendingCompletion.completionDate|date("d/m/Y") }}
                         </td>
                         <td class="center aligned">
                             <div class="ui tiny buttons">
-                                <a href="{{ url('admin_claimed_badge_accept', { 'id': claimedBadge.id }) }}" class="btn btn-success btn-icon btn-rounded">
+                                <a href="{{ url('admin_claimed_badge_accept', { 'id': pendingCompletion.id }) }}" class="btn btn-success btn-icon btn-rounded">
                                     <i class="icon-thumbs-up2"></i>
                                 </a>
-                                <a href="{{ url('admin_claimed_badge_reject', { 'id': claimedBadge.id }) }}" class="btn btn-danger btn-icon btn-rounded ml-10">
+                                <a href="{{ url('admin_claimed_badge_reject', { 'id': pendingCompletion.id }) }}" class="btn btn-danger btn-icon btn-rounded ml-10">
                                     <i class="icon-thumbs-down2"></i>
                                 </a>
                             </div>

@@ -8,7 +8,7 @@
             <div class="timeline timeline-left content-group">
                 <div class="timeline-container">
 
-                    {% for unlock in unlockedBadges %}
+                    {% for badgeCompletion in badgeCompletions %}
                         <!-- Feed unlock -->
                         <div class="timeline-row">
                             <div class="timeline-icon">
@@ -24,14 +24,14 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <h6 class="text-semibold">
-                                                        <a href="{{ url('userprofile', {username: unlock.user.username}) }}">
-                                                            <img src="{{ unlock.user.profilePicture }}" class="img-circle img-thumbnail hidden-xs" style="width: 60px;" alt=""> &nbsp; {{ unlock.user.username }}
+                                                        <a href="{{ url('userprofile', {username: badgeCompletion.user.username}) }}">
+                                                            <img src="{{ badgeCompletion.user.profilePicture }}" class="img-circle img-thumbnail hidden-xs" style="width: 60px;" alt=""> &nbsp; {{ badgeCompletion.user.username }}
                                                         </a>
                                                         unlocked the badge
-                                                        <a href="{{ url('viewbadge', {id: unlock.badge.id}) }}" data-popup="popover" title="" data-trigger="hover" data-content="{{ unlock.badge.description|escape }}" data-original-title="{{ unlock.badge.title|escape }}">
-                                                            {{ unlock.badge.title }}
+                                                        <a href="{{ url('viewbadge', {id: badgeCompletion.badge.id}) }}" data-popup="popover" title="" data-trigger="hover" data-content="{{ badgeCompletion.badge.description|escape }}" data-original-title="{{ badgeCompletion.badge.title|escape }}">
+                                                            {{ badgeCompletion.badge.title }}
                                                         </a>
-                                                        <img src="{{ unlock.badge.imageWebPath }}" class="img-circle img-thumbnail pull-right hidden-xs" style="width: 60px;" alt="">
+                                                        <img src="{{ badgeCompletion.badge.imageWebPath }}" class="img-circle img-thumbnail pull-right hidden-xs" style="width: 60px;" alt="">
                                                     </h6>
                                                 </div>
                                             </div>
@@ -39,7 +39,7 @@
                                         <div class="panel-footer panel-footer-condensed">
                                             <div class="heading-elements">
                                                 <span class="heading-text">
-                                                    Unlocked on <span class="text-semibold">{{ unlock.unlockedDate|date('d/m/Y') }}</span>
+                                                    Unlocked on <span class="text-semibold">{{ badgeCompletion.completionDate|date('d/m/Y') }}</span>
                                                 </span>
                                             </div>
                                         </div>

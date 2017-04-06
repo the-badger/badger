@@ -19,7 +19,7 @@
     {% endfor %}
 
     {% for flash_message in app.session.flashbag.get('error') %}
-        <div class="alert alert-warning alert-styled-left ">
+        <div class="alert alert-warning alert-styled-left alert-arrow-left alert-bordered ml-15 mr-15">
             <button type="button" class="close" data-dismiss="alert"><span>×</span><span class="sr-only">Close</span></button>
             {{ flash_message }}
         </div>

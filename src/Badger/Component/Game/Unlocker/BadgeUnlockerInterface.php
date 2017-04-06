@@ -3,7 +3,6 @@
 namespace Badger\Component\Game\Unlocker;
 
 use Badger\Component\Game\Model\BadgeInterface;
-use Badger\Component\Game\Model\ClaimedBadgeInterface;
 use Badger\Component\User\Model\UserInterface;
 
 /**
@@ -19,12 +18,4 @@ interface BadgeUnlockerInterface
      * @param BadgeInterface $badge
      */
     public function unlockBadge(UserInterface $user, BadgeInterface $badge);
-
-    /**
-     * Use the given $claimedBadge to unlock a badge for the user that claimed it.
-     * It removes the claimed badge when done.
-     *
-     * @param ClaimedBadgeInterface $claimedBadge
-     */
-    public function unlockBadgeFromClaim(ClaimedBadgeInterface $claimedBadge);
 }

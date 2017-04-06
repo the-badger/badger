@@ -23,7 +23,7 @@
                 <div class="row text-center">
                     <div class="col-md-12">
                         <div class="content-group">
-                            <h6 class="text-semibold no-margin"><i class="icon-medal2 position-left text-slate"></i> {{ unlockedBadges|length }}</h6>
+                            <h6 class="text-semibold no-margin"><i class="icon-medal2 position-left text-slate"></i> {{ badgeCompletions|length }}</h6>
                             <span class="text-muted text-size-small">BADGES</span>
                         </div>
                     </div>
@@ -41,27 +41,27 @@
                 <div class="tab-content">
                     <div class="tab-pane active" id="unlocked">
                         <!-- Latest added -->
-                        {% for row in unlockedBadges|batch(2) %}
+                        {% for row in badgeCompletions|batch(2) %}
                         <div class="row">
 
-                            {% for unlockedBadge in row %}
+                            {% for badgeCompletion in row %}
                             <div class="col-md-6">
                                 <div class="panel">
                                     <div class="panel-body">
                                         <div class="media">
                                             <div class="media-left">
-                                                <a href="{{ url('viewbadge', {id: unlockedBadge.badge.id}) }}"><img style="width: 100px; height: 100px;" class="img-circle img-thumbnail" src="{{ unlockedBadge.badge.imageWebPath }}" alt=""></a>
+                                                <a href="{{ url('viewbadge', {id: badgeCompletion.badge.id}) }}"><img style="width: 100px; height: 100px;" class="img-circle img-thumbnail" src="{{ badgeCompletion.badge.imageWebPath }}" alt=""></a>
                                             </div>
 
                                             <div class="media-body">
-                                                <h6 class="media-heading text-semibold"><a href="{{ url('viewbadge', {id: unlockedBadge.badge.id}) }}" class="text-default">{{ unlockedBadge.badge.title }}</a></h6>
-                                                {{ unlockedBadge.badge.description }}
+                                                <h6 class="media-heading text-semibold"><a href="{{ url('viewbadge', {id: badgeCompletion.badge.id}) }}" class="text-default">{{ badgeCompletion.badge.title }}</a></h6>
+                                                {{ badgeCompletion.badge.description }}
                                             </div>
                                         </div>
                                     </div>
                                     <div class="panel-footer">
                                         <div class="heading-elements">
-                                            <span class="heading-text text-muted"><i class="icon-checkmark position-left"></i> Unlocked on {{ unlockedBadge.unlockedDate|date("d/m/Y") }}</span>
+                                            <span class="heading-text text-muted"><i class="icon-checkmark position-left"></i> Unlocked on {{ badgeCompletion.completionDate|date("d/m/Y") }}</span>
                                         </div>
                                     </div>
                                 </div>

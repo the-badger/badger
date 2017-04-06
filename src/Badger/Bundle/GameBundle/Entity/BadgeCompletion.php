@@ -2,17 +2,15 @@
 
 namespace Badger\Bundle\GameBundle\Entity;
 
+use Badger\Component\Game\Model\BadgeCompletionInterface;
 use Badger\Component\Game\Model\BadgeInterface;
-use Badger\Component\Game\Model\ClaimedBadgeInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 
 /**
- * An ClaimedBadge is the entity that represents the user wanting a badge.
- *
  * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
-class ClaimedBadge implements ClaimedBadgeInterface
+class BadgeCompletion implements BadgeCompletionInterface
 {
     /** @var string */
     protected $id;
@@ -24,7 +22,10 @@ class ClaimedBadge implements ClaimedBadgeInterface
     protected $badge;
 
     /** @var \DateTime */
-    protected $claimedDate;
+    protected $completionDate;
+
+    /** @var boolean */
+    protected $pending;
 
     /**
      * {@inheritdoc}
@@ -77,16 +78,32 @@ class ClaimedBadge implements ClaimedBadgeInterface
     /**
      * {@inheritdoc}
      */
-    public function getClaimedDate()
+    public function getCompletionDate()
     {
-        return $this->claimedDate;
+        return $this->completionDate;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setClaimedDate($claimedDate)
+    public function setCompletionDate(\DateTime $completionDate)
     {
-        $this->claimedDate = $claimedDate;
+        $this->completionDate = $completionDate;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isPending()
+    {
+        return $this->pending;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setPending($pending)
+    {
+        $this->pending = $pending;
     }
 }

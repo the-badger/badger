@@ -2,9 +2,9 @@
 
 namespace Badger\Bundle\GameBundle\Doctrine\Saver;
 
-use Badger\Bundle\GameBundle\Event\BadgeUnlockEvent;
 use Badger\Bundle\GameBundle\GameEvents;
 use Badger\Component\StorageUtils\Saver\SaverInterface;
+use Badger\Bundle\GameBundle\Event\BadgeUnlockEvent;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Security\Acl\Util\ClassUtils;
@@ -13,7 +13,7 @@ use Symfony\Component\Security\Acl\Util\ClassUtils;
  * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
-class UnlockedBadgeSaver implements SaverInterface
+class BadgeCompletionSaver implements SaverInterface
 {
     /** @var ObjectManager */
     protected $objectManager;
@@ -42,22 +42,24 @@ class UnlockedBadgeSaver implements SaverInterface
     /**
      * {@inheritdoc}
      */
-    public function save($unlockedBadge, array $options = [])
+    public function save($badgeCompletion, array $options = [])
     {
-        if (false === ($unlockedBadge instanceof $this->savedClass)) {
+        if (false === ($badgeCompletion instanceof $this->savedClass)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     'Expects a "%s", "%s" provided.',
                     $this->savedClass,
-                    ClassUtils::getRealClass($unlockedBadge)
+                    ClassUtils::getRealClass($badgeCompletion)
                 )
             );
         }
 
-        $this->objectManager->persist($unlockedBadge);
+        $this->objectManager->persist($badgeCompletion);
         $this->objectManager->flush();
 
-        $event = new BadgeUnlockEvent($unlockedBadge);
-        $this->eventDispatcher->dispatch(GameEvents::USER_UNLOCKS_BADGE, $event);
+        if (!$badgeCompletion->isPending()) {
+            $event = new BadgeUnlockEvent($badgeCompletion);
+            $this->eventDispatcher->dispatch(GameEvents::USER_UNLOCKS_BADGE, $event);
+        }
     }
 }

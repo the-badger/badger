@@ -2,8 +2,8 @@
 
 namespace Badger\Bundle\GameBundle\EventListener;
 
-use Badger\Bundle\GameBundle\Event\BadgeUnlockEvent;
 use Badger\Component\Game\Notifier\NotifierInterface;
+use Badger\Bundle\GameBundle\Event\BadgeUnlockEvent;
 use Symfony\Bridge\Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -42,9 +42,9 @@ class UnlockBadgeListener
      */
     public function onUnlockBadge(BadgeUnlockEvent $event)
     {
-        $unlockedBadge = $event->getUnlockedBadge();
-        $user = $unlockedBadge->getUser();
-        $badge = $unlockedBadge->getBadge();
+        $badgeCompletion = $event->getBadgeCompletion();
+        $user = $badgeCompletion->getUser();
+        $badge = $badgeCompletion->getBadge();
 
         $data = [
             'text' => sprintf(

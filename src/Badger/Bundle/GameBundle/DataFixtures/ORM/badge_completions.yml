@@ -1,0 +1,6 @@
+Badger\Bundle\GameBundle\Entity\BadgeCompletion:
+    badge_completions_1:
+        user: '@user_2'
+        badge: '@badge_bug'
+        pending: false
+        completion_date: <datetime()>

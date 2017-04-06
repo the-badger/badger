@@ -31,10 +31,10 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
     public function getSortedUserByUnlockedBadges($order = 'DESC', $limit = 10)
     {
         $qb = $this->getEntityManager()->createQueryBuilder();
-        $qb->select('u AS user, COUNT(ub.id) AS nbUnlockedBadges')
+        $qb->select('u AS user, COUNT(bc.id) AS nbUnlockedBadges')
             ->from('UserBundle:User', 'u')
-            ->leftJoin('GameBundle:UnlockedBadge', 'ub')
-            ->where('ub.user = u')
+            ->leftJoin('GameBundle:BadgeCompletion', 'bc')
+            ->where('bc.user = u')
             ->setMaxResults($limit)
             ->orderBy('nbUnlockedBadges', $order)
             ->groupBy('u')
@@ -55,6 +55,8 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
             ->from('UserBundle:User', 'u')
         ;
 
-        return $qb->getQuery()->getResult();
+        $result = $qb->getQuery()->getResult();
+
+        return array_column($result, 'username');
     }
 }

@@ -3,11 +3,10 @@
 namespace Badger\Bundle\GameBundle\Tests\Controller;
 
 use Badger\BadgerTestCase;
-use Badger\Bundle\GameBundle\Repository\AdventureRepositoryInterface;
-use Badger\Bundle\GameBundle\Repository\AdventureStepCompletionRepositoryInterface;
-use Badger\Bundle\GameBundle\Repository\BadgeRepositoryInterface;
+use Badger\Component\Game\Repository\AdventureRepositoryInterface;
+use Badger\Component\Game\Repository\AdventureStepCompletionRepositoryInterface;
+use Badger\Component\Game\Repository\BadgeRepositoryInterface;
 use Doctrine\Common\Persistence\ObjectRepository;
-use Symfony\Component\Validator\Validator;
 
 /**
  * @author    Marie Bochu <marie.bochu@akeneo.com>

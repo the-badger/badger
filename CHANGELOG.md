@@ -4,6 +4,19 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Changed
+- Developer eXperience: drop ClaimedBadge & UnlockedBage to have a simple BadgeCompletion entity. ([#133](https://github.com/the-badger/badger/issues/133))
+    - **NOTE**: If you come from Badger `<0.8`, YOU MUST run this MySQL to move claimed badge entities to the new table:
+    ```sql
+    INSERT INTO badge_completions (id, user_id, badge_id, completion_date, pending)
+    SELECT id, user_id, badge_id, claimed_date, 1
+    FROM claimed_badges;
+    
+    INSERT INTO badge_completions (id, user_id, badge_id, completion_date, pending)
+    SELECT id, user_id, badge_id, unlocked_date, 0
+    FROM unlocked_badges;
+    ```
+
 ## [0.7.1] - 2017-02-15
 ### Fixed
 - Bump FOSUserBundle to version `2.0.0-beta2` to fix field "salt", which is now null by default.

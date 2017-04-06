@@ -2,14 +2,12 @@
 
 namespace Badger\Bundle\GameBundle\Unlocker;
 
-use Badger\Component\Game\Factory\UnlockedBadgeFactoryInterface;
 use Badger\Component\Game\Model\BadgeInterface;
-use Badger\Component\Game\Model\ClaimedBadgeInterface;
-use Badger\Component\Game\Repository\UnlockedBadgeRepositoryInterface;
+use Badger\Component\Game\Repository\BadgeCompletionRepositoryInterface;
 use Badger\Component\Game\Unlocker\BadgeUnlockerInterface;
-use Badger\Component\StorageUtils\Remover\RemoverInterface;
 use Badger\Component\StorageUtils\Saver\SaverInterface;
 use Badger\Component\User\Model\UserInterface;
+use Badger\Bundle\GameBundle\Factory\BadgeCompletionFactory;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>
@@ -17,34 +15,28 @@ use Badger\Component\User\Model\UserInterface;
  */
 class BadgeUnlocker implements BadgeUnlockerInterface
 {
-    /** @var UnlockedBadgeFactoryInterface */
-    private $unlockedBadgeFactory;
+    /** @var BadgeCompletionFactory */
+    private $badgeCompletionFactory;
 
-    /** @var UnlockedBadgeRepositoryInterface */
-    private $unlockedBadgeRepository;
+    /** @var BadgeCompletionRepositoryInterface */
+    private $badgeCompletionRepository;
 
     /** @var SaverInterface */
-    private $unlockedBadgeSaver;
-
-    /** @var RemoverInterface */
-    private $claimedBadgeRemover;
+    private $badgeCompletionSaver;
 
     /**
-     * @param UnlockedBadgeFactoryInterface    $unlockedBadgeFactory
-     * @param UnlockedBadgeRepositoryInterface $unlockedBadgeRepository
-     * @param SaverInterface                   $unlockedBadgeSaver
-     * @param RemoverInterface                 $claimedBadgeRemover
+     * @param BadgeCompletionFactory             $badgeCompletionFactory
+     * @param BadgeCompletionRepositoryInterface $badgeCompletionRepository
+     * @param SaverInterface                     $badgeCompletionSaver
      */
     public function __construct(
-        UnlockedBadgeFactoryInterface $unlockedBadgeFactory,
-        UnlockedBadgeRepositoryInterface $unlockedBadgeRepository,
-        SaverInterface $unlockedBadgeSaver,
-        RemoverInterface $claimedBadgeRemover
+        BadgeCompletionFactory $badgeCompletionFactory,
+        BadgeCompletionRepositoryInterface $badgeCompletionRepository,
+        SaverInterface $badgeCompletionSaver
     ) {
-        $this->unlockedBadgeFactory = $unlockedBadgeFactory;
-        $this->unlockedBadgeRepository = $unlockedBadgeRepository;
-        $this->unlockedBadgeSaver = $unlockedBadgeSaver;
-        $this->claimedBadgeRemover = $claimedBadgeRemover;
+        $this->badgeCompletionFactory    = $badgeCompletionFactory;
+        $this->badgeCompletionRepository = $badgeCompletionRepository;
+        $this->badgeCompletionSaver      = $badgeCompletionSaver;
     }
 
     /**
@@ -52,22 +44,9 @@ class BadgeUnlocker implements BadgeUnlockerInterface
      */
     public function unlockBadge(UserInterface $user, BadgeInterface $badge)
     {
-        if (!$this->unlockedBadgeRepository->userHasBadge($user, $badge)) {
-            $unlockedBadge = $this->unlockedBadgeFactory->create($user, $badge);
-            $this->unlockedBadgeSaver->save($unlockedBadge);
+        if (!$this->badgeCompletionRepository->userHasBadge($user, $badge)) {
+            $unlockedBadge = $this->badgeCompletionFactory->create($user, $badge);
+            $this->badgeCompletionSaver->save($unlockedBadge);
         }
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function unlockBadgeFromClaim(ClaimedBadgeInterface $claimedBadge)
-    {
-        $badge = $claimedBadge->getBadge();
-        $user = $claimedBadge->getUser();
-
-        $this->unlockBadge($user, $badge);
-
-        $this->claimedBadgeRemover->remove($claimedBadge);
     }
 }
