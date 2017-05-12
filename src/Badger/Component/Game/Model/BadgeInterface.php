@@ -3,6 +3,7 @@
 namespace Badger\Component\Game\Model;
 
 use Badger\Component\Game\Taggable\TaggableInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
@@ -78,4 +79,14 @@ interface BadgeInterface extends TaggableInterface
      * Uploads a file
      */
     public function upload();
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCompletions();
+
+    /**
+     * @param ArrayCollection $completions
+     */
+    public function setCompletions($completions);
 }

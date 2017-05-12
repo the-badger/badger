@@ -33,6 +33,9 @@ class Badge implements BadgeInterface, JsonSerializable
     /** @var ArrayCollection */
     protected $tags;
 
+    /** @var ArrayCollection */
+    protected $completions;
+
     /**
      * {@inheritdoc}
      */
@@ -162,6 +165,22 @@ class Badge implements BadgeInterface, JsonSerializable
     public function getTags()
     {
         return $this->tags;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCompletions()
+    {
+        return $this->completions;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCompletions($completions)
+    {
+        $this->completions = $completions;
     }
 
     /**

@@ -18,12 +18,13 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        $lastUnlockedBadges = $this->get('badger.game.repository.unlocked_badge')->findByTags(
+        // TODO: TO UPDATE
+        $lastBadgeCompletions = $this->get('badger.game.repository.badge_completion')->findByTags(
             $this->getUser()->getTags()->toArray()
         );
 
         return $this->render('@Game/home.html.twig', [
-            'unlockedBadges' => $lastUnlockedBadges
+            'badgeCompletions' => $lastBadgeCompletions
         ]);
     }
 
@@ -59,16 +60,16 @@ class DefaultController extends Controller
             'username' => $username
         ]);
 
-        $unlockedBadges = [];
+        $badgeCompletions = [];
 
         if ($user) {
-            $unlockedBadges = $this->get('badger.game.repository.unlocked_badge')->findBy([
-                'user' => $user
+            $badgeCompletions = $this->get('badger.game.repository.badge_completion')->findBy([
+                'user' => $user, 'pending' => '0'
             ]);
 
-            foreach ($unlockedBadges as $key => $unlockedBadge) {
-                if (!$this->get('security.authorization_checker')->isGranted('view', $unlockedBadge->getBadge())) {
-                    unset($unlockedBadges[$key]);
+            foreach ($badgeCompletions as $key => $badgeCompletion) {
+                if (!$this->get('security.authorization_checker')->isGranted('view', $badgeCompletion->getBadge())) {
+                    unset($badgeCompletions[$key]);
                 }
             }
         }
@@ -82,8 +83,8 @@ class DefaultController extends Controller
         }
 
         return $this->render('@Game/user-profile.html.twig', [
-            'user'           => $user,
-            'unlockedBadges' => $unlockedBadges
+            'user'             => $user,
+            'badgeCompletions' => $badgeCompletions
         ]);
     }
 
@@ -99,41 +100,33 @@ class DefaultController extends Controller
             'id' => $id
         ]);
 
-        if (null === $badge) {
+        if (null === $badge || !$this->get('security.authorization_checker')->isGranted('view', $badge)) {
             throw $this->createNotFoundException();
         }
 
-        if (!$this->get('security.authorization_checker')->isGranted('view', $badge)) {
-            throw $this->createNotFoundException();
-        }
+        $badgeCompletions = $this->get('badger.game.repository.badge_completion')->findBy([
+            'badge' => $badge,
+            'pending' => '0'
+        ]);
 
-        $user = $this->getUser();
-        $usersCount = $this->getDoctrine()->getRepository('UserBundle:User')->countAll();
-        $percentUnlock = 0;
+        $isUnlocked = false;
+        $isClaimed = false;
 
-        $unlockedBadges = $this->get('badger.game.repository.unlocked_badge')->findBy([
+        $userCompletion = $this->get('badger.game.repository.badge_completion')->findOneBy([
+            'user' => $this->getUser(),
             'badge' => $badge
         ]);
 
-        $isUnlocked = array_filter($unlockedBadges, function ($unlock) use ($user) {
-            return $unlock->getUser()->getId() === $user->getId();
-        });
-
-        $isClaimed = null !== $this->get('badger.game.repository.claimed_badge')->findOneBy([
-            'badge' => $badge,
-            'user' => $user
-        ]);
-
-        if ($unlockedBadges) {
-            $percentUnlock = ceil(100 * count($unlockedBadges) / $usersCount);
+        if (null !== $userCompletion) {
+            $isClaimed = $userCompletion->isPending();
+            $isUnlocked = !$userCompletion->isPending();
         }
 
         return $this->render('@Game/view-badge.html.twig', [
-            'badge'          => $badge,
-            'unlockedBadges' => $unlockedBadges,
-            'isUnlocked'     => $isUnlocked,
-            'isClaimed'      => $isClaimed,
-            'percentUnlock'  => $percentUnlock
+            'badge'            => $badge,
+            'badgeCompletions' => $badgeCompletions,
+            'isUnlocked'       => $isUnlocked,
+            'isClaimed'        => $isClaimed
         ]);
     }
 
@@ -156,7 +149,7 @@ class DefaultController extends Controller
             return new JsonResponse('No badge with this id.', 400);
         }
 
-        $claimedBadge = $this->get('badger.game.repository.claimed_badge')->findOneBy([
+        $claimedBadge = $this->get('badger.game.repository.badge_completion')->findOneBy([
             'user' => $user,
             'badge' => $badge
         ]);
@@ -165,12 +158,10 @@ class DefaultController extends Controller
             return new JsonResponse('This badge is already claimed.', 400);
         }
 
-        $claimedBadgeFactory = $this->get('badger.game.claimed_badge.factory');
-        $claimedBadge = $claimedBadgeFactory->create($user, $badge);
+        $badgeCompletionFactory = $this->get('badger.game.badge_completion.factory');
+        $badgeCompletion = $badgeCompletionFactory->create($user, $badge);
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($claimedBadge);
-        $em->flush();
+        $this->get('badger.game.saver.badge_completion')->save($badgeCompletion);
 
         return new JsonResponse();
     }
@@ -257,11 +248,11 @@ class DefaultController extends Controller
         $user = $this->getUser();
         $userTags = $user->getTags();
 
-        $unlockedBadgeIds = $this->get('badger.game.repository.unlocked_badge')
-            ->getUnlockedBadgeIdsByUser($user);
+        $unlockedBadgeIds = $this->get('badger.game.repository.badge_completion')
+            ->getCompletionBadgesByUser($user, false);
 
-        $claimedBadgeIds = $this->get('badger.game.repository.claimed_badge')
-            ->getBadgeIdsClaimedByUser($user);
+        $claimedBadgeIds = $this->get('badger.game.repository.badge_completion')
+            ->getCompletionBadgesByUser($user, true);
 
         return $this->render('@Game/badges.html.twig', [
             'tags' => $userTags,

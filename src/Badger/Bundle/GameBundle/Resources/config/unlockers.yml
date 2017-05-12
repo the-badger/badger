@@ -5,7 +5,6 @@ services:
     badger.game.unlocker.badge:
         class: '%badger.game.unlocker.badge.class%'
         arguments:
-            - '@badger.game.unlocked_badge.factory'
-            - '@badger.game.repository.unlocked_badge'
-            - '@badger.game.saver.unlocked_badge'
-            - '@badger.game.remover.claimed_badge'
+            - '@badger.game.badge_completion.factory'
+            - '@badger.game.repository.badge_completion'
+            - '@badger.game.saver.badge_completion'

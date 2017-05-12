@@ -1,0 +1,9 @@
+admin_unlocked_badge_give:
+    path:     /give
+    defaults: { _controller: "GameBundle:BadgeCompletion:give" }
+    methods:  [GET, POST]
+
+admin_unlocked_badge_remove:
+    path:     /remove
+    defaults: { _controller: "GameBundle:BadgeCompletion:remove" }
+    methods:  [GET, POST]

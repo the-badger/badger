@@ -4,7 +4,6 @@ namespace Badger\Bundle\GameBundle\Tests\Controller;
 
 use Badger\BadgerTestCase;
 use Symfony\Bundle\FrameworkBundle\Client;
-use Symfony\Component\Validator\Validator;
 
 /**
  * @author    Marie Bochu <marie.bochu@akeneo.com>
@@ -40,13 +39,13 @@ class BadgeControllerTest extends BadgerTestCase
         $client = $this->createUser();
 
         $countBadge = count($this->get('badger.game.repository.badge')->findAll());
-        $countClaimedBadge = count($this->get('badger.game.repository.claimed_badge')->findAll());
+        $countClaimedBadge = count($this->get('badger.game.repository.badge_completion')->findAll());
 
         $badge = $this->get('badger.game.repository.badge')->findOneBy(['title' => 'Bug Hunter']);
         $this->deleteBadge($client, $badge->getId());
 
         $this->assertCount($countBadge -= 1, $this->get('badger.game.repository.badge')->findAll(), 'Badge is removed');
-        $this->assertCount($countClaimedBadge -= 1, $this->get('badger.game.repository.claimed_badge')->findAll(), 'Claimed badge is removed');
+        $this->assertCount($countClaimedBadge -= 1, $this->get('badger.game.repository.badge_completion')->findAll(), 'Claimed badge completion is removed');
     }
 
     public function testDeleteWhenBadgeHasBeenUnlocked()
@@ -54,13 +53,13 @@ class BadgeControllerTest extends BadgerTestCase
         $client = $this->createUser();
 
         $countBadge = count($this->get('badger.game.repository.badge')->findAll());
-        $countUnlockedBadge = count($this->get('badger.game.repository.unlocked_badge')->findAll());
+        $countUnlockedBadge = count($this->get('badger.game.repository.badge_completion')->findAll());
 
-        $badge = $this->get('badger.game.repository.badge')->findOneBy(['title' => 'ASS Disruptor']);
+        $badge = $this->get('badger.game.repository.badge')->findOneBy(['title' => 'Bug Hunter']);
         $this->deleteBadge($client, $badge->getId());
 
         $this->assertCount($countBadge -= 1, $this->get('badger.game.repository.badge')->findAll(), 'Badge is removed');
-        $this->assertCount($countUnlockedBadge -= 1, $this->get('badger.game.repository.unlocked_badge')->findAll(), 'Unlocked badge is removed');
+        $this->assertCount($countUnlockedBadge -= 1, $this->get('badger.game.repository.badge_completion')->findAll(), 'Badge completion is removed');
     }
 
     /**

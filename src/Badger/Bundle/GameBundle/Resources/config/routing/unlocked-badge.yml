@@ -1,9 +1,0 @@
-admin_unlocked_badge_new:
-    path:     /new
-    defaults: { _controller: "GameBundle:UnlockedBadge:new" }
-    methods:  [GET, POST]
-
-admin_unlocked_badge_delete:
-    path:     /delete
-    defaults: { _controller: "GameBundle:UnlockedBadge:delete" }
-    methods:  [GET, POST]

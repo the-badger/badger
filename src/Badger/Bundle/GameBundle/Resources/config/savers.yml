@@ -1,5 +1,5 @@
 parameters:
-    badger.game.saver.unlocked_badge.class: Badger\Bundle\GameBundle\Doctrine\Saver\UnlockedBadgeSaver
+    badger.game.saver.badge_completion.class: Badger\Bundle\GameBundle\Doctrine\Saver\BadgeCompletionSaver
 
 services:
     badger.game.saver.badge:
@@ -8,24 +8,18 @@ services:
             - '@doctrine.orm.entity_manager'
             - 'Badger\Bundle\GameBundle\Entity\Badge'
 
+    badger.game.saver.badge_completion:
+        class: '%badger.game.saver.badge_completion.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@event_dispatcher'
+            - 'Badger\Bundle\GameBundle\Entity\BadgeCompletion'
+
     badger.game.saver.quest:
         class: '%badger.storage_utils.saver.base.class%'
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\Bundle\GameBundle\Entity\Quest'
-
-    badger.game.saver.unlocked_badge:
-        class: '%badger.game.saver.unlocked_badge.class%'
-        arguments:
-            - '@doctrine.orm.entity_manager'
-            - '@event_dispatcher'
-            - 'Badger\Bundle\GameBundle\Entity\UnlockedBadge'
-
-    badger.game.saver.claimed_badge:
-        class: '%badger.storage_utils.saver.base.class%'
-        arguments:
-            - '@doctrine.orm.entity_manager'
-            - 'Badger\Bundle\GameBundle\Entity\ClaimedBadge'
 
     badger.game.saver.quest_completion:
         class: '%badger.storage_utils.saver.base.class%'

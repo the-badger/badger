@@ -2,15 +2,13 @@
 
 namespace Badger\Component\Game\Model;
 
-use Symfony\Component\Security\Core\User\UserInterface;
+use Badger\Component\User\Model\UserInterface;
 
 /**
- * ClaimedBadgeInterface to describe claimed badges
- *
- * @author  Pierre Allard <pierre.allard@akeneo.com>
+ * @author  Adrien Pétremann <hello@grena.fr>
  * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
-interface ClaimedBadgeInterface
+interface BadgeCompletionInterface
 {
     /**
      * @return string
@@ -45,10 +43,20 @@ interface ClaimedBadgeInterface
     /**
      * @return \DateTime
      */
-    public function getClaimedDate();
+    public function getCompletionDate();
 
     /**
-     * @param \DateTime $claimedDate
+     * @param \DateTime $unlockedDate
      */
-    public function setClaimedDate($claimedDate);
+    public function setCompletionDate(\DateTime $unlockedDate);
+
+    /**
+     * @return boolean
+     */
+    public function isPending();
+
+    /**
+     * @param boolean $pending
+     */
+    public function setPending($pending);
 }

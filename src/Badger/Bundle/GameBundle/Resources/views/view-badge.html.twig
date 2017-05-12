@@ -37,21 +37,21 @@
                 <span class="pt-10 pb-10"><i class="icon-users"></i> People who have this badge</span>
             </div>
 
-            {% for row in unlockedBadges|batch(4) %}
+            {% for row in badgeCompletions|batch(4) %}
                 <div class="row">
 
-                    {% for unlockedBadge in row %}
+                    {% for badgeCompletion in row %}
                         <div class="col-lg-3 col-md-6">
                             <div class="panel panel-body">
                                 <div class="media">
                                     <div class="media-left">
-                                        <a href="{{ url('userprofile', {'username': unlockedBadge.user.username}) }}" data-popup="lightbox">
-                                            <img src="{{ unlockedBadge.user.profilePicture }}" class="img-circle img-lg" alt="">
+                                        <a href="{{ url('userprofile', {'username': badgeCompletion.user.username}) }}" data-popup="lightbox">
+                                            <img src="{{ badgeCompletion.user.profilePicture }}" class="img-circle img-lg" alt="">
                                         </a>
                                     </div>
 
                                     <div class="media-body">
-                                        <h6 class="media-heading"><a class="text-default" href="{{ url('userprofile', {'username': unlockedBadge.user.username}) }}">{{ unlockedBadge.user.username }}</a></h6>
+                                        <h6 class="media-heading"><a class="text-default" href="{{ url('userprofile', {'username': badgeCompletion.user.username}) }}">{{ badgeCompletion.user.username }}</a></h6>
                                         <span class="text-muted">
                                         </span>
                                     </div>

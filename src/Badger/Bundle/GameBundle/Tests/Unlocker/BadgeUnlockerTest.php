@@ -15,36 +15,22 @@ class BadgeUnlockerTest extends BadgerTestCase
         $user = $this->get('badger.user.repository.user')->findOneBy(['username' => 'user_1']);
         $badge = $this->get('badger.game.repository.badge')->findOneBy(['title' => 'Bug Hunter']);
 
-        $count = count($this->get('badger.game.repository.unlocked_badge')->getUnlockedBadgeIdsByUser($user));
+        $count = count($this->get('badger.game.repository.badge_completion')->getCompletionBadgesByUser($user));
 
         $this->get('badger.game.unlocker.badge')->unlockBadge($user, $badge);
 
-        $this->assertCount($count += 1, $this->get('badger.game.repository.unlocked_badge')->getUnlockedBadgeIdsByUser($user));
+        $this->assertCount($count += 1, $this->get('badger.game.repository.badge_completion')->getCompletionBadgesByUser($user));
     }
 
     public function testUnlockBadgeWhenUserHasAlreadyTheBadge()
     {
-        $user = $this->get('badger.user.repository.user')->findOneBy(['username' => 'user_1']);
-        $badge = $this->get('badger.game.repository.badge')->findOneBy(['title' => 'ASS Disruptor']);
+        $user = $this->get('badger.user.repository.user')->findOneBy(['username' => 'user_2']);
+        $badge = $this->get('badger.game.repository.badge')->findOneBy(['title' => 'Bug Hunter']);
 
-        $count = count($this->get('badger.game.repository.unlocked_badge')->getUnlockedBadgeIdsByUser($user));
+        $count = count($this->get('badger.game.repository.badge_completion')->getCompletionBadgesByUser($user));
 
         $this->get('badger.game.unlocker.badge')->unlockBadge($user, $badge);
 
-        $this->assertCount($count, $this->get('badger.game.repository.unlocked_badge')->getUnlockedBadgeIdsByUser($user));
-    }
-
-    public function testUnlockBadgeFromClaim()
-    {
-        $claimedBadges = $this->get('badger.game.repository.claimed_badge')->findAll();
-
-        $count = count($claimedBadges);
-        $user = $this->get('badger.user.repository.user')->findOneBy(['username' => 'user_2']);
-        $countBadges = count($this->get('badger.game.repository.unlocked_badge')->getUnlockedBadgeIdsByUser($user));
-
-        $this->get('badger.game.unlocker.badge')->unlockBadgeFromClaim(current($claimedBadges));
-
-        $this->assertCount($count -= 1, $this->get('badger.game.repository.claimed_badge')->findAll(), 'Claimed badge has been removed');
-        $this->assertCount($countBadges += 1, $this->get('badger.game.repository.unlocked_badge')->getUnlockedBadgeIdsByUser($user), 'Badge has been added');
+        $this->assertCount($count, $this->get('badger.game.repository.badge_completion')->getCompletionBadgesByUser($user));
     }
 }

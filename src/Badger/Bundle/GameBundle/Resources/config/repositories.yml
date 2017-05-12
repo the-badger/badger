@@ -1,8 +1,7 @@
 parameters:
     badger.game.repository.badge.class: Badger\Bundle\GameBundle\Doctrine\Repository\BadgeRepository
+    badger.game.repository.badge_completion.class: Badger\Bundle\GameBundle\Doctrine\Repository\BadgeCompletionRepository
     badger.game.repository.quest.class: Badger\Bundle\GameBundle\Doctrine\Repository\QuestRepository
-    badger.game.repository.claimed_badge.class: Badger\Bundle\GameBundle\Doctrine\Repository\ClaimedBadgeRepository
-    badger.game.repository.unlocked_badge.class: Badger\Bundle\GameBundle\Doctrine\Repository\UnlockedBadgeRepository
     badger.game.repository.quest_completion.class: Badger\Bundle\GameBundle\Doctrine\Repository\QuestCompletionRepository
     badger.game.repository.adventure.class: Badger\Bundle\GameBundle\Doctrine\Repository\AdventureRepository
     badger.game.repository.adventure_step.class: Badger\Bundle\GameBundle\Doctrine\Repository\AdventureStepRepository
@@ -16,23 +15,17 @@ services:
         arguments:
             - Badger\Bundle\GameBundle\Entity\Badge
 
+    badger.game.repository.badge_completion:
+        class: '%badger.game.repository.badge_completion.class%'
+        factory: ['@doctrine.orm.entity_manager', 'getRepository']
+        arguments:
+            - Badger\Bundle\GameBundle\Entity\BadgeCompletion
+
     badger.game.repository.quest:
         class: '%badger.game.repository.quest.class%'
         factory: ['@doctrine.orm.entity_manager', 'getRepository']
         arguments:
             - Badger\Bundle\GameBundle\Entity\Quest
-
-    badger.game.repository.claimed_badge:
-        class: '%badger.game.repository.claimed_badge.class%'
-        factory: ['@doctrine.orm.entity_manager', 'getRepository']
-        arguments:
-            - Badger\Bundle\GameBundle\Entity\ClaimedBadge
-
-    badger.game.repository.unlocked_badge:
-        class: '%badger.game.repository.unlocked_badge.class%'
-        factory: ['@doctrine.orm.entity_manager', 'getRepository']
-        arguments:
-            - Badger\Bundle\GameBundle\Entity\UnlockedBadge
 
     badger.game.repository.quest_completion:
         class: '%badger.game.repository.quest_completion.class%'
