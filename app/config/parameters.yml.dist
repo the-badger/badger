@@ -32,3 +32,6 @@ parameters:
     # Elastic Search Configuration
     elastic_host: localhost
     elastic_port: null
+
+    # Sentry DSN (for monitoring)
+    sentry_dsn:
