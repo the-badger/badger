@@ -27,7 +27,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "hwi/oauth-bundle": "0.5.*",
         "friendsofsymfony/user-bundle": "2.0.0-beta2",
-        "guzzlehttp/guzzle": "~6.0"
+        "guzzlehttp/guzzle": "~6.0",
+        "sentry/sentry-symfony": "^0.7.1"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

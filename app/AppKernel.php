@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new Badger\Bundle\GameBundle\GameBundle(),
             new Badger\Bundle\StorageUtilsBundle\StorageUtilsBundle(),
             new FOS\ElasticaBundle\FOSElasticaBundle(),
+            new Sentry\SentryBundle\SentryBundle(),
         );
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

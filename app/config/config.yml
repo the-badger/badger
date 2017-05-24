@@ -100,3 +100,8 @@ hwi_oauth:
                 client_id:           %google_client_id%
                 client_secret:       %google_client_secret%
                 scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+
+sentry:
+    dsn: "%sentry_dsn%"
+    environment: "%kernel.environment%"
+    release: "%version%"
