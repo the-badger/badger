@@ -3,6 +3,8 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Added Sentry for optional monitoring on your Badger instance.
 
 ### Changed
 - Developer eXperience: drop ClaimedBadge & UnlockedBage to have a simple BadgeCompletion entity. ([#133](https://github.com/the-badger/badger/issues/133))
