@@ -35,7 +35,7 @@ mysql -u root -p
     GRANT ALL PRIVILEGES ON badger.* TO badger_user@localhost IDENTIFIED BY 'badger_password';
     EXIT
 
-php app/console doctrine:schema:update --force
+php bin/console doctrine:schema:update --force
 ```
 
 #### 3) Install frontend assets
