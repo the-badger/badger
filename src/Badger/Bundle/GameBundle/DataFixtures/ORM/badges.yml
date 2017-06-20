@@ -2,15 +2,19 @@ Badger\Bundle\GameBundle\Entity\Badge:
     badge_ass:
         title: ASS Disruptor
         description: You & your liver participated to an Summer Session.
+        tags: ['@tag_community']
     badge_master_contributor:
         title: Master Contributor
         description: Master Contributor
+        tags: ['@tag_company', '@tag_nantes']
     badge_contributor:
         title: Core Contributor
         description: You merged your first Pull Request on our PIM Community Edition!
+        tags: ['@tag_community']
     badge_bug:
         title: Bug Hunter
         description: You reported a bug on the PIM Community Edition that has been reproduced by the core team
+        tags: ['@tag_community']
     badge_{1..10}:
         title: <name()>
         description: <paragraph()>
