@@ -16,7 +16,7 @@
     },
     "require": {
         "php": ">=5.5.9",
-        "friendsofsymfony/elastica-bundle": "3.2.*",
+        "friendsofsymfony/elastica-bundle": "v4.0.0",
         "symfony/symfony": "3.2.*",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "~1.6",

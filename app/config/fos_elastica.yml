@@ -20,12 +20,11 @@ fos_elastica:
             types:
                 user:
                     mappings:
-                        username: { boost: 8, analyzer: my_analyzer }
+                        username: { type: text, boost: 8, analyzer: my_analyzer }
                         profilePicture: ~
                     persistence:
                         driver: orm
                         model: Badger\Bundle\UserBundle\Entity\User
                         finder: ~
                         provider: ~
-                        listener:
-                            immediate: ~
+                        listener: ~
