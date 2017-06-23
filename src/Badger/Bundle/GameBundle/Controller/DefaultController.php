@@ -25,11 +25,10 @@ class DefaultController extends Controller
         $date = new \DateTime();
 
         // Put default tag first
-        usort($userTags, function ($a, $b)
-        {
+        usort($userTags, function ($a, $b) {
             if ($a->isDefault()) {
                 return -1;
-            } else if($b->isDefault()) {
+            } elseif ($b->isDefault()) {
                 return 1;
             }
         });
@@ -63,7 +62,6 @@ class DefaultController extends Controller
                     $userBadgeCompletions[$tag->getCode()] = current($userCompletions)['nbCompletions'];
                 }
             }
-
         }
 
         $newMembers = $this->get('badger.user.repository.user')->getNewUsersForMonth($date);
@@ -413,10 +411,18 @@ class DefaultController extends Controller
      */
     public function leaderboardAction()
     {
-        $users = $this->getDoctrine()->getRepository('UserBundle:User')->getSortedUserByUnlockedBadges();
+        $user = $this->getUser();
+        $tags = $user->getTags();
+
+        $results = [];
+        foreach ($tags as $tag) {
+            $results[$tag->getCode()] =
+                $this->getDoctrine()->getRepository('UserBundle:User')->getSortedUserUnlockedBadgesByTag($tag);
+        }
 
         return $this->render('@Game/leaderboard.html.twig', [
-            'users' => $users
+            'tags' => $tags,
+            'results' => $results,
         ]);
     }
 
