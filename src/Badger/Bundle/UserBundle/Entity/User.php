@@ -37,6 +37,9 @@ class User extends BaseUser implements UserInterface, TaggableInterface
     /** @var int */
     protected $nuts;
 
+    /** @var \DateTime */
+    protected $date_registered;
+
     /**
      * {@inheritdoc}
      */
@@ -165,5 +168,21 @@ class User extends BaseUser implements UserInterface, TaggableInterface
     public function addNuts($nuts)
     {
         $this->nuts += $nuts;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDateRegistered()
+    {
+        return $this->date_registered;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setDateRegistered($registeredDate)
+    {
+        $this->date_registered = $registeredDate;
     }
 }

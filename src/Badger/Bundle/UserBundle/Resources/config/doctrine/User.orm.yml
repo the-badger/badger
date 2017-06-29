@@ -30,6 +30,9 @@ Badger\Bundle\UserBundle\Entity\User:
         nuts:
             type: integer
             nullable: false
+        date_registered:
+            type: date
+            nullable: true
     manyToMany:
         groups:
             targetEntity: Group
