@@ -18,13 +18,63 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        // TODO: TO UPDATE
-        $lastBadgeCompletions = $this->get('badger.game.repository.badge_completion')->findByTags(
-            $this->getUser()->getTags()->toArray()
-        );
+        $mostUnlockedBadges = [];
+        $badgeChampions = [];
+        $userBadgeCompletions = [];
+        $userTags = $this->getUser()->getTags()->toArray();
+
+        // Put default tag first
+        usort($userTags, function ($a, $b)
+        {
+            if ($a->isDefault()) {
+                return -1;
+            } else if($b->isDefault()) {
+                return 1;
+            }
+        });
+
+        // Get most unlocked badges & champions per tag
+        foreach ($userTags as $tag) {
+            $month = date('m');
+            $year = date('Y');
+            $currentUserIsChampion = false;
+
+            $mostUnlockedBadges[$tag->getCode()] = $this->get('badger.game.repository.badge_completion')
+                ->getMostUnlockedBadgesForMonth($month, $year, $tag, 5);
+
+            $maxBadgeCompletions = $this->get('badger.game.repository.badge_completion')
+                ->getTopNumberOfUnlocksForMonth($month, $year, $tag);
+
+            $champions = $this->get('badger.user.repository.user')
+                ->getMonthlyBadgeChampions($month, $year, $tag, $maxBadgeCompletions);
+
+            foreach ($champions as $champion) {
+                if ($champion['user']->getId() === $this->getUser()->getId()) {
+                    $currentUserIsChampion = true;
+                }
+
+                $badgeChampions[$tag->getCode()][$champion['badgeCompletions']][] = $champion['user'];
+            }
+
+            if (!$currentUserIsChampion) {
+                $userCompletions = $this->get('badger.game.repository.badge_completion')
+                    ->getTopNumberOfUnlocksForMonth($month, $year, $tag, $this->getUser());
+
+                if (!empty($userCompletions)) {
+                    $userBadgeCompletions[$tag->getCode()] = current($userCompletions)['nbCompletions'];
+                }
+            }
+
+        }
+
+        $newMembers = $this->get('badger.user.repository.user')->getNewUsersForMonth($month, $year);
 
         return $this->render('@Game/home.html.twig', [
-            'badgeCompletions' => $lastBadgeCompletions
+            'newMembers'           => $newMembers,
+            'mostUnlockedBadges'   => $mostUnlockedBadges,
+            'userTags'             => $userTags,
+            'badgeChampions'       => $badgeChampions,
+            'userBadgeCompletions' => $userBadgeCompletions
         ]);
     }
 
