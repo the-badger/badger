@@ -118,7 +118,7 @@ class BadgeCompletionController extends Controller
             $badge = $badgeRepository->find($request->get('badge'));
 
             $token = new UsernamePasswordToken($user, 'none', 'none', $user->getRoles());
-            $isUnlockable = $this->get('security.access.decision_manager')->decide($token, ['view'], $badge);
+            $isUnlockable = $this->get('security.access.public_decision_manager')->decide($token, ['view'], $badge);
 
             if (!$isUnlockable) {
                 $this->addFlash('error', sprintf('%s does not have access to badge "%s"',

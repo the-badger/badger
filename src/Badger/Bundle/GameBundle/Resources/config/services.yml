@@ -17,3 +17,5 @@ services:
         arguments:
             - '%slack_webhook_url%'
             - '@logger'
+
+    security.access.public_decision_manager: '@security.access.decision_manager'
