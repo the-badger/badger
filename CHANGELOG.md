@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - Added Sentry for optional monitoring on your Badger instance.
+- The brand new dashboard! It's no longer a feed, but it contains more exciting data: new members, badge champions & top unlocked badges.
 
 ### Changed
 - Developer eXperience: drop ClaimedBadge & UnlockedBage to have a simple BadgeCompletion entity. ([#133](https://github.com/the-badger/badger/issues/133))
