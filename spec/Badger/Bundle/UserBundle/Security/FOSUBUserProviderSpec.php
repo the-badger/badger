@@ -52,6 +52,7 @@ class FOSUBUserProviderSpec extends ObjectBehavior
         $user->setPassword('bender')->shouldBeCalled();
         $user->setProfilePicture('http://picture.png')->shouldBeCalled();
         $user->setEnabled(true)->shouldBeCalled();
+        $user->setDateRegistered(Argument::any())->shouldBeCalled();
         $user->setNuts(0)->shouldBeCalled();
 
         $userManager->updateUser($user)->shouldBeCalled();

@@ -2,7 +2,9 @@
 
 namespace Badger\Bundle\UserBundle\Doctrine\Repository;
 
+use Badger\Component\Game\Model\TagInterface;
 use Badger\Component\User\Repository\UserRepositoryInterface;
+use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -58,5 +60,62 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
         $result = $qb->getQuery()->getResult();
 
         return array_column($result, 'username');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getNewUsersForMonth(\DateTime $date)
+    {
+        $month = $date->format('m');
+        $year = $date->format('Y');
+        $lastDay = date('t', mktime(0, 0, 0, $month, 1, $year));
+
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('u')
+            ->from('UserBundle:User', 'u')
+            ->where('u.date_registered >= :firstDayOfMonth')
+            ->andWhere('u.date_registered <= :lastDayOfMonth')
+            ->orderBy('u.date_registered', 'DESC')
+            ->setParameter('firstDayOfMonth', date(sprintf('%s-%s-01', $year, $month)))
+            ->setParameter('lastDayOfMonth', date(sprintf('%s-%s-%s', $year, $month, $lastDay)))
+        ;
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMonthlyBadgeChampions(\DateTime $date, TagInterface $tag, array $nbOfBadges)
+    {
+        $month = $date->format('m');
+        $year = $date->format('Y');
+        $lastDay = date('t', mktime(0, 0, 0, $month, 1, $year));
+
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('u as user, COUNT(bc.id) as badgeCompletions')
+            ->from('UserBundle:User', 'u')
+            ->leftJoin('GameBundle:BadgeCompletion', 'bc', 'WITH', 'u.id = bc.user')
+            ->leftJoin('bc.badge', 'b')
+            ->leftJoin('b.tags', 't')
+            ->where('t.id = :tagId')
+                ->setParameter('tagId', $tag->getId())
+            ->andWhere('bc.pending = 0')
+            ->andWhere('bc.completionDate >= :firstDayOfMonth')
+                ->setParameter('firstDayOfMonth', date(sprintf('%s-%s-01', $year, $month)))
+            ->andWhere('bc.completionDate <= :lastDayOfMonth')
+                ->setParameter('lastDayOfMonth', date(sprintf('%s-%s-%s', $year, $month, $lastDay)))
+            ->groupBy('u')
+            ->having('badgeCompletions IN (:maxValues)')
+                ->setParameter('maxValues', $nbOfBadges,  Connection::PARAM_STR_ARRAY)
+            ->orderBy('badgeCompletions', 'DESC')
+        ;
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
     }
 }

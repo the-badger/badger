@@ -75,4 +75,14 @@ interface UserInterface extends BaseUserInterface, GroupableInterface
      * @param int $nuts
      */
     public function addNuts($nuts);
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateRegistered();
+
+    /**
+     * @param $registeredDate
+     */
+    public function setDateRegistered($registeredDate);
 }

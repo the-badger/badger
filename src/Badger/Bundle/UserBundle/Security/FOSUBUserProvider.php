@@ -94,6 +94,7 @@ class FOSUBUserProvider extends BaseClass
             $user->setPassword($username); // TODO: change
             $user->setProfilePicture($response->getProfilePicture());
             $user->setEnabled(true);
+            $user->setDateRegistered(new \DateTime());
             $user->setNuts(0);
 
             $tag = $this->tagRepository->findOneBy(['isDefault' => true]);

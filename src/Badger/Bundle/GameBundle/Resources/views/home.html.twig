@@ -1,58 +1,221 @@
 {% extends '@Game/base.html.twig' %}
 
 {% block body %}
-
-    <div class="row">
-        <div class="col-md-10">
-            <!-- Timeline -->
-            <div class="timeline timeline-left content-group">
-                <div class="timeline-container">
-
-                    {% for badgeCompletion in badgeCompletions %}
-                        <!-- Feed unlock -->
-                        <div class="timeline-row">
-                            <div class="timeline-icon">
-                                <div class="bg-success-400">
-                                    <i class="icon-medal2"></i>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="panel border-left-lg border-left-success invoice-grid timeline-content">
-                                        <div class="panel-body no-padding-top no-padding-bottom">
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <h6 class="text-semibold">
-                                                        <a href="{{ url('userprofile', {username: badgeCompletion.user.username}) }}">
-                                                            <img src="{{ badgeCompletion.user.profilePicture }}" class="img-circle img-thumbnail hidden-xs" style="width: 60px;" alt=""> &nbsp; {{ badgeCompletion.user.username }}
-                                                        </a>
-                                                        unlocked the badge
-                                                        <a href="{{ url('viewbadge', {id: badgeCompletion.badge.id}) }}" data-popup="popover" title="" data-trigger="hover" data-content="{{ badgeCompletion.badge.description|escape }}" data-original-title="{{ badgeCompletion.badge.title|escape }}">
-                                                            {{ badgeCompletion.badge.title }}
-                                                        </a>
-                                                        <img src="{{ badgeCompletion.badge.imageWebPath }}" class="img-circle img-thumbnail pull-right hidden-xs" style="width: 60px;" alt="">
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel-footer panel-footer-condensed">
-                                            <div class="heading-elements">
-                                                <span class="heading-text">
-                                                    Unlocked on <span class="text-semibold">{{ badgeCompletion.completionDate|date('d/m/Y') }}</span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /feed unlock -->
-                    {% endfor %}
-
-                </div>
-            </div>
-            <!-- /timeline -->
+    <div class="page-header">
+        <div class="page-title" style="padding-top: 10px;">
+            <h4><i class="icon-stats-growth position-left"></i> <span class="text-semibold">This month</span> - {{ "now"|date("F Y") }}</h4>
         </div>
     </div>
+
+    <div class="row">
+
+        <!-- NEW MEMBERS -->
+        <div class="col-md-4">
+            <div class="panel panel-body">
+                <div class="media no-margin">
+                    <div class="media-body">
+                        <h3 class="no-margin text-semibold">{{ newMembers|length }} new member(s)</h3>
+                        <span class="text-uppercase text-size-mini text-muted">Give them a warm welcome</span>
+                    </div>
+
+                    <div class="media-right media-middle">
+                        <i class="icon-user-plus icon-3x"></i>
+                    </div>
+                </div>
+            </div>
+
+            {% if newMembers|length > 0 %}
+            <div class="panel panel-flat">
+                <ul class="media-list media-list-linked media-list-bordered" style="max-height: 500px; overflow-y: auto;">
+                    {% for user in newMembers %}
+                        <li class="media">
+                            <a href="{{ url('userprofile', {username: user.username}) }}" class="media-link">
+                                <div class="media-left"><img src="{{ user.profilePicture }}" class="img-circle" alt=""></div>
+                                <div class="media-body">
+                                    <div class="media-heading text-semibold">{{ user.username }}</div>
+                                    <span class="text-muted">Registered on {{ user.getDateRegistered()|date("d/m/Y") }}</span>
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        <!-- /NEW MEMBERS -->
+
+        <!-- BADGE CHAMPIONS -->
+        <div class="col-md-4">
+            <div class="panel panel-body">
+                <div class="media no-margin">
+                    <div class="media-body">
+                        <h3 class="no-margin text-semibold">Badges champions</h3>
+                        <span class="text-uppercase text-size-mini text-muted">They are on fire</span>
+                    </div>
+
+                    <div class="media-right media-middle">
+                        <i class="icon-medal-star text-danger-400 icon-3x"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h6 class="panel-title">Pick a category: <a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+                    <div class="heading-elements">
+                        <form class="heading-form" action="#">
+                            <div class="form-group">
+                                <select class="form-control" name="champions-category">
+                                    {% for tag in userTags %}
+                                        <option value="{{ tag.code }}">{{ tag.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="panel-body no-margin no-padding">
+                    {% for tag in userTags %}
+                        {% if badgeChampions[tag.code] is not defined %}
+                            <p class="text-muted text-center champions-top-unlock p-15 hide no-margin-bottom champions-{{ tag.code }}">No champion in this category.</p>
+                        {% else %}
+                            <ul class="media-list media-list-bordered hide champions-top-unlock champions-{{ tag.code }}" style="max-height: 500px; overflow-y: auto;">
+                                {% for nbCompletions, champions in badgeChampions[tag.code] %}
+                                    {% if loop.index == 1 %}{% set icon = 'first' %}{% endif %}
+                                    {% if loop.index == 2 %}{% set icon = 'second' %}{% endif %}
+                                    {% if loop.index == 3 %}{% set icon = 'third' %}{% endif %}
+                                <li class="media p-15 no-margin-top home-champions-{{ loop.index }}">
+                                    <div class="media-left"><i class="icon-medal-{{ icon }} icon-3x"></i></div>
+                                    <div class="media-body">
+                                        <div class="media-heading text-semibold"><span class="label label-success label-rounded">+{{ nbCompletions }} Badges</span></div>
+                                        <ul class="list-inline list-inline-condensed no-margin-bottom mt-15">
+                                            {% for user in champions %}
+                                                <li><a href="{{ url('userprofile', {username: user.username}) }}" data-popup="tooltip" title="" data-placement="top" data-original-title="{{ user.username }}"><img src="{{ user.profilePicture }}" class="img-circle img-xs mt-5" alt=""></a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            {% for tag in userTags %}
+                {% if userBadgeCompletions[tag.code] is defined %}
+                <div class="panel panel-body bg-primary-600 champions-top-unlock champions-{{ tag.code }}" style="background-image: url({{ asset('bundles/game/images/bg.png') }}); -webkit-box-shadow: 0px 0px 32px -9px rgba(0,0,0,0.75); -moz-box-shadow: 0px 0px 32px -9px rgba(0,0,0,0.75); box-shadow: 0px 0px 32px -9px rgba(0,0,0,0.75);">
+                    <div class="media no-margin">
+                        <div class="media-left media-middle">
+                            <img src="https://avatars.githubusercontent.com/u/301169?v=3" class="img-circle" alt="">
+                        </div>
+
+                        <div class="media-body text-right">
+                            <h6 class="media-heading text-semibold">You unlocked <span class="label label-primary label-rounded">{{ userBadgeCompletions[tag.code] }} Badge(s)</span> in this category this month.</h6>
+                            <span class="text-muted"><small>Not on the podium yet, but still a nice result!</small></span>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <!-- /BADGE CHAMPIONS -->
+
+        <!-- MOST UNLOCKED BADGES -->
+        <div class="col-md-4">
+            <div class="panel panel-body">
+                <div class="media no-margin">
+                    <div class="media-body">
+                        <h3 class="no-margin text-semibold">Most unlocked badges</h3>
+                        <span class="text-uppercase text-size-mini text-muted">So much hype</span>
+                    </div>
+
+                    <div class="media-right media-middle">
+                        <i class="icon-fire icon-3x"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h6 class="panel-title">Pick a category: <a class="heading-elements-toggle"><i class="icon-more"></i></a></h6>
+                    <div class="heading-elements">
+                        <form class="heading-form" action="#">
+                            <div class="form-group">
+                                <select class="form-control" name="badges-category">
+                                    {% for tag in userTags %}
+                                    <option value="{{ tag.code }}">{{ tag.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="panel-body no-margin no-padding">
+                    {% for tagCode, badgeCompletions in mostUnlockedBadges %}
+                        {% if badgeCompletions is empty %}
+                            <p class="text-muted text-center badges-top-unlock p-15 hide no-margin-bottom badges-{{ tagCode }}">No badge unlocked in this category.</p>
+                        {% else %}
+                            <ul class="media-list media-list-linked media-list-bordered hide badges-top-unlock badges-{{ tagCode }}">
+                                {% for badgeCompletion in badgeCompletions %}
+                                    <li class="media">
+                                        <a href="{{ url('viewbadge', {id: badgeCompletion['badge'].id}) }}" class="media-link">
+                                            <div class="media-left">
+                                                <img src="{{ badgeCompletion['badge'].getImageWebPath() }}" class="img-circle" alt="">
+                                            </div>
+
+                                            <div class="media-body">
+                                                <h6 class="media-heading">{{ badgeCompletion['badge'].title }}</h6>
+                                                <span class="text-muted">Unlocked <b>{{ badgeCompletion['nbCompletions'] }} time(s)</b></span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- /MOST UNLOCKED BADGES -->
+
+    </div>
 {% endblock %}
+
+{% block javascripts %}
+    <script>
+        var defaultTag = '{{ userTags[0].code }}';
+        var displayBadgesCategory = function (category) {
+            $('.badges-top-unlock').each(function () {
+                $(this).addClass('hide');
+            });
+            $('.badges-' + category).each(function () {
+                $(this).removeClass('hide');
+            });
+        };
+        var displayChampionsCategory = function (category) {
+            $('.champions-top-unlock').each(function () {
+                $(this).addClass('hide');
+            });
+            $('.champions-' + category).each(function () {
+                $(this).removeClass('hide');
+            });
+        };
+
+        $('select[name="badges-category"]').change(function (e) {
+            var category = e.target.value;
+            displayBadgesCategory(category);
+        });
+        $('select[name="champions-category"]').change(function (e) {
+            var category = e.target.value;
+            displayChampionsCategory(category);
+        });
+
+        $(document).ready(function() {
+            displayBadgesCategory(defaultTag);
+            displayChampionsCategory(defaultTag);
+        });
+    </script>
+{% endblock %}
+
