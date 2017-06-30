@@ -77,8 +77,8 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
             ->where('u.date_registered >= :firstDayOfMonth')
             ->andWhere('u.date_registered <= :lastDayOfMonth')
             ->orderBy('u.date_registered', 'DESC')
-            ->setParameter('firstDayOfMonth', date(sprintf('%s-%s-01', $year, $month)))
-            ->setParameter('lastDayOfMonth', date(sprintf('%s-%s-%s', $year, $month, $lastDay)))
+            ->setParameter('firstDayOfMonth', date(sprintf('%s-%s-01 00:00:01', $year, $month)))
+            ->setParameter('lastDayOfMonth', date(sprintf('%s-%s-%s 23:59:59', $year, $month, $lastDay)))
         ;
 
         $query = $qb->getQuery();
@@ -105,9 +105,9 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
                 ->setParameter('tagId', $tag->getId())
             ->andWhere('bc.pending = 0')
             ->andWhere('bc.completionDate >= :firstDayOfMonth')
-                ->setParameter('firstDayOfMonth', date(sprintf('%s-%s-01', $year, $month)))
+                ->setParameter('firstDayOfMonth', date(sprintf('%s-%s-01 00:00:01', $year, $month)))
             ->andWhere('bc.completionDate <= :lastDayOfMonth')
-                ->setParameter('lastDayOfMonth', date(sprintf('%s-%s-%s', $year, $month, $lastDay)))
+                ->setParameter('lastDayOfMonth', date(sprintf('%s-%s-%s 23:59:59', $year, $month, $lastDay)))
             ->groupBy('u')
             ->having('badgeCompletions IN (:maxValues)')
                 ->setParameter('maxValues', $nbOfBadges,  Connection::PARAM_STR_ARRAY)

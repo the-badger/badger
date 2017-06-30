@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.8.1] - 2017-06-30
+### Fixed
+- Dashboard now correctly takes in account badges unlocked or new users on last day of the month :3
+
 ## [0.8.0] - 2017-06-30
 ### Added
 - Added Sentry for optional monitoring on your Badger instance.
@@ -117,7 +121,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Badge info view, with obtention percentage and user list who have it
 - Feedview with recent unlocks
 
-[Unreleased]: https://github.com/the-badger/badger/compare/v0.8.0...HEAD
+[Unreleased]: https://github.com/the-badger/badger/compare/v0.8.1...HEAD
+[0.8.1]: https://github.com/the-badger/badger/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/the-badger/badger/compare/v0.7.1...v0.8.0
 [0.7.1]: https://github.com/the-badger/badger/compare/v0.7.0...v0.7.1
 [0.7.0]: https://github.com/the-badger/badger/compare/v0.6.1...v0.7.0
