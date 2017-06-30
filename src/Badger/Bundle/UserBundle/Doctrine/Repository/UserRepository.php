@@ -65,8 +65,10 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getNewUsersForMonth($month, $year)
+    public function getNewUsersForMonth(\DateTime $date)
     {
+        $month = $date->format('m');
+        $year = $date->format('Y');
         $lastDay = date('t', mktime(0, 0, 0, $month, 1, $year));
 
         $qb = $this->getEntityManager()->createQueryBuilder();
@@ -87,8 +89,10 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getMonthlyBadgeChampions($month, $year, TagInterface $tag, array $nbOfBadges)
+    public function getMonthlyBadgeChampions(\DateTime $date, TagInterface $tag, array $nbOfBadges)
     {
+        $month = $date->format('m');
+        $year = $date->format('Y');
         $lastDay = date('t', mktime(0, 0, 0, $month, 1, $year));
 
         $qb = $this->getEntityManager()->createQueryBuilder();

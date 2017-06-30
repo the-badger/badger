@@ -22,6 +22,7 @@ class DefaultController extends Controller
         $badgeChampions = [];
         $userBadgeCompletions = [];
         $userTags = $this->getUser()->getTags()->toArray();
+        $date = new \DateTime();
 
         // Put default tag first
         usort($userTags, function ($a, $b)
@@ -35,18 +36,16 @@ class DefaultController extends Controller
 
         // Get most unlocked badges & champions per tag
         foreach ($userTags as $tag) {
-            $month = date('m');
-            $year = date('Y');
             $currentUserIsChampion = false;
 
             $mostUnlockedBadges[$tag->getCode()] = $this->get('badger.game.repository.badge_completion')
-                ->getMostUnlockedBadgesForMonth($month, $year, $tag, 5);
+                ->getMostUnlockedBadgesForDate($date, $tag, 5);
 
             $maxBadgeCompletions = $this->get('badger.game.repository.badge_completion')
-                ->getTopNumberOfUnlocksForMonth($month, $year, $tag);
+                ->getTopNumberOfUnlocksForDate($date, $tag);
 
             $champions = $this->get('badger.user.repository.user')
-                ->getMonthlyBadgeChampions($month, $year, $tag, $maxBadgeCompletions);
+                ->getMonthlyBadgeChampions($date, $tag, $maxBadgeCompletions);
 
             foreach ($champions as $champion) {
                 if ($champion['user']->getId() === $this->getUser()->getId()) {
@@ -58,7 +57,7 @@ class DefaultController extends Controller
 
             if (!$currentUserIsChampion) {
                 $userCompletions = $this->get('badger.game.repository.badge_completion')
-                    ->getTopNumberOfUnlocksForMonth($month, $year, $tag, $this->getUser());
+                    ->getTopNumberOfUnlocksForDate($date, $tag, $this->getUser());
 
                 if (!empty($userCompletions)) {
                     $userBadgeCompletions[$tag->getCode()] = current($userCompletions)['nbCompletions'];
@@ -67,7 +66,7 @@ class DefaultController extends Controller
 
         }
 
-        $newMembers = $this->get('badger.user.repository.user')->getNewUsersForMonth($month, $year);
+        $newMembers = $this->get('badger.user.repository.user')->getNewUsersForMonth($date);
 
         return $this->render('@Game/home.html.twig', [
             'newMembers'           => $newMembers,

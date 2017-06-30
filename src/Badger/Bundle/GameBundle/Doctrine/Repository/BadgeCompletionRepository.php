@@ -82,8 +82,10 @@ class BadgeCompletionRepository extends EntityRepository implements
     /**
      * {@inheritdoc}
      */
-    public function getMostUnlockedBadgesForMonth($month, $year, TagInterface $tag, $limit = 3)
+    public function getMostUnlockedBadgesForDate(\DateTime $date, TagInterface $tag, $limit = 3)
     {
+        $month = $date->format('m');
+        $year = $date->format('Y');
         $lastDay = date('t', mktime(0, 0, 0, $month, 1, $year));
 
         $qb = $this->getEntityManager()->createQueryBuilder();
@@ -109,8 +111,10 @@ class BadgeCompletionRepository extends EntityRepository implements
     /**
      * {@inheritdoc}
      */
-    public function getTopNumberOfUnlocksForMonth($month, $year, TagInterface $tag, $user = null)
+    public function getTopNumberOfUnlocksForDate(\DateTime $date, TagInterface $tag, $user = null)
     {
+        $month = $date->format('m');
+        $year = $date->format('Y');
         $lastDay = date('t', mktime(0, 0, 0, $month, 1, $year));
 
         $qb = $this->getEntityManager()->createQueryBuilder();

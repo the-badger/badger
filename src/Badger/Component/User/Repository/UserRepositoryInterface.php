@@ -29,17 +29,16 @@ interface UserRepositoryInterface
     public function getAllUsernames();
 
     /**
-     * Return all new users for the given $month & $year.
+     * Return all new users for the given month and year of $date.
      *
-     * @param string $month
-     * @param string $year
+     * @param \DateTime $date
      *
      * @return array
      */
-    public function getNewUsersForMonth($month, $year);
+    public function getNewUsersForMonth(\DateTime $date);
 
     /**
-     * Return the user who unlocked the most badges for given $month & $year, in the given $tag.
+     * Return the user who unlocked the most badges for given month and year of $date, in the given $tag.
      * $nbOfBadges is an array, with number of badges of the podium. Example:
      *
      * getMonthlyBadgeChampions('02', '1990', $tag, [4, 2, 1]) =>
@@ -47,12 +46,11 @@ interface UserRepositoryInterface
      * 2 badges: Mary, Ulric
      * 1 badge: Thrall
      *
-     * @param string $month
-     * @param string $year
+     * @param \DateTime    $date
      * @param TagInterface $tag
-     * @param array $nbOfBadges
+     * @param array        $nbOfBadges
      *
      * @return mixed
      */
-    public function getMonthlyBadgeChampions($month, $year, TagInterface $tag, array $nbOfBadges);
+    public function getMonthlyBadgeChampions(\DateTime $date, TagInterface $tag, array $nbOfBadges);
 }
