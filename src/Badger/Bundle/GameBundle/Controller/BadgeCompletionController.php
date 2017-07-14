@@ -2,6 +2,8 @@
 
 namespace Badger\Bundle\GameBundle\Controller;
 
+use Badger\Bundle\GameBundle\Event\BadgeUnlockEvent;
+use Badger\Bundle\GameBundle\GameEvents;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -52,6 +54,9 @@ class BadgeCompletionController extends Controller
         $badgeCompletionRemover = $this->get('badger.game.remover.badge_completion');
         $badgeCompletionRemover->remove($pendingCompletion);
 
+        $event = new BadgeUnlockEvent($pendingCompletion);
+        $this->get('event_dispatcher')->dispatch(GameEvents::BADGE_HAS_BEEN_REJECTED, $event);
+
         $this->addFlash('notice', sprintf(
             'Successfully rejected the claimed badge "%s" for %s!',
             $badgeTitle,
@@ -88,6 +93,9 @@ class BadgeCompletionController extends Controller
         if (0 === count($errors)) {
             $this->get('badger.game.saver.badge_completion')->save($pendingCompletion);
 
+            $event = new BadgeUnlockEvent($pendingCompletion);
+            $this->get('event_dispatcher')->dispatch(GameEvents::USER_UNLOCKED_BADGE, $event);
+
             $this->addFlash('notice', sprintf(
                 '%s successfully unlocked the badge "%s"!',
                 $user->getUsername(),
@@ -121,10 +129,10 @@ class BadgeCompletionController extends Controller
             $isUnlockable = $this->get('security.access.public_decision_manager')->decide($token, ['view'], $badge);
 
             if (!$isUnlockable) {
-                $this->addFlash('error', sprintf('%s does not have access to badge "%s"',
-                    $user->getUsername(),
-                    $badge->getTitle()
-                ));
+                $this->addFlash(
+                    'error',
+                    sprintf('%s does not have access to badge "%s"', $user->getUsername(), $badge->getTitle())
+                );
 
                 return $this->redirectToRoute('admin_unlocked_badge_give');
             }
@@ -136,15 +144,14 @@ class BadgeCompletionController extends Controller
                 ]);
 
             if (null === $badgeCompletion) {
-                $badgeCompletion = $this->get('badger.game.badge_completion.factory')
-                    ->create($user, $badge);
+                $badgeCompletion = $this->get('badger.game.badge_completion.factory')->create($user, $badge);
             }
 
             if (!$badgeCompletion->isPending()) {
-                $this->addFlash('error', sprintf('%s already has the badge "%s"',
-                    $user->getUsername(),
-                    $badge->getTitle()
-                ));
+                $this->addFlash(
+                    'error',
+                    sprintf('%s already has the badge "%s"', $user->getUsername(), $badge->getTitle())
+                );
 
                 return $this->redirectToRoute('admin_unlocked_badge_give');
             }
@@ -156,6 +163,9 @@ class BadgeCompletionController extends Controller
 
             if (0 === count($errors)) {
                 $this->get('badger.game.saver.badge_completion')->save($badgeCompletion);
+
+                $event = new BadgeUnlockEvent($badgeCompletion);
+                $this->get('event_dispatcher')->dispatch(GameEvents::USER_UNLOCKED_BADGE, $event);
 
                 $this->addFlash('notice', sprintf(
                     '%s successfully received the badge "%s"!',
@@ -199,13 +209,19 @@ class BadgeCompletionController extends Controller
                 ]);
 
             if (null === $badgeCompletion) {
-                $this->addFlash('error', sprintf('%s has no badge named "%s"', $user->getUsername(), $badge->getTitle()));
+                $this->addFlash(
+                    'error',
+                    sprintf('%s has no badge named "%s"', $user->getUsername(), $badge->getTitle())
+                );
 
                 return $this->redirectToRoute('admin_unlocked_badge_remove');
             }
 
             $badgeCompletionRemover = $this->get('badger.game.remover.badge_completion');
             $badgeCompletionRemover->remove($badgeCompletion);
+
+            $event = new BadgeUnlockEvent($badgeCompletion);
+            $this->get('event_dispatcher')->dispatch(GameEvents::BADGE_HAS_BEEN_REMOVED, $event);
 
             $this->addFlash('notice', sprintf(
                 'Successfully removed the badge "%s" to the user "%s"!',

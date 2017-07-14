@@ -10,7 +10,7 @@ services:
             - '@logger'
             - '@badger.notifier.slack'
         tags:
-            - { name: kernel.event_listener, event: game.user_unlocks_badge, method: onUnlockBadge }
+            - { name: kernel.event_listener, event: game.user_unlocked_badge, method: onUnlockBadge }
 
     badger.notifier.slack:
         class: '%badger.notifier.slack.class%'

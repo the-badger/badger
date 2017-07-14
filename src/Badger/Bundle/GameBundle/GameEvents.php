@@ -9,7 +9,7 @@ namespace Badger\Bundle\GameBundle;
 class GameEvents
 {
     /**
-     * The Game.user_unlocks_badge event is thrown each time a user unlocked
+     * The game.user_unlocked_badge event is thrown each time a user unlocked
      * a new badge.
      *
      * The event listener receives a
@@ -17,5 +17,38 @@ class GameEvents
      *
      * @var string
      */
-    const USER_UNLOCKS_BADGE = 'game.user_unlocks_badge';
+    const USER_UNLOCKED_BADGE = 'game.user_unlocked_badge';
+
+    /**
+     * The game.badge_has_been_rejected event is thrown each time a user badge is rejected
+     * a new badge.
+     *
+     * The event listener receives a
+     * Badger\Bundle\GameBundle\Event\BadgeUnlockEvent
+     *
+     * @var string
+     */
+    const BADGE_HAS_BEEN_REJECTED = 'game.user_badge_has_been_rejected';
+
+    /**
+     * The game.badge_has_been_accepted event is thrown each time a user badge is accepted
+     * a new badge.
+     *
+     * The event listener receives a
+     * Badger\Bundle\GameBundle\Event\BadgeUnlockEvent
+     *
+     * @var string
+     */
+    const BADGE_HAS_BEEN_REMOVED = 'game.user_badge_has_been_removed';
+
+    /**
+     * The game.badge_has_been_claimed event is thrown each time a user has claimed
+     * a new badge.
+     *
+     * The event listener receives a
+     * Badger\Bundle\GameBundle\Event\BadgeUnlockEvent
+     *
+     * @var string
+     */
+    const BADGE_HAS_BEEN_CLAIMED = 'game.user_badge_has_been_claimed';
 }
