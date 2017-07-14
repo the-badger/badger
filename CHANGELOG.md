@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - Split leaderboard by tags.
+- Drop php 5.6 support, add php 7.1 support 
 
 ## [0.8.1] - 2017-06-30
 ### Fixed

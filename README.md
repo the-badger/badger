@@ -11,7 +11,7 @@ Badger is a gamification platform initially developed as an internal project by 
 Badger is still under development, but is working! If you want to try the project, please install [the last release](https://github.com/the-badger/badger/releases).
 
 ## Prerequisite
-- PHP 5.6+
+- PHP 7.1+
 - MySQL
 - Composer
 - NodeJS & NPM _(only used to grab front JS dependencies)_
