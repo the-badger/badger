@@ -50,6 +50,27 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    public function getSortedUserUnlockedBadgesByTag($tag, $order = 'DESC', $limit = 15)
+    {
+        $qb = $this->createQueryBuilder('u');
+        $qb->select('u AS user, COUNT(bc.id) AS nbUnlockedBadges')
+            ->leftJoin('GameBundle:BadgeCompletion', 'bc', 'WITH', 'bc.user = u')
+            ->innerJoin('bc.badge', 'badge')
+            ->leftJoin('badge.tags', 't')
+            ->where('t.id = :id')->setParameter('id', $tag->getId())
+            ->setMaxResults($limit)
+            ->orderBy('nbUnlockedBadges', $order)
+            ->groupBy('u')
+        ;
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getAllUsernames()
     {
         $qb = $this->getEntityManager()->createQueryBuilder();

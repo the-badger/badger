@@ -171,4 +171,3 @@ class AdventureStep implements AdventureStepInterface
         $this->completions = $completions;
     }
 }
-

@@ -29,7 +29,6 @@ class TagRepository extends EntityRepository implements TagRepositoryInterface
                 ->where('t.isDefault = true')
                 ->getQuery()
                 ->getSingleResult();
-
         } catch (NoResultException $e) {
             return null;
         }
