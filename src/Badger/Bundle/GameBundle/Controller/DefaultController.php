@@ -31,6 +31,8 @@ class DefaultController extends Controller
             } elseif ($b->isDefault()) {
                 return 1;
             }
+
+            return 0;
         });
 
         // Get most unlocked badges & champions per tag
