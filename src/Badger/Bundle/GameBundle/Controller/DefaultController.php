@@ -2,6 +2,8 @@
 
 namespace Badger\Bundle\GameBundle\Controller;
 
+use Badger\Bundle\GameBundle\Event\BadgeUnlockEvent;
+use Badger\Bundle\GameBundle\GameEvents;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -211,6 +213,9 @@ class DefaultController extends Controller
         $badgeCompletion = $badgeCompletionFactory->create($user, $badge);
 
         $this->get('badger.game.saver.badge_completion')->save($badgeCompletion);
+
+        $event = new BadgeUnlockEvent($badgeCompletion);
+        $this->get('event_dispatcher')->dispatch(GameEvents::BADGE_HAS_BEEN_CLAIMED, $event);
 
         return new JsonResponse();
     }
