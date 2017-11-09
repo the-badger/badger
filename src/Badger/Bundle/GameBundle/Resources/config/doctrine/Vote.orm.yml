@@ -1,0 +1,28 @@
+Badger\Bundle\GameBundle\Entity\Vote:
+    type: entity
+    table: vote
+    repositoryClass: Badger\Bundle\GameBundle\Doctrine\Repository\VoteRepository
+    fields:
+        id:
+            type: guid
+            id: true
+            generator:
+                strategy: UUID
+        vote:
+            type: integer
+    oneToOne:
+        user:
+            targetEntity: Badger\Bundle\UserBundle\Entity\User
+            cascade: ['persist']
+            joinColumn:
+                user_id:
+                    referencedColumnName: id
+                onDelete: cascade
+    manyToOne:
+        votableItem:
+            targetEntity:  Badger\Bundle\GameBundle\Entity\VotableItem
+            inversedBy: votes
+            joinColumn:
+                name: vote_id
+                referencedColumnName: id
+                onDelete: cascade

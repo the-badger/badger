@@ -2,8 +2,10 @@
 
 namespace Badger\Bundle\GameBundle\Controller;
 
+use Badger\Bundle\GameBundle\Entity\VotableItem;
 use Badger\Bundle\GameBundle\Event\BadgeUnlockEvent;
 use Badger\Bundle\GameBundle\GameEvents;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -61,6 +63,44 @@ class BadgeCompletionController extends Controller
             'Successfully rejected the claimed badge "%s" for %s!',
             $badgeTitle,
             $username
+        ));
+
+        return $this->redirectToRoute('admin_claimed_badge_index');
+    }
+
+    /**
+     * Set the badge as votable.
+     *
+     * @param string $id
+     *
+     * @return RedirectResponse
+     */
+    public function sendToTheCouncilAction($id)
+    {
+        $pendingCompletion = $this->get('badger.game.repository.badge_completion')
+            ->findOneBy(['id' => $id, 'pending' => 1]);
+
+        if (null === $pendingCompletion) {
+            throw new NotFoundHttpException(sprintf('No pending BadgeCompletion entity with id %s', $id));
+        }
+
+        $votableItem = new VotableItem();
+        $votableItem->setBadgeCompletion($pendingCompletion);
+
+        try {
+            $this->get('badger.game.saver.votable_item')->save($votableItem);
+        } catch (UniqueConstraintViolationException $e) {
+            $this->addFlash('warning', sprintf(
+                'The badge "%s" is already submitted to vote',
+                $pendingCompletion->getBadge()->getTitle()
+            ));
+
+            return $this->redirectToRoute('admin_claimed_badge_index');
+        }
+
+        $this->addFlash('notice', sprintf(
+            'Successfully send the badge "%s" to the people vote! #democracy',
+            $pendingCompletion->getBadge()->getTitle()
         ));
 
         return $this->redirectToRoute('admin_claimed_badge_index');

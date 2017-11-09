@@ -7,6 +7,8 @@ parameters:
     badger.game.repository.adventure_step.class: Badger\Bundle\GameBundle\Doctrine\Repository\AdventureStepRepository
     badger.game.repository.adventure_step_completion.class: Badger\Bundle\GameBundle\Doctrine\Repository\AdventureStepCompletionRepository
     badger.game.repository.tag.class: Badger\Bundle\GameBundle\Doctrine\Repository\TagRepository
+    badger.game.repository.votable_item.class: Badger\Bundle\GameBundle\Doctrine\Repository\VotableItemRepository
+    badger.game.repository.vote.class: Badger\Bundle\GameBundle\Doctrine\Repository\VoteRepository
 
 services:
     badger.game.repository.badge:
@@ -56,3 +58,15 @@ services:
         factory: ['@doctrine.orm.entity_manager', 'getRepository']
         arguments:
             - Badger\Bundle\GameBundle\Entity\Tag
+
+    badger.game.repository.votable_item:
+        class: '%badger.game.repository.votable_item.class%'
+        factory: ['@doctrine.orm.entity_manager', 'getRepository']
+        arguments:
+            - Badger\Bundle\GameBundle\Entity\VotableItem
+
+    badger.game.repository.vote:
+        class: '%badger.game.repository.vote.class%'
+        factory: ['@doctrine.orm.entity_manager', 'getRepository']
+        arguments:
+            - Badger\Bundle\GameBundle\Entity\Vote
