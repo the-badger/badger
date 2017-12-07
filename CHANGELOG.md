@@ -3,8 +3,10 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.9.0] - 2017-12-07
 ### Added
-- Split leaderboard by tags.
+- Improved the leaderboard! More fair & organised by tags.
 - Drop php 5.6 support, add php 7.1 support 
 
 ## [0.8.1] - 2017-06-30
@@ -124,7 +126,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Badge info view, with obtention percentage and user list who have it
 - Feedview with recent unlocks
 
-[Unreleased]: https://github.com/the-badger/badger/compare/v0.8.1...HEAD
+[Unreleased]: https://github.com/the-badger/badger/compare/v0.9.0...HEAD
+[0.9.0]: https://github.com/the-badger/badger/compare/v0.8.1...v0.9.0
 [0.8.1]: https://github.com/the-badger/badger/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/the-badger/badger/compare/v0.7.1...v0.8.0
 [0.7.1]: https://github.com/the-badger/badger/compare/v0.7.0...v0.7.1
