@@ -46,6 +46,17 @@ interface BadgeCompletionRepositoryInterface
     public function getMostUnlockedBadgesForDate(\DateTime $date, TagInterface $tag, $limit = 3);
 
     /**
+     * Return the most unlocked badges (popular ones) only in the given $tag.
+     * It sorts them from most to less unlocked.
+     *
+     * @param TagInterface $tag
+     * @param int          $limit
+     *
+     * @return mixed
+     */
+    public function getTopNumberOfUnlocks(TagInterface $tag, $limit = 10);
+
+    /**
      * Get the top number of badges unlocked for the given month and year of $date, only in the given $tag.
      * You can restrict to a specific $user if wanted.
      *

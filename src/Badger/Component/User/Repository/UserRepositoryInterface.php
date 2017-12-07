@@ -53,4 +53,21 @@ interface UserRepositoryInterface
      * @return mixed
      */
     public function getMonthlyBadgeChampions(\DateTime $date, TagInterface $tag, array $nbOfBadges);
+
+    /**
+     * Return the user who unlocked the most badges in the given $tag.
+     * $nbOfBadges is an array, with number of badges of the podium. Example:
+     *
+     * getBadgeChampions($tag, [8, 4, 2, 1]) =>
+     * 8 badges: Robert
+     * 4 badges: John, Lannister
+     * 2 badges: Mary, Ulric
+     * 1 badge: Thrall
+     *
+     * @param TagInterface $tag
+     * @param array        $nbOfBadges
+     *
+     * @return mixed
+     */
+    public function getBadgeChampions(TagInterface $tag, array $nbOfBadges);
 }

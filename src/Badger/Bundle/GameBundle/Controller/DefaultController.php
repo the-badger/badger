@@ -420,16 +420,21 @@ class DefaultController extends Controller
     {
         $user = $this->getUser();
         $tags = $user->getTags();
+        $championsPerTag = [];
 
-        $results = [];
         foreach ($tags as $tag) {
-            $results[$tag->getCode()] =
-                $this->getDoctrine()->getRepository('UserBundle:User')->getSortedUserUnlockedBadgesByTag($tag);
+            $championsPerTag[$tag->getCode()] = [];
+            $topNumbers = $this->get('badger.game.repository.badge_completion')->getTopNumberOfUnlocks($tag);
+            $champions = $this->get('badger.user.repository.user')->getBadgeChampions($tag, $topNumbers);
+
+            foreach ($champions as $champion) {
+                $championsPerTag[$tag->getCode()][$champion['badgeCompletions']][] = $champion['user'];
+            }
         }
 
         return $this->render('@Game/leaderboard.html.twig', [
             'tags' => $tags,
-            'results' => $results,
+            'championsPerTag' => $championsPerTag,
         ]);
     }
 
