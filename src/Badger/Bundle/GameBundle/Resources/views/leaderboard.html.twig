@@ -24,7 +24,11 @@
                                             <div class="media-heading text-semibold"><span class="label label-striped">{{ nbCompletions }} Badges</span></div>
                                             <ul class="list-inline list-inline-condensed no-margin-bottom mt-15">
                                                 {% for user in champions %}
-                                                    <li><a href="{{ url('userprofile', {username: user.username}) }}" data-popup="tooltip" title="" data-placement="top" data-original-title="{{ user.username }}"><img src="{{ user.profilePicture }}" class="img-circle img-xs mt-5" alt=""></a></li>
+                                                    <li>
+                                                        <a {% if user == app.user %} style="position: absolute; right: 0; top: 0;" {% endif %} href="{{ url('userprofile', {username: user.username}) }}" data-popup="tooltip" title="" data-placement="top" data-original-title="{{ user.username }}">
+                                                            <img {% if user == app.user %}style="border: 1px solid;padding: 3px;height: 40px !important;width: 40px !important;"{% endif %} src="{{ user.profilePicture }}" class="img-circle img-xs mt-5" alt="">
+                                                        </a>
+                                                    </li>
                                                 {% endfor %}
                                             </ul>
                                         </div>
