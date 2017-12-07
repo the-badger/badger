@@ -2,45 +2,53 @@
 
 
 {% block body %}
-<div class="tabbable">
-    <ul class="nav nav-tabs nav-tabs-bottom">
-        {% for tag in tags %}
-            {% if tag.badges is not empty %}
-                <li class="{{ 1 == loop.index ? 'active' : ''}}"><a href="#{{ tag.code }}" data-toggle="tab">{{ tag.name }}</a></li>
-            {% endif %}
-        {% endfor %}
-    </ul>
-
-    <div class="tab-content">
-        {% for tag in tags %}
-        <div class="tab-pane {{ 1 == loop.index ? 'active' : ''}}" id="{{ tag.code }}">
-            <ul class="media-list media-list-linked">
-                {% for result in results[tag.code] %}
-                    <li class="media"
-                        style="{% if app.user.username == result['user'].username %}background: #f9ffe3;{% endif %}">
-                        <a href="{{ url('userprofile', {'username': result['user'].username}) }}"
-                           class="media-link">
-                            <div class="media-left">
-                                <img style="width: 50px; height: 50px;"
-                                     src="{{ result['user'].profilePicture }}"
-                                     class="img-circle img-thumbnail" alt="">
-                                <span class="badge bg-teal media-badge">{{ loop.index }}</span>
-                            </div>
-                            <div class="media-body">
-                                <div class="media-heading text-semibold">{{ result['user'].username }}</div>
-                                <span class="text-muted"></span>
-                            </div>
-                            <div class="media-right media-middle text-nowrap">
-                            <span class="text-muted">
-                                <i class="icon-medal2"></i> {{ result['nbUnlockedBadges'] }}
-                            </span>
-                            </div>
-                        </a>
-                    </li>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="tabbable">
+            <ul class="nav nav-tabs nav-tabs-bottom">
+                {% for tag in tags %}
+                    {% if tag.badges is not empty %}
+                        <li class="{{ 1 == loop.index ? 'active' : ''}}"><a href="#{{ tag.code }}" data-toggle="tab">{{ tag.name }}</a></li>
+                    {% endif %}
                 {% endfor %}
             </ul>
+
+            <div class="tab-content">
+                {% for tag in tags %}
+                <div class="tab-pane {{ 1 == loop.index ? 'active' : ''}}" id="{{ tag.code }}">
+                    <div class="panel panel-flat">
+                        <div class="panel-heading">
+                            <ul class="media-list media-list-linked">
+                                {% for result in results[tag.code] %}
+                                    <li class="media"
+                                        style="{% if app.user.username == result['user'].username %}background: #f9ffe3;{% endif %}">
+                                        <a href="{{ url('userprofile', {'username': result['user'].username}) }}"
+                                           class="media-link">
+                                            <div class="media-left">
+                                                <img style="width: 50px; height: 50px;"
+                                                     src="{{ result['user'].profilePicture }}"
+                                                     class="img-circle img-thumbnail" alt="">
+                                                <span class="badge bg-teal media-badge">{{ loop.index }}</span>
+                                            </div>
+                                            <div class="media-body">
+                                                <div class="media-heading text-semibold">{{ result['user'].username }}</div>
+                                                <span class="text-muted"></span>
+                                            </div>
+                                            <div class="media-right media-middle text-nowrap">
+                                            <span class="text-muted">
+                                                <i class="icon-medal2"></i> {{ result['nbUnlockedBadges'] }}
+                                            </span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-        {% endfor %}
+        </div>
     </div>
-</div>
 {% endblock %}
