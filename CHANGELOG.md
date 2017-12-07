@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.9.1] - 2017-12-07
+### Fixed
+- Fix thumbnails for all images
+
 ## [0.9.0] - 2017-12-07
 ### Added
 - Improved the leaderboard! More fair & organised by tags.
@@ -126,7 +130,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Badge info view, with obtention percentage and user list who have it
 - Feedview with recent unlocks
 
-[Unreleased]: https://github.com/the-badger/badger/compare/v0.9.0...HEAD
+[Unreleased]: https://github.com/the-badger/badger/compare/v0.9.1...HEAD
+[0.9.1]: https://github.com/the-badger/badger/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/the-badger/badger/compare/v0.8.1...v0.9.0
 [0.8.1]: https://github.com/the-badger/badger/compare/v0.8.0...v0.8.1
 [0.8.0]: https://github.com/the-badger/badger/compare/v0.7.1...v0.8.0
