@@ -2,20 +2,23 @@
   background: url('/bundles/game/images/crisp_paper_ruffles.png');
 }
 .home-champions-1 {
-  border-left: 10px solid #c3c300;
+  border-left: 5px solid #c3c300;
 }
 .home-champions-1 .icon-3x {
   color: #c3c300;
 }
 .home-champions-2 {
-  border-left: 10px solid #bbbbbb;
+  border-left: 5px solid #bbbbbb;
 }
 .home-champions-2 .icon-3x {
   color: #bbbbbb;
 }
 .home-champions-3 {
-  border-left: 10px solid #c79c74;
+  border-left: 5px solid #c79c74;
 }
 .home-champions-3 .icon-3x {
   color: #c79c74;
+}
+.home-champions-other {
+  border-left: 5px solid #fbfbfb;
 }

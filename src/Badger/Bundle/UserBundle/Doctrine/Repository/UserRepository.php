@@ -139,4 +139,29 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
 
         return $query->getResult();
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBadgeChampions(TagInterface $tag, array $nbOfBadges)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('u as user, COUNT(bc.id) as badgeCompletions')
+            ->from('UserBundle:User', 'u')
+            ->leftJoin('GameBundle:BadgeCompletion', 'bc', 'WITH', 'u.id = bc.user')
+            ->leftJoin('bc.badge', 'b')
+            ->leftJoin('b.tags', 't')
+            ->where('t.id = :tagId')
+                ->setParameter('tagId', $tag->getId())
+            ->andWhere('bc.pending = 0')
+            ->groupBy('u')
+            ->having('badgeCompletions IN (:maxValues)')
+                ->setParameter('maxValues', $nbOfBadges,  Connection::PARAM_STR_ARRAY)
+            ->orderBy('badgeCompletions', 'DESC')
+        ;
+
+        $query = $qb->getQuery();
+
+        return $query->getResult();
+    }
 }

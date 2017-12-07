@@ -111,6 +111,27 @@ class BadgeCompletionRepository extends EntityRepository implements
     /**
      * {@inheritdoc}
      */
+    public function getTopNumberOfUnlocks(TagInterface $tag, $limit = 10)
+    {
+        $qb = $this->getEntityManager()->createQueryBuilder();
+        $qb->select('DISTINCT(COUNT(bc)) as nbCompletions')
+            ->from('GameBundle:BadgeCompletion', 'bc')
+            ->leftJoin('bc.badge', 'b')
+            ->leftJoin('b.tags', 't')
+            ->where('t.id = :tagId')
+                ->setParameter('tagId', $tag->getId())
+            ->andWhere('bc.pending = 0')
+            ->groupBy('bc.user')
+            ->orderBy('nbCompletions', 'desc')
+            ->setMaxResults($limit)
+        ;
+
+        return $qb->getQuery()->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getTopNumberOfUnlocksForDate(\DateTime $date, TagInterface $tag, $user = null)
     {
         $month = $date->format('m');
