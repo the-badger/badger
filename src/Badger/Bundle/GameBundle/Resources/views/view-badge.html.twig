@@ -7,7 +7,7 @@
             {% if isUnlocked %}
             <div class="panel border-lg border-success" style="margin-top: 50px; box-shadow: 0 0 15px -4px rgba(2,168,41,1);">
                 <div class="panel-body text-center">
-                    <img style="width: 150px; height: 150px; margin-top: -50px; box-shadow: 0px 0px 42px -12px rgba(0,0,0,0.75);" class="img-circle img-thumbnail" src="{{ badge.imageWebPath }}" alt="">
+                    <img style="width: 150px; height: 150px; margin-top: -50px; box-shadow: 0px 0px 42px -12px rgba(0,0,0,0.75);" class="img-circle" src="{{ badge.imageWebPath }}" alt="">
                     <h5 class="text-semibold">{{ badge.title }}</h5>
                     <p class="mb-15 description">{{ badge.description }}</p>
                     <p class="text-muted"><i class="icon-checkmark position-left text-success"></i> You unlocked this badge</p>
@@ -16,7 +16,7 @@
             {% else %}
             <div class="panel" style="margin-top: 50px;">
                 <div class="panel-body text-center">
-                    <img style="width: 150px; height: 150px; margin-top: -50px; box-shadow: 0px 0px 42px -12px rgba(0,0,0,0.75);" class="img-circle img-thumbnail" src="{{ badge.imageWebPath }}" alt="">
+                    <img style="width: 150px; height: 150px; margin-top: -50px; box-shadow: 0px 0px 42px -12px rgba(0,0,0,0.75);" class="img-circle" src="{{ badge.imageWebPath }}" alt="">
                     <h5 class="text-semibold">{{ badge.title }}</h5>
                     <p class="mb-15 description">{{ badge.description }}</p>
                     {% if not isClaimed %}
