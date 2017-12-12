@@ -30,7 +30,7 @@
                     {% for user in newMembers %}
                         <li class="media">
                             <a href="{{ url('userprofile', {username: user.username}) }}" class="media-link">
-                                <div class="media-left"><img src="{{ user.profilePicture }}" class="img-circle" alt=""></div>
+                                <div class="media-left"><img src="{{ user.profilePicture }}" class="img-circle" alt="" style="width: 50px; height: 50px;"></div>
                                 <div class="media-body">
                                     <div class="media-heading text-semibold">{{ user.username }}</div>
                                     <span class="text-muted">Registered on {{ user.getDateRegistered()|date("d/m/Y") }}</span>
@@ -91,7 +91,11 @@
                                         <div class="media-heading text-semibold"><span class="label label-success label-rounded">+{{ nbCompletions }} Badges</span></div>
                                         <ul class="list-inline list-inline-condensed no-margin-bottom mt-15">
                                             {% for user in champions %}
-                                                <li><a href="{{ url('userprofile', {username: user.username}) }}" data-popup="tooltip" title="" data-placement="top" data-original-title="{{ user.username }}"><img src="{{ user.profilePicture }}" class="img-circle img-xs mt-5" alt=""></a></li>
+                                                <li>
+                                                    <a href="{{ url('userprofile', {username: user.username}) }}" data-popup="tooltip" title="" data-placement="top" data-original-title="{{ user.username }}">
+                                                        <img src="{{ user.profilePicture }}" class="img-circle img-xs mt-5" alt="">
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                     </div>
