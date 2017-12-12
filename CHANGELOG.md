@@ -4,6 +4,11 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.9.2] - 2017-12-12
+### Fixed
+- Fix thumbnails size for new users on dashboard
+- Use the correct avatar of the current user on dashboard if he's not on the podium
+
 ## [0.9.1] - 2017-12-07
 ### Fixed
 - Fix thumbnails for all images
@@ -130,7 +135,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Badge info view, with obtention percentage and user list who have it
 - Feedview with recent unlocks
 
-[Unreleased]: https://github.com/the-badger/badger/compare/v0.9.1...HEAD
+[Unreleased]: https://github.com/the-badger/badger/compare/v0.9.2...HEAD
+[0.9.2]: https://github.com/the-badger/badger/compare/v0.9.1...v0.9.2
 [0.9.1]: https://github.com/the-badger/badger/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/the-badger/badger/compare/v0.8.1...v0.9.0
 [0.8.1]: https://github.com/the-badger/badger/compare/v0.8.0...v0.8.1
