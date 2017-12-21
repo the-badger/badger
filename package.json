@@ -19,7 +19,8 @@
   "dependencies": {
     "autolinker": "^1.2.0",
     "lodash": "^4.16.4",
-    "mustache": "^2.2.1"
+    "mustache": "^2.2.1",
+    "selectize": "^0.12.1"
   },
   "devDependencies": {
     "gulp": "^3.9.0",
