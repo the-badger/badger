@@ -8,7 +8,10 @@ gulp.task('install', function() {
     gulp.src([
         './node_modules/autolinker/dist/Autolinker.min.js',
         './node_modules/mustache/mustache.min.js',
-        './node_modules/lodash/lodash.min.js'
+        './node_modules/lodash/lodash.min.js',
+        './node_modules/selectize/dist/js/standalone/selectize.min.js',
+        './node_modules/selectize/dist/css/selectize.css',
+        './node_modules/selectize/dist/css/selectize.default.css'
     ]).pipe(gulp.dest('./web/vendor/dist/'));
 });
 

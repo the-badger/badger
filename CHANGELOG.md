@@ -4,6 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.9.3] - 2017-12-21
+### Fixed
+- Woops, put back a missing JS plugin for tagging entities (used in admin part)
+
 ## [0.9.2] - 2017-12-12
 ### Fixed
 - Fix thumbnails size for new users on dashboard
@@ -135,7 +139,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Badge info view, with obtention percentage and user list who have it
 - Feedview with recent unlocks
 
-[Unreleased]: https://github.com/the-badger/badger/compare/v0.9.2...HEAD
+[Unreleased]: https://github.com/the-badger/badger/compare/v0.9.3...HEAD
+[0.9.3]: https://github.com/the-badger/badger/compare/v0.9.2...v0.9.3
 [0.9.2]: https://github.com/the-badger/badger/compare/v0.9.1...v0.9.2
 [0.9.1]: https://github.com/the-badger/badger/compare/v0.9.0...v0.9.1
 [0.9.0]: https://github.com/the-badger/badger/compare/v0.8.1...v0.9.0
