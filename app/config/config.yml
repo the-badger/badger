@@ -41,6 +41,8 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         app_version: "%version%"
+        google_client_activated: %google_client_activated%
+        github_client_activated: %github_client_activated%
     form_themes:
         - 'GameBundle:Form:game-fields.html.twig'
 
