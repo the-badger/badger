@@ -12,16 +12,20 @@
         <div class="ui raised segment" style="padding: 25px;">
             <h3 class="ui header" style="font-weight: normal;">Sign in to Badger</h3>
             <div class="ui extra content" style="margin: 50px 0;">
+                {% if(google_client_activated) %}
                 <p>
                     <a class="ui labeled icon google plus large button" href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}">
                         <i class="google icon"></i> Sign in with Google
                     </a>
                 </p>
+                {% endif %}
+                {% if(github_client_activated) %}
                 <p>
                     <a class="ui labeled icon large button" href="{{ path('github_connect') }}">
                         <i class="icon github"></i> Sign in with GitHub
                     </a>
                 </p>
+                {% endif %}
             </div>
         </div>
         <p style="color: #B9B9B9;">version {{ app_version }}</p>
