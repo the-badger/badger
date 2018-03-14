@@ -55,15 +55,15 @@
                         </div>
 
                         <div class="content-divider text-muted form-group"><span>sign in with</span></div>
-                        <ul class="list-inline form-group list-inline-condensed text-center">
-
+                        <div class="form-group">
                             {% if(google_client_activated) %}
-                                <li><a href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}" class="btn border-danger text-danger-700 btn-flat btn-icon btn-rounded"><i class="icon-google"></i></a></li>
+                                <a href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}" class="btn btn-danger btn-block btn-labeled"><b><i class="icon-google"></i></b> Sign in with Google</a>
                             {% endif %}
+
                             {% if(github_client_activated) %}
-                                <li><a href="{{ path('github_connect') }}" class="btn border-slate-600 text-slate-600 btn-flat btn-icon btn-rounded"><i class="icon-github"></i></a></li>
+                                <a href="{{ path('github_connect') }}" class="btn bg-slate-600 border-slate-600 btn-block btn-labeled"><b><i class="icon-github"></i></b> Sign in with GitHub</a>
                             {% endif %}
-                        </ul>
+                        </div>
                     </div>
                 </form>
                 <!-- /advanced login -->
