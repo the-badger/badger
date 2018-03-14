@@ -10,6 +10,6 @@ services:
             - 'Badger\Bundle\UserBundle\Entity\User'
 
     badger.user.repository.elastic.user:
-        class: %badger.user.repository.elastic.user.class%
+        class: '%badger.user.repository.elastic.user.class%'
         arguments:
             - '@fos_elastica.index.badger.user'

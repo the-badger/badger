@@ -41,8 +41,8 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         app_version: "%version%"
-        google_client_activated: %google_client_activated%
-        github_client_activated: %github_client_activated%
+        google_client_activated: "%google_client_activated%"
+        github_client_activated: "%github_client_activated%"
     form_themes:
         - 'GameBundle:Form:game-fields.html.twig'
 
@@ -93,14 +93,14 @@ hwi_oauth:
     resource_owners:
         github:
             type:                github
-            client_id:           %github_client_id%
-            client_secret:       %github_client_secret%
+            client_id:           "%github_client_id%"
+            client_secret:       "%github_client_secret%"
             options:
                 csrf: true
         google:
                 type:                google
-                client_id:           %google_client_id%
-                client_secret:       %google_client_secret%
+                client_id:           "%google_client_id%"
+                client_secret:       "%google_client_secret%"
                 scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
 
 sentry:
