@@ -5,7 +5,6 @@
 ## Badger
 [![Travis CI](https://travis-ci.org/the-badger/badger.svg)](https://travis-ci.org/the-badger/badger/tree/master)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/the-badger/badger/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/the-badger/badger/?branch=master)
-[![GetBadges Game](https://the-badger-badger.getbadges.io/shield/company/the-badger-badger)](https://the-badger-badger.getbadges.io/?ref=shield-game)
 
 Badger is a gamification platform initially developed as an internal project by [Akeneo](http://www.akeneo.com).
 Badger is still under development, but is working! If you want to try the project, please install [the last release](https://github.com/the-badger/badger/releases).
