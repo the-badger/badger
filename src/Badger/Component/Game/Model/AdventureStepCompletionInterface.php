@@ -6,7 +6,7 @@ use Badger\Component\User\Model\UserInterface;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>
- * @license http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ * @license http://opensource.org/licenses/MIT The MIT License (MIT)
  */
 interface AdventureStepCompletionInterface
 {
