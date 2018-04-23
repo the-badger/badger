@@ -3,7 +3,7 @@
 namespace Badger\Bundle\GameBundle\Factory;
 
 use Badger\Bundle\GameBundle\Entity\Tag;
-use Badger\Component\Tag\Factory\TagFactoryInterface;
+use Badger\Component\Game\Factory\TagFactoryInterface;
 
 /**
  * @author  Adrien Pétremann <hello@grena.fr>
