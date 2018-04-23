@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.9.4] - 2018-04-23
 ### Fixed
 - Fix crash of the admin tag creation page
 
@@ -142,7 +143,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Badge info view, with obtention percentage and user list who have it
 - Feedview with recent unlocks
 
-[Unreleased]: https://github.com/the-badger/badger/compare/v0.9.3...HEAD
+[Unreleased]: https://github.com/the-badger/badger/compare/v0.9.4...HEAD
+[0.9.4]: https://github.com/the-badger/badger/compare/v0.9.3...v0.9.4
 [0.9.3]: https://github.com/the-badger/badger/compare/v0.9.2...v0.9.3
 [0.9.2]: https://github.com/the-badger/badger/compare/v0.9.1...v0.9.2
 [0.9.1]: https://github.com/the-badger/badger/compare/v0.9.0...v0.9.1
