@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+### Fixed
+- Fix crash of the admin tag creation page
+
 ## [0.9.3] - 2017-12-21
 ### Fixed
 - Woops, put back a missing JS plugin for tagging entities (used in admin part)
