@@ -4,7 +4,7 @@ php:
 
 before_install:
     - composer self-update --no-interaction
-    - mysql -e 'CREATE DATABASE badger_test;'
+    - mysql -e 'CREATE DATABASE IF NOT EXISTS badger_test;'
     - echo 'date.timezone = "Europe/Paris"' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
 
 install:
