@@ -1,0 +1,29 @@
+Badger\Bundle\GameBundle\Entity\VotableItem:
+    type: entity
+    table: votableitem
+    repositoryClass: Badger\Bundle\GameBundle\Doctrine\Repository\VotableItemRepository
+    fields:
+        id:
+            type: guid
+            id: true
+            generator:
+                strategy: UUID
+        pending:
+            type: boolean
+            nullable: false
+    oneToOne:
+        badgeCompletion:
+            targetEntity: Badger\Bundle\GameBundle\Entity\BadgeCompletion
+            joinColumn:
+                badge_id:
+                    referencedColumnName: id
+                onDelete: cascade
+    oneToMany:
+        votes:
+            targetEntity: Badger\Bundle\GameBundle\Entity\Vote
+            mappedBy: votableItem
+            cascade:
+                - persist
+                - detach
+                - remove
+            orphanRemoval: true

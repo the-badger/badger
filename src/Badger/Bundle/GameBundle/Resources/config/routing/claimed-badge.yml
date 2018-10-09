@@ -8,6 +8,11 @@ admin_claimed_badge_reject:
     defaults: { _controller: "GameBundle:BadgeCompletion:reject" }
     methods:  GET
 
+admin_claimed_badge_send_to_vote:
+    path:     /{id}/send-to-vote
+    defaults: { _controller: "GameBundle:BadgeCompletion:sendToTheCouncil" }
+    methods:  GET
+
 admin_claimed_badge_accept:
     path:     /{id}/accept
     defaults: { _controller: "GameBundle:BadgeCompletion:accept" }

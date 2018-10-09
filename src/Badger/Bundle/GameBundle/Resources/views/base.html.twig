@@ -107,6 +107,9 @@
                             <li class="{{ app.request.attributes.get('_route')  == 'leaderboard' ? 'active' : '' }}">
                                 <a href="{{ url('leaderboard') }}"><i class="icon-podium"></i> <span>Leaderboard</span></a>
                             </li>
+                            <li class="{{ app.request.attributes.get('_route')  == 'votable_badges' ? 'active' : '' }}">
+                                <a href="{{ url('votable_badges') }}"><i class="icon-law"></i> <span>Council</span></a>
+                            </li>
                             <!-- /main -->
 
                         </ul>

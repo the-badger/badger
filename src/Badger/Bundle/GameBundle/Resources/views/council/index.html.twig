@@ -41,7 +41,7 @@
                 {% for pendingCompletion in pendingCompletions %}
                     <tr>
                         <td>
-                            <img class="img-circle" style="width: 60px;" src="{{ pendingCompletion.user.profilePicture }}">
+                            <img class="img-circle img-thumbnail" style="width: 60px;" src="{{ pendingCompletion.user.profilePicture }}">
                             <span class="ml-10">{{ pendingCompletion.user.username }}</span>
                         </td>
                         <td class="single line">
@@ -60,9 +60,6 @@
                                     <i class="icon-thumbs-up2"></i>
                                 </a>
                                 <a href="{{ url('admin_claimed_badge_reject', { 'id': pendingCompletion.id }) }}" class="btn btn-danger btn-icon btn-rounded ml-10">
-                                    <i class="icon-thumbs-down2"></i>
-                                </a>
-                                <a href="{{ url('admin_claimed_badge_send_to_vote', { 'id': pendingCompletion.id }) }}" class="btn btn-default btn-icon btn-rounded ml-10">
                                     <i class="icon-thumbs-down2"></i>
                                 </a>
                             </div>

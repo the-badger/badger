@@ -1,0 +1,54 @@
+{% extends '@Game/base.html.twig' %}
+
+{% block body %}
+    <div class="tabbable">
+        <div class="tab-content">
+            {% for item in votableItems %}
+                    <div class="col-md-6">
+                            <div class="panel-body">
+                                <h6 class="media-heading text-semibold">{{ item.badgeCompletion.user.username|upper }} claimed the "{{ item.badgeCompletion.badge.title }}" badge, does he deserve it ?</h6>
+                                <div class="media">
+                                    <div class="media-left">
+                                        <a href="{{ url('viewbadge', {id: item.badgeCompletion.badge.id}) }}">
+                                            <img style="width: 100px; height: 100px;" class="img-circle img-thumbnail" src="{{ item.badgeCompletion.badge.imageWebPath }}" alt="">
+                                        </a>
+                                    </div>
+
+                                    <div class="media-body">
+                                        <h6 class="media-heading text-semibold">
+                                            <a href="{{ url('viewbadge', {id: item.badgeCompletion.badge.id}) }}" class="text-default">{{ item.badgeCompletion.badge.title }}</a>
+                                        </h6>
+                                        <span class="description">
+                                            {{ item.badgeCompletion.badge.description }}
+                                        </span>
+                                        <span class="vote">
+                                            {{ votesResults[item.id] }}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                    <div class="media-body">
+                                        <a href="{{ url('badge_upvote', { 'id': item.id }) }}" class="btn btn-default btn-icon btn-rounded ml-10">
+                                            <i class="icon-thumbs-up3"></i> Hell Yes !
+                                        </a>
+
+                                        <a href="{{ url('badge_downvote', { 'id': item.id }) }}" class="btn btn-default btn-icon btn-rounded ml-10">
+                                            <i class="icon-thumbs-down3"></i> No, I'm a hater !
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        // Auto link quests descriptions
+        $('.description').each(function () {
+            var linkedText = Autolinker.link( $(this).html() );
+            $(this).html(linkedText);
+        });
+    </script>
+{% endblock %}

@@ -44,3 +44,15 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
             - 'Badger\Bundle\GameBundle\Entity\Tag'
+
+    badger.game.saver.votable_item:
+        class: '%badger.storage_utils.saver.base.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\Bundle\GameBundle\Entity\VotableItem'
+
+    badger.game.saver.vote:
+        class: '%badger.storage_utils.saver.base.class%'
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - 'Badger\Bundle\GameBundle\Entity\Vote'
